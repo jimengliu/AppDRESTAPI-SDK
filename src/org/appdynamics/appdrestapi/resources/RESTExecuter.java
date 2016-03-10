@@ -76,6 +76,8 @@ public class RESTExecuter {
     
     private void createConnection(RESTAuth auth) throws Exception{
         //logger.log(Level.SEVERE,"In create Connection");
+        
+        System.setProperty("https.protocols", "TLSv1.2");
         config = new DefaultClientConfig();
         //new code
         //logger.log(Level.SEVERE,"Creating certs");

@@ -18,7 +18,9 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 /**
  *
  * @author soloink
- * 
+ */
+
+/*
  * <metricPath>Application Infrastructure Performance|activemq-instance-mytrees|JVM|Memory|Heap|Committed (MB)</metricPath>
   <frequency>ONE_MIN</frequency>
   <metricValues>
@@ -42,7 +44,7 @@ public class MetricValues {
     
     /**
      * <p>
-     * This is going to get a single value from the arraylist.
+     *      This is going to get a single value from the array list.
      * </p>
      * @return {@link MetricValue}
      */
@@ -51,6 +53,11 @@ public class MetricValues {
         return null;
     }
     
+    /**
+        <p>
+            This function provides a quick way to check if the returned values have data.
+        </p>
+    */
     public boolean hasNoValues(){
         boolean empty=true;
         if(metricValue != null && metricValue.size()>0) empty=false;

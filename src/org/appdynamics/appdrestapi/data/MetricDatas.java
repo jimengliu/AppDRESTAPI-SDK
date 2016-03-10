@@ -29,7 +29,11 @@ public class MetricDatas {
         this.metric_data = metric_data;
     }
     
-    
+    /**
+        <p>
+            This function give quick access to a single metric value or returns null if no value exists.
+        </p>
+    */
     public MetricValue getSingleRollUpMetricValue(){
         
         if(metric_data != null && !metric_data.isEmpty() ) return metric_data.get(0).getSingleValue();
@@ -37,6 +41,11 @@ public class MetricDatas {
         return null;
     }
     
+    /**
+        <p>
+            This function give quick access to a array of metric values or returns null if no values exists.
+        </p>
+    */
     public ArrayList<MetricValue> getSingleMetricValues(){
         
         if(metric_data != null && !metric_data.isEmpty() ) return metric_data.get(0).getSingleMetricValues();

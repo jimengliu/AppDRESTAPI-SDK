@@ -67,11 +67,21 @@ public class MetricData {
         this.metricValues = metricValues;
     }
     
+    /**
+        <p>
+            This function will return a single metric value from the first entry if it exists.
+        </p>
+    */
     public MetricValue getSingleValue(){
         if(metricValues != null && !metricValues.isEmpty()) return metricValues.get(0).getSingleValue();
         return null;
     }
     
+    /**
+        <p>
+            This function will return the array of metric values from the first entry if it exists.
+        </p>
+    */
     public ArrayList<MetricValue> getSingleMetricValues(){
         if(metricValues != null && !metricValues.isEmpty()) return metricValues.get(0).getMetricValue();
         return null;

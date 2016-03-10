@@ -37,7 +37,7 @@ public class MetricValue {
     protected long min;
     protected long max;
     protected long current;
-    // Available 3.8
+    // Available 3.8 only
     protected long sum=-1;
     protected long count=-1;
     protected double stdDev=-1.0;
