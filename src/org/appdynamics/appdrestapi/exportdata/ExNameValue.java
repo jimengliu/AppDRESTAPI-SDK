@@ -81,6 +81,17 @@ public class ExNameValue {
         level--;
         return bud.toString();
     }
+    
+    public String toXML(){
+        StringBuilder bud = new StringBuilder();
+        bud.append(AppExportS.XOpenPosition(level,AppExportS.NAME_VALUE));
+        level++;
+        bud.append(AppExportS.XElement(level, AppExportS.NAME,name));
+        bud.append(AppExportS.XElement(level,AppExportS.VALUE,value));
+        level--;
+        bud.append(AppExportS.XClosePosition(level,AppExportS.NAME_VALUE));
+        return bud.toString();
+    }
 
     @Override
     public int hashCode() {

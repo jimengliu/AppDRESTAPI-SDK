@@ -87,8 +87,9 @@ public class ExHRBusinessTransaction {
     public String toXML(){
         StringBuilder bud = new StringBuilder();
         bud.append(AppExportS.I[level]).append(AppExportS.XOpenAttr(AppExportS.BUSINESS_TRANSACTION));
-        
+        level++;
         bud.append(AppExportS.XAttribute(AppExportS.APPLICATION_COMPONENT,applicationComponent)).append(AppExportS.XC);
+        level--;
         bud.append(value).append(AppExportS.XClose(AppExportS.BUSINESS_TRANSACTION));
         return bud.toString();
     }

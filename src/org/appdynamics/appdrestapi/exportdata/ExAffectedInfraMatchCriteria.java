@@ -18,11 +18,12 @@ import javax.xml.bind.annotation.XmlTransient;
  * 
  */
 
-@XmlSeeAlso({ExNodeMatchCriteria.class,ExHRNodeComponents.class})
+@XmlSeeAlso({ExNodeMatchCriteria.class,ExHRNodeComponents.class,ExHRAppComponents .class})
 public class ExAffectedInfraMatchCriteria {
     private String type;
     private ExNodeMatchCriteria nodeMatchCriteria;
     private ExHRNodeComponents nodeComp;
+    private ExHRAppComponents  appComponents;
     private int level=7;
     
     public ExAffectedInfraMatchCriteria(){}
@@ -62,6 +63,17 @@ public class ExAffectedInfraMatchCriteria {
     public void setNodeComp(ExHRNodeComponents nodeComp) {
         this.nodeComp = nodeComp;
     }
+
+    @XmlElement(name=AppExportS.APPLICATION_COMPONENTS)
+    public ExHRAppComponents  getAppComponents() {
+        return appComponents;
+    }
+
+    public void setAppComponents(ExHRAppComponents  appComponents) {
+        this.appComponents = appComponents;
+    }
+    
+    
     
     public String whatIsDifferent(ExAffectedInfraMatchCriteria obj){
         if(this.equals(obj)) return AppExportS._U;
@@ -110,6 +122,21 @@ public class ExAffectedInfraMatchCriteria {
         bud.append(AppExportS.I[level]).append(AppExportS.TYPE).append(AppExportS.VE).append(type);
         if(nodeMatchCriteria != null){ nodeMatchCriteria.setLevel(level);bud.append(nodeMatchCriteria);}
         if(nodeComp != null){ nodeComp.setLevel(level);bud.append(nodeComp);}
+        if(appComponents != null){appComponents.setLevel(level);bud.append(appComponents);}
+        level--;
+        return bud.toString();
+    }
+    
+    public String toXML(){
+        StringBuilder bud = new StringBuilder();
+        bud.append(AppExportS.XOpenPosition(level,AppExportS.AFFECTED_INFRA_MATCH_CRITERIA));
+        level++;
+        bud.append(AppExportS.XElement(level,AppExportS.TYPE,type));
+        if(nodeMatchCriteria != null){ nodeMatchCriteria.setLevel(level);bud.append(nodeMatchCriteria);}
+        if(nodeComp != null){ nodeComp.setLevel(level);bud.append(nodeComp);}
+        if(appComponents != null){appComponents.setLevel(level);bud.append(appComponents.toXML());}
+        level--;
+        bud.append(AppExportS.XClosePosition(level,AppExportS.AFFECTED_INFRA_MATCH_CRITERIA));
         return bud.toString();
     }
 
@@ -155,5 +182,14 @@ public class ExAffectedInfraMatchCriteria {
                         <env-properties/>
                     </node-match-criteria>
                 </affected-infra-match-criteria>
+
+
+            <affected-infra-match-criteria>
+                <type>SPECIFIC_TIERS</type>
+                <application-components>
+                    <application-component>rfi-02</application-component>
+                </application-components>
+            </affected-infra-match-criteria>
+
  * 
  */

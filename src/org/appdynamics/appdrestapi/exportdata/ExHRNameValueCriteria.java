@@ -100,6 +100,16 @@ public class ExHRNameValueCriteria {
         level--;
         return bud.toString();
     }
+    
+    public String toXML(){
+        StringBuilder bud = new StringBuilder();
+        bud.append(AppExportS.XOpenPosition(level, name));
+        level++;
+        for(ExNameValue val: nameValues){val.setLevel(level);bud.append(val);}
+        level--;
+        bud.append(AppExportS.XClosePosition(level, name));
+        return bud.toString();
+    }
 
     @Override
     public int hashCode() {

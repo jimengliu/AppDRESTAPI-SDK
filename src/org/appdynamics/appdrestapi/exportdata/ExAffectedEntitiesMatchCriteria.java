@@ -23,6 +23,7 @@ public class ExAffectedEntitiesMatchCriteria {
     private ExAffectedBTMatchCriteria btCriteria;
     private ExAffectedInfraMatchCriteria infraCriteria;
     private ExAffectedOverallCriteria overallCriteria;
+
     private int level=6;
     
     public ExAffectedEntitiesMatchCriteria(){}
@@ -74,6 +75,7 @@ public class ExAffectedEntitiesMatchCriteria {
         if(btCriteria != null){btCriteria.setLevel(level);bud.append(btCriteria);}
         if(infraCriteria != null){ infraCriteria.setLevel(level);bud.append(infraCriteria);}
         if(overallCriteria != null){ overallCriteria.setLevel(level);bud.append(overallCriteria);}
+ 
         level--;
         return bud.toString();
     }
@@ -81,13 +83,14 @@ public class ExAffectedEntitiesMatchCriteria {
     public String toXML(){
         StringBuilder bud = new StringBuilder();
         
-        bud.append(AppExportS.I[level]).append(AppExportS.AFFECTED_ENTITIES_MATCH_CRITERIA);
+        bud.append(AppExportS.XOpenPosition(level,AppExportS.AFFECTED_ENTITIES_MATCH_CRITERIA));
         level++;
         if(btCriteria != null){btCriteria.setLevel(level);bud.append(btCriteria);}
         if(infraCriteria != null){ infraCriteria.setLevel(level);bud.append(infraCriteria);}
         if(overallCriteria != null){ overallCriteria.setLevel(level);bud.append(overallCriteria);}
         
         level--;
+        bud.append(AppExportS.XClosePosition(level,AppExportS.AFFECTED_ENTITIES_MATCH_CRITERIA));
         return bud.toString();
     }
 
@@ -171,5 +174,14 @@ public class ExAffectedEntitiesMatchCriteria {
                     <type>ALL</type>
                 </affected-bt-match-criteria>
             </affected-entities-match-criteria>
+
+        <affected-entities-match-criteria>
+            <affected-infra-match-criteria>
+                <type>SPECIFIC_TIERS</type>
+                <application-components>
+                    <application-component>rfi-02</application-component>
+                </application-components>
+            </affected-infra-match-criteria>
+        </affected-entities-match-criteria>
             * 
  */

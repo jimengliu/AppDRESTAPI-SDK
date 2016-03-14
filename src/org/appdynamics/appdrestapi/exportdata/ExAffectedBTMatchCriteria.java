@@ -172,7 +172,7 @@ public class ExAffectedBTMatchCriteria {
         bud.append(AppExportS.I[level]).append(AppExportS.AFFECTED_BT_MATCH_CRITERIA);
         level++;
         bud.append(AppExportS.I[level]).append(AppExportS.TYPE).append(AppExportS.VE).append(type);
-        if(appComponents != null){bud.append(AppExportS.I[level]).append(AppExportS.APPLICATION_COMPONENTS);appComponents.setLevel(level);bud.append(appComponents);}
+        if(appComponents != null){appComponents.setLevel(level);bud.append(appComponents);}
         if(!bts.isEmpty()){
             for(ExHRBusinessTransaction bt:bts){bt.setLevel(level); bud.append(bt);}
         }
@@ -193,21 +193,21 @@ public class ExAffectedBTMatchCriteria {
     public String toXML(){
         StringBuilder bud = new StringBuilder();
         
-        bud.append(AppExportS.I[level]).append(AppExportS.XOpen(AppExportS.AFFECTED_BT_MATCH_CRITERIA));
-        bud.append(AppExportS.XElement(6, AppExportS.TYPE, type));
+        bud.append(AppExportS.XOpenPosition(level,AppExportS.AFFECTED_BT_MATCH_CRITERIA));
+        level++;
+        bud.append(AppExportS.XElement(level, AppExportS.TYPE, type));
         if(appComponents != null){
-            bud.append(AppExportS.I[level]).append(AppExportS.XOpen(AppExportS.APPLICATION_COMPONENTS));
-            bud.append(appComponents);
-            bud.append(AppExportS.I[level]).append(AppExportS.XClose(AppExportS.APPLICATION_COMPONENTS));
+            appComponents.setLevel(level);bud.append(appComponents.toXML());
         }
         if(bts.size() > 0){
-            for(ExHRBusinessTransaction bt:bts) bud.append(bt);
+            for(ExHRBusinessTransaction bt:bts){ bt.setLevel(level);bud.append(bt.toXML());}
         }
         if(matchType != null){
-            bud.append(AppExportS.XElement(6, AppExportS.MATCH_TYPE, matchType));
-            bud.append(AppExportS.XElement(6, AppExportS.MATCH_PATTERN, matchPattern));
-            bud.append(AppExportS.XElement(6, AppExportS.INVERSE, inverse));
+            bud.append(AppExportS.XElement(level, AppExportS.MATCH_TYPE, matchType));
+            bud.append(AppExportS.XElement(level, AppExportS.MATCH_PATTERN, matchPattern));
+            bud.append(AppExportS.XElement(level, AppExportS.INVERSE, inverse));
         }
+        level--;
         bud.append(AppExportS.I[level]).append(AppExportS.XClose(AppExportS.AFFECTED_BT_MATCH_CRITERIA));
         return bud.toString();
     }

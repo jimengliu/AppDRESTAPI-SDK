@@ -146,7 +146,23 @@ public class ExHealthRule {
         this.schedule = schedule;
     }
     
-    
+    public String toXML(){
+        StringBuilder bud = new StringBuilder();
+        bud.append(AppExportS.I[level]).append(AppExportS.XOpen(AppExportS.HEALTH_RULE));
+        level++;
+        bud.append(AppExportS.XElement(level, AppExportS.NAME, name));
+        bud.append(AppExportS.XElement(level, AppExportS.TYPE,type));
+        bud.append(AppExportS.XElement(level, AppExportS.DESCRIPTION,descr));
+        bud.append(AppExportS.XElement(level, AppExportS.ENABLED,enabled));
+        bud.append(AppExportS.XElement(level, AppExportS.IS_DEFAULT,isDefault));
+        bud.append(AppExportS.XElement(level, AppExportS.ALWAYS_ENABLED,alwaysEnabled));
+        bud.append(AppExportS.XElement(level, AppExportS.DURATION_MIN,durationMin));
+        bud.append(AppExportS.XElement(level, AppExportS.WAIT_TIME_MIN,waitTime));
+        if(schedule != null) { bud.append(AppExportS.XElement(level, AppExportS.SCHEDULE,schedule));}
+        level--;
+        bud.append(AppExportS.I[level]).append(AppExportS.XClose(AppExportS.HEALTH_RULE));
+        return bud.toString();
+    }
     
     @Override
     public String toString(){

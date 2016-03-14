@@ -86,9 +86,13 @@ public class ExHRAppComponents {
 
     public String toXML(){
         StringBuilder bud =new StringBuilder();
+        bud.append(AppExportS.I[level]).append(AppExportS.XOpen(AppExportS.APPLICATION_COMPONENTS));
+        level++;
         for(String app:appComponent){
-            bud.append(AppExportS.XElement(7, AppExportS.APPLICATION_COMPONENT, app));
+            bud.append(AppExportS.XElement(level, AppExportS.APPLICATION_COMPONENT, app));
         }
+        level--;
+        bud.append(AppExportS.I[level]).append(AppExportS.XClose(AppExportS.APPLICATION_COMPONENTS));
         return bud.toString();
     }
 

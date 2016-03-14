@@ -249,6 +249,26 @@ public class ExNodeMatchCriteria {
         level--;
         return bud.toString();
     }
+    
+    public String toXML(){
+        StringBuilder bud = new StringBuilder();
+        bud.append(AppExportS.XOpenPosition(level,AppExportS.NODE_MATCH_CRITERIA));
+        level++;
+        bud.append(AppExportS.XElement(level,AppExportS.TYPE,type));
+        if(matchType != null){
+            bud.append(AppExportS.XElement(level,AppExportS.MATCH_TYPE,matchType));
+            bud.append(AppExportS.XElement(level,AppExportS.MATCH_PATTERN,matchPattern));
+            bud.append(AppExportS.XElement(level,AppExportS.INVERSE,inverse));
+        }
+        if(nodeTypes != null){ nodeTypes.setLevel(level);bud.append(nodeTypes);}
+        if(nodes != null){nodes.setLevel(level); bud.append(nodes);}
+        if(nodeMetaInfoMatchCriteria != null){ nodeMetaInfoMatchCriteria.setLevel(level);bud.append(AppExportS.L3).append(AppExportS.NODE_META_INFO_MATCH_CRITERIA);bud.append(nodeMetaInfoMatchCriteria);}
+        if(vmSysProperties != null){ vmSysProperties.setLevel(level);bud.append(AppExportS.L3).append(AppExportS.VM_SYS_PROPERTIES);bud.append(vmSysProperties);}
+        if(envProperties != null){ envProperties.setLevel(level);bud.append(AppExportS.L3).append(AppExportS.ENV_PROPERTIES);bud.append(envProperties);}
+        
+        level--;
+        return bud.toString();
+    }
 
     @Override
     public int hashCode() {

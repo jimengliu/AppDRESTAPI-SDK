@@ -14,10 +14,14 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author gilbert.solorzano
+ */
+
+/*
  * <health-rules controller-version="003-009-003-000">
     <health-rule>
         <name>Check Node Metric</name>
@@ -66,6 +70,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 @XmlSeeAlso(ExHealthRule.class)
 @XmlRootElement(name=AppExportS.HEALTH_RULES)
 public class HealthRules {
+    private int level=0;
     private String controllerVersion;
     private ArrayList<ExHealthRule> healthRules=new ArrayList<ExHealthRule>();
     
@@ -88,14 +93,37 @@ public class HealthRules {
     public void setHealthRules(ArrayList<ExHealthRule> healthRules) {
         this.healthRules = healthRules;
     }
+
+    @XmlTransient
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
     
     
     
     @Override
     public String toString(){
         StringBuilder bud = new StringBuilder();
-        bud.append(AppExportS.L1).append(AppExportS.CONTROLLER_VERSION).append(AppExportS.VE).append(controllerVersion);
-        for(ExHealthRule val: healthRules) bud.append(val);
+        bud.append(AppExportS.I[level]).append(AppExportS.HEALTH_RULES);
+        level++;
+        bud.append(AppExportS.I[level]).append(AppExportS.CONTROLLER_VERSION).append(AppExportS.VE).append(controllerVersion);
+        for(ExHealthRule val: healthRules){val.setLevel(level); bud.append(val);}
+        level--;
+        return bud.toString();
+    }
+    
+    public String toXML(){
+        StringBuilder bud = new StringBuilder();
+        bud.append(AppExportS.I[level]).append(AppExportS.XOpenAttr(AppExportS.HEALTH_RULES));
+        bud.append(AppExportS.XAttribute(AppExportS.CONTROLLER_VERSION, controllerVersion));
+        level++;
+        for(ExHealthRule val: healthRules){val.setLevel(level); bud.append(val);}
+        level--;
+        bud.append(AppExportS.I[level]).append(AppExportS.XClose(AppExportS.HEALTH_RULES));
         return bud.toString();
     }
 }
