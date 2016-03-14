@@ -60,7 +60,9 @@
             <include name="org/appdynamics/appdrestapi/GetTimeStamps.class"/>
             <include name="org/appdynamics/appdrestapi/agent/*.class"/>
             <include name="org/appdynamics/appdrestapi/data/*.class"/>
+            <include name="org/appdynamics/appdrestapi/data/*.index"/>
             <include name="org/appdynamics/appdrestapi/exportdata/*.class"/>
+            <include name="org/appdynamics/appdrestapi/exportdata/*.index"/>
             <include name="org/appdynamics/appdrestapi/queries/*.class"/>
             <include name="org/appdynamics/appdrestapi/resources/*.class"/>
             <include name="org/appdynamics/appdrestapi/util/*.class"/>

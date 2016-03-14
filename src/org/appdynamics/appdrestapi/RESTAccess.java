@@ -2587,7 +2587,7 @@ public class RESTAccess {
      * 
      * 
      * @param app Name of the application which holds the metric
-     * @return String.class
+     * @return {@link String}
      * 
      * <p>
      * <br>Index  0 : queryTransactionDetectionAutoAll
@@ -2677,7 +2677,7 @@ public class RESTAccess {
      * @param queryIndex Index of the type of query to run
      * @param app Name of the application which holds the rules
      * @param objNode Depending on the query this can be the tier name for all rules or the name of the single rule to export
-     * @return String.class
+     * @return {@link String}
      * 
      * <p>
      * <br>Index  0 : queryTransactionDetectionAutoAll
@@ -2821,7 +2821,7 @@ public class RESTAccess {
      * @param app The name of the application
      * @param entityName Name of the auto discovery rule
      * @param xml Xml string of the auto discovery rule
-     * @return String.class
+     * @return {@link String}
      * 
      * <p>
      * <br>queryTransactionDetectionAutoAll
@@ -2864,7 +2864,7 @@ public class RESTAccess {
      * @param tier The name of the tier
      * @param entityName Name of the auto discovery rule
      * @param xml Xml string of the auto discovery rule
-     * @return String.class
+     * @return {@link String}
      * 
      * <p>
      * <br>queryTransactionDetectionAutoAll
@@ -2905,7 +2905,7 @@ public class RESTAccess {
      * </p>
      * 
      * @param app The name of the application
-     * @return String.class
+     * @return {@link String}
      * 
      * <p>
      * <br>queryTransactionDetectionExportAllPojo
@@ -2943,7 +2943,7 @@ public class RESTAccess {
      * 
      * @param app The name of the application
      * @param tier The name of the tier
-     * @return String.class
+     * @return {@link String}
      * 
      * <p>
      * <br>queryTransactionDetectionExportAllPojo
@@ -2983,7 +2983,7 @@ public class RESTAccess {
      * </p>
      * 
      * @param app The name of the application
-     * @return CustomMatchPoints.class
+     * @return  {@link CustomMatchPoints}
      * 
      * <p>
      * <br>queryTransactionDetectionExportAllPojo
@@ -3023,7 +3023,7 @@ public class RESTAccess {
      * 
      * @param app The name of the application
      * @param tier The name of the tier
-     * @return CustomMatchPoints.class
+     * @return {@link CustomMatchPoints}
      * 
      * <p>
      * <br>queryTransactionDetectionExportAllPojo
@@ -3062,7 +3062,7 @@ public class RESTAccess {
      * 
      * @param app The name of the application
      * @param objNode The name of the custom pojo
-     * @return String.class
+     * @return {@link String}
      * 
      * <p>
      * <br>queryTransactionDetectionExportPojo
@@ -3102,7 +3102,7 @@ public class RESTAccess {
      * @param app The name of the application
      * @param tier The name of the tier
      * @param objNode The name of the custom pojo
-     * @return String.class
+     * @return {@link String}
      * 
      * <p>
      * <br>Index  0 : queryTransactionDetectionExportPojo
@@ -3142,7 +3142,7 @@ public class RESTAccess {
      * @param app The name of the application
      * @param objNode The name of the custom pojo
      * @param xml Xml string for the custom pojo
-     * @return String.class
+     * @return {@link String}
      * 
      * <p>
      * <br> queryTransactionDetectionImportPojo
@@ -3178,7 +3178,7 @@ public class RESTAccess {
      * @param tier The name of the tier
      * @param objNode The name of the custom pojo
      * @param xml Xml string for the custom pojo
-     * @return String.class
+     * @return {@link String}
      * 
      * <p> queryTransactionDetectionImportPojo</p>
      */
@@ -3210,7 +3210,7 @@ public class RESTAccess {
      * </p>
      * 
      * @param app
-     * @return String.class
+     * @return {@link String}
      * 
      */
     public String getRESTHealthRuleExportAll(String app){
@@ -3247,7 +3247,7 @@ public class RESTAccess {
      * </p>
      * 
      * @param app
-     * @return HealthRules.class
+     * @return {@link HealthRules}
      * 
      */
     public HealthRules getRESTHealthRuleObjExportAll(String app){
@@ -3287,7 +3287,7 @@ public class RESTAccess {
      * 
      * @param app Application name
      * @param name Health rule name
-     * @return String.class
+     * @return {@link String}
      */
     public String getRESTHealthRuleExportSingle(String app, String name){
         String query=null;
@@ -3319,6 +3319,45 @@ public class RESTAccess {
     
     /**
      * <p>
+     *  This will export a single health rule for the application name and rule
+     * <br> name given, this functionality is only 
+     * <br> in the controller version 3.9.x and above. 
+     * </p>
+     * 
+     * @param app Application name
+     * @param name Health rule name
+     * @return {@link HealthRule}
+     */
+    public HealthRules getRESTHealthRuleObjExportSingle(String app, String name){
+        String query=null;
+        
+        if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder()
+                .append("\nQuery to get health rule for application ").append(app)
+                .append(" for rule ").append(name).toString());}
+
+        query=HealthRuleQuery.queryHealthRulesExportSingle(baseURL.getControllerURL(), app, name); 
+
+        
+        //This will be the final check, to insure that we don't send a bad query.
+        if(query==null){ 
+            logger.log(Level.WARNING,new StringBuilder()
+                    .append("\nHealthRule query for ")
+                    .append(app).toString());
+            return null;
+        }
+        
+        
+        try{
+            return R.executeExportHealthRuleObj(auth, query);
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        
+        return null;
+    }    
+    
+    /**
+     * <p>
      *  This will import a single health rule for the application name and rule
      * <br> name given, this functionality is only 
      * <br> in the controller version 3.9.x and above. 
@@ -3327,7 +3366,7 @@ public class RESTAccess {
      * @param app Application name
      * @param entityName Health rule name
      * @param xml Xml String for the health rule entry
-     * @return String.class
+     * @return {@link String}
      */
     public String postRESTHealthRule(String app, String entityName, String xml){
         
@@ -3357,7 +3396,7 @@ public class RESTAccess {
      * </p>
      * @param app Name of the application to post the event too
      * @param postEvent PostEvent object that contains the information for the event.
-     * @return String.class
+     * @return {@link String}
      */
     public String postRESTCustomEvent(String app, PostEvent postEvent){
         
@@ -3387,7 +3426,7 @@ public class RESTAccess {
      * @param app Name of the application to post the event too
      * @param summary Summary of the event
      * @param comment Comment for the event
-     * @return String.class
+     * @return {@link String}
      */
     public String postRESTCustomEvent(String app, String summary, String comment){
         
@@ -3414,7 +3453,7 @@ public class RESTAccess {
      * This method will allow a user to mark nodes historical
      * </p>
      * @param ids The id or ids that should be marked for deletion
-     * @return String.class
+     * @return {@link String}
      */
     public String postRESTMarkNodeHistorical(String ids){
         
@@ -3441,7 +3480,7 @@ public class RESTAccess {
      * This method will allow a user to add a user
      * </p>
      * @param user The user object
-     * @return String.class
+     * @return {@link String}
      */
     public String postRESTAddUser(User user){
         
@@ -3471,7 +3510,7 @@ public class RESTAccess {
      * This method will allow a user to update a user
      * </p>
      * @param user The user object
-     * @return String.class
+     * @return {@link String}
      */
     public String postRESTUpdateUser(User user){
         
@@ -3501,7 +3540,7 @@ public class RESTAccess {
      * This will return the controller's configuration properties.
      * </p>
      * @param application The application name that has the information
-     * @return {@link ConfigurationItems.class}
+     * @return {@link ConfigurationItems}
      */
     public ConfigurationItems getConfigurationItems(String application){
         try{
@@ -3520,7 +3559,7 @@ public class RESTAccess {
      * </p>
      * @param application The application name that has the information
      * @param metricName The name of the metric you want
-     * @return {@link ConfigurationItems.class}
+     * @return {@link ConfigurationItems}
      */
     public ConfigurationItems getConfigurationItems(String application, String metricName){
         try{

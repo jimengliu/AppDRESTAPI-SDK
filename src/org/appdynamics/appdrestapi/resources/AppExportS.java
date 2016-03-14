@@ -178,6 +178,7 @@ public class AppExportS {
     public static final String MEMBERS="members";
     /* Need application component */
     public static final String APPLICATION_COMPONENTS="application-components";
+    public static final String APPLICATION_COMPONENT="application-component";
     
     /* Need business transaction */
     public static final String BUSINESS_TRANSACTION_COMPONENTS="business-transaction-components";
@@ -336,7 +337,7 @@ public class AppExportS {
     
     
     /* Need application component */
-    public static final String APPLICATION_COMPONENT="application-component";
+ //   public static final String APPLICATION_COMPONENT="application-component";
     public static final String NAMING_CONFIG="naming-config";
     public static final String SCHEME="scheme";
     public static final String BUSINESS_TRANSACTIONS="business-transactions";
@@ -451,6 +452,7 @@ public class AppExportS {
     public static final String WARNING_EXECUTION_CRITERIA="warning-execution-criteria";
     public static final String SCHEDULE="schedule";
     public static final String OVERALL_AFFECTED_ENTITIES_MATCH_CRITERIA="overall-affected-entities-match-criteria";
+    //public static final String 
     /*
      * This will help build xml structures
      */
@@ -466,6 +468,10 @@ public class AppExportS {
         return new StringBuilder().append(XO).append(xmlType).append(XC).toString();
     }
     
+    public static String XOpenPosition(int position, String xmlType){
+        return new StringBuilder().append(I[position]).append(XO).append(xmlType).append(XC).toString();
+    }
+    
     public static String XOpenAttr(String xmlType){
         return new StringBuilder().append(XO).append(xmlType).toString();
     }
@@ -474,42 +480,13 @@ public class AppExportS {
         return new StringBuilder().append(XT).append(xmlType).append(XC).toString();
     }
     
+    public static String XClosePosition(int position,String xmlType){
+        return new StringBuilder().append(I[position]).append(XT).append(xmlType).append(XC).toString();
+    }
+    
     public static String XElement(int position, String xmlType, String value){
         StringBuilder bud = new StringBuilder();
-        switch(position){
-            case 0:
-                    bud.append(L0);
-                    break;
-            case 1: 
-                    bud.append(L1);
-                    break;
-            case 2: 
-                    bud.append(L1_1);
-                    break;
-            case 3: 
-                    bud.append(L2);
-                    break;
-                
-            case 4: 
-                    bud.append(L2_1);
-                    break;
-            case 5: 
-                    bud.append(L3);
-                    break;
-            case 6: 
-                    bud.append(L3_1);
-                    break;
-            case 7: 
-                    bud.append(L4);
-                    break;
-            case 8: 
-                    bud.append(L4_1);
-                    break;
-            default: 
-                    bud.append(L2_1);
-                    break;
-
-        }
+        bud.append(I[position]);
         bud.append(XOpen(xmlType)).append(value).append(XClose(xmlType));
         
         return bud.toString();
