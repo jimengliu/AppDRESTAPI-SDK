@@ -7,7 +7,7 @@ package org.appdynamics.appdrestapi.data;
 import org.appdynamics.appdrestapi.resources.AppExportS;
 import org.appdynamics.appdrestapi.resources.s;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlElement;
 /**
  *
@@ -37,6 +37,10 @@ public class MetricItem {
         this.name = name;
     }
     
+    @XmlTransient
+    public boolean isFolder(){
+        return type.equals(s.METRIC_ITEM_FOLDER);
+    }
     
     @Override
     public String toString(){

@@ -21,7 +21,7 @@ import java.util.logging.Level;
  * @author gilbert.solorzano@appdynamics.com
  * <p>
  * The RESTAccess is a class that allows access to AppDynamics REST API. The intention
- * is to provide a easy method to to access the AppDynamics Controller REST service.
+ * is to provide a easy method to to access the AppDynamics Controller REST service. 
  * </p>
  * <p>
  * Metrics : 
@@ -38,12 +38,13 @@ public class RESTAccess {
     protected RESTAuth auth;
     protected RESTExecuter R;
     
-    //public RESTAccess(){}
     
     /**
      * <p>
      * Returns a RESTAccess object that can be used to query the AppDynamics 
-     * controller.
+     * controller. This will default to the following :<br>
+     * useSSL false<br>
+     * account customer1<br>
      * </p>
      * 
      * @param controllerURL FQDN of the controller
@@ -54,13 +55,14 @@ public class RESTAccess {
     public RESTAccess(String controllerURL, String port, String username, String password){
         baseURL=new RESTBaseURL(controllerURL, port);
         auth=new RESTAuth(username, password);
-        R=new RESTExecuter();
+        R=new RESTExecuter(baseURL.getControllerURL());
     }
     
     /**
      * <p>
      * Returns a RESTAccess object that can be used to query the AppDynamics 
-     * controller.
+     * controller.This will default to the following :<br>
+     * account customer1<br>
      * </p>
      * 
      * @param controllerURL FQDN of the controller
@@ -72,13 +74,14 @@ public class RESTAccess {
     public RESTAccess(String controllerURL, String port, boolean ssl, String username, String password){
         baseURL=new RESTBaseURL(controllerURL, port, ssl);
         auth=new RESTAuth(username,password);
-        R=new RESTExecuter();
+        R=new RESTExecuter(baseURL.getControllerURL());
     }
     
     /**
      * <p>
      * Returns a RESTAccess object that can be used to query the AppDynamics 
-     * controller.
+     * controller.This will default to the following :<br>
+     * useSSL false<br>
      * </p>.
      * 
      * @param controllerURL FQDN of the controller
@@ -90,7 +93,7 @@ public class RESTAccess {
     public RESTAccess(String controllerURL, String port, String username, String password, String account){
         baseURL=new RESTBaseURL(controllerURL, port);
         auth=new RESTAuth(username, password, account, true);
-        R=new RESTExecuter();
+        R=new RESTExecuter(baseURL.getControllerURL());
     }
     
     /**
@@ -109,7 +112,7 @@ public class RESTAccess {
     public RESTAccess(String controllerURL, String port, boolean ssl, String username, String password, String account){
         baseURL=new RESTBaseURL(controllerURL, port, ssl);
         auth=new RESTAuth(username, password, account, true);
-        R=new RESTExecuter();
+        R=new RESTExecuter(baseURL.getControllerURL());
         
     }
     
@@ -125,12 +128,12 @@ public class RESTAccess {
      * @param username User to execute the query as
      * @param password Password to use with the connection
      * @param account Account name to use with the queries
-     * @param  proxy Proxy object with needed information
+     * @param  proxy {@link Proxy} Proxy object with needed information
      */
     public RESTAccess(String controllerURL, String port, boolean ssl, String username, String password, String account, RESTProxy proxy){
         baseURL=new RESTBaseURL(controllerURL, port, ssl);
         auth=new RESTAuth(username, password, account, true,proxy);
-        R=new RESTExecuter();
+        R=new RESTExecuter(baseURL.getControllerURL());
         
     }
     
@@ -3565,6 +3568,40 @@ public class RESTAccess {
         try{
             return R.executeConfigurationItems(auth, 
                     ConfigurationItemQuery.queryConfiguration(baseURL.getControllerURL(), application, metricName));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n")
+                    .append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+    
+    /**
+     * <p>
+     * This will return the controller's license properties, the REST user must have administrator rights
+     * </p>
+     * @return {@link LicenseProperties}
+     */
+    public LicenseProperties getLicenseProperties(){
+        try{
+            return R.executeLicenseProperties(auth, 
+                    LicenseQuery.queryLicenseProperties(baseURL.getControllerURL()));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n")
+                    .append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+    
+    /**
+     * <p>
+     * This will return the controller's license EUM properties, the REST user must have administrator rights
+     * </p>
+     * @return {@link LicenseProperties}
+     */
+    public AccountEUM getAccountEUM(){
+        try{
+            return R.executeAccountEUM(auth, 
+                    LicenseQuery.queryAccountEUM(baseURL.getControllerURL()));
         }catch(Exception e){
             logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n")
                     .append(e.getMessage()).append("\n").toString());

@@ -33,6 +33,12 @@ public class s {
     public static final String CONTROLLER_DB_COLLECTOR="/controller/restui/dbMonitoring/createConfiguration";// Will change
     public static final String CONTROLLER_DASHBOARD="/controller/CustomDashboardImportExportServlet?dashboardId=";
     public static final String CONTROLLER_MARK_HISTORICAL="/controller/rest/mark-nodes-historical?application-component-node-ids=";
+    public static final String CONTROLLER_RESTUI="/controller/restui/";
+    public static final String ACCOUNT_LICENSE_PROPERTIES="user/accountLicenseProperties";
+    public static final String ACCOUNT_EUM="user/accountEUM";
+    public static final String CONTROLLER_AUTH_ACTION="/controller/auth?action=login";
+    public static final String[] APPD_INTERNAL_APPS={"Database Monitoring"};
+    
     public static final String COLON=":";
     public static final String P="|";
     public static final String F="/";
@@ -179,6 +185,7 @@ public class s {
     public static final String FREQUENCY="frequency";
     public static final String METRIC_ITEM="metric-item";
     public static final String METRIC_ITEMS="metric-items";
+    public static final String METRIC_ITEM_FOLDER="folder";
     public static final String METRIC_ID="metricId";
     public static final String URL_METRIC_PATH_LIST="?metric-path=";
     
@@ -512,6 +519,79 @@ webService
     public static final String DBC_SSH_PORT="sshPort";//
     public static final String DBC_HOST_USERNAME="hostUsername";//
     public static final String DBC_HOST_PASSWORD="hostPassword";
+    
+    /*
+    "appAgentLicenseProperties"
+"dotNetLicenseProperties"
+"nativeLicenseProperties":
+"nativeSDKLicenseProperties"
+"nativeDynamicLicenseProperties"
+"nativeWebServerLicenseProperties"
+"phpLicenseProperties"
+"nodeJsLicenseProperties"
+"pythonLicenseProperties"
+"dbLicenseProperties":
+"machineLicenseProperties"
+"transactionAnalyticsLicenseProperties"
+"logAnalyticsLicenseProperties"
+    */
+    public static final String LICENSE_PROPERTIES="LicenseProperties";
+    public static final String APP_AGENT_LICENSE_PROPERTIES="appAgentLicenseProperties";
+    public static final String DOT_NET_LICENSE_PROPERTIES="dotNetLicenseProperties";
+    public static final String NATIVE_LICENSE_PROPERTIES="nativeLicenseProperties";
+    public static final String NATIVE_SDK_LICENSE_PROPERTIES="nativeSDKLicenseProperties";
+    public static final String NATIVE_DYNAMIC_LICENSE_PROPERTIES="nativeDynamicLicenseProperties";
+    public static final String NATIVE_WEB_SERVER_LICENSE_PROPERTIES="nativeWebServerLicenseProperties";
+    public static final String PHP_LICENSE_PROPERTIES="phpLicenseProperties";
+    public static final String NODEJS_LICENSE_PROPERTIES="nodeJsLicenseProperties";
+    public static final String PYTHON_LICENSE_PROPERTIES="pythonLicenseProperties";
+    public static final String DB_LICENSE_PROPERTIES="dbLicenseProperties";
+    public static final String MACHINE_LICENSE_PROPERTIES="machineLicenseProperties";
+    public static final String TRANSACTION_ANALYTICS_LICENSE_PROPERTIES="transactionAnalyticsLicenseProperties";
+    public static final String LOG_ANALYTICS_LICENSE_PROPERTIES="logAnalyticsLicenseProperties";
+    
+    /* 
+    "edition":"PRO","expirationDate":"1477810800000","licenseModel":"FIXED","numOfProvisionedLicense":"1900","maxAllowedLicenses":"1900",
+"lastHourUsage":"1682","isLicensed":"true","isExpired":"false","dataRetentionPeriod":null},
+    */
+    public static final String EDITION="edition";
+    public static final String EXPIRATION_DATE="expirationDate";
+    public static final String LICENSE_MODEL="licenseModel";
+    public static final String NUM_OF_PROVISIONED_LICENSE="numOfProvisionedLicense";
+    public static final String MAX_ALLOWED_LICENSES="maxAllowedLicenses";
+    public static final String LAST_HOUR_USAGE="lastHourUsage";
+    public static final String IS_LICENSED="isLicensed";
+    public static final String IS_EXPIRED="isExpired";
+    public static final String DATA_RETENTION_PERIOD="dataRetentionPeriod";
+    
+    
+    public static final String LIC_ACCOUNT_EUM="Account_EUM";
+    public static final String LICENSE_KEY="licenseKey";
+    public static final String ALLOCATED_PAGE_VIEWS="allocatedPageViews";
+    public static final String CONSUMED_PAGE_VIEWS= "consumedPageViews";
+    public static final String CURRENT_USAGE_PERIOD_START_MILLIS="currentUsagePeriodStartMillis";
+    public static final String CURRENT_USAGE_PERIOD_END_MILLIS="currentUsagePeriodEndMillis";
+    public static final String LICENSE_TYPE="licenseType";
+    public static final String LICENSE_UNITS="licenseUnits";
+    public static final String LICENSE_ALLOWED_OVERAGES="licenseAllowsOverages";
+    public static final String MOBILE_CURRENT_USAGE_PERIOD_START_MILLIS="mobileCurrentUsagePeriodStartMillis";
+    public static final String MOBILE_CURRENT_USAGE_PERIOD_END_MILLIS="mobileCurrentUsagePeriodEndMillis";
+    public static final String ALLOCATED_MOBILE_AGENTS="allocatedMobileAgents";
+    public static final String CONSUMED_MOBILE_AGENTS="consumedMobileAgents";
+    public static final String MOBILE_LICENSE_TYPE="mobileLicenseType";
+    public static final String MOBILE_LICENSE_UNIT="mobileLicenseUnits";
+    public static final String MOBILE_LICENSE_ALLOWS_OVERAGES="mobileLicenseAllowsOverages";
+    public static final String SYNTHETIC_CURRENT_USAGE_PERIOD_START_MILLIS="syntheticCurrentUsagePeriodStartMillis";
+    public static final String SYNTHETIC_CURRENT_USAGE_PERIOD_END_MILLIS="syntheticCurrentUsagePeriodEndMillis";
+    public static final String ALLOCATED_SYNTHETIC_MEASUREMENT="allocatedSyntheticMeasurementUnits";
+    public static final String CONSUMED_SYNTHETIC_MEASUREMENT_UNITS="consumedSyntheticMeasurementUnits";
+    public static final String SYNTHETIC_LICENSE_TYPE="syntheticLicenseType";
+    public static final String SYNTHETIC_LICENSE_UNIT="syntheticLicenseUnits";
+    public static final String ERROR_MESSAGE="errorMessage";
+    
+    
+    
+    
     
     public static String JSON(String name, String value){
         return new StringBuilder().append(_QQ).append(name)

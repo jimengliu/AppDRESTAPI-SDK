@@ -7,10 +7,7 @@ package org.appdynamics.appdrestapi.resources;
 import org.appdynamics.appdrestapi.data.AutoDiscoveryConfig;
 import org.appdynamics.appdrestapi.data.*;
 import org.appdynamics.appdrestapi.exportdata.*;
-import org.appdynamics.appdrestapi.resources.s;
 
-import org.appdynamics.appdrestapi.queries.ApplicationQuery;
-import org.appdynamics.appdrestapi.resources.AppExportS;
 
 import com.sun.jersey.multipart.FormDataMultiPart;
 import com.sun.jersey.multipart.FormDataBodyPart;
@@ -27,6 +24,7 @@ import com.sun.jersey.api.client.filter.HTTPBasicAuthFilter;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.client.urlconnection.HTTPSProperties;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.NewCookie;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -54,8 +52,10 @@ import javax.net.ssl.X509TrustManager;
 
 import java.io.IOException;
 
+import java.util.List;
 import java.util.logging.Logger;
 import java.util.logging.Level;
+import org.appdynamics.appdrestapi.queries.AuthActionQuery;
 
 
 
@@ -67,38 +67,43 @@ import java.util.logging.Level;
  * The executor handles the process of communicating with the controller and retrieving the data.
  * </p>
  */
+
+/*
+    Initially we created a static 
+*/
 public class RESTExecuter {
     private com.sun.jersey.api.client.config.ClientConfig config = null;
     private com.sun.jersey.api.client.Client client=null;
     private static Logger logger=Logger.getLogger(RESTExecuter.class.getName());
+    private String baseURL;
+    private List<NewCookie> cookies;
     
-    public RESTExecuter(){}
+    public RESTExecuter(String baseURL){this.baseURL=baseURL;}
     
     private void createConnection(RESTAuth auth) throws Exception{
-        //logger.log(Level.SEVERE,"In create Connection");
         
+        /* This was added to insure that we can be used with controllers that have a secure setting.*/
         System.setProperty("https.protocols", "TLSv1.2");
         config = new DefaultClientConfig();
-        //new code
-        //logger.log(Level.SEVERE,"Creating certs");
         config.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
 
         
         if(s.debugLevel > 3)logger.log(Level.INFO,new StringBuilder().append("Using the following for auth: ").append(auth.toString()).toString());
         
+        /* We need to accept self signed certificates */
         TrustManager[] certs = new TrustManager[]{
-          new X509TrustManager(){
-              @Override
-              public X509Certificate[] getAcceptedIssuers(){
-                  return null;
-              }
-              
-              @Override
-              public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException{}
-              
-              @Override 
-              public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException{}
-          }  
+            new X509TrustManager(){
+                @Override
+                public X509Certificate[] getAcceptedIssuers(){
+                    return null;
+                }
+
+                @Override
+                public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException{}
+
+                @Override 
+                public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException{}
+            }  
         };
         
         SSLContext ctx = null;
@@ -127,6 +132,7 @@ public class RESTExecuter {
         //old code
         //logger.log(Level.SEVERE,"Near the end. " + config.getProperties().toString());
         try{
+            /* This will cover when we are using cookies */
             if(auth.isUseProxy()){
                 System.setProperty(s.HTTP_PROXYHOST, auth.getProxy().getHost());
                 System.setProperty(s.HTTP_PROXYPORT, auth.getProxy().getPort().toString());
@@ -159,7 +165,63 @@ public class RESTExecuter {
         }
         
         if(client == null) throw new Exception(new StringBuilder().append("Unable to create connection object, creation attempt returned NULL.").toString());
+        setupCookieAuth(); //This will get the cookies
     }
+    
+    private void setupCookieAuth(){
+        /* With the new rest URLS we need to use the cookie, expect the client not to be null*/
+        if( client != null){
+          
+            String query = AuthActionQuery.queryAuthAction(baseURL);
+            if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
+            WebResource service = client.resource(query);
+            ClientResponse response = null;
+            MetricDatas md = null;
+            try{
+                int currentCount=1;
+                while(currentCount <= s.MAX_TRIES){
+                response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
+                    if(response.getStatus() >= 500){
+                        logger.log(Level.INFO,new StringBuilder().append("Caught HTTP error number ").append(response.getStatus())
+                                .append(", attempting again from attempt number ").append(currentCount).toString());
+
+                        currentCount++;
+                        Thread.sleep(1200*currentCount);
+                    }else{
+                        //Now we need to get the cookies.
+                        cookies=response.getCookies();
+                        currentCount=s.MAX_TRIES+1;
+                    }
+                }
+
+                if(response.getStatus() >= 500 && currentCount > s.MAX_TRIES) 
+                    logger.log(Level.SEVERE,new StringBuilder().append("Caught HTTP error number ").append(response.getStatus())
+                                .append(".\nUnable to get a proper response for query:\n").append(query).toString());
+
+            }catch(Exception e){
+                logger.log(Level.SEVERE,new StringBuilder().append("Exception getting entity. \nQuery:\n\t")
+                        .append(query).append("\nError:").append(e.getMessage()).append(".\n Response code is ")
+                        .append(response.getStatus()).toString());
+            }
+        }else{
+            logger.log(Level.SEVERE,"The connection is null, something has gone wrong.");
+        }
+    }
+    
+    private WebResource.Builder setCookies(WebResource web){
+        if(s.debugLevel > 1) logger.log(Level.INFO,"Setting cookies");
+        WebResource.Builder builder = web.getRequestBuilder();
+        if( cookies != null){
+            java.util.ListIterator<NewCookie> iter = cookies.listIterator();
+            while(iter.hasNext()) {
+                NewCookie cok = iter.next();
+                if(s.debugLevel > 1) logger.info(cok.toString());
+                builder.cookie(cok);
+            }
+        }
+        return builder;
+    }
+    
     
     public  MetricDatas executeMetricQuery(RESTAuth auth, String query)throws Exception{
         if(client == null) {
@@ -168,7 +230,8 @@ public class RESTExecuter {
         
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
-        WebResource service = client.resource(query);
+        WebResource service1 = client.resource(query);
+        WebResource.Builder service = setCookies(service1);
         ClientResponse response = null;
         MetricDatas md = null;
         try{
@@ -217,14 +280,15 @@ public class RESTExecuter {
         
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
-        WebResource service = null;
+        WebResource service1 = null;
         ClientResponse response = null;
         String value=null;
         ExDashboard val=null;
         Dashboard dash=null;
         try{
          
-            service = client.resource(query);
+             service1 = client.resource(query);
+             WebResource.Builder service = setCookies(service1);
             
             response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
             //logger.log(Level.INFO, new StringBuilder().append("responsecode:::").append(response.getStatus()).toString());
@@ -261,12 +325,14 @@ public class RESTExecuter {
         
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
-        WebResource service = null;
+        WebResource service1 = null;
         ClientResponse response = null;
         String value=null;
         try{
          
-            service = client.resource(query);
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
             response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
             value= (String) response.getEntity(String.class);
             
@@ -287,13 +353,15 @@ public class RESTExecuter {
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
         
-        WebResource service = null;
+        WebResource service1 = null;
         ClientResponse response = null;
         String apps=null;
         ExApplication exApp=null;
         try{
          
-            service = client.resource(query);
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
             response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
             apps= (String) response.getEntity(String.class);
             JAXBContext context = JAXBContext.newInstance(ExApplication.class);
@@ -317,12 +385,14 @@ public class RESTExecuter {
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
         
-        WebResource service = null;
+        WebResource service1 = null;
         ClientResponse response = null;
         BusinessTransactions bts=null;
         try{
          
-            service = client.resource(query);
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
             response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
             bts= (BusinessTransactions) response.getEntity(BusinessTransactions.class);
             
@@ -350,13 +420,15 @@ public class RESTExecuter {
 
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
-        WebResource service = null;
+        WebResource service1 = null;
         ClientResponse response = null;
         Applications apps=null;
         try{
          
 
-            service = client.resource(query);
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
 
             
             response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
@@ -400,10 +472,14 @@ public class RESTExecuter {
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
         
-        WebResource service = client.resource(query);
+        WebResource service1 = null; //client.resource(query);
+        
         ClientResponse response = null;
         Tiers tiers= null;
         try{
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
             response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
             tiers= (Tiers) response.getEntity(Tiers.class);
         }catch(Exception e){
@@ -424,10 +500,13 @@ public class RESTExecuter {
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
         
-        WebResource service = client.resource(query);
+        WebResource service1 = null;//client.resource(query);
         ClientResponse response = null;
         Nodes nodes=null;
         try{
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
             response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
             nodes= (Nodes) response.getEntity(Nodes.class);
         }catch(Exception e){
@@ -455,10 +534,13 @@ public class RESTExecuter {
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
         
-        WebResource service = client.resource(query);
+        WebResource service1 = null;//client.resource(query);
         ClientResponse response = null;
         PolicyViolations pvs=null;
         try{
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
             response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
             pvs= (PolicyViolations) response.getEntity(PolicyViolations.class);
         }catch(Exception e){
@@ -486,11 +568,14 @@ public class RESTExecuter {
         
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
-        WebResource service = client.resource(query);
+        WebResource service1 = null;//client.resource(query);
         
         ClientResponse response = null;
         Events evs=null;
         try{
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
             response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
             evs= (Events) response.getEntity(Events.class);
         }catch(Exception e){
@@ -519,10 +604,13 @@ public class RESTExecuter {
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
         
-        WebResource service = client.resource(query);
+        WebResource service1 = null;//client.resource(query);
         ClientResponse response = null;
         Backends bcs=null;
         try{
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
             response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
             bcs= (Backends) response.getEntity(Backends.class);
         }catch(Exception e){
@@ -550,10 +638,13 @@ public class RESTExecuter {
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
         
-        WebResource service = client.resource(query);
+        WebResource service1 = null;//client.resource(query);
         ClientResponse response = null;
         Snapshots rs=null;
         try{
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
             response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
             rs= (Snapshots) response.getEntity(Snapshots.class);
         }catch(Exception e){
@@ -581,10 +672,13 @@ public class RESTExecuter {
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
         
-        WebResource service = client.resource(query);
+        WebResource service1 = null;//client.resource(query);
         ClientResponse response = null;
         MetricItems mi=null;
         try{
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
             response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
             mi= (MetricItems) response.getEntity(MetricItems.class);
         }catch(Exception e){
@@ -614,13 +708,15 @@ public class RESTExecuter {
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).append("\n\n").toString());
         
         
-        WebResource service = null;
+        WebResource service1 = null;
         ClientResponse response = null;
         AutoDiscoveryConfig value=null;
         String export=null;
         try{
          
-            service = client.resource(query);
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
             response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
             export= (String) response.getEntity(String.class);
             
@@ -651,13 +747,15 @@ public class RESTExecuter {
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
         
-        WebResource service = null;
+        WebResource service1 = null;
         ClientResponse response = null;
         String value=null;
         
         try{
             
-            service = client.resource(query);
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
             
             FormDataMultiPart form=new FormDataMultiPart();
             form.bodyPart(new FormDataBodyPart("name",new StringBuilder().append(entityName).append(".xml").toString()));
@@ -685,16 +783,16 @@ public class RESTExecuter {
             createConnection(auth);
         }
 
+        if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());        
         
-        if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
-        
-        
-        WebResource service = null;
+        WebResource service1 = null;
         ClientResponse response = null;
         String value=null;
         try{
          
-            service = client.resource(query);
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
             response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
             value= (String) response.getEntity(String.class);
             
@@ -716,14 +814,16 @@ public class RESTExecuter {
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
         
-        WebResource service = null;
+        WebResource service1 = null;
         ClientResponse response = null;
          
         CustomMatchPoints value=null;
         String export=null;
         try{
          
-            service = client.resource(query);
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
             response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
             export= (String) response.getEntity(String.class);
             
@@ -749,12 +849,14 @@ public class RESTExecuter {
         
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
-        WebResource service = null;
+        WebResource service1 = null;
         ClientResponse response = null;
         String value=null;
         try{
   
-            service = client.resource(query);
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
             response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
             value= (String) response.getEntity(String.class);
             
@@ -775,13 +877,15 @@ public class RESTExecuter {
         
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
-        WebResource service = null;
+        WebResource service1 = null;
         ClientResponse response = null;
         HealthRules value=null;
         String export=null;
         try{
          
-            service = client.resource(query);
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
             response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
             export= (String) response.getEntity(String.class);
             
@@ -806,13 +910,15 @@ public class RESTExecuter {
 
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
-        WebResource service = null;
+        WebResource service1 = null;
         ClientResponse response = null;
         String value=null;
         
         try{
             
-            service = client.resource(query);
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
             response = service.type(MediaType.APPLICATION_XML).post(ClientResponse.class);
    
             if(response.getStatus() >= 400) 
@@ -831,18 +937,18 @@ public class RESTExecuter {
     }
     
     public ConfigurationItems executeConfigurationItems(RESTAuth auth, String query) throws Exception{
-        if(client == null) {
-            createConnection(auth);
-        }
+        if(client == null) {    createConnection(auth);      }
 
-        
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
         
-        WebResource service = client.resource(query);
+        WebResource service1 = null;
         ClientResponse response = null;
         ConfigurationItems mi=null;
         try{
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
             response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
             mi= (ConfigurationItems) response.getEntity(ConfigurationItems.class);
         }catch(Exception e){
@@ -862,6 +968,69 @@ public class RESTExecuter {
         return mi;
     }
     
+    public LicenseProperties executeLicenseProperties(RESTAuth auth, String query) throws Exception{
+        if(client == null) {    createConnection(auth);      }
+
+        if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
+        
+        
+        WebResource service1 = null;
+        ClientResponse response = null;
+        LicenseProperties mi=null;
+        try{
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
+            response = service.accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
+            mi= (LicenseProperties) response.getEntity(LicenseProperties.class);
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder()
+                    .append("Exception getting entity, please insure that your query is correct. \nQuery:\n\t")
+                    .append(query).append("\nError:").append(e.getMessage()).append(". Response code ")
+                    .append(response.getStatus()).toString());
+        } 
+        
+        if(s.debugLevel > 1){
+            logger.log(Level.INFO,new StringBuilder().append("This is the license information returned ")
+                    .append(mi).toString());
+        }
+        
+        if(s.debugLevel > 2) logger.log(Level.FINE,new StringBuilder().append(mi).toString());
+        
+        return mi;
+    }
     
+    
+    public AccountEUM executeAccountEUM(RESTAuth auth, String query) throws Exception{
+        if(client == null) {    createConnection(auth);      }
+
+        if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
+        
+        
+        WebResource service1 = null;
+        ClientResponse response = null;
+        AccountEUM mi=null;
+        try{
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
+            response = service.accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
+            mi= (AccountEUM) response.getEntity(AccountEUM.class);
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder()
+                    .append("Exception getting entity, please insure that your query is correct. \nQuery:\n\t")
+                    .append(query).append("\nError:").append(e.getMessage()).append(". Response code ")
+                    .append(response.getStatus()).toString());
+        } 
+        
+        if(s.debugLevel > 1){
+            logger.log(Level.INFO,new StringBuilder().append("This is the license information returned ")
+                    .append(mi).toString());
+        }
+        
+        if(s.debugLevel > 2) logger.log(Level.FINE,new StringBuilder().append(mi).toString());
+        
+        return mi;
+    }
     
 }
