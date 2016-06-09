@@ -15,6 +15,7 @@ public class AppExportS {
     public static final String VE=" = ";
     public static final String VS=" :: ";
     public static final String L0="\n";
+    public static final String L0_1="\n   ";
     public static final String L1="\n\t";
     public static final String L1_1="\n\t   ";
     public static final String L2="\n\t\t";
@@ -45,6 +46,8 @@ public class AppExportS {
     public static final String FALSE="false";
     public static final String ZERO="0";
     
+    public static final String EJB_NAME="ejb-name";
+    public static final String EJB_RULE="ejb-rule";
     public static final String APPLICATION="application";
     public static final String CONTROLLER_VERSION="controller-version";
     public static final String NAME="name";

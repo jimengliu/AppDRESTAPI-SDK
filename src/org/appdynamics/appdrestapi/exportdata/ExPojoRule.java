@@ -13,10 +13,9 @@ import javax.xml.bind.annotation.XmlTransient;
 /**
  *
  * @author gilbert.solorzano
- * 
- * 
- * 
  */
+
+
 
 @XmlSeeAlso({ExMatchClass.class,ExSplitConfig.class,ExMatchMethod.class,ExMatchClassName.class})
 public class ExPojoRule {

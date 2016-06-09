@@ -777,6 +777,47 @@ public class RESTExecuter {
         
         return value;
     }
+    
+    // Working on this one later
+    public String executeAutoPostQueryJSON(RESTAuth auth, String query, String entityName, String json) throws Exception{
+        if(client == null) {
+            createConnection(auth);
+        }
+
+        
+        if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
+        
+        
+        WebResource service1 = null;
+        ClientResponse response = null;
+        String value=null;
+        
+        try{
+            
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
+            
+            FormDataMultiPart form=new FormDataMultiPart();
+            form.bodyPart(new FormDataBodyPart("name",new StringBuilder().append(entityName).append(".json").toString()));
+            form.bodyPart(new FormDataBodyPart("filename", json, MediaType.WILDCARD_TYPE));
+            
+            response = service.type(MediaType.MULTIPART_FORM_DATA_TYPE).post(ClientResponse.class,form);
+            
+            
+            if(response.getStatus() >= 500) 
+                logger.log(Level.SEVERE,new StringBuilder().append("Caught HTTP error number ").append(response.getStatus())
+                            .append(".\nUnable to get a proper response for query:\n").append(query).toString());
+            
+            value=new StringBuilder().append("Response was ").append(response.getStatus()).append(".").toString();
+            
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception getting application export: \nQuery:\n\t")
+                    .append(query).append("\nError:").append(e.getMessage()).append(".\nResponse code is ").append(response.getStatus()).toString());
+        }
+        
+        return value;
+    }
  
     public String executeTDQuery(RESTAuth auth, String query) throws Exception{
         if(client == null) {

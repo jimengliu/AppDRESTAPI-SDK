@@ -18,12 +18,13 @@ import javax.xml.bind.annotation.XmlTransient;
  * 
  */
 
-@XmlSeeAlso({ExPojoRule.class,ExPocoRule.class,ExServletRule.class,ExWebRule.class})
+@XmlSeeAlso({ExPojoRule.class,ExPocoRule.class,ExServletRule.class,ExWebRule.class,ExEJBRule.class})
 public class ExMatchRule {
     private ExPojoRule pojoRule;
     private ExPocoRule pocoRule;
     private ExServletRule servletRule;
     private ExWebRule webRule;
+    private ExEJBRule ejbRule;
     private int level=7;
     
     public ExMatchRule(){}
@@ -74,6 +75,17 @@ public class ExMatchRule {
     public void setServletRule(ExServletRule servletRule) {
         this.servletRule = servletRule;
     }
+
+    @XmlElement(name=AppExportS.EJB_RULE)
+    public ExEJBRule getEjbRule() {
+        return ejbRule;
+    }
+
+    public void setEjbRule(ExEJBRule ejbRule) {
+        this.ejbRule = ejbRule;
+    }
+    
+    
     
     public String whatIsDifferent(ExMatchRule obj){
         if(this.equals(obj)) return AppExportS._U;
@@ -100,6 +112,8 @@ public class ExMatchRule {
             webRule.setLevel(level);
             webRule.whatIsDifferent(obj.getWebRule());
         }
+        
+        
         level--;
         return bud.toString();
     }
@@ -113,6 +127,7 @@ public class ExMatchRule {
         if(pocoRule != null) {pocoRule.setLevel(level);bud.append(pocoRule);}
         if(servletRule != null){servletRule.setLevel(level); bud.append(servletRule);}
         if(webRule != null){ webRule.setLevel(level);bud.append(webRule);}
+        if(ejbRule != null){ejbRule.setLevel(level);bud.append(ejbRule);}
         level--;
         return bud.toString();
     }

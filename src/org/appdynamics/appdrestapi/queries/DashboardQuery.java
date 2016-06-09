@@ -14,7 +14,13 @@ public class DashboardQuery {
     
     public static String queryDashboardExportById(String baseURL,  int number){
         StringBuilder bud = new StringBuilder();
-        bud.append(baseURL).append(s.CONTROLLER_DASHBOARD).append(number);
+        bud.append(baseURL).append(s.CONTROLLER_DASHBOARD_EX).append(number);
+        return bud.toString();
+    }
+    
+    public static String queryDashboardImport(String baseURL){
+        StringBuilder bud = new StringBuilder();
+        bud.append(baseURL).append(s.CONTROLLER_DASHBOARD);
         return bud.toString();
     }
     

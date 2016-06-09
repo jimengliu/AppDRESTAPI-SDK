@@ -221,7 +221,23 @@ public class RESTAccess {
         return null;
     }
     
-
+    /**
+        <p>
+        *   This will help by importing a dashboard into the controller
+        </p>
+        *@param fileText The text json or xml 
+    */
+    public String postDashboardFile(String dashboardName, String fileText){
+        try{
+            //executeAutoPostQueryJSON(RESTAuth auth, String query, String entityName, String json) 
+            return R.executeAutoPostQueryJSON(auth, DashboardQuery.queryDashboardImport(baseURL.getControllerURL()), dashboardName, fileText);
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+    
+    
     /**
      * <p>
      * This will return the list of the metric base paths available for example:
@@ -268,7 +284,9 @@ public class RESTAccess {
      */
     public MetricItems getBaseMetricList(String application){
         try{
-            return R.executeMetricItems(auth, MetricItemQuery.queryMetricList(baseURL.getControllerURL(), application));
+            MetricItems mis = R.executeMetricItems(auth, MetricItemQuery.queryMetricList(baseURL.getControllerURL(), application));
+            mis.setParent(s._S);
+            return mis;
         }catch(Exception e){
             logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
         }
@@ -308,7 +326,9 @@ public class RESTAccess {
      */
     public MetricItems getBaseMetricListPath(String application, String metricPath){
         try{
-            return R.executeMetricItems(auth, MetricItemQuery.queryMetricListForPath(baseURL.getControllerURL(), application, metricPath));
+            MetricItems mis = R.executeMetricItems(auth, MetricItemQuery.queryMetricListForPath(baseURL.getControllerURL(), application,metricPath));
+            mis.setParent(metricPath);
+            return mis;
         }catch(Exception e){
             logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
         }

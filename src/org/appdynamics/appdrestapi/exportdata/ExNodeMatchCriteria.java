@@ -242,9 +242,9 @@ public class ExNodeMatchCriteria {
         }
         if(nodeTypes != null){ nodeTypes.setLevel(level);bud.append(nodeTypes);}
         if(nodes != null){nodes.setLevel(level); bud.append(nodes);}
-        if(nodeMetaInfoMatchCriteria != null){ nodeMetaInfoMatchCriteria.setLevel(level);bud.append(AppExportS.L3).append(AppExportS.NODE_META_INFO_MATCH_CRITERIA);bud.append(nodeMetaInfoMatchCriteria);}
-        if(vmSysProperties != null){ vmSysProperties.setLevel(level);bud.append(AppExportS.L3).append(AppExportS.VM_SYS_PROPERTIES);bud.append(vmSysProperties);}
-        if(envProperties != null){ envProperties.setLevel(level);bud.append(AppExportS.L3).append(AppExportS.ENV_PROPERTIES);bud.append(envProperties);}
+        if(nodeMetaInfoMatchCriteria != null){ nodeMetaInfoMatchCriteria.setLevel(level);bud.append(nodeMetaInfoMatchCriteria);}
+        if(vmSysProperties != null){ vmSysProperties.setLevel(level);bud.append(vmSysProperties);}
+        if(envProperties != null){ envProperties.setLevel(level);bud.append(envProperties);}
         
         level--;
         return bud.toString();

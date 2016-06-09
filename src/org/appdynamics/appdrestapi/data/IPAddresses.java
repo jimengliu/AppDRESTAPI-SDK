@@ -21,7 +21,7 @@ public class IPAddresses {
     
     private ArrayList<IPAddress> ipaddresses=new ArrayList<IPAddress>();
 
-    @XmlElement(name=s.IPADDRESSES)
+    @XmlElement(name=s.IPADDRESS)
     public ArrayList<IPAddress> getIpaddresses() {
         return ipaddresses;
     }

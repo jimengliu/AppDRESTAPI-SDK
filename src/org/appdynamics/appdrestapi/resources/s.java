@@ -32,6 +32,7 @@ public class s {
     public static final String CONTROLLER_OBJ="/controller/";
     public static final String CONTROLLER_DB_COLLECTOR="/controller/restui/dbMonitoring/createConfiguration";// Will change
     public static final String CONTROLLER_DASHBOARD="/controller/CustomDashboardImportExportServlet?dashboardId=";
+    public static final String CONTROLLER_DASHBOARD_EX=CONTROLLER_DASHBOARD+"?dashboardId=";
     public static final String CONTROLLER_MARK_HISTORICAL="/controller/rest/mark-nodes-historical?application-component-node-ids=";
     public static final String CONTROLLER_RESTUI="/controller/restui/";
     public static final String ACCOUNT_LICENSE_PROPERTIES="user/accountLicenseProperties";
@@ -49,6 +50,7 @@ public class s {
     public static final String _A="&";
     public static final String _QQ="\"";
     public static final String _C=",";
+    public static final String _S=" ";
    
     
     public static final String CONTENT_DISPOSITION="Content-Disposition";
@@ -430,6 +432,23 @@ webService
             </servlet-rule>
         </match-rule>
         </match-rule>
+    <custom-match-point>
+        <name>CM9TaxServices.updateFeeWaiver</name>
+        <business-transaction-name>CM9TaxServices.updateFeeWaiver</business-transaction-name>
+        <entry-point>EJB</entry-point>
+        <background>false</background>
+        <enabled>true</enabled>
+        <match-rule>
+            <ejb-rule>
+                <enabled>true</enabled>
+                <priority>0</priority>
+                <ejb-name filter-type="CONTAINS" filter-value="CM9TaxServices"/>
+                <match-method>
+                    <name filter-type="CONTAINS" filter-value="updateFeeWaiver"/>
+                </match-method>
+            </ejb-rule>
+        </match-rule>
+    </custom-match-point>
 
      */
     
@@ -441,6 +460,7 @@ webService
     public static final String MATCH_RULE="match-rule";
     public static final String POJO_RULE="pojo-rule";
     public static final String SERVLET_RULE="servlet-rule";
+    public static final String EJB_RULE="ejb-rule";
     public static final String URI="uri";
     /*
      * Configuration items
@@ -590,7 +610,13 @@ webService
     public static final String ERROR_MESSAGE="errorMessage";
     
     
-    
+    public static final String CONF_CONTROLLER="controller";
+    public static final String CONF_ACCOUNT="account";
+    public static final String CONF_USER="user";
+    public static final String CONF_PASSWORD="password";
+    public static final String CONF_PORT="Port";
+    public static final String CONF_USESSL="useSSL";
+    public static final String CONF_SERVER_CONFIG="server-config";
     
     
     public static String JSON(String name, String value){
