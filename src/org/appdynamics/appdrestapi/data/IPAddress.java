@@ -4,7 +4,7 @@
  */
 package org.appdynamics.appdrestapi.data;
 
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlValue;
 import org.appdynamics.appdrestapi.resources.s;
 /**
  *
@@ -22,7 +22,8 @@ public class IPAddress {
 
     public IPAddress(){}
     
-    @XmlElement(name=s.IPADDRESS)
+    //@XmlElement(name=s.IPADDRESS)
+    @XmlValue
     public String getIpAddress() {
         return ipAddress;
     }

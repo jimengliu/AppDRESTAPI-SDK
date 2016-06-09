@@ -1,6 +1,8 @@
 RESTAccess
 ===========
 
+Current Version is 2.4.7
+
 The RESTAccess is a solution that allows access to AppDynamics' REST api. The intention
 is to provide a easy and a standard method to to access the AppDynamics Controller REST
 service. When developers working with the REST API they tend to write their own REST
