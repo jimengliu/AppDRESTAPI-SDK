@@ -783,11 +783,10 @@ public class RESTExecuter {
         return value;
     }
     
-    public String executePostDashboardQuery(RESTAuth auth, String query, String fileName, String filePath) throws Exception{
+    public String executePostDashboardQuery(RESTAuth auth, String query, String filePath) throws Exception{
         if(client == null) {
             createConnection(auth);
         }
-
         
         if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
         
@@ -800,8 +799,7 @@ public class RESTExecuter {
             
             //service = client.resource(query);
             service1 = client.resource(query);
-            WebResource.Builder service = setCookies(service1);
-            
+            WebResource.Builder service = setCookies(service1);            
 
             FormDataMultiPart form=new FormDataMultiPart();
             form.bodyPart(new FormDataBodyPart("X-CSRF-TOKEN",CSRF));

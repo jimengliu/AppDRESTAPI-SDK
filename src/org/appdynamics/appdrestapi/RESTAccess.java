@@ -222,32 +222,16 @@ public class RESTAccess {
     }
     
     /**
-        <p>
-        *   This will help by importing a dashboard into the controller
-        </p>
-        *@param fileText The text json or xml 
-    */
-    public String postDashboardFile(String dashboardName, String fileText){
-        try{
-            //executeAutoPostQueryJSON(RESTAuth auth, String query, String entityName, String json) 
-            return R.executeAutoPostQueryJSON(auth, DashboardQuery.queryDashboardImport(baseURL.getControllerURL()), dashboardName, fileText);
-        }catch(Exception e){
-            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
-        }
-        return null;
-    }
-    
-    
-    /**
      * <p>
      * This will return the list of the metric base paths available for example:
      * </p>
      * 
      *  <ul>
-        <li>metric-items</li>
+            <li>metric-items</li>
      *          <ul>   <li>metric-item</li>
 		   <ul><li>name = Business Transaction Performance</li>
-		   <li>type = folder</li></ul></ul>
+		   <li>type = folder</li></ul>
+                </ul>
 	<ul>   <li>metric-item</li>
 		   <ul><li>name = Mobile</li>
 		   <li>type = folder<li></ul></ul>
@@ -3557,15 +3541,24 @@ public class RESTAccess {
         return null;
     }
     
-    public String postRESTImportDashboard(String fileName, String json){
+    /**
+     * <p>
+     *  This will import a dashboard file into the controller, the filePath must be the full path
+     * to the dashboard file.
+     * </p>
+     * 
+     * @param filePath Full path to the file
+     * @return {@link String}
+     */
+    public String postRESTImportDashboard(String filePath){
         String query=null;
         if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder()
-                .append("\nThe dashboard being import is  ").append(fileName).toString());}
+                .append("\nThe dashboard being import is  ").append(filePath).toString());}
  
         try{
             query=DashboardQuery.queryDashboardImport(baseURL.getControllerURL());
             
-            return R.executePostDashboardQuery(auth, query, fileName, json);
+            return R.executePostDashboardQuery(auth, query, filePath);
         }catch(Exception e){
             logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n")
                     .append(e.getMessage()).append("\n").toString());
