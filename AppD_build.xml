@@ -8,7 +8,7 @@
     <property name="releases"			value="${basedir}/releases"/>
 
     <property name="RESTAPI.basename"   value="AppDRESTAPI-SDK"/>
-    <property name="RESTAPI.version"     value="2.4.7"/>
+    <property name="RESTAPI.version"     value="2.4.8"/>
     <property name="RESTAPI.basename.dev"   value="RESTAPI_dev"/>
     <property name="RESTAPI.version.dev"     value="2.0.3"/>
     

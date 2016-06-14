@@ -1,7 +1,7 @@
 RESTAccess
 ===========
 
-Current Version is 2.4.7
+Current Version is 2.4.8
 
 The RESTAccess is a solution that allows access to AppDynamics' REST api. The intention
 is to provide a easy and a standard method to to access the AppDynamics Controller REST
@@ -9,10 +9,10 @@ service. When developers working with the REST API they tend to write their own 
 client using either Jersey libraries or base java IO classes. The RESTAccess solution 
 relies on a core class org.appdynamics.appdrestapi.RESTAccess.
 
-The AppDynamics 3.9 controller has added additional functionality, the SDK version 1.0.14
+The AppDynamics 3.9 controller has added additional functionality, the SDK version 1.0.14+
 is written to take advantage of this functionality. The new features in the SDK are not 
 compatible with 3.8 controllers, if you need the SDK please use version 1.0.13 for 3.8 
-controllers.
+controllers. For controllers 4.1+ please use versions 2.2.X+.
 
 Requirements:
 ------------
