@@ -3557,6 +3557,23 @@ public class RESTAccess {
         return null;
     }
     
+    public String postRESTImportDashboard(String fileName, String json){
+        String query=null;
+        if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder()
+                .append("\nThe dashboard being import is  ").append(fileName).toString());}
+ 
+        try{
+            query=DashboardQuery.queryDashboardImport(baseURL.getControllerURL());
+            
+            return R.executePostDashboardQuery(auth, query, fileName, json);
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n")
+                    .append(e.getMessage()).append("\n").toString());
+        }
+        
+        return null;
+        
+    }
     
     /**
      * <p>

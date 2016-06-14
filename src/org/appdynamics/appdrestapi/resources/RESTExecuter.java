@@ -10,7 +10,10 @@ import org.appdynamics.appdrestapi.exportdata.*;
 
 
 import com.sun.jersey.multipart.FormDataMultiPart;
+import com.sun.jersey.multipart.MultiPart;
 import com.sun.jersey.multipart.FormDataBodyPart;
+import com.sun.jersey.multipart.file.FileDataBodyPart;
+
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.client.urlconnection.URLConnectionClientHandler;
@@ -77,6 +80,7 @@ public class RESTExecuter {
     private static Logger logger=Logger.getLogger(RESTExecuter.class.getName());
     private String baseURL;
     private List<NewCookie> cookies;
+    private static String CSRF;
     
     public RESTExecuter(String baseURL){this.baseURL=baseURL;}
     
@@ -215,6 +219,7 @@ public class RESTExecuter {
             java.util.ListIterator<NewCookie> iter = cookies.listIterator();
             while(iter.hasNext()) {
                 NewCookie cok = iter.next();
+                if(cok != null && cok.toCookie().getName().equals("X-CSRF-TOKEN")) CSRF=cok.toCookie().getValue();
                 if(s.debugLevel > 1) logger.info(cok.toString());
                 builder.cookie(cok);
             }
@@ -769,6 +774,48 @@ public class RESTExecuter {
                             .append(".\nUnable to get a proper response for query:\n").append(query).toString());
             
             value=new StringBuilder().append("Response was ").append(response.getStatus()).append(".").toString();
+            
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception getting application export: \nQuery:\n\t")
+                    .append(query).append("\nError:").append(e.getMessage()).append(".\nResponse code is ").append(response.getStatus()).toString());
+        }
+        
+        return value;
+    }
+    
+    public String executePostDashboardQuery(RESTAuth auth, String query, String fileName, String filePath) throws Exception{
+        if(client == null) {
+            createConnection(auth);
+        }
+
+        
+        if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
+        
+        
+        WebResource service1 = null;
+        ClientResponse response = null;
+        String value=null;
+        
+        try{
+            
+            //service = client.resource(query);
+            service1 = client.resource(query);
+            WebResource.Builder service = setCookies(service1);
+            
+
+            FormDataMultiPart form=new FormDataMultiPart();
+            form.bodyPart(new FormDataBodyPart("X-CSRF-TOKEN",CSRF));
+            
+            MultiPart multiPart = form.bodyPart(new FileDataBodyPart("file", new java.io.File(filePath), MediaType.APPLICATION_JSON_TYPE));
+            response = service.type(MediaType.MULTIPART_FORM_DATA_TYPE).post(ClientResponse.class,multiPart);
+            
+            if(response.getStatus() >= 500){ 
+                logger.log(Level.SEVERE,new StringBuilder().append("Caught HTTP error number ").append(response.getStatus())
+                            .append(".\nUnable to get a proper response for query:\n").append(query).toString());
+                 if(response.hasEntity()) logger.log(Level.SEVERE, (String) response.getEntity(String.class));
+            }
+            //value=new StringBuilder().append("Response was ").append(response.getStatus()).append(".").toString();
+            if(response.hasEntity()) value =  (String) response.getEntity(String.class);
             
         }catch(Exception e){
             logger.log(Level.SEVERE,new StringBuilder().append("Exception getting application export: \nQuery:\n\t")
