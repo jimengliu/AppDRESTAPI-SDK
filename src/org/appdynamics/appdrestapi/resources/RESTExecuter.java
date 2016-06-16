@@ -795,6 +795,12 @@ public class RESTExecuter {
         ClientResponse response = null;
         String value=null;
         
+        java.io.File file = new java.io.File(filePath);
+        if(!file.exists() || !file.canRead()){
+            logger.log(Level.SEVERE,  new StringBuilder().append("Either the file '").append(filePath).append("' does not exist or it is not readable.").toString());
+            throw new Exception(new StringBuilder().append("Either the file '").append(filePath).append("' does not exist or it is not readable.").toString());
+        }
+        
         try{
             
             //service = client.resource(query);
@@ -804,7 +810,7 @@ public class RESTExecuter {
             FormDataMultiPart form=new FormDataMultiPart();
             form.bodyPart(new FormDataBodyPart("X-CSRF-TOKEN",CSRF));
             
-            MultiPart multiPart = form.bodyPart(new FileDataBodyPart("file", new java.io.File(filePath), MediaType.APPLICATION_JSON_TYPE));
+            MultiPart multiPart = form.bodyPart(new FileDataBodyPart("file", file, MediaType.APPLICATION_JSON_TYPE));
             response = service.type(MediaType.MULTIPART_FORM_DATA_TYPE).post(ClientResponse.class,multiPart);
             
             if(response.getStatus() >= 500){ 
