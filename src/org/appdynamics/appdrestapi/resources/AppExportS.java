@@ -457,6 +457,62 @@ public class AppExportS {
     public static final String OVERALL_AFFECTED_ENTITIES_MATCH_CRITERIA="overall-affected-entities-match-criteria";
     //public static final String 
     /*
+        Dashboard stuff
+    
+    */
+            public static final String BORDER_ENABLED="borderEnabled";
+            public static final String SHOW_VALUES="showValues";
+            public static final String COMPACT_MODE="compactMode";
+            public static final String SHOW_TIME_RANGE="showTimeRange";
+            public static final String RENDER_IN_3D="renderIn3D";
+            public static final String SHOW_LEGEND="showLegend";
+            public static final String USE_METRIC_BROWSER_AS_DRILL_DOWN="useMetricBrowserAsDrillDown";
+            public static final String INTERPOLATE_DATA_GAPS="interpolateDataGaps";
+            public static final String HIDE_HORIZONTAL_AXIS="hideHorizontalAxis";
+            public static final String WIDGET_TYPE="widgetType";
+            public static final String TITLE="title";
+            public static final String LABEL="label";
+            public static final String DRILL_DOWN_URL="drillDownUrl";
+            public static final String BACKGROUND_COLORS="backgroundColors";
+            public static final String USE_AUTOMATIC_FONT_SIZE="useAutomaticFontSize";
+            public static final String LEGEND_POSITION="legendPosition";
+            public static final String IS_GLOBAL="isGlobal";
+            public static final String PROPERTIES_MAP="propertiesMap";
+            public static final String DATA_SERIES_TEMPLATES="dataSeriesTemplates";
+            public static final String VERTICAL_AXIS_LABEL="verticalAxisLabel";
+            public static final String HORIZONTAL_AXIS_LABEL="horizontalAxisLabel";
+            public static final String AXIS_TYPE="axisType";
+            public static final String STACK_MODE="stackMode";
+            public static final String MULTIPLE_Y_AXIS="multipleYAxis";
+            public static final String SHOW_EVENTS="showEvents";
+            public static final String EVENT_FILTER_TEMPLATE="eventFilterTemplate";
+            public static final String LEGEND_COLUMN_COUNT="legendColumnCount";
+            public static final String START_TIME="startTime";
+            public static final String END_TIME="endTime";
+            public static final String MINUTES_BEFORE_ANCHOR_TIME="minutesBeforeAnchorTime";
+            public static final String BACKGROUND_COLOR_STR="backgroundColorsStr";
+            public static final String BACKGROUND_COLOR="backgroundColor";
+            public static final String COLOR="color";
+            public static final String FONT_SIZE="fontSize";
+            public static final String BORDER_THICKNESS="borderThickness";
+            public static final String BORDER_COLOR="borderColor";
+            public static final String BACKGROUND_ALPHA="backgroundAlpha";
+            public static final String X="x";
+            public static final String Y="y";
+            public static final String SCHEMA_VERSION="schemaVersion";
+            public static final String DASHBOARD_FORMAT_VERSION="dashboardFormatVersion";
+            public static final String TEMPLATE_ENTITY_TYPE="templateEntityType";
+            public static final String ASSOCIATED_ENTITY_TEMPLATES="associatedEntityTemplates";
+            public static final String START_DATE="startDate";
+            public static final String END_DATE="endDate";
+            public static final String REFRESH_INTERVAL="refreshInterval";
+            public static final String CANVAS_TYPE="canvasType";
+            public static final String LAYOUT_TYPE="layoutType";
+            public static final String WIDGET_TEMPLATES="widgetTemplates";
+            public static final String TEMPLATE="template";
+            public static final String WAR_ROOM="warRoom";
+    
+    /*
      * This will help build xml structures
      */
     

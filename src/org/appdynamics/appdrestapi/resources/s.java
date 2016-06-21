@@ -12,13 +12,16 @@ import java.util.HashMap;
  */
 public class s {
     public static final String RESTAPI_VERSION="2.0.0";
+
+    
     public static int debugLevel=0;
     public static int detailLevel=0;
     public static double percentageThreshold=0.25;
     public static final int MAX_TRIES=3;
     
     public static final int VERSION_MAJOR=2;
-    public static final int VERSION_MINOR=4;
+    public static final int VERSION_MINOR=5;
+    public static final int VERSION_BUILD=0;
     
     public static final String HTTP_PROXYHOST="http.proxyHost";
     public static final String HTTP_PROXYPORT="http.proxyPort";
