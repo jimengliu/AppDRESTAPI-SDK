@@ -15,8 +15,55 @@ import org.appdynamics.appdrestapi.resources.s;
  */
 public class LicenseProperties {
     private LicenseProperty appAgentLicenseProperties,dotNetLicenseProperties,nativeLicenseProperties,nativeSDKLicenseProperties,nativeDynamicLicenseProperties,nativeWebServerLicenseProperties,phpLicenseProperties;
-    private LicenseProperty nodeJsLicenseProperties,pythonLicenseProperties,dbLicenseProperties,machineLicenseProperties,transactionAnalyticsLicenseProperties,logAnalyticsLicenseProperties;
+    private LicenseProperty nodeJsLicenseProperties,pythonLicenseProperties,dbLicenseProperties,machineLicenseProperties,transactionAnalyticsLicenseProperties,logAnalyticsLicenseProperties,mobileAnalyticsLicenseProperties;
+    private LicenseProperty browserAnalyticsLicenseProperties,apmAgentLicenseProperties,simAgentLicenseProperties,serverAvailMonLicenseProperties;
 
+    public LicenseProperty getServerAvailMonLicenseProperties() {
+        return serverAvailMonLicenseProperties;
+    }
+
+    public void setServerAvailMonLicenseProperties(LicenseProperty serverAvailMonLicenseProperties) {
+        this.serverAvailMonLicenseProperties = serverAvailMonLicenseProperties;
+    }
+
+    
+    public LicenseProperty getSimAgentLicenseProperties() {
+        return simAgentLicenseProperties;
+    }
+
+    public void setSimAgentLicenseProperties(LicenseProperty simAgentLicenseProperties) {
+        this.simAgentLicenseProperties = simAgentLicenseProperties;
+    }
+
+    
+    
+    public LicenseProperty getApmAgentLicenseProperties() {
+        return apmAgentLicenseProperties;
+    }
+
+    public void setApmAgentLicenseProperties(LicenseProperty apmAgentLicenseProperties) {
+        this.apmAgentLicenseProperties = apmAgentLicenseProperties;
+    }
+
+    
+    
+    public LicenseProperty getMobileAnalyticsLicenseProperties() {
+        return mobileAnalyticsLicenseProperties;
+    }
+
+    public void setMobileAnalyticsLicenseProperties(LicenseProperty mobileAnalyticsLicenseProperties) {
+        this.mobileAnalyticsLicenseProperties = mobileAnalyticsLicenseProperties;
+    }
+
+    public LicenseProperty getBrowserAnalyticsLicenseProperties() {
+        return browserAnalyticsLicenseProperties;
+    }
+
+    public void setBrowserAnalyticsLicenseProperties(LicenseProperty browserAnalyticsLicenseProperties) {
+        this.browserAnalyticsLicenseProperties = browserAnalyticsLicenseProperties;
+    }
+
+    
     public LicenseProperty getAppAgentLicenseProperties() {
         return appAgentLicenseProperties;
     }
