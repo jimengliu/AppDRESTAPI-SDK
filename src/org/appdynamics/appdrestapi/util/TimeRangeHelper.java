@@ -20,7 +20,10 @@ import org.appdynamics.appdrestapi.resources.s;
 public class TimeRangeHelper {
     private static Logger logger=Logger.getLogger(TimeRangeHelper.class.getName());
     
-    public static ArrayList<TimeRange> getTimeRanges(int interval){
+    /*
+        This is going to return the time ranges in days for the last interval
+    */
+    public static ArrayList<TimeRange> getDailyTimeRanges(int interval){
         Calendar cal1=Calendar.getInstance();
         // First we are going to zero out the time 0000
         cal1.set(Calendar.HOUR_OF_DAY, 0);cal1.set(Calendar.SECOND,0);cal1.set(Calendar.MINUTE, 0);
@@ -40,7 +43,7 @@ public class TimeRangeHelper {
         return value;
     }
     
-    public static TimeRange getTimeRange(int interval){
+    public static TimeRange getSingleTimeRange(int interval){
         Calendar cal1=Calendar.getInstance();
         // First we are going to zero out the time 0000
         cal1.set(Calendar.HOUR_OF_DAY, 0);cal1.set(Calendar.SECOND,0);
@@ -57,7 +60,7 @@ public class TimeRangeHelper {
             Start is 15 : 15 - 5 = 10
             Start is 10 : 10 - 5 = 5
     */
-    public static TimeRange getTimeRange(int interval, int subset){
+    public static TimeRange getSingleTimeRange(int interval, int subset){
         Calendar cal1=Calendar.getInstance();
         // First we are going to zero out the time 0000
         cal1.set(Calendar.HOUR_OF_DAY, 0);cal1.set(Calendar.SECOND,0);
@@ -86,7 +89,26 @@ public class TimeRangeHelper {
         return new TimeRange(start,end);
     }
     
-    public static ArrayList<TimeRange> getTimeRanges(long start, long end){
+    public static ArrayList<TimeRange> getMinuteTimeRanges(int interval){
+        ArrayList<TimeRange> value=new ArrayList<TimeRange>();
+        Calendar cal1=Calendar.getInstance();
+        // First we are going to zero out the time 0000
+        cal1.set(Calendar.SECOND,0);
+        cal1.set(Calendar.MILLISECOND, 0);
+        Calendar cal2=Calendar.getInstance();
+        cal2.setTimeInMillis(cal1.getTimeInMillis());
+        
+        
+        for(int i=1; i < interval; i++){  
+            cal1.add(Calendar.MINUTE, -1);
+            value.add(getTimeRange(cal1.getTimeInMillis(),cal2.getTimeInMillis()));
+            cal2.setTimeInMillis(cal1.getTimeInMillis());
+        }
+        
+        return value;
+    }
+    
+    public static ArrayList<TimeRange> getDailyTimeRanges(long start, long end){
         Calendar cal1=Calendar.getInstance();
         Calendar cal2=Calendar.getInstance();
         cal1.setTimeInMillis(end);

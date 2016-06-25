@@ -11,7 +11,6 @@ import java.util.HashMap;
  * @author soloink
  */
 public class s {
-    public static final String RESTAPI_VERSION="2.0.0";
 
     
     public static int debugLevel=0;
@@ -22,6 +21,9 @@ public class s {
     public static final int VERSION_MAJOR=2;
     public static final int VERSION_MINOR=5;
     public static final int VERSION_BUILD=0;
+    
+    
+    public static final String RESTAPI_VERSION=new StringBuilder().append(VERSION_MAJOR).append(".").append(VERSION_MINOR).append(".").append(VERSION_BUILD).toString();
     
     public static final String HTTP_PROXYHOST="http.proxyHost";
     public static final String HTTP_PROXYPORT="http.proxyPort";
