@@ -8,12 +8,7 @@ package org.appdynamics.appdrestapi.data;
 import org.appdynamics.appdrestapi.resources.s;
 
 import java.util.ArrayList;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSeeAlso;
 /**
  *
@@ -29,7 +24,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
  */
 @XmlSeeAlso(MetricValue.class)
 public class MetricValues {
-    private ArrayList<MetricValue> metricValue=new ArrayList<MetricValue>();
+    private ArrayList<MetricValue> metricValue=new ArrayList<>();
     
     public MetricValues(){}
 

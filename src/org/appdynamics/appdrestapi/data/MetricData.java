@@ -87,6 +87,11 @@ public class MetricData {
         return null;
     }
     
+    public MetricValues getFirstMetricValues(){
+        if(metricValues != null && !metricValues.isEmpty()) return metricValues.get(0);
+        return null;
+    }
+    
     public boolean hasNoValues(){
         boolean empty=true;
         if(metricValues.size()>0)  empty=metricValues.get(0).hasNoValues();

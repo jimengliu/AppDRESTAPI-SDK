@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlElement;
 </metric-value>
  * 
  */
-public class MetricValue {
+public class MetricValue implements Comparable{
     
     protected long startTimeInMillis;
     protected long value;
@@ -135,6 +135,13 @@ public class MetricValue {
         this.useRange = useRange;
     }
     
+    
+    @Override
+    public int compareTo(Object obj){
+        Long _val = startTimeInMillis - ((MetricValue) obj).getStartTimeInMillis();
+        
+        return _val.intValue();
+    }
     
     
     @Override
