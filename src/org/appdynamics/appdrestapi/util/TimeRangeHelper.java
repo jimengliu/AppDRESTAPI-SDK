@@ -65,10 +65,11 @@ public class TimeRangeHelper {
         // First we are going to zero out the time 0000
         cal1.set(Calendar.HOUR_OF_DAY, 0);cal1.set(Calendar.SECOND,0);
         cal1.set(Calendar.MINUTE, 0);cal1.set(Calendar.MILLISECOND, 0);
+        
         Calendar cal2=Calendar.getInstance();cal2.setTimeInMillis(cal1.getTimeInMillis());
-        logger.log(Level.INFO,"The end is  " + cal1.getTime().toString());
+        // logger.log(Level.INFO,"The end is  " + cal1.getTime().toString());
         cal1.add(Calendar.HOUR, -1 * (24 * (interval - subset)) );
-        logger.log(Level.INFO,"The end after is " + cal1.getTime().toString() + " subtracting " + (interval - subset));
+        // logger.log(Level.INFO,"The end after is " + cal1.getTime().toString() + " subtracting " + (interval - subset));
         // 
         
         cal2.add(Calendar.HOUR, -1 * (24 * (interval )) );
