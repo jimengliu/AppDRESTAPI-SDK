@@ -10,6 +10,10 @@ import org.appdynamics.appdrestapi.resources.s;
 /**
  *
  * @author soloink
+ */
+
+/*
+
  * <tier>
   <id>6</id>
   <name>2ndTier</name>
@@ -17,6 +21,7 @@ import org.appdynamics.appdrestapi.resources.s;
   <agentType>APP_AGENT</agentType>
   <numberOfNodes>2</numberOfNodes>
 </tier>
+
  * 
  */
 public class Tier {

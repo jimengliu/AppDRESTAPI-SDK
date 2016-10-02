@@ -8,7 +8,8 @@ package org.appdynamics.appdrestapi.data;
  *
  * @author gilbert.solorzano
  * 
- * L2
+ */
+/*
             <affected-bt-match-criteria>
                 <type>ALL</type>
             </affected-bt-match-criteria>

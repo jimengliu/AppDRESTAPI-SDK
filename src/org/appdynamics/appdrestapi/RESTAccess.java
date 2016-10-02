@@ -42,9 +42,9 @@ public class RESTAccess {
     /**
      * <p>
      * Returns a RESTAccess object that can be used to query the AppDynamics 
-     * controller. This will default to the following :<br>
-     * useSSL false<br>
-     * account customer1<br>
+     * controller. This will default to the following :
+     * useSSL false
+     * account customer1
      * </p>
      * 
      * @param controllerURL FQDN of the controller
@@ -61,8 +61,8 @@ public class RESTAccess {
     /**
      * <p>
      * Returns a RESTAccess object that can be used to query the AppDynamics 
-     * controller.This will default to the following :<br>
-     * account customer1<br>
+     * controller.This will default to the following :
+     * account customer1
      * </p>
      * 
      * @param controllerURL FQDN of the controller
@@ -80,8 +80,8 @@ public class RESTAccess {
     /**
      * <p>
      * Returns a RESTAccess object that can be used to query the AppDynamics 
-     * controller.This will default to the following :<br>
-     * useSSL false<br>
+     * controller.This will default to the following :
+     * useSSL false
      * </p>.
      * 
      * @param controllerURL FQDN of the controller
@@ -128,7 +128,7 @@ public class RESTAccess {
      * @param username User to execute the query as
      * @param password Password to use with the connection
      * @param account Account name to use with the queries
-     * @param  proxy {@link Proxy} Proxy object with needed information
+     * @param  proxy {@link RESTProxy} Proxy object with needed information
      */
     public RESTAccess(String controllerURL, String port, boolean ssl, String username, String password, String account, RESTProxy proxy){
         baseURL=new RESTBaseURL(controllerURL, port, ssl);
@@ -225,37 +225,43 @@ public class RESTAccess {
      * <p>
      * This will return the list of the metric base paths available for example:
      * </p>
-     * 
-     *  <ul>
-            <li>metric-items</li>
-     *          <ul>   <li>metric-item</li>
-		   <ul><li>name = Business Transaction Performance</li>
-		   <li>type = folder</li></ul>
+       <ul>
+               <li>metric-items
+               <ul>
+               *    <li>metric-item
+		   <ul>
+                   *                <li>name = Business Transaction Performance
+		     <li>type = folder</li>
+                   *               </ul>
                 </ul>
-	<ul>   <li>metric-item</li>
-		   <ul><li>name = Mobile</li>
-		   <li>type = folder<li></ul></ul>
-	<ul>   <li>metric-item</li>
-		   <ul><li>name = Overall Application Performance</li>
-		   <li>type = folder<li></ul></ul>
-	<ul>   <li>metric-item</li>
-		   <ul><li>name = Service End Points</li>
-		   <li>type = folder<li></ul></ul>
-	<ul>   <li>metric-item</li>
-		   <ul><li>name = End User Experience</li>
-		   <li>type = folder<li></ul></ul>
-	<ul>   <li>metric-item</li>
+	<ul>   
+        *               <li>metric-item
+		   <ul>
+                   *                    <li>name = Mobile
+                                         <li>type = folder
+                                   </ul>
+                </ul>
+	<ul>   <li>metric-item
+		   <ul><li>name = Overall Application Performance
+		   <li>type = folder</ul></ul>
+	<ul>   <li>metric-item
+		   <ul><li>name = Service End Points
+		   <li>type = folder</ul></ul>
+	<ul>   <li>metric-item
+		   <ul><li>name = End User Experience
+		   <li>type = folder</ul></ul>
+	<ul>   <li>metric-item
 		   <ul><li>name = Backends
-		   <li>type = folder<li></ul></ul>
-	<ul>   <li>metric-item</li>
-		   <ul><li>name = Information Points</li>
-		   <li>type = folder<li></ul></ul>
-	<ul>   <li>metric-item</li>
-		   <ul><li>name = Errors</li>
-		   <li>type = folder<li></ul></ul>
-	<ul>   <li>metric-item</li>
-		   <ul><li>name = Application Infrastructure Performance</li>
-		   <li>type = folder<li></ul></ul>
+		   <li>type = folder</ul></ul>
+	<ul>   <li>metric-item
+		   <ul><li>name = Information Points
+		   <li>type = folder</ul></ul>
+	<ul>   <li>metric-item
+		   <ul><li>name = Errors
+		   <li>type = folder</ul></ul>
+	<ul>   <li>metric-item
+		   <ul><li>name = Application Infrastructure Performance
+		   <li>type = folder</ul></ul>
         </ul>
      *
      *  <p>
@@ -283,13 +289,13 @@ public class RESTAccess {
      * The metricPaths parameter is the metric path and needs to be separated by the character '|'.
      * </p>
      * 
-     *  <ul><li>metric-items</li>
-	<ul>   <li>metric-item</li>
-	<ul>	   <li>name = Business Transactions</li>
-		   <li>type = folder</li></ul></ul>
-	<ul><li>   metric-item</li>
-	<ul>	   <li>name = Business Transaction Groups</li>
-		   <li>type = folder</li></ul></ul>
+     *  <ul><li>metric-items
+	<ul>   <li>metric-item
+	<ul>	   <li>name = Business Transactions
+		   <li>type = folder</ul></ul>
+	<ul><li>   metric-item
+	<ul>	   <li>name = Business Transaction Groups
+		   <li>type = folder</ul></ul>
         </ul>     * 
       
         <p>
@@ -297,9 +303,9 @@ public class RESTAccess {
         of the metric path separated by '|'. Once you reach the type "leaf" you can 
         request the metric using {@link #getBaseMetricListPath(String, String) getBaseMetricListPath}
         </p>
-	<ul><li>metric-item</li>
-	<ul>	<li>name = Average CPU Used (ms)</li>
-		<li>type = leaf</li></ul></ul>
+	<ul><li>metric-item
+	<ul>	<li>name = Average CPU Used (ms)
+		<li>type = leaf</ul></ul>
 
      * 
      * 
@@ -512,9 +518,9 @@ public class RESTAccess {
      * @param start Timestamp of the start time
      * @param end Timestamp of the end time
      * @param needProps Return Detailed Properties in Snapshot
-     * @param dataCollectorName
-     * @param dataCollectorType
-     * @param dataCollectorValue
+     * @param dataCollectorName Name of the db agent collector
+     * @param dataCollectorType Type of the data collector
+     * @param dataCollectorValue Value of the data collector
      * @return {@link Snapshots}
      * 
      */
@@ -537,9 +543,9 @@ public class RESTAccess {
      * @param start Timestamp of the start time
      * @param end Timestamp of the end time
      * @param needProps Return Detailed Properties in Snapshot
-     * @param dataCollectorName
-     * @param dataCollectorType
-     * @param dataCollectorValue
+     * @param dataCollectorName Name of the db agent collector
+     * @param dataCollectorType Type of the data collector
+     * @param dataCollectorValue Value of the data collector
      * @return {@link Snapshots}
      * 
      */
@@ -3216,7 +3222,7 @@ public class RESTAccess {
      * <br> this functionality is only in the controller version 3.9.x and above. 
      * </p>
      * 
-     * @param app
+     * @param app The name of the application
      * @return {@link String}
      * 
      */
@@ -3253,7 +3259,7 @@ public class RESTAccess {
      * <br> this functionality is only in the controller version 3.9.x and above. 
      * </p>
      * 
-     * @param app
+     * @param app The name of the application
      * @return {@link HealthRules}
      * 
      */
@@ -3333,7 +3339,7 @@ public class RESTAccess {
      * 
      * @param app Application name
      * @param name Health rule name
-     * @return {@link HealthRule}
+     * @return {@link HealthRules}
      */
     public HealthRules getRESTHealthRuleObjExportSingle(String app, String name){
         String query=null;

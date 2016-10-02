@@ -25,7 +25,7 @@ public class FileUtility {
      * program.
      * </p>
      * @param filePath The full path to the file
-     * @return 
+     * @return A single string with the contents of the file
      */
     public static String readFileToString(String filePath){
         StringBuilder bud = new StringBuilder();
@@ -51,7 +51,8 @@ public class FileUtility {
      * program.
      * </p>
      * @param filePath The full path to the file
-     * @return 
+     * @param separater The separator that is used to in the file
+     * @return Returns the an array of arrays of the content
      */
     public static ArrayList<ArrayList<String>> readFileToArray(String filePath, String separater){
         ArrayList<ArrayList<String>> info=new ArrayList<ArrayList<String>>();

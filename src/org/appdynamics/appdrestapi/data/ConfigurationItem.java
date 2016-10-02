@@ -13,7 +13,8 @@ import javax.xml.bind.annotation.XmlElement;
 /**
  *
  * @author gilbert.solorzano
- * 
+ */
+/*
  * <configuration-item>
 <name>machine.agent.max.new.actions.per.min</name>
 <value>15</value>

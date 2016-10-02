@@ -11,7 +11,8 @@ import javax.xml.bind.annotation.XmlElement;
 /**
  *
  * @author gilbert.solorzano
- * 
+ */
+/*
  * L3
                     <metric-definition>
                         <type>LOGICAL_METRIC</type>

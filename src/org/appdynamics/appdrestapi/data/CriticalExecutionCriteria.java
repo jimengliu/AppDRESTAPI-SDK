@@ -12,6 +12,9 @@ import javax.xml.bind.annotation.XmlElement;
 /**
  *
  * @author gilbert.solorzano
+ * 
+ */
+/*
  * L1_1
  *      <critical-execution-criteria>
             <entity-aggregation-scope>

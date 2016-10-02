@@ -9,7 +9,8 @@ package org.appdynamics.appdrestapi.data;
  * @author gilbert.solorzano
  * 
  * L2
- * 
+ */
+/*
             <affected-infra-match-criteria>
                 <type>ALL_TIERS</type>
             </affected-infra-match-criteria>

@@ -11,7 +11,9 @@ import javax.xml.bind.annotation.XmlElement;
 /**
  *
  * @author gilbert.solorzano
- * 
+ *
+ */
+/*
  * <affectedEntityDefinition>
     <entityType>APPLICATION_COMPONENT_NODE</entityType>
     <entityId>19903</entityId>

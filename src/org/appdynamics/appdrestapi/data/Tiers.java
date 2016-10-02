@@ -18,6 +18,11 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 /**
  *
  * @author soloink
+ * 
+ */
+
+
+/*
  * <tiers>
  <tier>
   <id>443</id>

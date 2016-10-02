@@ -17,7 +17,8 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 /**
  *
  * @author gilbert.solorzano
- * 
+ */
+/*
  * <auto-discovery-config controller-version="003-009-003-000">
     <auto-discovery>
         <name>NODEJS_WEB</name>

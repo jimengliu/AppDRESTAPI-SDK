@@ -71,6 +71,7 @@ public class MetricData {
         <p>
             This function will return a single metric value from the first entry if it exists.
         </p>
+        @return A single metric value
     */
     public MetricValue getSingleValue(){
         if(metricValues != null && !metricValues.isEmpty()) return metricValues.get(0).getSingleValue();
@@ -81,6 +82,7 @@ public class MetricData {
         <p>
             This function will return the array of metric values from the first entry if it exists.
         </p>
+        *@return The first array of the metric values
     */
     public ArrayList<MetricValue> getSingleMetricValues(){
         if(metricValues != null && !metricValues.isEmpty()) return metricValues.get(0).getMetricValue();

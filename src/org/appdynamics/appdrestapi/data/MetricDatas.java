@@ -33,6 +33,7 @@ public class MetricDatas {
         <p>
             This function give quick access to a single metric value or returns null if no value exists.
         </p>
+        * @return Returns the first metric value from the first set of metrics
     */
     public MetricValue getSingleRollUpMetricValue(){
         
@@ -42,10 +43,11 @@ public class MetricDatas {
     }
     
     /**
-        <p>
+     *  <p>
             This function give quick access to a array of metric values or returns null if no values exists.
         </p>
-    */
+     * @return  ArrayList of MetricValue
+     */
     public ArrayList<MetricValue> getSingleMetricValues(){
         
         if(metric_data != null && !metric_data.isEmpty() ) return metric_data.get(0).getSingleMetricValues();

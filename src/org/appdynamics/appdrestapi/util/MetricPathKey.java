@@ -49,23 +49,24 @@ public class MetricPathKey {
      * The method call shortMetricKey will parse the metric path and get the different components
      * out of the metric path. The array returned can be used directly of just the main object.
      * </p>
+     * 
      * @param metricType Integer the defines the type of metric query
      * @param metricQuery Integer index for the query
      * @param path Metric path string
      * @param freq Metric aggregation level, One minute, 10 minute and 1 hour
      * @return String[]
      * 
-     * <p>
+     * 
      * <ul>
-                <li>Metric Type:</li>
-               *   <ul>   <li>0 - BT</li></ul>
-               *   <ul>   <li>1 - BE</li></ul>
-               *   <ul>   <li>2 - Tier Metric</li></ul>
-               *   <ul>   <li>3 - Node Metric</li></ul>
-               *   <ul>   <li>4 - EUM</li></ul>
-               *   <ul>   <li>5 - Custom</li></ul>
+                <li>Metric Type:
+               *   <ul>   <li>0 - BT</ul>
+               *   <ul>   <li>1 - BE</ul>
+               *   <ul>   <li>2 - Tier Metric</ul>
+               *   <ul>   <li>3 - Node Metric</ul>
+               *   <ul>   <li>4 - EUM</ul>
+               *   <ul>   <li>5 - Custom</ul>
      * </ul>
-     * </p>
+     * 
      */
     public String[] shortMetricKey(int metricType, int metricQuery, String path, String freq){
         String[] pPath = MetricNameUtil.parse(path);

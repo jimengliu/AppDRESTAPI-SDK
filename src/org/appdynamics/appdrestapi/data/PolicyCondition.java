@@ -13,6 +13,8 @@ import javax.xml.bind.annotation.XmlElement;
  *
  * @author gilbert.solorzano
  * 
+ */
+/*
  * L2
             <policy-condition>
                 <type>leaf</type>
