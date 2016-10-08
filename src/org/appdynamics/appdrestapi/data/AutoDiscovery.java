@@ -16,6 +16,9 @@ import javax.xml.bind.annotation.XmlElement;
  */
 /*
 <auto-discovery>
+=======
+/*<auto-discovery>
+>>>>>>> 7cc1ab8a3e9df71c8bcfbb4b205d015854a79058
         <name>NODEJS_WEB</name>
         <properties>uri-length;first-n-segments;segment-length;2;</properties>
         <discovery-resolution>URI</discovery-resolution>

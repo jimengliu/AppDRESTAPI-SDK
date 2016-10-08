@@ -53,6 +53,7 @@ public class MetricValues {
             This function provides a quick way to check if the returned values have data.
         </p>
     * @return {@link boolean}
+
     */
     public boolean hasNoValues(){
         boolean empty=true;

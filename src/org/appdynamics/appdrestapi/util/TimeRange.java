@@ -30,9 +30,11 @@ public class TimeRange {
     /**
      * <p> This will create a time range with all of the parameters necessary
      * </p>
+
      * @param name Name of the time range
      * @param start Start time in milli seconds
      * @param end End time in milli seconds
+
      */
     public TimeRange(String name, long start, long end){
         this.name=name;
@@ -59,8 +61,13 @@ public class TimeRange {
     /**
      * <p>This will determine if a particular timestamp is within the time range.
      * </p>
+<<<<<<< HEAD
      * @param time Time in milliseconds
      * @return {@link boolean}
+=======
+     * @param time The time in milliseconds
+     * @return True or False if the time is within
+>>>>>>> 7cc1ab8a3e9df71c8bcfbb4b205d015854a79058
      */
     public boolean withIn(long time){
         if(time >= start && time <= end) return true;
@@ -72,8 +79,13 @@ public class TimeRange {
      * <p> 
      *    This will check if a TimeRange is within this instance of the time range.
      * </p>
+<<<<<<< HEAD
      * @param time Time in milliseconds
      * @return {@link boolean}
+=======
+     * @param time The time in milliseconds
+     * @return True or False if the time is within
+>>>>>>> 7cc1ab8a3e9df71c8bcfbb4b205d015854a79058
      */
     public boolean withIn(TimeRange time){
         if(time.start >= start && time.end <= end) return true;

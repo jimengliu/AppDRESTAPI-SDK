@@ -42,9 +42,9 @@ public class RESTAccess {
     /**
      * <p>
      * Returns a RESTAccess object that can be used to query the AppDynamics 
-     * controller. This will default to the following :<br>
-     * useSSL false<br>
-     * account customer1<br>
+     * controller. This will default to the following :
+     * useSSL false
+     * account customer1
      * </p>
      * 
      * @param controllerURL FQDN of the controller
@@ -61,8 +61,8 @@ public class RESTAccess {
     /**
      * <p>
      * Returns a RESTAccess object that can be used to query the AppDynamics 
-     * controller.This will default to the following :<br>
-     * account customer1<br>
+     * controller.This will default to the following :
+     * account customer1
      * </p>
      * 
      * @param controllerURL FQDN of the controller
@@ -80,8 +80,8 @@ public class RESTAccess {
     /**
      * <p>
      * Returns a RESTAccess object that can be used to query the AppDynamics 
-     * controller.This will default to the following :<br>
-     * useSSL false<br>
+     * controller.This will default to the following :
+     * useSSL false
      * </p>.
      * 
      * @param controllerURL FQDN of the controller
@@ -225,6 +225,7 @@ public class RESTAccess {
      * <p>
      * This will return the list of the metric base paths available for example:
      * </p>
+<<<<<<< HEAD
      * 
      *  <ul>
             <li>metric-items
@@ -256,6 +257,45 @@ public class RESTAccess {
 	<ul>   <li>metric-item
 		   <ul><li>name = Application Infrastructure Performance
 		   <li>type = folder<li></ul></ul>
+=======
+       <ul>
+               <li>metric-items
+               <ul>
+               *    <li>metric-item
+		   <ul>
+                   *                <li>name = Business Transaction Performance
+		     <li>type = folder</li>
+                   *               </ul>
+                </ul>
+	<ul>   
+        *               <li>metric-item
+		   <ul>
+                   *                    <li>name = Mobile
+                                         <li>type = folder
+                                   </ul>
+                </ul>
+	<ul>   <li>metric-item
+		   <ul><li>name = Overall Application Performance
+		   <li>type = folder</ul></ul>
+	<ul>   <li>metric-item
+		   <ul><li>name = Service End Points
+		   <li>type = folder</ul></ul>
+	<ul>   <li>metric-item
+		   <ul><li>name = End User Experience
+		   <li>type = folder</ul></ul>
+	<ul>   <li>metric-item
+		   <ul><li>name = Backends
+		   <li>type = folder</ul></ul>
+	<ul>   <li>metric-item
+		   <ul><li>name = Information Points
+		   <li>type = folder</ul></ul>
+	<ul>   <li>metric-item
+		   <ul><li>name = Errors
+		   <li>type = folder</ul></ul>
+	<ul>   <li>metric-item
+		   <ul><li>name = Application Infrastructure Performance
+		   <li>type = folder</ul></ul>
+>>>>>>> 7cc1ab8a3e9df71c8bcfbb4b205d015854a79058
         </ul>
      *
      *  <p>
@@ -550,7 +590,11 @@ public class RESTAccess {
      * @param start Timestamp of the start time
      * @param end Timestamp of the end time
      * @param needProps Return Detailed Properties in Snapshot
+<<<<<<< HEAD
      * @param dataCollectorName Name of the data collector
+=======
+     * @param dataCollectorName Name of the db agent collector
+>>>>>>> 7cc1ab8a3e9df71c8bcfbb4b205d015854a79058
      * @param dataCollectorType Type of the data collector
      * @param dataCollectorValue Value of the data collector
      * @return {@link Snapshots}
@@ -575,7 +619,11 @@ public class RESTAccess {
      * @param start Timestamp of the start time
      * @param end Timestamp of the end time
      * @param needProps Return Detailed Properties in Snapshot
+<<<<<<< HEAD
      * @param dataCollectorName Name of the data collector
+=======
+     * @param dataCollectorName Name of the db agent collector
+>>>>>>> 7cc1ab8a3e9df71c8bcfbb4b205d015854a79058
      * @param dataCollectorType Type of the data collector
      * @param dataCollectorValue Value of the data collector
      * @return {@link Snapshots}
@@ -3254,7 +3302,11 @@ public class RESTAccess {
      * <br> this functionality is only in the controller version 3.9.x and above. 
      * </p>
      * 
+<<<<<<< HEAD
      * @param app Name of the application
+=======
+     * @param app The name of the application
+>>>>>>> 7cc1ab8a3e9df71c8bcfbb4b205d015854a79058
      * @return {@link String}
      * 
      */
@@ -3291,7 +3343,11 @@ public class RESTAccess {
      * <br> this functionality is only in the controller version 3.9.x and above. 
      * </p>
      * 
+<<<<<<< HEAD
      * @param app Name of the application
+=======
+     * @param app The name of the application
+>>>>>>> 7cc1ab8a3e9df71c8bcfbb4b205d015854a79058
      * @return {@link HealthRules}
      * 
      */

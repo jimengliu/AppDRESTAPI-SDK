@@ -14,11 +14,17 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 /**
  *
  * @author gilbert.solorzano
+
  * 
  *
  */
 /*
 <name-value>
+=======
+ */
+/*
+ * <name-value>
+>>>>>>> 7cc1ab8a3e9df71c8bcfbb4b205d015854a79058
         <id>0</id>
         <name>MAJOR_VERSION</name>
         <value>5.6</value>

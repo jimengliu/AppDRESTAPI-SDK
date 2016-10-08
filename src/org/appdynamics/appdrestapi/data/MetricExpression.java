@@ -12,7 +12,8 @@ import javax.xml.bind.annotation.XmlElement;
 /**
  *
  * @author gilbert.solorzano
- * 
+ */
+/*
  * L2_1
  * 
  * 

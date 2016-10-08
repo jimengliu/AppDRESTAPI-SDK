@@ -13,11 +13,17 @@ import javax.xml.bind.annotation.XmlElement;
 /**
  *
  * @author gilbert.solorzano
+<<<<<<< HEAD
  * 
  */
 
 /*
 <configuration-item>
+=======
+ */
+/*
+ * <configuration-item>
+>>>>>>> 7cc1ab8a3e9df71c8bcfbb4b205d015854a79058
 <name>machine.agent.max.new.actions.per.min</name>
 <value>15</value>
 <description>

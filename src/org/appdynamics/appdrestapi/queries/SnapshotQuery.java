@@ -11,8 +11,14 @@ import org.appdynamics.appdrestapi.util.RequestSnapshots;
 /**
  *
  * @author gilbert.solorzano
+
  * 
  * 
+
+ */
+/*
+ * 'https://familysearch.saas.appdynamics.com//controller/rest/applications/81/request-snapshots?time-range-type=BEFORE_NOW&duration-in-mins=2'
+
  */
 public class SnapshotQuery {
     

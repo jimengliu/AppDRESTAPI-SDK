@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 /**
  *
  * @author gilbert.solorzano
- * 
+>>>>>>> 7cc1ab8a3e9df71c8bcfbb4b205d015854a79058
  */
 /*
  * <auto-discovery-config controller-version="003-009-003-000">

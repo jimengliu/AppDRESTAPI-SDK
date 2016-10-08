@@ -49,13 +49,14 @@ public class MetricPathKey {
      * The method call shortMetricKey will parse the metric path and get the different components
      * out of the metric path. The array returned can be used directly of just the main object.
      * </p>
+     * 
      * @param metricType Integer the defines the type of metric query
      * @param metricQuery Integer index for the query
      * @param path Metric path string
      * @param freq Metric aggregation level, One minute, 10 minute and 1 hour
      * @return String[]
      * 
-     *
+
      * <ul>
                 <li>Metric Type:
                *   <ul>   <li>0 - BT</ul>

@@ -31,7 +31,9 @@ public class PostEvent {
      * must provide a tier value, otherwise an exception will be thrown
      * during the URL creation method.
      * </p>
+
      * @param summary The summary for the event
+
      */
     public PostEvent(String summary){
         this.summary=summary;
