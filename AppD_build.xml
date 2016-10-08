@@ -6,6 +6,7 @@
     <property name="execution.lib.dir"             value="${basedir}/execLib"/>
     <property name="restapi.main"		value="org.appdynamics.appdrestapi.GetTimeStamps"/> 
     <property name="releases"			value="${basedir}/releases"/>
+    <property name="javadoc"            value="${basedir}/dist/javadoc"/>
 
     <property name="RESTAPI.basename"   value="AppDRESTAPI-SDK"/>
     <property name="RESTAPI.version"     value="2.5.1"/>
@@ -89,8 +90,8 @@
       </jar>
   
     </target>
-    
-    <target name="package" depends="RESTAPI_jar,RESTAPI_jar_dev">
+
+    <target name="pre-package" depends="RESTAPI_jar,RESTAPI_jar_dev">
         <mkdir dir="${execution.lib.dir}"/>
         <copy todir="${execution.lib.dir}/">
             <fileset dir="${lib.dir}/">
@@ -100,14 +101,19 @@
                 <include name="${RESTAPI.basename}_${RESTAPI.version}.jar"/>
             </fileset>
         </copy>
+        <mkdir dir="${classes.dir}/javadoc"/>
+        <javadoc sourcepath="${classes.dir}" destdir="${build.dir}/javadoc" classpathref="compile.classpath"/>
+    </target>
+
+    <target name="package" depends="pre-package">
 	<!-->
         <zip destfile="${releases}/${RESTAPI.basename}_${RESTAPI.version}.zip" basedir="${execution.lib.dir}" />        
 	<-->
-	<mkdir dir="${releases}"/>		
-        <zip destfile="${releases}/${RESTAPI.basename}_${RESTAPI.version}.zip"> 
-		<zipfileset dir="${execution.lib.dir}" prefix="execLib" />
-	</zip>        
-
+        <mkdir dir="${releases}"/>	
+        <zip destfile="${releases}/${RESTAPI.basename}_${RESTAPI.version}.zip">
+            <zipfileset dir="${execution.lib.dir}" prefix="execLib" />
+            <zipfileset dir="${build.dir}/javadoc" prefix="javadoc" />
+        </zip>
     </target>
     
 </project>

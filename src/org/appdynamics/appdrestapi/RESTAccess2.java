@@ -110,7 +110,64 @@ public class RESTAccess2 extends RESTAccess{
      * <p>
      *  This will export the custom match object of either a single java customer match of the type provide or the set of custom match rules. 
      *  If you want the set of custom match rules then provide null as the objNode otherwise we will return a single rule.
-     * </p>
+     * </p>  
+     * <ul>
+     *  <li><b>Java Custom Match Rules</b>
+     *      <ul>
+            * <li>Index  0 : Exports all of the custom match rules of type <b>binaryRemoting</b> for the application
+            * <li>Index  1 : Exports the custom match rules of type <b>binaryRemoting</b> with the name objNode
+            * <li>Index  2 : Exports all of the custom match rules of type <b>servlet</b> for the application
+            * <li>Index  3 : Exports the custom match rules of type <b>servlet</b> with the name objNode
+            * <li>Index  4 : Exports all of the custom match rules of type <b>strutsAction</b> for the application
+            * <li>Index  5 : Exports the custom match rules of type <b>strutsAction</b> with the name objNode
+            * <li>Index  6 : Exports all of the custom match rules of type <b>springBean</b> for the application
+            * <li>Index  7 : Exports the custom match rules of type <b>springBean</b> with the name objNode
+            * <li>Index  8 : Exports all of the custom match rules of type <b>ejb</b> for the application
+            * <li>Index  9 : Exports the custom match rules of type <b>ejb</b> with the name objNode
+            * <li>Index  10 : Exports all of the custom match rules of type <b>pojo</b> for the application
+            * <li>Index  11 : Exports the custom match rules of type <b>pojo</b> with the name objNode
+            * <li>Index  12 : Exports all of the custom match rules of type <b>jms</b> for the application
+            * <li>Index  13 : Exports the custom match rules of type <b>jms</b> with the name objNode
+            * <li>Index  14 : Exports all of the custom match rules of type <b>webService</b> for the application
+            * <li>Index  15 : Exports the custom match rules of type <b>webService</b> with the name objNode
+        *   </ul>
+        *<li><b>DotNet Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  16 : Exports all of the custom match rules of type <b>aspDotNet</b> for the application
+            * <li>Index  17 : Exports the custom match rule of type <b>aspDotNet</b> with the name objNode
+            * <li>Index  18: Exports all of the custom match rules of type <b>dotNetWebService</b> for the application
+            * <li>Index  19 : Exports the custom match rule of type <b>dotNetWebService</b> with the name objNode
+            * <li>Index  20 : Exports all of the custom match rules of type <b>wcf</b> for the application
+            * <li>Index  21 : Exports the custom match rule of type <b>wcf</b> with the name objNode
+            * <li>Index  22 : Exports all of the custom match rules of type <b>poco</b> for the application
+            * <li>Index  23 : Exports the custom match rule of type <b>poco</b> with the name objNode
+            * <li>Index  24 : Exports all of the custom match rules of type <b>dotNetJms</b> for the application
+            * <li>Index  25 : Exports the custom match rule of type <b>dotNetJms</b> with the name objNode
+            * <li>Index  26 : Exports all of the custom match rules of type <b>dotNetRemoting</b> for the application
+            * <li>Index  27 : Exports the custom match rule of type <b>dotNetRemoting</b> with the name objNode
+            </ul>
+        * <li><b>PHP Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  28 : Exports all of the custom match rules of type <b>phpWeb</b> for the application
+            * <li>Index  29 : Exports the custom match rule of type <b>phpWeb</b> with the name objNode
+            * <li>Index  30 : Exports all of the custom match rules of type <b>phpMvc</b> for the application
+            * <li>Index  31 : Exports the custom match rule of type <b>phpMvc</b> with the name objNode
+            * <li>Index  32 : Exports all of the custom match rules of type <b>phpDrupal</b> for the application
+            * <li>Index  33 : Exports the custom match rule of type <b>phpDrupal</b> with the name objNode
+            * <li>Index  34 : Exports all of the custom match rules of type <b>phpWordpress</b> for the application
+            * <li>Index  35 : Exports the custom match rule of type <b>phpWordpress</b> with the name objNode
+            * <li>Index  36 : Exports all of the custom match rules of type <b>phpCli</b> for the application
+            * <li>Index  37 : Exports the custom match rule of type <b>phpCli</b> with the name objNode
+            * <li>Index  38 : Exports all of the custom match rules of type <b>phpWebService</b> for the application
+            * <li>Index  39 : Exports the custom match rule of type <b>phpWebService</b> with the name objNode
+            * <li>Index  40 : Exports all of the custom match rules of type <b>nodeJsWeb</b> for the application
+            </ul>
+        * <li><b>NodeJS Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  41 : Exports the custom match rule of type <b>nodeJsWeb</b> with the name objNode
+        *   </ul>
+
+     * </ul>
      * 
      * @param queryIndex The index for this query
      * @param app The name of the application
@@ -118,55 +175,7 @@ public class RESTAccess2 extends RESTAccess{
      * @return {@link CustomMatchPoints}
      * 
      *  
-     *  
-     * <ul>
-        * <li>Index  0 : Exports all of the custom match rules of type <b>binaryRemoting</b> for the application
-        * <li>Index  1 : Exports the custom match rules of type <b>binaryRemoting</b> with the name objNode
-        * <li>Index  2 : Exports all of the custom match rules of type <b>servlet</b> for the application
-        * <li>Index  3 : Exports the custom match rules of type <b>servlet</b> with the name objNode
-        * <li>Index  4 : Exports all of the custom match rules of type <b>strutsAction</b> for the application
-        * <li>Index  5 : Exports the custom match rules of type <b>strutsAction</b> with the name objNode
-        * <li>Index  6 : Exports all of the custom match rules of type <b>springBean</b> for the application
-        * <li>Index  7 : Exports the custom match rules of type <b>springBean</b> with the name objNode
-        * <li>Index  8 : Exports all of the custom match rules of type <b>ejb</b> for the application
-        * <li>Index  9 : Exports the custom match rules of type <b>ejb</b> with the name objNode
-        * <li>Index  10 : Exports all of the custom match rules of type <b>pojo</b> for the application
-        * <li>Index  11 : Exports the custom match rules of type <b>pojo</b> with the name objNode
-        * <li>Index  12 : Exports all of the custom match rules of type <b>jms</b> for the application
-        * <li>Index  13 : Exports the custom match rules of type <b>jms</b> with the name objNode
-        * <li>Index  14 : Exports all of the custom match rules of type <b>webService</b> for the application
-        * <li>Index  15 : Exports the custom match rules of type <b>webService</b> with the name objNode
-        * 
-        * <li>Index  16 : Exports all of the custom match rules of type <b>aspDotNet</b> for the application
-        * <li>Index  17 : Exports the custom match rule of type <b>aspDotNet</b> with the name objNode
-        * <li>Index  18: Exports all of the custom match rules of type <b>dotNetWebService</b> for the application
-        * <li>Index  19 : Exports the custom match rule of type <b>dotNetWebService</b> with the name objNode
-        * <li>Index  20 : Exports all of the custom match rules of type <b>wcf</b> for the application
-        * <li>Index  21 : Exports the custom match rule of type <b>wcf</b> with the name objNode
-        * <li>Index  22 : Exports all of the custom match rules of type <b>poco</b> for the application
-        * <li>Index  23 : Exports the custom match rule of type <b>poco</b> with the name objNode
-        * <li>Index  24 : Exports all of the custom match rules of type <b>dotNetJms</b> for the application
-        * <li>Index  25 : Exports the custom match rule of type <b>dotNetJms</b> with the name objNode
-        * <li>Index  26 : Exports all of the custom match rules of type <b>dotNetRemoting</b> for the application
-        * <li>Index  27 : Exports the custom match rule of type <b>dotNetRemoting</b> with the name objNode
-        * 
-        * <li>Index  28 : Exports all of the custom match rules of type <b>phpWeb</b> for the application
-        * <li>Index  29 : Exports the custom match rule of type <b>phpWeb</b> with the name objNode
-        * <li>Index  30 : Exports all of the custom match rules of type <b>phpMvc</b> for the application
-        * <li>Index  31 : Exports the custom match rule of type <b>phpMvc</b> with the name objNode
-        * <li>Index  32 : Exports all of the custom match rules of type <b>phpDrupal</b> for the application
-        * <li>Index  33 : Exports the custom match rule of type <b>phpDrupal</b> with the name objNode
-        * <li>Index  34 : Exports all of the custom match rules of type <b>phpWordpress</b> for the application
-        * <li>Index  35 : Exports the custom match rule of type <b>phpWordpress</b> with the name objNode
-        * <li>Index  36 : Exports all of the custom match rules of type <b>phpCli</b> for the application
-        * <li>Index  37 : Exports the custom match rule of type <b>phpCli</b> with the name objNode
-        * <li>Index  38 : Exports all of the custom match rules of type <b>phpWebService</b> for the application
-        * <li>Index  39 : Exports the custom match rule of type <b>phpWebService</b> with the name objNode
-        * <li>Index  40 : Exports all of the custom match rules of type <b>nodeJsWeb</b> for the application
-        * 
-        * <li>Index  41 : Exports the custom match rule of type <b>nodeJsWeb</b> with the name objNode
-
-     * </ul>
+     *
      */
     public CustomMatchPoints getRESTCustomMatchRuleExportObj(int queryIndex,String app,String objNode){
         String query=null;
@@ -328,6 +337,64 @@ public class RESTAccess2 extends RESTAccess{
      *  If you want the set of custom match rules then provide null as the objNode otherwise we will return a single rule.
      * </p>
      * 
+     * <ul>
+     *  <li><b>Java Custom Match Rules</b>
+     *      <ul>
+            * <li>Index  0 : Exports all of the custom match rules of type <b>binaryRemoting</b> for the application
+            * <li>Index  1 : Exports the custom match rules of type <b>binaryRemoting</b> with the name objNode
+            * <li>Index  2 : Exports all of the custom match rules of type <b>servlet</b> for the application
+            * <li>Index  3 : Exports the custom match rules of type <b>servlet</b> with the name objNode
+            * <li>Index  4 : Exports all of the custom match rules of type <b>strutsAction</b> for the application
+            * <li>Index  5 : Exports the custom match rules of type <b>strutsAction</b> with the name objNode
+            * <li>Index  6 : Exports all of the custom match rules of type <b>springBean</b> for the application
+            * <li>Index  7 : Exports the custom match rules of type <b>springBean</b> with the name objNode
+            * <li>Index  8 : Exports all of the custom match rules of type <b>ejb</b> for the application
+            * <li>Index  9 : Exports the custom match rules of type <b>ejb</b> with the name objNode
+            * <li>Index  10 : Exports all of the custom match rules of type <b>pojo</b> for the application
+            * <li>Index  11 : Exports the custom match rules of type <b>pojo</b> with the name objNode
+            * <li>Index  12 : Exports all of the custom match rules of type <b>jms</b> for the application
+            * <li>Index  13 : Exports the custom match rules of type <b>jms</b> with the name objNode
+            * <li>Index  14 : Exports all of the custom match rules of type <b>webService</b> for the application
+            * <li>Index  15 : Exports the custom match rules of type <b>webService</b> with the name objNode
+        *   </ul>
+        *<li><b>DotNet Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  16 : Exports all of the custom match rules of type <b>aspDotNet</b> for the application
+            * <li>Index  17 : Exports the custom match rule of type <b>aspDotNet</b> with the name objNode
+            * <li>Index  18: Exports all of the custom match rules of type <b>dotNetWebService</b> for the application
+            * <li>Index  19 : Exports the custom match rule of type <b>dotNetWebService</b> with the name objNode
+            * <li>Index  20 : Exports all of the custom match rules of type <b>wcf</b> for the application
+            * <li>Index  21 : Exports the custom match rule of type <b>wcf</b> with the name objNode
+            * <li>Index  22 : Exports all of the custom match rules of type <b>poco</b> for the application
+            * <li>Index  23 : Exports the custom match rule of type <b>poco</b> with the name objNode
+            * <li>Index  24 : Exports all of the custom match rules of type <b>dotNetJms</b> for the application
+            * <li>Index  25 : Exports the custom match rule of type <b>dotNetJms</b> with the name objNode
+            * <li>Index  26 : Exports all of the custom match rules of type <b>dotNetRemoting</b> for the application
+            * <li>Index  27 : Exports the custom match rule of type <b>dotNetRemoting</b> with the name objNode
+            </ul>
+        * <li><b>PHP Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  28 : Exports all of the custom match rules of type <b>phpWeb</b> for the application
+            * <li>Index  29 : Exports the custom match rule of type <b>phpWeb</b> with the name objNode
+            * <li>Index  30 : Exports all of the custom match rules of type <b>phpMvc</b> for the application
+            * <li>Index  31 : Exports the custom match rule of type <b>phpMvc</b> with the name objNode
+            * <li>Index  32 : Exports all of the custom match rules of type <b>phpDrupal</b> for the application
+            * <li>Index  33 : Exports the custom match rule of type <b>phpDrupal</b> with the name objNode
+            * <li>Index  34 : Exports all of the custom match rules of type <b>phpWordpress</b> for the application
+            * <li>Index  35 : Exports the custom match rule of type <b>phpWordpress</b> with the name objNode
+            * <li>Index  36 : Exports all of the custom match rules of type <b>phpCli</b> for the application
+            * <li>Index  37 : Exports the custom match rule of type <b>phpCli</b> with the name objNode
+            * <li>Index  38 : Exports all of the custom match rules of type <b>phpWebService</b> for the application
+            * <li>Index  39 : Exports the custom match rule of type <b>phpWebService</b> with the name objNode
+            * <li>Index  40 : Exports all of the custom match rules of type <b>nodeJsWeb</b> for the application
+            </ul>
+        * <li><b>NodeJS Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  41 : Exports the custom match rule of type <b>nodeJsWeb</b> with the name objNode
+        *   </ul>
+
+     * </ul>
+     * 
      * @param queryIndex The index for this query
      * @param app The name of the application
      * @param objNode The name of the custom match rule
@@ -335,54 +402,6 @@ public class RESTAccess2 extends RESTAccess{
      * 
      *  
      *  
-     * <ul>
-        * <li>Index  0 : Exports all of the custom match rules of type <b>binaryRemoting</b> for the application
-        * <li>Index  1 : Exports the custom match rules of type <b>binaryRemoting</b> with the name objNode
-        * <li>Index  2 : Exports all of the custom match rules of type <b>servlet</b> for the application
-        * <li>Index  3 : Exports the custom match rules of type <b>servlet</b> with the name objNode
-        * <li>Index  4 : Exports all of the custom match rules of type <b>strutsAction</b> for the application
-        * <li>Index  5 : Exports the custom match rules of type <b>strutsAction</b> with the name objNode
-        * <li>Index  6 : Exports all of the custom match rules of type <b>springBean</b> for the application
-        * <li>Index  7 : Exports the custom match rules of type <b>springBean</b> with the name objNode
-        * <li>Index  8 : Exports all of the custom match rules of type <b>ejb</b> for the application
-        * <li>Index  9 : Exports the custom match rules of type <b>ejb</b> with the name objNode
-        * <li>Index  10 : Exports all of the custom match rules of type <b>pojo</b> for the application
-        * <li>Index  11 : Exports the custom match rules of type <b>pojo</b> with the name objNode
-        * <li>Index  12 : Exports all of the custom match rules of type <b>jms</b> for the application
-        * <li>Index  13 : Exports the custom match rules of type <b>jms</b> with the name objNode
-        * <li>Index  14 : Exports all of the custom match rules of type <b>webService</b> for the application
-        * <li>Index  15 : Exports the custom match rules of type <b>webService</b> with the name objNode
-        * 
-        * <li>Index  16 : Exports all of the custom match rules of type <b>aspDotNet</b> for the application
-        * <li>Index  17 : Exports the custom match rule of type <b>aspDotNet</b> with the name objNode
-        * <li>Index  18: Exports all of the custom match rules of type <b>dotNetWebService</b> for the application
-        * <li>Index  19 : Exports the custom match rule of type <b>dotNetWebService</b> with the name objNode
-        * <li>Index  20 : Exports all of the custom match rules of type <b>wcf</b> for the application
-        * <li>Index  21 : Exports the custom match rule of type <b>wcf</b> with the name objNode
-        * <li>Index  22 : Exports all of the custom match rules of type <b>poco</b> for the application
-        * <li>Index  23 : Exports the custom match rule of type <b>poco</b> with the name objNode
-        * <li>Index  24 : Exports all of the custom match rules of type <b>dotNetJms</b> for the application
-        * <li>Index  25 : Exports the custom match rule of type <b>dotNetJms</b> with the name objNode
-        * <li>Index  26 : Exports all of the custom match rules of type <b>dotNetRemoting</b> for the application
-        * <li>Index  27 : Exports the custom match rule of type <b>dotNetRemoting</b> with the name objNode
-        * 
-        * <li>Index  28 : Exports all of the custom match rules of type <b>phpWeb</b> for the application
-        * <li>Index  29 : Exports the custom match rule of type <b>phpWeb</b> with the name objNode
-        * <li>Index  30 : Exports all of the custom match rules of type <b>phpMvc</b> for the application
-        * <li>Index  31 : Exports the custom match rule of type <b>phpMvc</b> with the name objNode
-        * <li>Index  32 : Exports all of the custom match rules of type <b>phpDrupal</b> for the application
-        * <li>Index  33 : Exports the custom match rule of type <b>phpDrupal</b> with the name objNode
-        * <li>Index  34 : Exports all of the custom match rules of type <b>phpWordpress</b> for the application
-        * <li>Index  35 : Exports the custom match rule of type <b>phpWordpress</b> with the name objNode
-        * <li>Index  36 : Exports all of the custom match rules of type <b>phpCli</b> for the application
-        * <li>Index  37 : Exports the custom match rule of type <b>phpCli</b> with the name objNode
-        * <li>Index  38 : Exports all of the custom match rules of type <b>phpWebService</b> for the application
-        * <li>Index  39 : Exports the custom match rule of type <b>phpWebService</b> with the name objNode
-        * <li>Index  40 : Exports all of the custom match rules of type <b>nodeJsWeb</b> for the application
-        * 
-        * <li>Index  41 : Exports the custom match rule of type <b>nodeJsWeb</b> with the name objNode
-
-     * </ul>
      */
     public String getRESTCustomMatchRuleExport(int queryIndex,String app,String objNode){
         String query=null;
@@ -544,6 +563,65 @@ public class RESTAccess2 extends RESTAccess{
      *  If you want the set of custom match rules then provide null as the objNode otherwise we will return a single rule.
      * </p>
      * 
+     * 
+     * <ul>
+     *  <li><b>Java Custom Match Rules</b>
+     *      <ul>
+            * <li>Index  0 : Exports all of the custom match rules of type <b>binaryRemoting</b> for the application
+            * <li>Index  1 : Exports the custom match rules of type <b>binaryRemoting</b> with the name objNode
+            * <li>Index  2 : Exports all of the custom match rules of type <b>servlet</b> for the application
+            * <li>Index  3 : Exports the custom match rules of type <b>servlet</b> with the name objNode
+            * <li>Index  4 : Exports all of the custom match rules of type <b>strutsAction</b> for the application
+            * <li>Index  5 : Exports the custom match rules of type <b>strutsAction</b> with the name objNode
+            * <li>Index  6 : Exports all of the custom match rules of type <b>springBean</b> for the application
+            * <li>Index  7 : Exports the custom match rules of type <b>springBean</b> with the name objNode
+            * <li>Index  8 : Exports all of the custom match rules of type <b>ejb</b> for the application
+            * <li>Index  9 : Exports the custom match rules of type <b>ejb</b> with the name objNode
+            * <li>Index  10 : Exports all of the custom match rules of type <b>pojo</b> for the application
+            * <li>Index  11 : Exports the custom match rules of type <b>pojo</b> with the name objNode
+            * <li>Index  12 : Exports all of the custom match rules of type <b>jms</b> for the application
+            * <li>Index  13 : Exports the custom match rules of type <b>jms</b> with the name objNode
+            * <li>Index  14 : Exports all of the custom match rules of type <b>webService</b> for the application
+            * <li>Index  15 : Exports the custom match rules of type <b>webService</b> with the name objNode
+        *   </ul>
+        *<li><b>DotNet Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  16 : Exports all of the custom match rules of type <b>aspDotNet</b> for the application
+            * <li>Index  17 : Exports the custom match rule of type <b>aspDotNet</b> with the name objNode
+            * <li>Index  18: Exports all of the custom match rules of type <b>dotNetWebService</b> for the application
+            * <li>Index  19 : Exports the custom match rule of type <b>dotNetWebService</b> with the name objNode
+            * <li>Index  20 : Exports all of the custom match rules of type <b>wcf</b> for the application
+            * <li>Index  21 : Exports the custom match rule of type <b>wcf</b> with the name objNode
+            * <li>Index  22 : Exports all of the custom match rules of type <b>poco</b> for the application
+            * <li>Index  23 : Exports the custom match rule of type <b>poco</b> with the name objNode
+            * <li>Index  24 : Exports all of the custom match rules of type <b>dotNetJms</b> for the application
+            * <li>Index  25 : Exports the custom match rule of type <b>dotNetJms</b> with the name objNode
+            * <li>Index  26 : Exports all of the custom match rules of type <b>dotNetRemoting</b> for the application
+            * <li>Index  27 : Exports the custom match rule of type <b>dotNetRemoting</b> with the name objNode
+            </ul>
+        * <li><b>PHP Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  28 : Exports all of the custom match rules of type <b>phpWeb</b> for the application
+            * <li>Index  29 : Exports the custom match rule of type <b>phpWeb</b> with the name objNode
+            * <li>Index  30 : Exports all of the custom match rules of type <b>phpMvc</b> for the application
+            * <li>Index  31 : Exports the custom match rule of type <b>phpMvc</b> with the name objNode
+            * <li>Index  32 : Exports all of the custom match rules of type <b>phpDrupal</b> for the application
+            * <li>Index  33 : Exports the custom match rule of type <b>phpDrupal</b> with the name objNode
+            * <li>Index  34 : Exports all of the custom match rules of type <b>phpWordpress</b> for the application
+            * <li>Index  35 : Exports the custom match rule of type <b>phpWordpress</b> with the name objNode
+            * <li>Index  36 : Exports all of the custom match rules of type <b>phpCli</b> for the application
+            * <li>Index  37 : Exports the custom match rule of type <b>phpCli</b> with the name objNode
+            * <li>Index  38 : Exports all of the custom match rules of type <b>phpWebService</b> for the application
+            * <li>Index  39 : Exports the custom match rule of type <b>phpWebService</b> with the name objNode
+            * <li>Index  40 : Exports all of the custom match rules of type <b>nodeJsWeb</b> for the application
+            </ul>
+        * <li><b>NodeJS Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  41 : Exports the custom match rule of type <b>nodeJsWeb</b> with the name objNode
+        *   </ul>
+
+     * </ul>
+     * 
      * @param queryIndex The index for this query
      * @param app The name of the application
      * @param tier The name of the tier
@@ -551,55 +629,7 @@ public class RESTAccess2 extends RESTAccess{
      * @return {@link CustomMatchPoints}
      * 
      *  
-     *  
-     * <ul>
-        * <li>Index  0 : Exports all of the custom match rules of type <b>binaryRemoting</b> for the application
-        * <li>Index  1 : Exports the custom match rules of type <b>binaryRemoting</b> with the name objNode
-        * <li>Index  2 : Exports all of the custom match rules of type <b>servlet</b> for the application
-        * <li>Index  3 : Exports the custom match rules of type <b>servlet</b> with the name objNode
-        * <li>Index  4 : Exports all of the custom match rules of type <b>strutsAction</b> for the application
-        * <li>Index  5 : Exports the custom match rules of type <b>strutsAction</b> with the name objNode
-        * <li>Index  6 : Exports all of the custom match rules of type <b>springBean</b> for the application
-        * <li>Index  7 : Exports the custom match rules of type <b>springBean</b> with the name objNode
-        * <li>Index  8 : Exports all of the custom match rules of type <b>ejb</b> for the application
-        * <li>Index  9 : Exports the custom match rules of type <b>ejb</b> with the name objNode
-        * <li>Index  10 : Exports all of the custom match rules of type <b>pojo</b> for the application
-        * <li>Index  11 : Exports the custom match rules of type <b>pojo</b> with the name objNode
-        * <li>Index  12 : Exports all of the custom match rules of type <b>jms</b> for the application
-        * <li>Index  13 : Exports the custom match rules of type <b>jms</b> with the name objNode
-        * <li>Index  14 : Exports all of the custom match rules of type <b>webService</b> for the application
-        * <li>Index  15 : Exports the custom match rules of type <b>webService</b> with the name objNode
-        * 
-        * <li>Index  16 : Exports all of the custom match rules of type <b>aspDotNet</b> for the application
-        * <li>Index  17 : Exports the custom match rule of type <b>aspDotNet</b> with the name objNode
-        * <li>Index  18: Exports all of the custom match rules of type <b>dotNetWebService</b> for the application
-        * <li>Index  19 : Exports the custom match rule of type <b>dotNetWebService</b> with the name objNode
-        * <li>Index  20 : Exports all of the custom match rules of type <b>wcf</b> for the application
-        * <li>Index  21 : Exports the custom match rule of type <b>wcf</b> with the name objNode
-        * <li>Index  22 : Exports all of the custom match rules of type <b>poco</b> for the application
-        * <li>Index  23 : Exports the custom match rule of type <b>poco</b> with the name objNode
-        * <li>Index  24 : Exports all of the custom match rules of type <b>dotNetJms</b> for the application
-        * <li>Index  25 : Exports the custom match rule of type <b>dotNetJms</b> with the name objNode
-        * <li>Index  26 : Exports all of the custom match rules of type <b>dotNetRemoting</b> for the application
-        * <li>Index  27 : Exports the custom match rule of type <b>dotNetRemoting</b> with the name objNode
-        * 
-        * <li>Index  28 : Exports all of the custom match rules of type <b>phpWeb</b> for the application
-        * <li>Index  29 : Exports the custom match rule of type <b>phpWeb</b> with the name objNode
-        * <li>Index  30 : Exports all of the custom match rules of type <b>phpMvc</b> for the application
-        * <li>Index  31 : Exports the custom match rule of type <b>phpMvc</b> with the name objNode
-        * <li>Index  32 : Exports all of the custom match rules of type <b>phpDrupal</b> for the application
-        * <li>Index  33 : Exports the custom match rule of type <b>phpDrupal</b> with the name objNode
-        * <li>Index  34 : Exports all of the custom match rules of type <b>phpWordpress</b> for the application
-        * <li>Index  35 : Exports the custom match rule of type <b>phpWordpress</b> with the name objNode
-        * <li>Index  36 : Exports all of the custom match rules of type <b>phpCli</b> for the application
-        * <li>Index  37 : Exports the custom match rule of type <b>phpCli</b> with the name objNode
-        * <li>Index  38 : Exports all of the custom match rules of type <b>phpWebService</b> for the application
-        * <li>Index  39 : Exports the custom match rule of type <b>phpWebService</b> with the name objNode
-        * <li>Index  40 : Exports all of the custom match rules of type <b>nodeJsWeb</b> for the application
-        * 
-        * <li>Index  41 : Exports the custom match rule of type <b>nodeJsWeb</b> with the name objNode
-
-     * </ul>
+     * 
      */
     public CustomMatchPoints getRESTCustomMatchRuleExportObj(int queryIndex,String app, String tier, String objNode){
         String query=null;
@@ -761,6 +791,65 @@ public class RESTAccess2 extends RESTAccess{
      *  If you want the set of custom match rules then provide null as the objNode otherwise we will return a single rule.
      * </p>
      * 
+     * 
+     * <ul>
+     *  <li><b>Java Custom Match Rules</b>
+     *      <ul>
+            * <li>Index  0 : Exports all of the custom match rules of type <b>binaryRemoting</b> for the application
+            * <li>Index  1 : Exports the custom match rules of type <b>binaryRemoting</b> with the name objNode
+            * <li>Index  2 : Exports all of the custom match rules of type <b>servlet</b> for the application
+            * <li>Index  3 : Exports the custom match rules of type <b>servlet</b> with the name objNode
+            * <li>Index  4 : Exports all of the custom match rules of type <b>strutsAction</b> for the application
+            * <li>Index  5 : Exports the custom match rules of type <b>strutsAction</b> with the name objNode
+            * <li>Index  6 : Exports all of the custom match rules of type <b>springBean</b> for the application
+            * <li>Index  7 : Exports the custom match rules of type <b>springBean</b> with the name objNode
+            * <li>Index  8 : Exports all of the custom match rules of type <b>ejb</b> for the application
+            * <li>Index  9 : Exports the custom match rules of type <b>ejb</b> with the name objNode
+            * <li>Index  10 : Exports all of the custom match rules of type <b>pojo</b> for the application
+            * <li>Index  11 : Exports the custom match rules of type <b>pojo</b> with the name objNode
+            * <li>Index  12 : Exports all of the custom match rules of type <b>jms</b> for the application
+            * <li>Index  13 : Exports the custom match rules of type <b>jms</b> with the name objNode
+            * <li>Index  14 : Exports all of the custom match rules of type <b>webService</b> for the application
+            * <li>Index  15 : Exports the custom match rules of type <b>webService</b> with the name objNode
+        *   </ul>
+        *<li><b>DotNet Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  16 : Exports all of the custom match rules of type <b>aspDotNet</b> for the application
+            * <li>Index  17 : Exports the custom match rule of type <b>aspDotNet</b> with the name objNode
+            * <li>Index  18: Exports all of the custom match rules of type <b>dotNetWebService</b> for the application
+            * <li>Index  19 : Exports the custom match rule of type <b>dotNetWebService</b> with the name objNode
+            * <li>Index  20 : Exports all of the custom match rules of type <b>wcf</b> for the application
+            * <li>Index  21 : Exports the custom match rule of type <b>wcf</b> with the name objNode
+            * <li>Index  22 : Exports all of the custom match rules of type <b>poco</b> for the application
+            * <li>Index  23 : Exports the custom match rule of type <b>poco</b> with the name objNode
+            * <li>Index  24 : Exports all of the custom match rules of type <b>dotNetJms</b> for the application
+            * <li>Index  25 : Exports the custom match rule of type <b>dotNetJms</b> with the name objNode
+            * <li>Index  26 : Exports all of the custom match rules of type <b>dotNetRemoting</b> for the application
+            * <li>Index  27 : Exports the custom match rule of type <b>dotNetRemoting</b> with the name objNode
+            </ul>
+        * <li><b>PHP Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  28 : Exports all of the custom match rules of type <b>phpWeb</b> for the application
+            * <li>Index  29 : Exports the custom match rule of type <b>phpWeb</b> with the name objNode
+            * <li>Index  30 : Exports all of the custom match rules of type <b>phpMvc</b> for the application
+            * <li>Index  31 : Exports the custom match rule of type <b>phpMvc</b> with the name objNode
+            * <li>Index  32 : Exports all of the custom match rules of type <b>phpDrupal</b> for the application
+            * <li>Index  33 : Exports the custom match rule of type <b>phpDrupal</b> with the name objNode
+            * <li>Index  34 : Exports all of the custom match rules of type <b>phpWordpress</b> for the application
+            * <li>Index  35 : Exports the custom match rule of type <b>phpWordpress</b> with the name objNode
+            * <li>Index  36 : Exports all of the custom match rules of type <b>phpCli</b> for the application
+            * <li>Index  37 : Exports the custom match rule of type <b>phpCli</b> with the name objNode
+            * <li>Index  38 : Exports all of the custom match rules of type <b>phpWebService</b> for the application
+            * <li>Index  39 : Exports the custom match rule of type <b>phpWebService</b> with the name objNode
+            * <li>Index  40 : Exports all of the custom match rules of type <b>nodeJsWeb</b> for the application
+            </ul>
+        * <li><b>NodeJS Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  41 : Exports the custom match rule of type <b>nodeJsWeb</b> with the name objNode
+        *   </ul>
+
+     * </ul>
+     * 
      * @param queryIndex The index for this query
      * @param app The name of the application
      * @param tier The name of the tier
@@ -768,55 +857,7 @@ public class RESTAccess2 extends RESTAccess{
      * @return {@link String}
      * 
      *  
-     *  
-     * <ul>
-        * <li>Index  0 : Exports all of the custom match rules of type <b>binaryRemoting</b> for the application
-        * <li>Index  1 : Exports the custom match rules of type <b>binaryRemoting</b> with the name objNode
-        * <li>Index  2 : Exports all of the custom match rules of type <b>servlet</b> for the application
-        * <li>Index  3 : Exports the custom match rules of type <b>servlet</b> with the name objNode
-        * <li>Index  4 : Exports all of the custom match rules of type <b>strutsAction</b> for the application
-        * <li>Index  5 : Exports the custom match rules of type <b>strutsAction</b> with the name objNode
-        * <li>Index  6 : Exports all of the custom match rules of type <b>springBean</b> for the application
-        * <li>Index  7 : Exports the custom match rules of type <b>springBean</b> with the name objNode
-        * <li>Index  8 : Exports all of the custom match rules of type <b>ejb</b> for the application
-        * <li>Index  9 : Exports the custom match rules of type <b>ejb</b> with the name objNode
-        * <li>Index  10 : Exports all of the custom match rules of type <b>pojo</b> for the application
-        * <li>Index  11 : Exports the custom match rules of type <b>pojo</b> with the name objNode
-        * <li>Index  12 : Exports all of the custom match rules of type <b>jms</b> for the application
-        * <li>Index  13 : Exports the custom match rules of type <b>jms</b> with the name objNode
-        * <li>Index  14 : Exports all of the custom match rules of type <b>webService</b> for the application
-        * <li>Index  15 : Exports the custom match rules of type <b>webService</b> with the name objNode
-        * 
-        * <li>Index  16 : Exports all of the custom match rules of type <b>aspDotNet</b> for the application
-        * <li>Index  17 : Exports the custom match rule of type <b>aspDotNet</b> with the name objNode
-        * <li>Index  18: Exports all of the custom match rules of type <b>dotNetWebService</b> for the application
-        * <li>Index  19 : Exports the custom match rule of type <b>dotNetWebService</b> with the name objNode
-        * <li>Index  20 : Exports all of the custom match rules of type <b>wcf</b> for the application
-        * <li>Index  21 : Exports the custom match rule of type <b>wcf</b> with the name objNode
-        * <li>Index  22 : Exports all of the custom match rules of type <b>poco</b> for the application
-        * <li>Index  23 : Exports the custom match rule of type <b>poco</b> with the name objNode
-        * <li>Index  24 : Exports all of the custom match rules of type <b>dotNetJms</b> for the application
-        * <li>Index  25 : Exports the custom match rule of type <b>dotNetJms</b> with the name objNode
-        * <li>Index  26 : Exports all of the custom match rules of type <b>dotNetRemoting</b> for the application
-        * <li>Index  27 : Exports the custom match rule of type <b>dotNetRemoting</b> with the name objNode
-        * 
-        * <li>Index  28 : Exports all of the custom match rules of type <b>phpWeb</b> for the application
-        * <li>Index  29 : Exports the custom match rule of type <b>phpWeb</b> with the name objNode
-        * <li>Index  30 : Exports all of the custom match rules of type <b>phpMvc</b> for the application
-        * <li>Index  31 : Exports the custom match rule of type <b>phpMvc</b> with the name objNode
-        * <li>Index  32 : Exports all of the custom match rules of type <b>phpDrupal</b> for the application
-        * <li>Index  33 : Exports the custom match rule of type <b>phpDrupal</b> with the name objNode
-        * <li>Index  34 : Exports all of the custom match rules of type <b>phpWordpress</b> for the application
-        * <li>Index  35 : Exports the custom match rule of type <b>phpWordpress</b> with the name objNode
-        * <li>Index  36 : Exports all of the custom match rules of type <b>phpCli</b> for the application
-        * <li>Index  37 : Exports the custom match rule of type <b>phpCli</b> with the name objNode
-        * <li>Index  38 : Exports all of the custom match rules of type <b>phpWebService</b> for the application
-        * <li>Index  39 : Exports the custom match rule of type <b>phpWebService</b> with the name objNode
-        * <li>Index  40 : Exports all of the custom match rules of type <b>nodeJsWeb</b> for the application
-        * 
-        * <li>Index  41 : Exports the custom match rule of type <b>nodeJsWeb</b> with the name objNode
-
-     * </ul>
+     * 
      */
     public String getRESTCustomMatchRuleExport(int queryIndex,String app, String tier, String objNode){
         String query=null;
@@ -984,29 +1025,71 @@ public class RESTAccess2 extends RESTAccess{
      *  This will import a custom pojo into the application and tier given.
      * </p>
      * 
+     * 
+     * <ul>
+     *  <li><b>Java Custom Match Rules</b>
+     *      <ul>
+            * <li>Index  0 : Imports all of the custom match rules of type <b>binaryRemoting</b> for the application
+            * <li>Index  1 : Imports the custom match rules of type <b>binaryRemoting</b> with the name objNode
+            * <li>Index  2 : Imports all of the custom match rules of type <b>servlet</b> for the application
+            * <li>Index  3 : Imports the custom match rules of type <b>servlet</b> with the name objNode
+            * <li>Index  4 : Imports all of the custom match rules of type <b>strutsAction</b> for the application
+            * <li>Index  5 : Imports the custom match rules of type <b>strutsAction</b> with the name objNode
+            * <li>Index  6 : Imports all of the custom match rules of type <b>springBean</b> for the application
+            * <li>Index  7 : Imports the custom match rules of type <b>springBean</b> with the name objNode
+            * <li>Index  8 : Imports all of the custom match rules of type <b>ejb</b> for the application
+            * <li>Index  9 : Imports the custom match rules of type <b>ejb</b> with the name objNode
+            * <li>Index  10 : Imports all of the custom match rules of type <b>pojo</b> for the application
+            * <li>Index  11 : Imports the custom match rules of type <b>pojo</b> with the name objNode
+            * <li>Index  12 : Imports all of the custom match rules of type <b>jms</b> for the application
+            * <li>Index  13 : Imports the custom match rules of type <b>jms</b> with the name objNode
+            * <li>Index  14 : Imports all of the custom match rules of type <b>webService</b> for the application
+            * <li>Index  15 : Imports the custom match rules of type <b>webService</b> with the name objNode
+        *   </ul>
+        *<li><b>DotNet Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  16 : Imports all of the custom match rules of type <b>aspDotNet</b> for the application
+            * <li>Index  17 : Imports the custom match rule of type <b>aspDotNet</b> with the name objNode
+            * <li>Index  18 : Imports all of the custom match rules of type <b>dotNetWebService</b> for the application
+            * <li>Index  19 : Imports the custom match rule of type <b>dotNetWebService</b> with the name objNode
+            * <li>Index  20 : Imports all of the custom match rules of type <b>wcf</b> for the application
+            * <li>Index  21 : Imports the custom match rule of type <b>wcf</b> with the name objNode
+            * <li>Index  22 : Imports all of the custom match rules of type <b>poco</b> for the application
+            * <li>Index  23 : Imports the custom match rule of type <b>poco</b> with the name objNode
+            * <li>Index  24 : Imports all of the custom match rules of type <b>dotNetJms</b> for the application
+            * <li>Index  25 : Imports the custom match rule of type <b>dotNetJms</b> with the name objNode
+            * <li>Index  26 : Imports all of the custom match rules of type <b>dotNetRemoting</b> for the application
+            * <li>Index  27 : Imports the custom match rule of type <b>dotNetRemoting</b> with the name objNode
+            </ul>
+        * <li><b>PHP Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  28 : Imports all of the custom match rules of type <b>phpWeb</b> for the application
+            * <li>Index  29 : Imports the custom match rule of type <b>phpWeb</b> with the name objNode
+            * <li>Index  30 : Imports all of the custom match rules of type <b>phpMvc</b> for the application
+            * <li>Index  31 : Imports the custom match rule of type <b>phpMvc</b> with the name objNode
+            * <li>Index  32 : Imports all of the custom match rules of type <b>phpDrupal</b> for the application
+            * <li>Index  33 : Imports the custom match rule of type <b>phpDrupal</b> with the name objNode
+            * <li>Index  34 : Imports all of the custom match rules of type <b>phpWordpress</b> for the application
+            * <li>Index  35 : Imports the custom match rule of type <b>phpWordpress</b> with the name objNode
+            * <li>Index  36 : Imports all of the custom match rules of type <b>phpCli</b> for the application
+            * <li>Index  37 : Imports the custom match rule of type <b>phpCli</b> with the name objNode
+            * <li>Index  38 : Imports all of the custom match rules of type <b>phpWebService</b> for the application
+            * <li>Index  39 : Imports the custom match rule of type <b>phpWebService</b> with the name objNode
+            * <li>Index  40 : Imports all of the custom match rules of type <b>nodeJsWeb</b> for the application
+            </ul>
+        * <li><b>NodeJS Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  41 : Imports the custom match rule of type <b>nodeJsWeb</b> with the name objNode
+        *   </ul>
+
+     * </ul>
+     * 
      * @param queryIndex The index for this query
      * @param app The name of the application
      * @param objNode The name of the custom pojo
      * @param xml Xml string for the custom pojo
      * @return {@link String}
-     * 
-     * 
-     * <p> 
-     * <br>Index 0: Import Java custom match rule binaryRemoting
-     * <br>Index 1: Import Java custom match rule servlet
-     * <br>Index 2: Import Java custom match rule strutsAction
-     * <br>Index 3: Import Java custom match rule springBean
-     * <br>Index 4: Import Java custom match rule ejb
-     * <br>Index 5: Import Java custom match rule pojo
-     * <br>Index 6: Import Java custom match rule jms
-     * <br>Index 7: Import Java custom match rule webService
-     * <br>Index 8: Import DotNet custom match rule aspDotNet
-     * <br>Index 9: Import DotNet custom match rule dotNetWebService
-     * <br>Index 10: Import DotNet custom match rule wcf
-     * <br>Index 11: Import DotNet custom match rule poco
-     * <br>Index 12: Import DotNet custom match rule dotNetJms
-     * <br>Index 13: Import DotNet custom match rule dotNetRemoting
-     * </p>
+
      */
     public String postRESTCustomMatch(int queryIndex, String app, String objNode, String xml){
         
@@ -1162,6 +1245,65 @@ public class RESTAccess2 extends RESTAccess{
      *  This will import a custom pojo into the application and tier given.
      * </p>
      * 
+     * 
+     * <ul>
+     *  <li><b>Java Custom Match Rules</b>
+     *      <ul>
+            * <li>Index  0 : Imports all of the custom match rules of type <b>binaryRemoting</b> for the application
+            * <li>Index  1 : Imports the custom match rules of type <b>binaryRemoting</b> with the name objNode
+            * <li>Index  2 : Imports all of the custom match rules of type <b>servlet</b> for the application
+            * <li>Index  3 : Imports the custom match rules of type <b>servlet</b> with the name objNode
+            * <li>Index  4 : Imports all of the custom match rules of type <b>strutsAction</b> for the application
+            * <li>Index  5 : Imports the custom match rules of type <b>strutsAction</b> with the name objNode
+            * <li>Index  6 : Imports all of the custom match rules of type <b>springBean</b> for the application
+            * <li>Index  7 : Imports the custom match rules of type <b>springBean</b> with the name objNode
+            * <li>Index  8 : Imports all of the custom match rules of type <b>ejb</b> for the application
+            * <li>Index  9 : Imports the custom match rules of type <b>ejb</b> with the name objNode
+            * <li>Index  10 : Imports all of the custom match rules of type <b>pojo</b> for the application
+            * <li>Index  11 : Imports the custom match rules of type <b>pojo</b> with the name objNode
+            * <li>Index  12 : Imports all of the custom match rules of type <b>jms</b> for the application
+            * <li>Index  13 : Imports the custom match rules of type <b>jms</b> with the name objNode
+            * <li>Index  14 : Imports all of the custom match rules of type <b>webService</b> for the application
+            * <li>Index  15 : Imports the custom match rules of type <b>webService</b> with the name objNode
+        *   </ul>
+        *<li><b>DotNet Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  16 : Imports all of the custom match rules of type <b>aspDotNet</b> for the application
+            * <li>Index  17 : Imports the custom match rule of type <b>aspDotNet</b> with the name objNode
+            * <li>Index  18 : Imports all of the custom match rules of type <b>dotNetWebService</b> for the application
+            * <li>Index  19 : Imports the custom match rule of type <b>dotNetWebService</b> with the name objNode
+            * <li>Index  20 : Imports all of the custom match rules of type <b>wcf</b> for the application
+            * <li>Index  21 : Imports the custom match rule of type <b>wcf</b> with the name objNode
+            * <li>Index  22 : Imports all of the custom match rules of type <b>poco</b> for the application
+            * <li>Index  23 : Imports the custom match rule of type <b>poco</b> with the name objNode
+            * <li>Index  24 : Imports all of the custom match rules of type <b>dotNetJms</b> for the application
+            * <li>Index  25 : Imports the custom match rule of type <b>dotNetJms</b> with the name objNode
+            * <li>Index  26 : Imports all of the custom match rules of type <b>dotNetRemoting</b> for the application
+            * <li>Index  27 : Imports the custom match rule of type <b>dotNetRemoting</b> with the name objNode
+            </ul>
+        * <li><b>PHP Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  28 : Imports all of the custom match rules of type <b>phpWeb</b> for the application
+            * <li>Index  29 : Imports the custom match rule of type <b>phpWeb</b> with the name objNode
+            * <li>Index  30 : Imports all of the custom match rules of type <b>phpMvc</b> for the application
+            * <li>Index  31 : Imports the custom match rule of type <b>phpMvc</b> with the name objNode
+            * <li>Index  32 : Imports all of the custom match rules of type <b>phpDrupal</b> for the application
+            * <li>Index  33 : Imports the custom match rule of type <b>phpDrupal</b> with the name objNode
+            * <li>Index  34 : Imports all of the custom match rules of type <b>phpWordpress</b> for the application
+            * <li>Index  35 : Imports the custom match rule of type <b>phpWordpress</b> with the name objNode
+            * <li>Index  36 : Imports all of the custom match rules of type <b>phpCli</b> for the application
+            * <li>Index  37 : Imports the custom match rule of type <b>phpCli</b> with the name objNode
+            * <li>Index  38 : Imports all of the custom match rules of type <b>phpWebService</b> for the application
+            * <li>Index  39 : Imports the custom match rule of type <b>phpWebService</b> with the name objNode
+            * <li>Index  40 : Imports all of the custom match rules of type <b>nodeJsWeb</b> for the application
+            </ul>
+        * <li><b>NodeJS Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  41 : Imports the custom match rule of type <b>nodeJsWeb</b> with the name objNode
+        *   </ul>
+
+     * </ul>
+     * 
      * @param queryIndex The index for this query
      * @param app The name of the application
      * @param objNode The name of the custom pojo
@@ -1169,22 +1311,6 @@ public class RESTAccess2 extends RESTAccess{
      * @return {@link String}
      * 
      * 
-     * <p> 
-     * <br>Index 0: Import Java custom match rule binaryRemoting
-     * <br>Index 1: Import Java custom match rule servlet
-     * <br>Index 2: Import Java custom match rule strutsAction
-     * <br>Index 3: Import Java custom match rule springBean
-     * <br>Index 4: Import Java custom match rule ejb
-     * <br>Index 5: Import Java custom match rule pojo
-     * <br>Index 6: Import Java custom match rule jms
-     * <br>Index 7: Import Java custom match rule webService
-     * <br>Index 8: Import DotNet custom match rule aspDotNet
-     * <br>Index 9: Import DotNet custom match rule dotNetWebService
-     * <br>Index 10: Import DotNet custom match rule wcf
-     * <br>Index 11: Import DotNet custom match rule poco
-     * <br>Index 12: Import DotNet custom match rule dotNetJms
-     * <br>Index 13: Import DotNet custom match rule dotNetRemoting
-     * </p>
      */
     public String postRESTCustomMatch(int queryIndex, String app, String objNode, java.io.FileReader xml1){
         
@@ -1354,6 +1480,65 @@ public class RESTAccess2 extends RESTAccess{
      *  This will import a custom pojo into the application and tier given.
      * </p>
      * 
+     * 
+     * <ul>
+     *  <li><b>Java Custom Match Rules</b>
+     *      <ul>
+            * <li>Index  0 : Imports all of the custom match rules of type <b>binaryRemoting</b> for the application
+            * <li>Index  1 : Imports the custom match rules of type <b>binaryRemoting</b> with the name objNode
+            * <li>Index  2 : Imports all of the custom match rules of type <b>servlet</b> for the application
+            * <li>Index  3 : Imports the custom match rules of type <b>servlet</b> with the name objNode
+            * <li>Index  4 : Imports all of the custom match rules of type <b>strutsAction</b> for the application
+            * <li>Index  5 : Imports the custom match rules of type <b>strutsAction</b> with the name objNode
+            * <li>Index  6 : Imports all of the custom match rules of type <b>springBean</b> for the application
+            * <li>Index  7 : Imports the custom match rules of type <b>springBean</b> with the name objNode
+            * <li>Index  8 : Imports all of the custom match rules of type <b>ejb</b> for the application
+            * <li>Index  9 : Imports the custom match rules of type <b>ejb</b> with the name objNode
+            * <li>Index  10 : Imports all of the custom match rules of type <b>pojo</b> for the application
+            * <li>Index  11 : Imports the custom match rules of type <b>pojo</b> with the name objNode
+            * <li>Index  12 : Imports all of the custom match rules of type <b>jms</b> for the application
+            * <li>Index  13 : Imports the custom match rules of type <b>jms</b> with the name objNode
+            * <li>Index  14 : Imports all of the custom match rules of type <b>webService</b> for the application
+            * <li>Index  15 : Imports the custom match rules of type <b>webService</b> with the name objNode
+        *   </ul>
+        *<li><b>DotNet Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  16 : Imports all of the custom match rules of type <b>aspDotNet</b> for the application
+            * <li>Index  17 : Imports the custom match rule of type <b>aspDotNet</b> with the name objNode
+            * <li>Index  18 : Imports all of the custom match rules of type <b>dotNetWebService</b> for the application
+            * <li>Index  19 : Imports the custom match rule of type <b>dotNetWebService</b> with the name objNode
+            * <li>Index  20 : Imports all of the custom match rules of type <b>wcf</b> for the application
+            * <li>Index  21 : Imports the custom match rule of type <b>wcf</b> with the name objNode
+            * <li>Index  22 : Imports all of the custom match rules of type <b>poco</b> for the application
+            * <li>Index  23 : Imports the custom match rule of type <b>poco</b> with the name objNode
+            * <li>Index  24 : Imports all of the custom match rules of type <b>dotNetJms</b> for the application
+            * <li>Index  25 : Imports the custom match rule of type <b>dotNetJms</b> with the name objNode
+            * <li>Index  26 : Imports all of the custom match rules of type <b>dotNetRemoting</b> for the application
+            * <li>Index  27 : Imports the custom match rule of type <b>dotNetRemoting</b> with the name objNode
+            </ul>
+        * <li><b>PHP Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  28 : Imports all of the custom match rules of type <b>phpWeb</b> for the application
+            * <li>Index  29 : Imports the custom match rule of type <b>phpWeb</b> with the name objNode
+            * <li>Index  30 : Imports all of the custom match rules of type <b>phpMvc</b> for the application
+            * <li>Index  31 : Imports the custom match rule of type <b>phpMvc</b> with the name objNode
+            * <li>Index  32 : Imports all of the custom match rules of type <b>phpDrupal</b> for the application
+            * <li>Index  33 : Imports the custom match rule of type <b>phpDrupal</b> with the name objNode
+            * <li>Index  34 : Imports all of the custom match rules of type <b>phpWordpress</b> for the application
+            * <li>Index  35 : Imports the custom match rule of type <b>phpWordpress</b> with the name objNode
+            * <li>Index  36 : Imports all of the custom match rules of type <b>phpCli</b> for the application
+            * <li>Index  37 : Imports the custom match rule of type <b>phpCli</b> with the name objNode
+            * <li>Index  38 : Imports all of the custom match rules of type <b>phpWebService</b> for the application
+            * <li>Index  39 : Imports the custom match rule of type <b>phpWebService</b> with the name objNode
+            * <li>Index  40 : Imports all of the custom match rules of type <b>nodeJsWeb</b> for the application
+            </ul>
+        * <li><b>NodeJS Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  41 : Imports the custom match rule of type <b>nodeJsWeb</b> with the name objNode
+        *   </ul>
+
+     * </ul>
+     * 
      * @param queryIndex The index of the query
      * @param app The name of the application
      * @param tier The name of the tier
@@ -1361,22 +1546,8 @@ public class RESTAccess2 extends RESTAccess{
      * @param xml Xml string for the custom pojo
      * @return {@link String}
      * 
-     * <p> 
-     * <br>Index 0: Import Java custom match rule binaryRemoting
-     * <br>Index 1: Import Java custom match rule servlet
-     * <br>Index 2: Import Java custom match rule strutsAction
-     * <br>Index 3: Import Java custom match rule springBean
-     * <br>Index 4: Import Java custom match rule ejb
-     * <br>Index 5: Import Java custom match rule pojo
-     * <br>Index 6: Import Java custom match rule jms
-     * <br>Index 7: Import Java custom match rule webService
-     * <br>Index 8: Import DotNet custom match rule aspDotNet
-     * <br>Index 9: Import DotNet custom match rule dotNetWebService
-     * <br>Index 10: Import DotNet custom match rule wcf
-     * <br>Index 11: Import DotNet custom match rule poco
-     * <br>Index 12: Import DotNet custom match rule dotNetJms
-     * <br>Index 13: Import DotNet custom match rule dotNetRemoting
-     * </p>
+
+* 
      */
     public String postRESTCustomMatch(int queryIndex, String app, String tier, String objNode, String xml){
         
@@ -1532,6 +1703,65 @@ public class RESTAccess2 extends RESTAccess{
      *  This will import a custom pojo into the application and tier given.
      * </p>
      * 
+     * 
+     * <ul>
+     *  <li><b>Java Custom Match Rules</b>
+     *      <ul>
+            * <li>Index  0 : Imports all of the custom match rules of type <b>binaryRemoting</b> for the application
+            * <li>Index  1 : Imports the custom match rules of type <b>binaryRemoting</b> with the name objNode
+            * <li>Index  2 : Imports all of the custom match rules of type <b>servlet</b> for the application
+            * <li>Index  3 : Imports the custom match rules of type <b>servlet</b> with the name objNode
+            * <li>Index  4 : Imports all of the custom match rules of type <b>strutsAction</b> for the application
+            * <li>Index  5 : Imports the custom match rules of type <b>strutsAction</b> with the name objNode
+            * <li>Index  6 : Imports all of the custom match rules of type <b>springBean</b> for the application
+            * <li>Index  7 : Imports the custom match rules of type <b>springBean</b> with the name objNode
+            * <li>Index  8 : Imports all of the custom match rules of type <b>ejb</b> for the application
+            * <li>Index  9 : Imports the custom match rules of type <b>ejb</b> with the name objNode
+            * <li>Index  10 : Imports all of the custom match rules of type <b>pojo</b> for the application
+            * <li>Index  11 : Imports the custom match rules of type <b>pojo</b> with the name objNode
+            * <li>Index  12 : Imports all of the custom match rules of type <b>jms</b> for the application
+            * <li>Index  13 : Imports the custom match rules of type <b>jms</b> with the name objNode
+            * <li>Index  14 : Imports all of the custom match rules of type <b>webService</b> for the application
+            * <li>Index  15 : Imports the custom match rules of type <b>webService</b> with the name objNode
+        *   </ul>
+        *<li><b>DotNet Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  16 : Imports all of the custom match rules of type <b>aspDotNet</b> for the application
+            * <li>Index  17 : Imports the custom match rule of type <b>aspDotNet</b> with the name objNode
+            * <li>Index  18 : Imports all of the custom match rules of type <b>dotNetWebService</b> for the application
+            * <li>Index  19 : Imports the custom match rule of type <b>dotNetWebService</b> with the name objNode
+            * <li>Index  20 : Imports all of the custom match rules of type <b>wcf</b> for the application
+            * <li>Index  21 : Imports the custom match rule of type <b>wcf</b> with the name objNode
+            * <li>Index  22 : Imports all of the custom match rules of type <b>poco</b> for the application
+            * <li>Index  23 : Imports the custom match rule of type <b>poco</b> with the name objNode
+            * <li>Index  24 : Imports all of the custom match rules of type <b>dotNetJms</b> for the application
+            * <li>Index  25 : Imports the custom match rule of type <b>dotNetJms</b> with the name objNode
+            * <li>Index  26 : Imports all of the custom match rules of type <b>dotNetRemoting</b> for the application
+            * <li>Index  27 : Imports the custom match rule of type <b>dotNetRemoting</b> with the name objNode
+            </ul>
+        * <li><b>PHP Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  28 : Imports all of the custom match rules of type <b>phpWeb</b> for the application
+            * <li>Index  29 : Imports the custom match rule of type <b>phpWeb</b> with the name objNode
+            * <li>Index  30 : Imports all of the custom match rules of type <b>phpMvc</b> for the application
+            * <li>Index  31 : Imports the custom match rule of type <b>phpMvc</b> with the name objNode
+            * <li>Index  32 : Imports all of the custom match rules of type <b>phpDrupal</b> for the application
+            * <li>Index  33 : Imports the custom match rule of type <b>phpDrupal</b> with the name objNode
+            * <li>Index  34 : Imports all of the custom match rules of type <b>phpWordpress</b> for the application
+            * <li>Index  35 : Imports the custom match rule of type <b>phpWordpress</b> with the name objNode
+            * <li>Index  36 : Imports all of the custom match rules of type <b>phpCli</b> for the application
+            * <li>Index  37 : Imports the custom match rule of type <b>phpCli</b> with the name objNode
+            * <li>Index  38 : Imports all of the custom match rules of type <b>phpWebService</b> for the application
+            * <li>Index  39 : Imports the custom match rule of type <b>phpWebService</b> with the name objNode
+            * <li>Index  40 : Imports all of the custom match rules of type <b>nodeJsWeb</b> for the application
+            </ul>
+        * <li><b>NodeJS Custom Match Rules</b>
+        *   <ul>
+            * <li>Index  41 : Imports the custom match rule of type <b>nodeJsWeb</b> with the name objNode
+        *   </ul>
+
+     * </ul>
+     * 
      * @param queryIndex The index of the query
      * @param app The name of the application
      * @param tier The name of the tier
@@ -1539,22 +1769,8 @@ public class RESTAccess2 extends RESTAccess{
      * @param xml1 Xml FileReader for the custom pojo
      * @return {@link String}
      * 
-     * <p> 
-     * <br>Index 0: Import Java custom match rule binaryRemoting
-     * <br>Index 1: Import Java custom match rule servlet
-     * <br>Index 2: Import Java custom match rule strutsAction
-     * <br>Index 3: Import Java custom match rule springBean
-     * <br>Index 4: Import Java custom match rule ejb
-     * <br>Index 5: Import Java custom match rule pojo
-     * <br>Index 6: Import Java custom match rule jms
-     * <br>Index 7: Import Java custom match rule webService
-     * <br>Index 8: Import DotNet custom match rule aspDotNet
-     * <br>Index 9: Import DotNet custom match rule dotNetWebService
-     * <br>Index 10: Import DotNet custom match rule wcf
-     * <br>Index 11: Import DotNet custom match rule poco
-     * <br>Index 12: Import DotNet custom match rule dotNetJms
-     * <br>Index 13: Import DotNet custom match rule dotNetRemoting
-     * </p>
+
+* 
      */
     public String postRESTCustomMatch(int queryIndex, String app, String tier, String objNode, java.io.FileReader xml1){
         

@@ -466,6 +466,7 @@ public class RESTAccess {
      * <p>
      * Returns the list of snapshot for the application id given and filtering provided in the RequestSnapshots object.
      * </p>
+     * 
      * @param application Id of the application
      * @param start Timestamp of the start time
      * @param end Timestamp of the end time
@@ -485,6 +486,7 @@ public class RESTAccess {
      * <p>
      * Returns the list of snapshot for the application id given and filtering provided in the RequestSnapshots object.
      * </p>
+     * 
      * @param application Name of the application
      * @param start Timestamp of the start time
      * @param end Timestamp of the end time
@@ -672,6 +674,7 @@ public class RESTAccess {
      * <p>
      * Return the list of nodes for the application name and tier name given.
      * </p>
+     * 
      * @param application Name of the application
      * @param tier Name of the tier
      * @return {@link Nodes}
@@ -690,6 +693,7 @@ public class RESTAccess {
      * <p>
      * Return the list of nodes for the application id and tier name given.
      * </p>
+     * 
      * @param application Id of the application
      * @param tier Name of the tier
      * @return {@link Nodes}
@@ -727,6 +731,7 @@ public class RESTAccess {
      * <p>
      * Return the list of nodes for the application id and tier id given.
      * </p>
+     * 
      * @param application Id of the application
      * @param tier Id of the tier
      * @return {@link Nodes}
@@ -745,6 +750,7 @@ public class RESTAccess {
      * <p>
      * Returns the nodes for an application name given.
      * </p>
+     * 
      * @param application Name of the application
      * @return {@link Nodes}
      */
@@ -761,6 +767,7 @@ public class RESTAccess {
      * <p>
      * Returns the nodes for an application id given.
      * </p>
+     * 
      * @param application Id of the application 
      * @return {@link Nodes}
      */
@@ -778,6 +785,7 @@ public class RESTAccess {
      * <p>
      * Returns the node for the application name and node id given.
      * </p>
+     * 
      * @param application Name of the application
      * @param nodeId id of the Node
      * @return {@link Nodes}
@@ -829,6 +837,7 @@ public class RESTAccess {
      * <p>
      * Returns the health rule violations for an application name given.
      * </p>
+     * 
      * @param application Name of the application
      * @param start Timestamp of the start time
      * @param end Timestamp of the end time
@@ -848,6 +857,7 @@ public class RESTAccess {
      * <p>
      * Returns the policy violations for an application name given.
      * </p>
+     * 
      * @param application Name of the application
      * @param start Timestamp for the start time
      * @param end Timestamp for the end time
@@ -866,6 +876,7 @@ public class RESTAccess {
      * <p>
      * Returns the events for an application name, event types and severities given.
      * </p>
+     * 
      * @param application Name of the application
      * @param eventTypes Event types to request, comma delimited list
      * @param severities Severities to request, comma delimited list
@@ -896,98 +907,129 @@ public class RESTAccess {
      * Case statement looks at the queryIndex to determine the proper Query string.
      * </p>
      * 
+     *
+     * 
+     * <ul>
+     *  <li><b>Agent Availability</b>
+     *      <ul>
+            * <li>Index 0  : Application Agent
+            * <li>Index 1  : Machine Agent
+     *      </ul>
+     *  <li><b>Hardware Metrics</b>
+     *      <ul>
+            * <li>Index 2  : queryHDTierCPUBusy
+            * <li>Index 3  : queryHDTierCPUIdle
+            * <li>Index 4  : queryHDTierCPUStolen
+            * <li>Index 5  : queryHDTierDisksKBReadPerSec
+            * <li>Index 6  : queryHDTierDisksKBWrittenPerSec
+            * <li>Index 7  : queryHDTierDisksReadPerSec
+            * <li>Index 8  : queryHDTierDisksWritesPerSec
+            * <li>Index 9  : queryHDTierMemoryFreePerc
+            * <li>Index 10 : queryHDTierMemoryFreeMB
+            * <li>Index 11 : queryHDTierMemoryTotalMB
+            * <li>Index 12 : queryHDTierMemoryUsedPerc
+            * <li>Index 13 : queryHDTierMemoryUsedMB
+            * <li>Index 14 : queryHDTierNetworkIncomingKB
+            * <li>Index 15 : queryHDTierNetworkIncomingKBPerSec
+            * <li>Index 16 : queryHDTierNetworkIncomingPackets
+            * <li>Index 17 : queryHDTierNetworkIncomingPacketsPerSec
+            * <li>Index 18 : queryHDTierNetworkOutgoingKB
+            * <li>Index 19 : queryHDTierNetworkOutgoingKBPerSec
+            * <li>Index 20 : queryHDTierNetworkOutgoingPackets
+            * <li>Index 21 : queryHDTierNetworkOutgoingPacketsPerSec
+            * <li>Index 22 : queryHDNodeSystemRQ
+     *      </ul>
+     *  <li><b>JVM Metrics</b>
+     *      <ul>
+     *          <li><b>Process Metrics</b>
+     *              <ul>
+                    * <li>Index 23 : queryJVMTierProcessCPUBurntMSPerMin
+                    * <li>Index 24 : queryJVMTierProcessCPUUsagePerc
+            *       </ul>
+            *   <li><b>Garbage Collection Metrics</b>
+            *       <ul>
+                    * <li>Index 25 : queryJVMTierGarbageCollectionGCTimeSpentPerMin
+                    * <li>Index 26 : queryJVMTierGarbageCollectionMajorCollectionTimeSpentPerMin
+                    * <li>Index 27 : queryJVMTierGarbageCollectionMinorCollectionTimeSpentPerMin
+                    * <li>Index 28 : queryJVMTierGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin
+                    * <li>Index 29 : queryJVMTierGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin
+                    * <li>Index 30 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCommittedMB
+                      <li>Index 31 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCurrentUsage
+                      <li>Index 32 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheMaxAvailableMB
+                      <li>Index 33 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCommittedMB
+                      <li>Index 34 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCurrentUsage
+                      <li>Index 35 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceMaxAvailableMB
+                      <li>Index 36 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCommittedMB
+                      <li>Index 37 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCurrentUsage
+                      <li>Index 38 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenMaxAvailableMB
+                      <li>Index 39 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCommittedMB
+                      <li>Index 40 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCurrentUsage
+                      <li>Index 41 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenMaxAvailableMB
+                      <li>Index 42 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCommittedMB
+                      <li>Index 43 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCurrentUsage
+                      <li>Index 44 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceMaxAvailableMB
+            *       </ul>
+            *   <li><b>Memory</b>
+            *       <ul>
+                    * <li>Index 45 : queryJVMTierMemoryHeapCommittedMB
+                    * <li>Index 46 : queryJVMTierMemoryHeapCurrentUsageMB
+                    * <li>Index 47 : queryJVMTierMemoryHeapMaxAvailableMB
+                    * <li>Index 48 : queryJVMTierMemoryHeapUsedPerc
+                    * <li>Index 49 : queryJVMTierMemoryNonHeapCommittedMB
+                    * <li>Index 50 : queryJVMTierMemoryNonHeapCurrentUsageMB
+                    * <li>Index 51 : queryJVMTierMemoryNonHeapMaxAvailableMB
+                    * <li>Index 52 : queryJVMTierMemoryNonHeapUsedPerc
+            *       </ul>
+            *   <li><b>Thread Metric</b>
+            *       <ul>
+                    * <li>Index 53 : queryJVMTierThreadsCurrentNoOfThreads
+            *       </ul>
+            </ul>
+     *  <li><b>Overall Application Performance</b>
+     *      <ul>
+            * <li>Index 54 : queryOAPTierStallCount
+            * <li>Index 55 : queryOAPTierNumberOfVerySlowCalls
+            * <li>Index 56 : queryOAPTierNumberOfSlowCalls
+            * <li>Index 57 : queryOAPTierInfrastructureErrorsPerMinute
+            * <li>Index 58 : queryOAPTierHttpErrorCodesPerMinute
+            * <li>Index 59 : queryOAPTierExceptionsPerMinute
+            * <li>Index 60 : queryOAPTierErrorsPerMinute
+            * <li>Index 61 : queryOAPTierErrorPageRedirectsPerMinute
+            * <li>Index 62 : queryOAPTierCallsPerMinute
+            * <li>Index 63 : queryOAPTierAvgResponseTimeMS
+     *      </ul>
+
+*       <p>
+         In order to make queries more efficient the following options were added to collect multiple 
+         metrics from a a single tier or node.
+        </p>
+        <li><b>Multi Metric Queries</b>
+        * <ul>
+            <li>Index 100 : queryHDNodeCPUAll
+            <li>Index 101 : queryHDNodeDisksAll
+            <li>Index 102 : queryHDNodeMemoryAll
+            <li>Index 103 : queryHDNodeNetworkAll
+            <li>Index 104 : queryHDNodeSystemAll
+            <li>Index 105 : queryJVMNodeProcessCPUAll
+            <li>Index 106 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheAll
+            <li>Index 107 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceAll
+            <li>Index 108 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenAll
+            <li>Index 109 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenAll
+            <li>Index 110 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceAll
+            <li>Index 111 : queryJVMNodeGarbageCollectionAll
+            <li>Index 112 : queryJVMNodeMemoryHeapAll
+            <li>Index 113 : queryJVMNodeMemoryNonHeapAll
+            <li>Index 114 : queryOAPNodeAll
+        * </ul>
+     * </ul>
+     * 
+     *  
      * @param queryIndex Index of the type of query to run
      * @param application Name of the application which holds the metric
      * @param tier Name of the tier which holds the metric
      * @param start Timestamp in milliseconds for the start time for the query
      * @param end Timestamp in milliseconds for the end time for the query
      * @return {@link MetricDatas}
-     * 
-     * <p>
-     * <br>Index 0  : queyrAgentTierAppAgentAvailability
-     * <br>Index 1  : queryAgentTierMachineAgentAvailability
-     * <br>Index 2  : queryHDTierCPUBusy
-     * <br>Index 3  : queryHDTierCPUIdle
-     * <br>Index 4  : queryHDTierCPUStolen
-     * <br>Index 5  : queryHDTierDisksKBReadPerSec
-     * <br>Index 6  : queryHDTierDisksKBWrittenPerSec
-     * <br>Index 7  : queryHDTierDisksReadPerSec
-     * <br>Index 8  : queryHDTierDisksWritesPerSec
-     * <br>Index 9  : queryHDTierMemoryFreePerc
-     * <br>Index 10 : queryHDTierMemoryFreeMB
-     * <br>Index 11 : queryHDTierMemoryTotalMB
-     * <br>Index 12 : queryHDTierMemoryUsedPerc
-     * <br>Index 13 : queryHDTierMemoryUsedMB
-     * <br>Index 14 : queryHDTierNetworkIncomingKB
-     * <br>Index 15 : queryHDTierNetworkIncomingKBPerSec
-     * <br>Index 16 : queryHDTierNetworkIncomingPackets
-     * <br>Index 17 : queryHDTierNetworkIncomingPacketsPerSec
-     * <br>Index 18 : queryHDTierNetworkOutgoingKB
-     * <br>Index 19 : queryHDTierNetworkOutgoingKBPerSec
-     * <br>Index 20 : queryHDTierNetworkOutgoingPackets
-     * <br>Index 21 : queryHDTierNetworkOutgoingPacketsPerSec
-     * <br>Index 22 : queryJVMTierProcessCPUBurntMSPerMin
-     * <br>Index 23 : queryJVMTierProcessCPUUsagePerc
-     * <br>Index 24 : queryJVMTierGarbageCollectionGCTimeSpentPerMin
-     * <br>Index 25 : queryJVMTierGarbageCollectionMajorCollectionTimeSpentPerMin
-     * <br>Index 26 : queryJVMTierGarbageCollectionMinorCollectionTimeSpentPerMin
-     * <br>Index 27 : queryJVMTierGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin
-     * <br>Index 28 : queryJVMTierGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin
-     * <br>Index 29 : queryJVMTierMemoryHeapCommittedMB
-     * <br>Index 30 : queryJVMTierMemoryHeapCurrentUsageMB
-     * <br>Index 31 : queryJVMTierMemoryHeapMaxAvailableMB
-     * <br>Index 32 : queryJVMTierMemoryHeapUsedPerc
-     * <br>Index 33 : queryJVMTierMemoryNonHeapCommittedMB
-     * <br>Index 34 : queryJVMTierMemoryNonHeapCurrentUsageMB
-     * <br>Index 35 : queryJVMTierMemoryNonHeapMaxAvailableMB
-     * <br>Index 36 : queryJVMTierMemoryNonHeapUsedPerc
-     * <br>Index 37 : queryJVMTierThreadsCurrentNoOfThreads
-     * <br>Index 38 : queryOAPTierStallCount
-     * <br>Index 39 : queryOAPTierNumberOfVerySlowCalls
-     * <br>Index 40 : queryOAPTierNumberOfSlowCalls
-     * <br>Index 41 : queryOAPTierInfrastructureErrorsPerMinute
-     * <br>Index 42 : queryOAPTierHttpErrorCodesPerMinute
-     * <br>Index 43 : queryOAPTierExceptionsPerMinute
-     * <br>Index 44 : queryOAPTierErrorsPerMinute
-     * <br>Index 45 : queryOAPTierErrorPageRedirectsPerMinute
-     * <br>Index 46 : queryOAPTierCallsPerMinute
-     * <br>Index 47 : queryOAPTierAvgResponseTimeMS
-     * <br>Index 48 : queryHDNodeSystemRQ
-     * <br>Index 49 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCommittedMB
-        <br>Index 50 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCurrentUsage
-        <br>Index 51 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheMaxAvailableMB
-        <br>Index 52 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCommittedMB
-        <br>Index 53 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCurrentUsage
-        <br>Index 54 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceMaxAvailableMB
-        <br>Index 55 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCommittedMB
-        <br>Index 56 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCurrentUsage
-        <br>Index 57 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenMaxAvailableMB
-        <br>Index 58 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCommittedMB
-        <br>Index 59 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCurrentUsage
-        <br>Index 60 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenMaxAvailableMB
-        <br>Index 61 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCommittedMB
-        <br>Index 62 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCurrentUsage
-        <br>Index 63 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceMaxAvailableMB
-        </p>
-        <p>
-        * In order to make queries more efficient the following options were added to collect multiple 
-        * metrics from a a single tier or node.
-        <br>Index 100 : queryHDNodeCPUAll
-        <br>Index 101 : queryHDNodeDisksAll
-        <br>Index 102 : queryHDNodeMemoryAll
-        <br>Index 103 : queryHDNodeNetworkAll
-        <br>Index 104 : queryHDNodeSystemAll
-        <br>Index 105 : queryJVMNodeProcessCPUAll
-        <br>Index 106 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheAll
-        <br>Index 107 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceAll
-        <br>Index 108 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenAll
-        <br>Index 109 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenAll
-        <br>Index 110 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceAll
-        <br>Index 111 : queryJVMNodeGarbageCollectionAll
-        <br>Index 112 : queryJVMNodeMemoryHeapAll
-        <br>Index 113 : queryJVMNodeMemoryNonHeapAll
-        <br>Index 114 : queryOAPNodeAll
-     * </p>
      * 
      */
     public MetricDatas getRESTMetricQuery(int queryIndex, String application, String tier, long start, long end){
@@ -1009,91 +1051,122 @@ public class RESTAccess {
      * @param rollup Boolean determines whether to roll up the metrics
      * @return {@link MetricDatas}
      * 
-     * <p>
-     * <br>Index 0  : queyrAgentTierAppAgentAvailability
-     * <br>Index 1  : queryAgentTierMachineAgentAvailability
-     * <br>Index 2  : queryHDTierCPUBusy
-     * <br>Index 3  : queryHDTierCPUIdle
-     * <br>Index 4  : queryHDTierCPUStolen
-     * <br>Index 5  : queryHDTierDisksKBReadPerSec
-     * <br>Index 6  : queryHDTierDisksKBWrittenPerSec
-     * <br>Index 7  : queryHDTierDisksReadPerSec
-     * <br>Index 8  : queryHDTierDisksWritesPerSec
-     * <br>Index 9  : queryHDTierMemoryFreePerc
-     * <br>Index 10 : queryHDTierMemoryFreeMB
-     * <br>Index 11 : queryHDTierMemoryTotalMB
-     * <br>Index 12 : queryHDTierMemoryUsedPerc
-     * <br>Index 13 : queryHDTierMemoryUsedMB
-     * <br>Index 14 : queryHDTierNetworkIncomingKB
-     * <br>Index 15 : queryHDTierNetworkIncomingKBPerSec
-     * <br>Index 16 : queryHDTierNetworkIncomingPackets
-     * <br>Index 17 : queryHDTierNetworkIncomingPacketsPerSec
-     * <br>Index 18 : queryHDTierNetworkOutgoingKB
-     * <br>Index 19 : queryHDTierNetworkOutgoingKBPerSec
-     * <br>Index 20 : queryHDTierNetworkOutgoingPackets
-     * <br>Index 21 : queryHDTierNetworkOutgoingPacketsPerSec
-     * <br>Index 22 : queryJVMTierProcessCPUBurntMSPerMin
-     * <br>Index 23 : queryJVMTierProcessCPUUsagePerc
-     * <br>Index 24 : queryJVMTierGarbageCollectionGCTimeSpentPerMin
-     * <br>Index 25 : queryJVMTierGarbageCollectionMajorCollectionTimeSpentPerMin
-     * <br>Index 26 : queryJVMTierGarbageCollectionMinorCollectionTimeSpentPerMin
-     * <br>Index 27 : queryJVMTierGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin
-     * <br>Index 28 : queryJVMTierGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin
-     * <br>Index 29 : queryJVMTierMemoryHeapCommittedMB
-     * <br>Index 30 : queryJVMTierMemoryHeapCurrentUsageMB
-     * <br>Index 31 : queryJVMTierMemoryHeapMaxAvailableMB
-     * <br>Index 32 : queryJVMTierMemoryHeapUsedPerc
-     * <br>Index 33 : queryJVMTierMemoryNonHeapCommittedMB
-     * <br>Index 34 : queryJVMTierMemoryNonHeapCurrentUsageMB
-     * <br>Index 35 : queryJVMTierMemoryNonHeapMaxAvailableMB
-     * <br>Index 36 : queryJVMTierMemoryNonHeapUsedPerc
-     * <br>Index 37 : queryJVMTierThreadsCurrentNoOfThreads
-     * <br>Index 38 : queryOAPTierStallCount
-     * <br>Index 39 : queryOAPTierNumberOfVerySlowCalls
-     * <br>Index 40 : queryOAPTierNumberOfSlowCalls
-     * <br>Index 41 : queryOAPTierInfrastructureErrorsPerMinute
-     * <br>Index 42 : queryOAPTierHttpErrorCodesPerMinute
-     * <br>Index 43 : queryOAPTierExceptionsPerMinute
-     * <br>Index 44 : queryOAPTierErrorsPerMinute
-     * <br>Index 45 : queryOAPTierErrorPageRedirectsPerMinute
-     * <br>Index 46 : queryOAPTierCallsPerMinute
-     * <br>Index 47 : queryOAPTierAvgResponseTimeMS
-     * <br>Index 48 : queryHDNodeSystemRQ
-     * <br>Index 49 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCommittedMB
-        <br>Index 50 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCurrentUsage
-        <br>Index 51 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheMaxAvailableMB
-        <br>Index 52 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCommittedMB
-        <br>Index 53 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCurrentUsage
-        <br>Index 54 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceMaxAvailableMB
-        <br>Index 55 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCommittedMB
-        <br>Index 56 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCurrentUsage
-        <br>Index 57 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenMaxAvailableMB
-        <br>Index 58 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCommittedMB
-        <br>Index 59 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCurrentUsage
-        <br>Index 60 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenMaxAvailableMB
-        <br>Index 61 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCommittedMB
-        <br>Index 62 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCurrentUsage
-        <br>Index 63 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceMaxAvailableMB
+     * 
+     * 
+     * 
+     * <ul>
+     *  <li><b>Agent Availability</b>
+     *      <ul>
+            * <li>Index 0  : Application Agent
+            * <li>Index 1  : Machine Agent
+     *      </ul>
+     *  <li><b>Hardware Metrics</b>
+     *      <ul>
+            * <li>Index 2  : queryHDTierCPUBusy
+            * <li>Index 3  : queryHDTierCPUIdle
+            * <li>Index 4  : queryHDTierCPUStolen
+            * <li>Index 5  : queryHDTierDisksKBReadPerSec
+            * <li>Index 6  : queryHDTierDisksKBWrittenPerSec
+            * <li>Index 7  : queryHDTierDisksReadPerSec
+            * <li>Index 8  : queryHDTierDisksWritesPerSec
+            * <li>Index 9  : queryHDTierMemoryFreePerc
+            * <li>Index 10 : queryHDTierMemoryFreeMB
+            * <li>Index 11 : queryHDTierMemoryTotalMB
+            * <li>Index 12 : queryHDTierMemoryUsedPerc
+            * <li>Index 13 : queryHDTierMemoryUsedMB
+            * <li>Index 14 : queryHDTierNetworkIncomingKB
+            * <li>Index 15 : queryHDTierNetworkIncomingKBPerSec
+            * <li>Index 16 : queryHDTierNetworkIncomingPackets
+            * <li>Index 17 : queryHDTierNetworkIncomingPacketsPerSec
+            * <li>Index 18 : queryHDTierNetworkOutgoingKB
+            * <li>Index 19 : queryHDTierNetworkOutgoingKBPerSec
+            * <li>Index 20 : queryHDTierNetworkOutgoingPackets
+            * <li>Index 21 : queryHDTierNetworkOutgoingPacketsPerSec
+            * <li>Index 22 : queryHDNodeSystemRQ
+     *      </ul>
+     *  <li><b>JVM Metrics</b>
+     *      <ul>
+     *          <li><b>Process Metrics</b>
+     *              <ul>
+                    * <li>Index 23 : queryJVMTierProcessCPUBurntMSPerMin
+                    * <li>Index 24 : queryJVMTierProcessCPUUsagePerc
+            *       </ul>
+            *   <li><b>Garbage Collection Metrics</b>
+            *       <ul>
+                    * <li>Index 25 : queryJVMTierGarbageCollectionGCTimeSpentPerMin
+                    * <li>Index 26 : queryJVMTierGarbageCollectionMajorCollectionTimeSpentPerMin
+                    * <li>Index 27 : queryJVMTierGarbageCollectionMinorCollectionTimeSpentPerMin
+                    * <li>Index 28 : queryJVMTierGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin
+                    * <li>Index 29 : queryJVMTierGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin
+                    * <li>Index 30 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCommittedMB
+                      <li>Index 31 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCurrentUsage
+                      <li>Index 32 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheMaxAvailableMB
+                      <li>Index 33 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCommittedMB
+                      <li>Index 34 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCurrentUsage
+                      <li>Index 35 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceMaxAvailableMB
+                      <li>Index 36 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCommittedMB
+                      <li>Index 37 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCurrentUsage
+                      <li>Index 38 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenMaxAvailableMB
+                      <li>Index 39 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCommittedMB
+                      <li>Index 40 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCurrentUsage
+                      <li>Index 41 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenMaxAvailableMB
+                      <li>Index 42 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCommittedMB
+                      <li>Index 43 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCurrentUsage
+                      <li>Index 44 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceMaxAvailableMB
+            *       </ul>
+            *   <li><b>Memory</b>
+            *       <ul>
+                    * <li>Index 45 : queryJVMTierMemoryHeapCommittedMB
+                    * <li>Index 46 : queryJVMTierMemoryHeapCurrentUsageMB
+                    * <li>Index 47 : queryJVMTierMemoryHeapMaxAvailableMB
+                    * <li>Index 48 : queryJVMTierMemoryHeapUsedPerc
+                    * <li>Index 49 : queryJVMTierMemoryNonHeapCommittedMB
+                    * <li>Index 50 : queryJVMTierMemoryNonHeapCurrentUsageMB
+                    * <li>Index 51 : queryJVMTierMemoryNonHeapMaxAvailableMB
+                    * <li>Index 52 : queryJVMTierMemoryNonHeapUsedPerc
+            *       </ul>
+            *   <li><b>Thread Metric</b>
+            *       <ul>
+                    * <li>Index 53 : queryJVMTierThreadsCurrentNoOfThreads
+            *       </ul>
+            </ul>
+     *  <li><b>Overall Application Performance</b>
+     *      <ul>
+            * <li>Index 54 : queryOAPTierStallCount
+            * <li>Index 55 : queryOAPTierNumberOfVerySlowCalls
+            * <li>Index 56 : queryOAPTierNumberOfSlowCalls
+            * <li>Index 57 : queryOAPTierInfrastructureErrorsPerMinute
+            * <li>Index 58 : queryOAPTierHttpErrorCodesPerMinute
+            * <li>Index 59 : queryOAPTierExceptionsPerMinute
+            * <li>Index 60 : queryOAPTierErrorsPerMinute
+            * <li>Index 61 : queryOAPTierErrorPageRedirectsPerMinute
+            * <li>Index 62 : queryOAPTierCallsPerMinute
+            * <li>Index 63 : queryOAPTierAvgResponseTimeMS
+     *      </ul>
+
+*       <p>
+         In order to make queries more efficient the following options were added to collect multiple 
+         metrics from a a single tier or node.
         </p>
-        <p>
-        * In order to make queries more efficient the following options were added to collect multiple 
-        * metrics from a a single tier or node.
-        <br>Index 100 : queryHDNodeCPUAll
-        <br>Index 101 : queryHDNodeDisksAll
-        <br>Index 102 : queryHDNodeMemoryAll
-        <br>Index 103 : queryHDNodeNetworkAll
-        <br>Index 104 : queryHDNodeSystemAll
-        <br>Index 105 : queryJVMNodeProcessCPUAll
-        <br>Index 106 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheAll
-        <br>Index 107 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceAll
-        <br>Index 108 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenAll
-        <br>Index 109 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenAll
-        <br>Index 110 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceAll
-        <br>Index 111 : queryJVMNodeGarbageCollectionAll
-        <br>Index 112 : queryJVMNodeMemoryHeapAll
-        <br>Index 113 : queryJVMNodeMemoryNonHeapAll
-        <br>Index 114 : queryOAPNodeAll
-     * </p>
+        <li><b>Multi Metric Queries</b>
+        * <ul>
+            <li>Index 100 : queryHDNodeCPUAll
+            <li>Index 101 : queryHDNodeDisksAll
+            <li>Index 102 : queryHDNodeMemoryAll
+            <li>Index 103 : queryHDNodeNetworkAll
+            <li>Index 104 : queryHDNodeSystemAll
+            <li>Index 105 : queryJVMNodeProcessCPUAll
+            <li>Index 106 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheAll
+            <li>Index 107 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceAll
+            <li>Index 108 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenAll
+            <li>Index 109 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenAll
+            <li>Index 110 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceAll
+            <li>Index 111 : queryJVMNodeGarbageCollectionAll
+            <li>Index 112 : queryJVMNodeMemoryHeapAll
+            <li>Index 113 : queryJVMNodeMemoryNonHeapAll
+            <li>Index 114 : queryOAPNodeAll
+        * </ul>
+     * </ul>
      */
     public MetricDatas getRESTMetricQuery(int queryIndex, String application, String tier, long start, long end, boolean rollup){
         String query=null;
@@ -1167,130 +1240,130 @@ public class RESTAccess {
                 query=mq.queryHDTierNetworkOutgoingPacketsPerSec(tier, start, end, rollup);
                 break;
             case 22:
-                query=mq.queryJVMTierProcessCPUBurntMSPerMin(tier, start, end, rollup);
-                break;
-            case 23:
-                query=mq.queryJVMTierProcessCPUUsagePerc(tier, start, end, rollup);
-                break;
-            case 24:
-                query=mq.queryJVMTierGarbageCollectionGCTimeSpentPerMin(tier, start, end, rollup);
-                break;
-            case 25:
-                query=mq.queryJVMTierGarbageCollectionMajorCollectionTimeSpentPerMin(tier, start, end, rollup);
-                break;
-            case 26:
-                query=mq.queryJVMTierGarbageCollectionMinorCollectionTimeSpentPerMin(tier, start, end, rollup);
-                break;
-            case 27:
-                query=mq.queryJVMTierGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin(tier, start, end, rollup);
-                break;
-            case 28:
-                query=mq.queryJVMTierGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin(tier, start, end, rollup);
-                break;
-            case 29:
-                query=mq.queryJVMTierMemoryHeapCommittedMB(tier, start, end, rollup);
-                break;
-            case 30:
-                query=mq.queryJVMTierMemoryHeapCurrentUsageMB(tier, start, end, rollup);
-                break;
-            case 31:
-                query=mq.queryJVMTierMemoryHeapMaxAvailableMB(tier, start, end, rollup);
-                break;
-            case 32:
-                query=mq.queryJVMTierMemoryHeapUsedPerc(tier, start, end, rollup);
-                break;
-            case 33:
-                query=mq.queryJVMTierMemoryNonHeapCommittedMB(tier, start, end, rollup);
-                break;
-            case 34:
-                query=mq.queryJVMTierMemoryNonHeapCurrentUsageMB(tier, start, end, rollup);
-                break;
-            case 35:
-                query=mq.queryJVMTierMemoryNonHeapMaxAvailableMB(tier, start, end, rollup);
-                break;
-            case 36:
-                query=mq.queryJVMTierMemoryNonHeapUsedPerc(tier, start, end, rollup);
-                break;
-            case 37:
-                query=mq.queryJVMTierThreadsCurrentNoOfThreads(tier, start, end, rollup);
-                break;
-            case 38 :
-                query=mq.queryOAPTierStallCount(tier, start, end, rollup);
-                break;
-            case 39 :
-                query=mq.queryOAPTierNumberOfVerySlowCalls(tier, start, end, rollup);
-                break;
-            case 40 :
-                query=mq.queryOAPTierNumberOfSlowCalls(tier, start, end, rollup);
-                break;
-            case 41 :
-                query=mq.queryOAPTierInfrastructureErrorsPerMinute(tier, start, end, rollup);
-                break;
-            case 42 :
-                query=mq.queryOAPTierHttpErrorCodesPerMinute(tier, start, end, rollup);
-                break;
-            case 43 :
-                query=mq.queryOAPTierExceptionsPerMinute(tier, start, end, rollup);
-                break;
-            case 44 :
-                query=mq.queryOAPTierErrorsPerMinute(tier, start, end, rollup);
-                break;
-            case 45 :
-                query=mq.queryOAPTierErrorPageRedirectsPerMinute(tier, start, end, rollup);
-                break;
-            case 46 :
-                query=mq.queryOAPTierCallsPerMinute(tier, start, end, rollup);
-                break;
-            case 47 :
-                query=mq.queryOAPTierAvgResponseTimeMS(tier, start, end, rollup);
-                break;
-            case 48:
                 query=mq.queryHDTierSystemRQ(tier, start, end, rollup);
                 break;
-            case 49:
+            case 23:
+                query=mq.queryJVMTierProcessCPUBurntMSPerMin(tier, start, end, rollup);
+                break;
+            case 24:
+                query=mq.queryJVMTierProcessCPUUsagePerc(tier, start, end, rollup);
+                break;
+            case 25:
+                query=mq.queryJVMTierGarbageCollectionGCTimeSpentPerMin(tier, start, end, rollup);
+                break;
+            case 26:
+                query=mq.queryJVMTierGarbageCollectionMajorCollectionTimeSpentPerMin(tier, start, end, rollup);
+                break;
+            case 27:
+                query=mq.queryJVMTierGarbageCollectionMinorCollectionTimeSpentPerMin(tier, start, end, rollup);
+                break;
+            case 28:
+                query=mq.queryJVMTierGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin(tier, start, end, rollup);
+                break;
+            case 29:
+                query=mq.queryJVMTierGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin(tier, start, end, rollup);
+                break;
+            case 30:
                 query=mq.queryJVMTierGarbageCollectionMemoryPoolsCodeCacheCommittedMB(tier, start, end, rollup);
                 break;
-            case 50:
+            case 31:
                 query=mq.queryJVMTierGarbageCollectionMemoryPoolsCodeCacheCurrentUsage(tier, start, end, rollup);
                 break;
-            case 51:
+            case 32:
                 query=mq.queryJVMTierGarbageCollectionMemoryPoolsCodeCacheMaxAvailableMB(tier, start, end, rollup);
                 break;
-            case 52:
+            case 33:
                 query=mq.queryJVMTierGarbageCollectionMemoryPoolsPsEdenSpaceCommittedMB(tier, start, end, rollup);
                 break;
-            case 53:
+            case 34:
                 query=mq.queryJVMTierGarbageCollectionMemoryPoolsPsEdenSpaceCurrentUsage(tier, start, end, rollup);
                 break;
-            case 54:
+            case 35:
                 query=mq.queryJVMTierGarbageCollectionMemoryPoolsPsEdenSpaceMaxAvailableMB(tier, start, end, rollup);
                 break;
-            case 55:
+            case 36:
                 query=mq.queryJVMTierGarbageCollectionMemoryPoolsPsOldGenCommittedMB(tier, start, end, rollup);
                 break;
-            case 56:
+            case 37:
                 query=mq.queryJVMTierGarbageCollectionMemoryPoolsPsOldGenCurrentUsage(tier, start, end, rollup);
                 break;
-            case 57:
+            case 38:
                 query=mq.queryJVMTierGarbageCollectionMemoryPoolsPsOldGenMaxAvailableMB(tier, start, end, rollup);
                 break;
-            case 58:
+            case 39:
                 query=mq.queryJVMTierGarbageCollectionMemoryPoolsPsPermGenCommittedMB(tier, start, end, rollup);
                 break;
-            case 59:
+            case 40:
                 query=mq.queryJVMTierGarbageCollectionMemoryPoolsPsPermGenCurrentUsage(tier, start, end, rollup);
                 break;
-            case 60:
+            case 41:
                 query=mq.queryJVMTierGarbageCollectionMemoryPoolsPsPermGenMaxAvailableMB(tier, start, end, rollup);
                 break;
-            case 61:
+            case 42:
                 query=mq.queryJVMTierGarbageCollectionMemoryPoolsPsSurvivorSpaceCommittedMB(tier, start, end, rollup);
                 break;
-            case 62:
+            case 43:
                 query=mq.queryJVMTierGarbageCollectionMemoryPoolsPsSurvivorSpaceCurrentUsage(tier, start, end, rollup);
                 break;
-            case 63:
+            case 44:
                 query=mq.queryJVMTierGarbageCollectionMemoryPoolsPsSurvivorSpaceMaxAvailableMB(tier, start, end, rollup);
+                break;
+            case 45:
+                query=mq.queryJVMTierMemoryHeapCommittedMB(tier, start, end, rollup);
+                break;
+            case 46:
+                query=mq.queryJVMTierMemoryHeapCurrentUsageMB(tier, start, end, rollup);
+                break;
+            case 47:
+                query=mq.queryJVMTierMemoryHeapMaxAvailableMB(tier, start, end, rollup);
+                break;
+            case 48:
+                query=mq.queryJVMTierMemoryHeapUsedPerc(tier, start, end, rollup);
+                break;
+            case 49:
+                query=mq.queryJVMTierMemoryNonHeapCommittedMB(tier, start, end, rollup);
+                break;
+            case 50:
+                query=mq.queryJVMTierMemoryNonHeapCurrentUsageMB(tier, start, end, rollup);
+                break;
+            case 51:
+                query=mq.queryJVMTierMemoryNonHeapMaxAvailableMB(tier, start, end, rollup);
+                break;
+            case 52:
+                query=mq.queryJVMTierMemoryNonHeapUsedPerc(tier, start, end, rollup);
+                break;
+            case 53:
+                query=mq.queryJVMTierThreadsCurrentNoOfThreads(tier, start, end, rollup);
+                break;
+            case 54:
+                query=mq.queryOAPTierStallCount(tier, start, end, rollup);
+                break;
+            case 55:
+                query=mq.queryOAPTierNumberOfVerySlowCalls(tier, start, end, rollup);
+                break;
+            case 56:
+                query=mq.queryOAPTierNumberOfSlowCalls(tier, start, end, rollup);
+                break;
+            case 57:
+                query=mq.queryOAPTierInfrastructureErrorsPerMinute(tier, start, end, rollup);
+                break;
+            case 58:
+                query=mq.queryOAPTierHttpErrorCodesPerMinute(tier, start, end, rollup);
+                break;
+            case 59:
+                query=mq.queryOAPTierExceptionsPerMinute(tier, start, end, rollup);
+                break;
+            case 60:
+                query=mq.queryOAPTierErrorsPerMinute(tier, start, end, rollup);
+                break;
+            case 61:
+                query=mq.queryOAPTierErrorPageRedirectsPerMinute(tier, start, end, rollup);
+                break;
+            case 62:
+                query=mq.queryOAPTierCallsPerMinute(tier, start, end, rollup);
+                break;
+            case 63:
+                query=mq.queryOAPTierAvgResponseTimeMS(tier, start, end, rollup);
                 break;
 
             case 100: // All
@@ -1368,6 +1441,120 @@ public class RESTAccess {
      * </p>
      * 
      * 
+     * <ul>
+     *  <li><b>Agent Availability</b>
+     *      <ul>
+            * <li>Index 0  : Application Agent
+            * <li>Index 1  : Machine Agent
+     *      </ul>
+     *  <li><b>Hardware Metrics</b>
+     *      <ul>
+            * <li>Index 2  : queryHDTierCPUBusy
+            * <li>Index 3  : queryHDTierCPUIdle
+            * <li>Index 4  : queryHDTierCPUStolen
+            * <li>Index 5  : queryHDTierDisksKBReadPerSec
+            * <li>Index 6  : queryHDTierDisksKBWrittenPerSec
+            * <li>Index 7  : queryHDTierDisksReadPerSec
+            * <li>Index 8  : queryHDTierDisksWritesPerSec
+            * <li>Index 9  : queryHDTierMemoryFreePerc
+            * <li>Index 10 : queryHDTierMemoryFreeMB
+            * <li>Index 11 : queryHDTierMemoryTotalMB
+            * <li>Index 12 : queryHDTierMemoryUsedPerc
+            * <li>Index 13 : queryHDTierMemoryUsedMB
+            * <li>Index 14 : queryHDTierNetworkIncomingKB
+            * <li>Index 15 : queryHDTierNetworkIncomingKBPerSec
+            * <li>Index 16 : queryHDTierNetworkIncomingPackets
+            * <li>Index 17 : queryHDTierNetworkIncomingPacketsPerSec
+            * <li>Index 18 : queryHDTierNetworkOutgoingKB
+            * <li>Index 19 : queryHDTierNetworkOutgoingKBPerSec
+            * <li>Index 20 : queryHDTierNetworkOutgoingPackets
+            * <li>Index 21 : queryHDTierNetworkOutgoingPacketsPerSec
+            * <li>Index 22 : queryHDNodeSystemRQ
+     *      </ul>
+     *  <li><b>JVM Metrics</b>
+     *      <ul>
+     *          <li><b>Process Metrics</b>
+     *              <ul>
+                    * <li>Index 23 : queryJVMTierProcessCPUBurntMSPerMin
+                    * <li>Index 24 : queryJVMTierProcessCPUUsagePerc
+            *       </ul>
+            *   <li><b>Garbage Collection Metrics</b>
+            *       <ul>
+                    * <li>Index 25 : queryJVMTierGarbageCollectionGCTimeSpentPerMin
+                    * <li>Index 26 : queryJVMTierGarbageCollectionMajorCollectionTimeSpentPerMin
+                    * <li>Index 27 : queryJVMTierGarbageCollectionMinorCollectionTimeSpentPerMin
+                    * <li>Index 28 : queryJVMTierGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin
+                    * <li>Index 29 : queryJVMTierGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin
+                    * <li>Index 30 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCommittedMB
+                      <li>Index 31 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCurrentUsage
+                      <li>Index 32 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheMaxAvailableMB
+                      <li>Index 33 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCommittedMB
+                      <li>Index 34 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCurrentUsage
+                      <li>Index 35 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceMaxAvailableMB
+                      <li>Index 36 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCommittedMB
+                      <li>Index 37 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCurrentUsage
+                      <li>Index 38 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenMaxAvailableMB
+                      <li>Index 39 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCommittedMB
+                      <li>Index 40 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCurrentUsage
+                      <li>Index 41 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenMaxAvailableMB
+                      <li>Index 42 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCommittedMB
+                      <li>Index 43 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCurrentUsage
+                      <li>Index 44 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceMaxAvailableMB
+            *       </ul>
+            *   <li><b>Memory</b>
+            *       <ul>
+                    * <li>Index 45 : queryJVMTierMemoryHeapCommittedMB
+                    * <li>Index 46 : queryJVMTierMemoryHeapCurrentUsageMB
+                    * <li>Index 47 : queryJVMTierMemoryHeapMaxAvailableMB
+                    * <li>Index 48 : queryJVMTierMemoryHeapUsedPerc
+                    * <li>Index 49 : queryJVMTierMemoryNonHeapCommittedMB
+                    * <li>Index 50 : queryJVMTierMemoryNonHeapCurrentUsageMB
+                    * <li>Index 51 : queryJVMTierMemoryNonHeapMaxAvailableMB
+                    * <li>Index 52 : queryJVMTierMemoryNonHeapUsedPerc
+            *       </ul>
+            *   <li><b>Thread Metric</b>
+            *       <ul>
+                    * <li>Index 53 : queryJVMTierThreadsCurrentNoOfThreads
+            *       </ul>
+            </ul>
+     *  <li><b>Overall Application Performance</b>
+     *      <ul>
+            * <li>Index 54 : queryOAPTierStallCount
+            * <li>Index 55 : queryOAPTierNumberOfVerySlowCalls
+            * <li>Index 56 : queryOAPTierNumberOfSlowCalls
+            * <li>Index 57 : queryOAPTierInfrastructureErrorsPerMinute
+            * <li>Index 58 : queryOAPTierHttpErrorCodesPerMinute
+            * <li>Index 59 : queryOAPTierExceptionsPerMinute
+            * <li>Index 60 : queryOAPTierErrorsPerMinute
+            * <li>Index 61 : queryOAPTierErrorPageRedirectsPerMinute
+            * <li>Index 62 : queryOAPTierCallsPerMinute
+            * <li>Index 63 : queryOAPTierAvgResponseTimeMS
+     *      </ul>
+
+*       <p>
+         In order to make queries more efficient the following options were added to collect multiple 
+         metrics from a a single tier or node.
+        </p>
+        <li><b>Multi Metric Queries</b>
+        * <ul>
+            <li>Index 100 : queryHDNodeCPUAll
+            <li>Index 101 : queryHDNodeDisksAll
+            <li>Index 102 : queryHDNodeMemoryAll
+            <li>Index 103 : queryHDNodeNetworkAll
+            <li>Index 104 : queryHDNodeSystemAll
+            <li>Index 105 : queryJVMNodeProcessCPUAll
+            <li>Index 106 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheAll
+            <li>Index 107 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceAll
+            <li>Index 108 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenAll
+            <li>Index 109 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenAll
+            <li>Index 110 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceAll
+            <li>Index 111 : queryJVMNodeGarbageCollectionAll
+            <li>Index 112 : queryJVMNodeMemoryHeapAll
+            <li>Index 113 : queryJVMNodeMemoryNonHeapAll
+            <li>Index 114 : queryOAPNodeAll
+        * </ul>
+     * </ul>
+     * 
      * @param queryIndex Index of the type of query to run
      * @param application Name of the application which holds the metric
      * @param tier Name of the tier which holds the metric
@@ -1375,91 +1562,7 @@ public class RESTAccess {
      * @param start Timestamp in milliseconds for the start time for the query
      * @param end Timestamp in milliseconds for the end time for the query
      * @return {@link MetricDatas}
-     * <p>
-     * <br>Index 0  : queyrAgentTierAppAgentAvailability
-     * <br>Index 1  : queryAgentTierMachineAgentAvailability
-     * <br>Index 2  : queryHDTierCPUBusy
-     * <br>Index 3  : queryHDTierCPUIdle
-     * <br>Index 4  : queryHDTierCPUStolen
-     * <br>Index 5  : queryHDTierDisksKBReadPerSec
-     * <br>Index 6  : queryHDTierDisksKBWrittenPerSec
-     * <br>Index 7  : queryHDTierDisksReadPerSec
-     * <br>Index 8  : queryHDTierDisksWritesPerSec
-     * <br>Index 9  : queryHDTierMemoryFreePerc
-     * <br>Index 10 : queryHDTierMemoryFreeMB
-     * <br>Index 11 : queryHDTierMemoryTotalMB
-     * <br>Index 12 : queryHDTierMemoryUsedPerc
-     * <br>Index 13 : queryHDTierMemoryUsedMB
-     * <br>Index 14 : queryHDTierNetworkIncomingKB
-     * <br>Index 15 : queryHDTierNetworkIncomingKBPerSec
-     * <br>Index 16 : queryHDTierNetworkIncomingPackets
-     * <br>Index 17 : queryHDTierNetworkIncomingPacketsPerSec
-     * <br>Index 18 : queryHDTierNetworkOutgoingKB
-     * <br>Index 19 : queryHDTierNetworkOutgoingKBPerSec
-     * <br>Index 20 : queryHDTierNetworkOutgoingPackets
-     * <br>Index 21 : queryHDTierNetworkOutgoingPacketsPerSec
-     * <br>Index 22 : queryJVMTierProcessCPUBurntMSPerMin
-     * <br>Index 23 : queryJVMTierProcessCPUUsagePerc
-     * <br>Index 24 : queryJVMTierGarbageCollectionGCTimeSpentPerMin
-     * <br>Index 25 : queryJVMTierGarbageCollectionMajorCollectionTimeSpentPerMin
-     * <br>Index 26 : queryJVMTierGarbageCollectionMinorCollectionTimeSpentPerMin
-     * <br>Index 27 : queryJVMTierGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin
-     * <br>Index 28 : queryJVMTierGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin
-     * <br>Index 29 : queryJVMTierMemoryHeapCommittedMB
-     * <br>Index 30 : queryJVMTierMemoryHeapCurrentUsageMB
-     * <br>Index 31 : queryJVMTierMemoryHeapMaxAvailableMB
-     * <br>Index 32 : queryJVMTierMemoryHeapUsedPerc
-     * <br>Index 33 : queryJVMTierMemoryNonHeapCommittedMB
-     * <br>Index 34 : queryJVMTierMemoryNonHeapCurrentUsageMB
-     * <br>Index 35 : queryJVMTierMemoryNonHeapMaxAvailableMB
-     * <br>Index 36 : queryJVMTierMemoryNonHeapUsedPerc
-     * <br>Index 37 : queryJVMTierThreadsCurrentNoOfThreads
-     * <br>Index 38 : queryOAPTierStallCount
-     * <br>Index 39 : queryOAPTierNumberOfVerySlowCalls
-     * <br>Index 40 : queryOAPTierNumberOfSlowCalls
-     * <br>Index 41 : queryOAPTierInfrastructureErrorsPerMinute
-     * <br>Index 42 : queryOAPTierHttpErrorCodesPerMinute
-     * <br>Index 43 : queryOAPTierExceptionsPerMinute
-     * <br>Index 44 : queryOAPTierErrorsPerMinute
-     * <br>Index 45 : queryOAPTierErrorPageRedirectsPerMinute
-     * <br>Index 46 : queryOAPTierCallsPerMinute
-     * <br>Index 47 : queryOAPTierAvgResponseTimeMS
-     * <br>Index 48 : queryHDNodeSystemRQ
-     * <br>Index 49 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCommittedMB
-        <br>Index 50 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCurrentUsage
-        <br>Index 51 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheMaxAvailableMB
-        <br>Index 52 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCommittedMB
-        <br>Index 53 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCurrentUsage
-        <br>Index 54 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceMaxAvailableMB
-        <br>Index 55 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCommittedMB
-        <br>Index 56 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCurrentUsage
-        <br>Index 57 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenMaxAvailableMB
-        <br>Index 58 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCommittedMB
-        <br>Index 59 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCurrentUsage
-        <br>Index 60 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenMaxAvailableMB
-        <br>Index 61 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCommittedMB
-        <br>Index 62 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCurrentUsage
-        <br>Index 63 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceMaxAvailableMB
-        </p>
-        <p>
-        * In order to make queries more efficient the following options were added to collect multiple 
-        * metrics from a a single tier or node.
-        <br>Index 100 : queryHDNodeCPUAll
-        <br>Index 101 : queryHDNodeDisksAll
-        <br>Index 102 : queryHDNodeMemoryAll
-        <br>Index 103 : queryHDNodeNetworkAll
-        <br>Index 104 : queryHDNodeSystemAll
-        <br>Index 105 : queryJVMNodeProcessCPUAll
-        <br>Index 106 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheAll
-        <br>Index 107 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceAll
-        <br>Index 108 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenAll
-        <br>Index 109 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenAll
-        <br>Index 110 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceAll
-        <br>Index 111 : queryJVMNodeGarbageCollectionAll
-        <br>Index 112 : queryJVMNodeMemoryHeapAll
-        <br>Index 113 : queryJVMNodeMemoryNonHeapAll
-        <br>Index 114 : queryOAPNodeAll
-     * </p>
+     * 
      */
     public MetricDatas getRESTMetricQuery(int queryIndex, String application, String tier, String node, long start, long end){
         return getRESTMetricQuery(queryIndex, application, tier, node, start, end, false);
@@ -1471,6 +1574,121 @@ public class RESTAccess {
      * Case statement looks at the queryIndex to determine the proper Query string.
      * </p>
      * 
+     * 
+     * <ul>
+     *  <li><b>Agent Availability</b>
+     *      <ul>
+            * <li>Index 0  : Application Agent
+            * <li>Index 1  : Machine Agent
+     *      </ul>
+     *  <li><b>Hardware Metrics</b>
+     *      <ul>
+            * <li>Index 2  : queryHDTierCPUBusy
+            * <li>Index 3  : queryHDTierCPUIdle
+            * <li>Index 4  : queryHDTierCPUStolen
+            * <li>Index 5  : queryHDTierDisksKBReadPerSec
+            * <li>Index 6  : queryHDTierDisksKBWrittenPerSec
+            * <li>Index 7  : queryHDTierDisksReadPerSec
+            * <li>Index 8  : queryHDTierDisksWritesPerSec
+            * <li>Index 9  : queryHDTierMemoryFreePerc
+            * <li>Index 10 : queryHDTierMemoryFreeMB
+            * <li>Index 11 : queryHDTierMemoryTotalMB
+            * <li>Index 12 : queryHDTierMemoryUsedPerc
+            * <li>Index 13 : queryHDTierMemoryUsedMB
+            * <li>Index 14 : queryHDTierNetworkIncomingKB
+            * <li>Index 15 : queryHDTierNetworkIncomingKBPerSec
+            * <li>Index 16 : queryHDTierNetworkIncomingPackets
+            * <li>Index 17 : queryHDTierNetworkIncomingPacketsPerSec
+            * <li>Index 18 : queryHDTierNetworkOutgoingKB
+            * <li>Index 19 : queryHDTierNetworkOutgoingKBPerSec
+            * <li>Index 20 : queryHDTierNetworkOutgoingPackets
+            * <li>Index 21 : queryHDTierNetworkOutgoingPacketsPerSec
+            * <li>Index 22 : queryHDNodeSystemRQ
+     *      </ul>
+     *  <li><b>JVM Metrics</b>
+     *      <ul>
+     *          <li><b>Process Metrics</b>
+     *              <ul>
+                    * <li>Index 23 : queryJVMTierProcessCPUBurntMSPerMin
+                    * <li>Index 24 : queryJVMTierProcessCPUUsagePerc
+            *       </ul>
+            *   <li><b>Garbage Collection Metrics</b>
+            *       <ul>
+                    * <li>Index 25 : queryJVMTierGarbageCollectionGCTimeSpentPerMin
+                    * <li>Index 26 : queryJVMTierGarbageCollectionMajorCollectionTimeSpentPerMin
+                    * <li>Index 27 : queryJVMTierGarbageCollectionMinorCollectionTimeSpentPerMin
+                    * <li>Index 28 : queryJVMTierGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin
+                    * <li>Index 29 : queryJVMTierGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin
+                    * <li>Index 30 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCommittedMB
+                      <li>Index 31 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCurrentUsage
+                      <li>Index 32 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheMaxAvailableMB
+                      <li>Index 33 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCommittedMB
+                      <li>Index 34 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCurrentUsage
+                      <li>Index 35 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceMaxAvailableMB
+                      <li>Index 36 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCommittedMB
+                      <li>Index 37 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCurrentUsage
+                      <li>Index 38 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenMaxAvailableMB
+                      <li>Index 39 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCommittedMB
+                      <li>Index 40 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCurrentUsage
+                      <li>Index 41 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenMaxAvailableMB
+                      <li>Index 42 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCommittedMB
+                      <li>Index 43 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCurrentUsage
+                      <li>Index 44 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceMaxAvailableMB
+            *       </ul>
+            *   <li><b>Memory</b>
+            *       <ul>
+                    * <li>Index 45 : queryJVMTierMemoryHeapCommittedMB
+                    * <li>Index 46 : queryJVMTierMemoryHeapCurrentUsageMB
+                    * <li>Index 47 : queryJVMTierMemoryHeapMaxAvailableMB
+                    * <li>Index 48 : queryJVMTierMemoryHeapUsedPerc
+                    * <li>Index 49 : queryJVMTierMemoryNonHeapCommittedMB
+                    * <li>Index 50 : queryJVMTierMemoryNonHeapCurrentUsageMB
+                    * <li>Index 51 : queryJVMTierMemoryNonHeapMaxAvailableMB
+                    * <li>Index 52 : queryJVMTierMemoryNonHeapUsedPerc
+            *       </ul>
+            *   <li><b>Thread Metric</b>
+            *       <ul>
+                    * <li>Index 53 : queryJVMTierThreadsCurrentNoOfThreads
+            *       </ul>
+            </ul>
+     *  <li><b>Overall Application Performance</b>
+     *      <ul>
+            * <li>Index 54 : queryOAPTierStallCount
+            * <li>Index 55 : queryOAPTierNumberOfVerySlowCalls
+            * <li>Index 56 : queryOAPTierNumberOfSlowCalls
+            * <li>Index 57 : queryOAPTierInfrastructureErrorsPerMinute
+            * <li>Index 58 : queryOAPTierHttpErrorCodesPerMinute
+            * <li>Index 59 : queryOAPTierExceptionsPerMinute
+            * <li>Index 60 : queryOAPTierErrorsPerMinute
+            * <li>Index 61 : queryOAPTierErrorPageRedirectsPerMinute
+            * <li>Index 62 : queryOAPTierCallsPerMinute
+            * <li>Index 63 : queryOAPTierAvgResponseTimeMS
+     *      </ul>
+
+*       <p>
+         In order to make queries more efficient the following options were added to collect multiple 
+         metrics from a a single tier or node.
+        </p>
+        <li><b>Multi Metric Queries</b>
+        * <ul>
+            <li>Index 100 : queryHDNodeCPUAll
+            <li>Index 101 : queryHDNodeDisksAll
+            <li>Index 102 : queryHDNodeMemoryAll
+            <li>Index 103 : queryHDNodeNetworkAll
+            <li>Index 104 : queryHDNodeSystemAll
+            <li>Index 105 : queryJVMNodeProcessCPUAll
+            <li>Index 106 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheAll
+            <li>Index 107 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceAll
+            <li>Index 108 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenAll
+            <li>Index 109 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenAll
+            <li>Index 110 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceAll
+            <li>Index 111 : queryJVMNodeGarbageCollectionAll
+            <li>Index 112 : queryJVMNodeMemoryHeapAll
+            <li>Index 113 : queryJVMNodeMemoryNonHeapAll
+            <li>Index 114 : queryOAPNodeAll
+        * </ul>
+     * </ul>
+     * 
      * @param queryIndex Index of the type of query to run
      * @param application Name of the application which holds the metric
      * @param tier Name of the tier which holds the metric
@@ -1480,91 +1698,7 @@ public class RESTAccess {
      * @param rollup Boolean determines whether to roll up the metrics
      * @return {@link MetricDatas}
      * 
-     * <p>
-     * <br>Index 0  : queyrAgentTierAppAgentAvailability
-     * <br>Index 1  : queryAgentTierMachineAgentAvailability
-     * <br>Index 2  : queryHDTierCPUBusy
-     * <br>Index 3  : queryHDTierCPUIdle
-     * <br>Index 4  : queryHDTierCPUStolen
-     * <br>Index 5  : queryHDTierDisksKBReadPerSec
-     * <br>Index 6  : queryHDTierDisksKBWrittenPerSec
-     * <br>Index 7  : queryHDTierDisksReadPerSec
-     * <br>Index 8  : queryHDTierDisksWritesPerSec
-     * <br>Index 9  : queryHDTierMemoryFreePerc
-     * <br>Index 10 : queryHDTierMemoryFreeMB
-     * <br>Index 11 : queryHDTierMemoryTotalMB
-     * <br>Index 12 : queryHDTierMemoryUsedPerc
-     * <br>Index 13 : queryHDTierMemoryUsedMB
-     * <br>Index 14 : queryHDTierNetworkIncomingKB
-     * <br>Index 15 : queryHDTierNetworkIncomingKBPerSec
-     * <br>Index 16 : queryHDTierNetworkIncomingPackets
-     * <br>Index 17 : queryHDTierNetworkIncomingPacketsPerSec
-     * <br>Index 18 : queryHDTierNetworkOutgoingKB
-     * <br>Index 19 : queryHDTierNetworkOutgoingKBPerSec
-     * <br>Index 20 : queryHDTierNetworkOutgoingPackets
-     * <br>Index 21 : queryHDTierNetworkOutgoingPacketsPerSec
-     * <br>Index 22 : queryJVMTierProcessCPUBurntMSPerMin
-     * <br>Index 23 : queryJVMTierProcessCPUUsagePerc
-     * <br>Index 24 : queryJVMTierGarbageCollectionGCTimeSpentPerMin
-     * <br>Index 25 : queryJVMTierGarbageCollectionMajorCollectionTimeSpentPerMin
-     * <br>Index 26 : queryJVMTierGarbageCollectionMinorCollectionTimeSpentPerMin
-     * <br>Index 27 : queryJVMTierGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin
-     * <br>Index 28 : queryJVMTierGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin
-     * <br>Index 29 : queryJVMTierMemoryHeapCommittedMB
-     * <br>Index 30 : queryJVMTierMemoryHeapCurrentUsageMB
-     * <br>Index 31 : queryJVMTierMemoryHeapMaxAvailableMB
-     * <br>Index 32 : queryJVMTierMemoryHeapUsedPerc
-     * <br>Index 33 : queryJVMTierMemoryNonHeapCommittedMB
-     * <br>Index 34 : queryJVMTierMemoryNonHeapCurrentUsageMB
-     * <br>Index 35 : queryJVMTierMemoryNonHeapMaxAvailableMB
-     * <br>Index 36 : queryJVMTierMemoryNonHeapUsedPerc
-     * <br>Index 37 : queryJVMTierThreadsCurrentNoOfThreads
-     * <br>Index 38 : queryOAPTierStallCount
-     * <br>Index 39 : queryOAPTierNumberOfVerySlowCalls
-     * <br>Index 40 : queryOAPTierNumberOfSlowCalls
-     * <br>Index 41 : queryOAPTierInfrastructureErrorsPerMinute
-     * <br>Index 42 : queryOAPTierHttpErrorCodesPerMinute
-     * <br>Index 43 : queryOAPTierExceptionsPerMinute
-     * <br>Index 44 : queryOAPTierErrorsPerMinute
-     * <br>Index 45 : queryOAPTierErrorPageRedirectsPerMinute
-     * <br>Index 46 : queryOAPTierCallsPerMinute
-     * <br>Index 47 : queryOAPTierAvgResponseTimeMS
-     * <br>Index 48 : queryHDNodeSystemRQ
-     * <br>Index 49 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCommittedMB
-        <br>Index 50 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCurrentUsage
-        <br>Index 51 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheMaxAvailableMB
-        <br>Index 52 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCommittedMB
-        <br>Index 53 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCurrentUsage
-        <br>Index 54 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceMaxAvailableMB
-        <br>Index 55 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCommittedMB
-        <br>Index 56 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCurrentUsage
-        <br>Index 57 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenMaxAvailableMB
-        <br>Index 58 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCommittedMB
-        <br>Index 59 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCurrentUsage
-        <br>Index 60 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenMaxAvailableMB
-        <br>Index 61 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCommittedMB
-        <br>Index 62 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCurrentUsage
-        <br>Index 63 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceMaxAvailableMB
-        </p>
-        <p>
-        * In order to make queries more efficient the following options were added to collect multiple 
-        * metrics from a a single tier or node.
-        <br>Index 100 : queryHDNodeCPUAll
-        <br>Index 101 : queryHDNodeDisksAll
-        <br>Index 102 : queryHDNodeMemoryAll
-        <br>Index 103 : queryHDNodeNetworkAll
-        <br>Index 104 : queryHDNodeSystemAll
-        <br>Index 105 : queryJVMNodeProcessCPUAll
-        <br>Index 106 : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheAll
-        <br>Index 107 : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceAll
-        <br>Index 108 : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenAll
-        <br>Index 109 : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenAll
-        <br>Index 110 : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceAll
-        <br>Index 111 : queryJVMNodeGarbageCollectionAll
-        <br>Index 112 : queryJVMNodeMemoryHeapAll
-        <br>Index 113 : queryJVMNodeMemoryNonHeapAll
-        <br>Index 114 : queryOAPNodeAll
-     * </p>
+     * query=mq.queryAgentNodeAppAgentAvailability(tier, node, start, end, rollup);
      */
     public MetricDatas getRESTMetricQuery(int queryIndex, String application, String tier, String node, long start, long end, boolean rollup){
         String query=null;
@@ -1572,7 +1706,6 @@ public class RESTAccess {
         MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
         switch(queryIndex){
             case 0:
-                // Agent query
                 query=mq.queryAgentNodeAppAgentAvailability(tier, node, start, end, rollup);
                 break;
             case 1:
@@ -1587,7 +1720,7 @@ public class RESTAccess {
             case 4:
                 query=mq.queryHDNodeCPUStolen(tier, node, start, end, rollup);
                 break;
-            case 5:    
+            case 5:
                 query=mq.queryHDNodeDisksKBReadPerSec(tier, node, start, end, rollup);
                 break;
             case 6:
@@ -1639,130 +1772,130 @@ public class RESTAccess {
                 query=mq.queryHDNodeNetworkOutgoingPacketsPerSec(tier, node, start, end, rollup);
                 break;
             case 22:
-                query=mq.queryJVMNodeProcessCPUBurntMSPerMin(tier, node, start, end, rollup);
+                query=mq.queryHDNodeSystemRQ(tier, node, start, end, rollup);
                 break;
             case 23:
-                query=mq.queryJVMNodeProcessCPUUsagePerc(tier, node, start, end, rollup);
+                query=mq.queryJVMNodeProcessCPUBurntMSPerMin(tier, node, start, end, rollup);
                 break;
             case 24:
-                query=mq.queryJVMNodeGarbageCollectionGCTimeSpentPerMin(tier, node, start, end, rollup);
+                query=mq.queryJVMNodeProcessCPUUsagePerc(tier, node, start, end, rollup);
                 break;
             case 25:
-                query=mq.queryJVMNodeGarbageCollectionMajorCollectionTimeSpentPerMin(tier, node, start, end, rollup);
+                query=mq.queryJVMNodeGarbageCollectionGCTimeSpentPerMin(tier, node, start, end, rollup);
                 break;
             case 26:
-                query=mq.queryJVMNodeGarbageCollectionMinorCollectionTimeSpentPerMin(tier, node, start, end, rollup);
+                query=mq.queryJVMNodeGarbageCollectionMajorCollectionTimeSpentPerMin(tier, node, start, end, rollup);
                 break;
             case 27:
-                query=mq.queryJVMNodeGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin(tier, node, start, end, rollup);
+                query=mq.queryJVMNodeGarbageCollectionMinorCollectionTimeSpentPerMin(tier, node, start, end, rollup);
                 break;
             case 28:
-                query=mq.queryJVMNodeGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin(tier, node, start, end, rollup);
+                query=mq.queryJVMNodeGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin(tier, node, start, end, rollup);
                 break;
             case 29:
-                query=mq.queryJVMNodeMemoryHeapCommittedMB(tier, node, start, end, rollup);
+                query=mq.queryJVMNodeGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin(tier, node, start, end, rollup);
                 break;
             case 30:
-                query=mq.queryJVMNodeMemoryHeapCurrentUsageMB(tier, node, start, end, rollup);
+                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCommittedMB(tier, node, start, end, rollup);
                 break;
             case 31:
-                query=mq.queryJVMNodeMemoryHeapMaxAvailableMB(tier, node, start, end, rollup);
+                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCurrentUsage(tier, node, start, end, rollup);
                 break;
             case 32:
-                query=mq.queryJVMNodeMemoryHeapUsedPerc(tier, node, start, end, rollup);
+                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheMaxAvailableMB(tier, node, start, end, rollup);
                 break;
             case 33:
-                query=mq.queryJVMNodeMemoryNonHeapCommittedMB(tier, node, start, end, rollup);
+                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCommittedMB(tier, node, start, end, rollup);
                 break;
             case 34:
-                query=mq.queryJVMNodeMemoryNonHeapCurrentUsageMB(tier, node, start, end, rollup);
+                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCurrentUsage(tier, node, start, end, rollup);
                 break;
             case 35:
-                query=mq.queryJVMNodeMemoryNonHeapMaxAvailableMB(tier, node, start, end, rollup);
+                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceMaxAvailableMB(tier, node, start, end, rollup);
                 break;
             case 36:
-                query=mq.queryJVMNodeMemoryNonHeapUsedPerc(tier, node, start, end, rollup);
+                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCommittedMB(tier, node, start, end, rollup);
                 break;
             case 37:
-                query=mq.queryJVMNodeThreadsCurrentNoOfThreads(tier, node, start, end, rollup);
+                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCurrentUsage(tier, node, start, end, rollup);
                 break;
-            case 38 :
-                query=mq.queryOAPNodeStallCount(tier,node, start, end, rollup);
+            case 38:
+                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenMaxAvailableMB(tier, node, start, end, rollup);
                 break;
-            case 39 :
-                query=mq.queryOAPNodeNumberOfVerySlowCalls(tier,node, start, end, rollup);
+            case 39:
+                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCommittedMB(tier, node, start, end, rollup);
                 break;
-            case 40 :
-                query=mq.queryOAPNodeNumberOfSlowCalls(tier,node, start, end, rollup);
+            case 40:
+                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCurrentUsage(tier, node, start, end, rollup);
                 break;
-            case 41 :
-                query=mq.queryOAPNodeInfrastructureErrorsPerMinute(tier,node, start, end, rollup);
+            case 41:
+                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenMaxAvailableMB(tier, node, start, end, rollup);
                 break;
-            case 42 :
-                query=mq.queryOAPNodeHttpErrorCodesPerMinute(tier,node, start, end, rollup);
+            case 42:
+                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCommittedMB(tier, node, start, end, rollup);
                 break;
-            case 43 :
-                query=mq.queryOAPNodeExceptionsPerMinute(tier,node, start, end, rollup);
+            case 43:
+                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCurrentUsage(tier, node, start, end, rollup);
                 break;
-            case 44 :
-                query=mq.queryOAPNodeErrorsPerMinute(tier,node, start, end, rollup);
+            case 44:
+                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceMaxAvailableMB(tier, node, start, end, rollup);
                 break;
-            case 45 :
-                query=mq.queryOAPNodeErrorPageRedirectsPerMinute(tier,node, start, end, rollup);
+            case 45:
+                query=mq.queryJVMNodeMemoryHeapCommittedMB(tier, node, start, end, rollup);
                 break;
-            case 46 :
-                query=mq.queryOAPNodeCallsPerMinute(tier,node, start, end, rollup);
+            case 46:
+                query=mq.queryJVMNodeMemoryHeapCurrentUsageMB(tier, node, start, end, rollup);
                 break;
-            case 47 :
-                query=mq.queryOAPNodeAvgResponseTimeMS(tier,node, start, end, rollup);
+            case 47:
+                query=mq.queryJVMNodeMemoryHeapMaxAvailableMB(tier, node, start, end, rollup);
                 break;
             case 48:
-                query=mq.queryHDNodeSystemRQ(tier,node, start, end, rollup);
+                query=mq.queryJVMNodeMemoryHeapUsedPerc(tier, node, start, end, rollup);
                 break;
             case 49:
-                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCommittedMB(tier,node, start, end, rollup);
+                query=mq.queryJVMNodeMemoryNonHeapCommittedMB(tier, node, start, end, rollup);
                 break;
             case 50:
-                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCurrentUsage(tier,node, start, end, rollup);
+                query=mq.queryJVMNodeMemoryNonHeapCurrentUsageMB(tier, node, start, end, rollup);
                 break;
             case 51:
-                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheMaxAvailableMB(tier,node, start, end, rollup);
+                query=mq.queryJVMNodeMemoryNonHeapMaxAvailableMB(tier, node, start, end, rollup);
                 break;
             case 52:
-                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCommittedMB(tier,node, start, end, rollup);
+                query=mq.queryJVMNodeMemoryNonHeapUsedPerc(tier, node, start, end, rollup);
                 break;
             case 53:
-                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCurrentUsage(tier,node, start, end, rollup);
+                query=mq.queryJVMNodeThreadsCurrentNoOfThreads(tier, node, start, end, rollup);
                 break;
             case 54:
-                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceMaxAvailableMB(tier,node, start, end, rollup);
+                query=mq.queryOAPNodeStallCount(tier, node, start, end, rollup);
                 break;
             case 55:
-                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCommittedMB(tier,node, start, end, rollup);
+                query=mq.queryOAPNodeNumberOfVerySlowCalls(tier, node, start, end, rollup);
                 break;
             case 56:
-                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCurrentUsage(tier,node, start, end, rollup);
+                query=mq.queryOAPNodeNumberOfSlowCalls(tier, node, start, end, rollup);
                 break;
             case 57:
-                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenMaxAvailableMB(tier,node, start, end, rollup);
+                query=mq.queryOAPNodeInfrastructureErrorsPerMinute(tier, node, start, end, rollup);
                 break;
             case 58:
-                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCommittedMB(tier,node, start, end, rollup);
+                query=mq.queryOAPNodeHttpErrorCodesPerMinute(tier, node, start, end, rollup);
                 break;
             case 59:
-                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCurrentUsage(tier,node, start, end, rollup);
+                query=mq.queryOAPNodeExceptionsPerMinute(tier, node, start, end, rollup);
                 break;
             case 60:
-                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenMaxAvailableMB(tier,node, start, end, rollup);
+                query=mq.queryOAPNodeErrorsPerMinute(tier, node, start, end, rollup);
                 break;
             case 61:
-                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCommittedMB(tier,node, start, end, rollup);
+                query=mq.queryOAPNodeErrorPageRedirectsPerMinute(tier, node, start, end, rollup);
                 break;
             case 62:
-                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCurrentUsage(tier,node, start, end, rollup);
+                query=mq.queryOAPNodeCallsPerMinute(tier, node, start, end, rollup);
                 break;
             case 63:
-                query=mq.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceMaxAvailableMB(tier,node, start, end, rollup);
+                query=mq.queryOAPNodeAvgResponseTimeMS(tier, node, start, end, rollup);
                 break;
 
             case 100: // All
@@ -1839,6 +1972,92 @@ public class RESTAccess {
      * Case statement looks at the queryIndex to determine the proper Query string.
      * </p>
      * 
+     * 
+     * <ul>
+     *  <li><b>EUM Ajax</b>
+     *      <ul>
+                <li>Index  0 : EUM_AJAX_REQUESTS_PER_MIN
+                <li>Index  1 : EUM_AJAX_REQUESTS_ERRORS_PER_MIN
+                <li>Index  2 : EUM_AJAX_DOC_DOWNLOAD_TIME
+                <li>Index  3 : EUM_AJAX_DOC_PROCESSING_TIME
+                <li>Index  4 : EUM_AJAX_APPLICATION_SERVER_CALLS_PER_MINUTE
+                <li>Index  5 : EUM_AJAX_APPLICATION_SERVER_TIME_MS
+                <li>Index  6 : EUM_AJAX_END_USER_RESPONSE_TIME
+                <li>Index  7 : EUM_AJAX_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS
+                <li>Index  8 : EUM_AJAX_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS
+                <li>Index  9 : EUM_AJAX_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS
+                <li>Index  10 : EUM_AJAX_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS
+                <li>Index  11 : EUM_AJAX_FIRST_BYTE_TIME_MS
+                <li>Index  12 : EUM_AJAX_FIRST_BYTE_TIME_50TH_PERCENTILE_MS
+                <li>Index  13 : EUM_AJAX_FIRST_BYTE_TIME_90TH_PERCENTILE_MS
+                <li>Index  14 : EUM_AJAX_FIRST_BYTE_TIME_95TH_PERCENTILE_MS
+                <li>Index  15 : EUM_AJAX_FIRST_BYTE_TIME_99TH_PERCENTILE_MS
+        *   </ul>
+        <li><b>Base Pages</b>
+        *   <ul>
+                <li>Index  16 : queryEUM_BASE_PAGES_FRONT_END_TIME_MS
+                <li>Index  17 : queryEUM_BASE_PAGES_PAGE_RENDER_TIME_MS
+                <li>Index  18 : queryEUM_BASE_PAGES_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE
+                <li>Index  19 : queryEUM_BASE_PAGES_RESPONSE_AVAILABLE_TIME_MS
+                <li>Index  20 : queryEUM_BASE_PAGES_SERVER_CONNECTION_TIME_MS
+                <li>Index  21 : queryEUM_BASE_PAGES_SYNTHETIC_REQUESTS_PER_MINUTE
+                <li>Index  22 : queryEUM_BASE_PAGES_REQUESTS_PER_MIN
+                <li>Index  23 : queryEUM_BASE_PAGES_DOC_READY_TIME_MS
+                <li>Index  24 : queryEUM_BASE_PAGES_DOC_DOWNLOAD_TIME
+                <li>Index  25 : queryEUM_BASE_PAGES_DOC_PROCESSING_TIME
+                <li>Index  26 : queryEUM_BASE_PAGES_TCP_CONNECT_TIME_MS
+                <li>Index  27 : queryEUM_BASE_PAGES_APPLICATION_SERVER_CALLS_PER_MINUTE
+                <li>Index  28 : queryEUM_BASE_PAGES_SSL_HANDSHAKE_TIME_MS
+                <li>Index  29 : queryEUM_BASE_PAGES_APPLICATION_SERVER_TIME_MS
+                <li>Index  30 : queryEUM_BASE_PAGES_DOMAIN_LOOKUP_TIME_MS
+                <li>Index  31 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME
+                <li>Index  32 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS
+                <li>Index  33 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS
+                <li>Index  34 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS
+                <li>Index  35 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS
+                <li>Index  36 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_MS
+                <li>Index  37 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_50TH_PERCENTILE_MS
+                <li>Index  38 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_90TH_PERCENTILE_MS
+                <li>Index  39 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_95TH_PERCENTILE_MS
+                <li>Index  40 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_99TH_PERCENTILE_MS
+                <li>Index  41 : queryEUM_BASE_PAGES_DOM_READY_TIME_MS
+                <li>Index  42 : queryEUM_BASE_PAGES_DOM_READY_TIME_50TH_PERCENTILE_MS
+                <li>Index  43 : queryEUM_BASE_PAGES_DOM_READY_TIME_90TH_PERCENTILE_MS
+                <li>Index  44 : queryEUM_BASE_PAGES_DOM_READY_TIME_95TH_PERCENTILE_MS
+                <li>Index  45 : queryEUM_BASE_PAGES_DOM_READY_TIME_99TH_PERCENTILE_MS
+        *   </ul>
+        * <li><b>IFrame</b>
+        *   <ul>
+                <li>Index  46 : queryEUM_IFRAME_FRONT_END_TIME_MS
+                <li>Index  47 : queryEUM_IFRAME_DOCUMENT_READY_TIME_MS
+                <li>Index  48 : queryEUM_IFRAME_TCP_CONNECT_TIME_MS
+                <li>Index  49 : queryEUM_IFRAME_DOMAIN_LOOKUP_TIME_MS
+                <li>Index  50 : queryEUM_IFRAME_RESPONSE_AVAILABLE_TIME_MS
+                <li>Index  51 : queryEUM_IFRAME_SERVER_CONNECTION_TIME_MS
+                <li>Index  52 : queryEUM_IFRAME_PAGE_RENDER_TIME_MS
+                <li>Index  53 : queryEUM_IFRAME_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE
+                <li>Index  54 : queryEUM_IFRAME_DOCUMENT_DOWNLOAD_TIME_MS
+                <li>Index  55 : queryEUM_IFRAME_DOCUMENT_PROCESSING_TIME_MS
+                <li>Index  56 : queryEUM_IFRAME_SSL_HANDSHAKE_TIME_MS
+                <li>Index  57 : queryEUM_IFRAME_REQUESTS_PER_MINUTE
+                <li>Index  58 : queryEUM_IFRAME_FIRST_BYTE_TIME_MS
+                <li>Index  59 : queryEUM_IFRAME_FIRST_BYTE_TIME_50TH_PERCENTILE_MS
+                <li>Index  60 : queryEUM_IFRAME_FIRST_BYTE_TIME_90TH_PERCENTILE_MS
+                <li>Index  61 : queryEUM_IFRAME_FIRST_BYTE_TIME_95TH_PERCENTILE_MS
+                <li>Index  62 : queryEUM_IFRAME_FIRST_BYTE_TIME_99TH_PERCENTILE_MS
+                <li>Index  63 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_MS
+                <li>Index  64 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS
+                <li>Index  65 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS
+                <li>Index  66 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS
+                <li>Index  67 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS
+                <li>Index  68 : queryEUM_IFRAME_DOM_READY_TIME_MS
+                <li>Index  69 : queryEUM_IFRAME_DOM_READY_TIME_50TH_PERCENTILE_MS
+                <li>Index  70 : queryEUM_IFRAME_DOM_READY_TIME_90TH_PERCENTILE_MS
+                <li>Index  71 : queryEUM_IFRAME_DOM_READY_TIME_95TH_PERCENTILE_MS
+                <li>Index  72 : queryEUM_IFRAME_DOM_READY_TIME_99TH_PERCENTILE_MS
+        *   </ul>
+     * </ul>
+     * 
      * @param queryIndex Index of the type of query to run
      * @param application Name of the application which holds the metric
      * @param urlPath URL path that was captured
@@ -1846,81 +2065,8 @@ public class RESTAccess {
      * @param end Timestamp in milliseconds for the end time for the query
      * @return {@link MetricDatas}
      * 
-     * <p>
-        <br>Index  0 : queryEUM_AJAX_REQUESTS_PER_MIN
-        <br>Index  1 : queryEUM_AJAX_REQUESTS_ERRORS_PER_MIN
-        <br>Index  2 : queryEUM_AJAX_DOC_DOWNLOAD_TIME
-        <br>Index  3 : queryEUM_AJAX_DOC_PROCESSING_TIME
-        <br>Index  4 : queryEUM_AJAX_APPLICATION_SERVER_CALLS_PER_MINUTE
-        <br>Index  5 : queryEUM_AJAX_APPLICATION_SERVER_TIME_MS
-        <br>Index  6 : queryEUM_AJAX_END_USER_RESPONSE_TIME
-        <br>Index  7 : queryEUM_AJAX_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS
-        <br>Index  8 : queryEUM_AJAX_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS
-        <br>Index  9 : queryEUM_AJAX_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS
-        <br>Index  10 : queryEUM_AJAX_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS
-        <br>Index  11 : queryEUM_AJAX_FIRST_BYTE_TIME_MS
-        <br>Index  12 : queryEUM_AJAX_FIRST_BYTE_TIME_50TH_PERCENTILE_MS
-        <br>Index  13 : queryEUM_AJAX_FIRST_BYTE_TIME_90TH_PERCENTILE_MS
-        <br>Index  14 : queryEUM_AJAX_FIRST_BYTE_TIME_95TH_PERCENTILE_MS
-        <br>Index  15 : queryEUM_AJAX_FIRST_BYTE_TIME_99TH_PERCENTILE_MS
-        <br>Index  16 : queryEUM_BASE_PAGES_FRONT_END_TIME_MS
-        <br>Index  17 : queryEUM_BASE_PAGES_PAGE_RENDER_TIME_MS
-        <br>Index  18 : queryEUM_BASE_PAGES_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE
-        <br>Index  19 : queryEUM_BASE_PAGES_RESPONSE_AVAILABLE_TIME_MS
-        <br>Index  20 : queryEUM_BASE_PAGES_SERVER_CONNECTION_TIME_MS
-        <br>Index  21 : queryEUM_BASE_PAGES_SYNTHETIC_REQUESTS_PER_MINUTE
-        <br>Index  22 : queryEUM_BASE_PAGES_REQUESTS_PER_MIN
-        <br>Index  23 : queryEUM_BASE_PAGES_DOC_READY_TIME_MS
-        <br>Index  24 : queryEUM_BASE_PAGES_DOC_DOWNLOAD_TIME
-        <br>Index  25 : queryEUM_BASE_PAGES_DOC_PROCESSING_TIME
-        <br>Index  26 : queryEUM_BASE_PAGES_TCP_CONNECT_TIME_MS
-        <br>Index  27 : queryEUM_BASE_PAGES_APPLICATION_SERVER_CALLS_PER_MINUTE
-        <br>Index  28 : queryEUM_BASE_PAGES_SSL_HANDSHAKE_TIME_MS
-        <br>Index  29 : queryEUM_BASE_PAGES_APPLICATION_SERVER_TIME_MS
-        <br>Index  30 : queryEUM_BASE_PAGES_DOMAIN_LOOKUP_TIME_MS
-        <br>Index  31 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME
-        <br>Index  32 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS
-        <br>Index  33 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS
-        <br>Index  34 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS
-        <br>Index  35 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS
-        <br>Index  36 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_MS
-        <br>Index  37 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_50TH_PERCENTILE_MS
-        <br>Index  38 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_90TH_PERCENTILE_MS
-        <br>Index  39 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_95TH_PERCENTILE_MS
-        <br>Index  40 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_99TH_PERCENTILE_MS
-        <br>Index  41 : queryEUM_BASE_PAGES_DOM_READY_TIME_MS
-        <br>Index  42 : queryEUM_BASE_PAGES_DOM_READY_TIME_50TH_PERCENTILE_MS
-        <br>Index  43 : queryEUM_BASE_PAGES_DOM_READY_TIME_90TH_PERCENTILE_MS
-        <br>Index  44 : queryEUM_BASE_PAGES_DOM_READY_TIME_95TH_PERCENTILE_MS
-        <br>Index  45 : queryEUM_BASE_PAGES_DOM_READY_TIME_99TH_PERCENTILE_MS
-        <br>Index  46 : queryEUM_IFRAME_FRONT_END_TIME_MS
-        <br>Index  47 : queryEUM_IFRAME_DOCUMENT_READY_TIME_MS
-        <br>Index  48 : queryEUM_IFRAME_TCP_CONNECT_TIME_MS
-        <br>Index  49 : queryEUM_IFRAME_DOMAIN_LOOKUP_TIME_MS
-        <br>Index  50 : queryEUM_IFRAME_RESPONSE_AVAILABLE_TIME_MS
-        <br>Index  51 : queryEUM_IFRAME_SERVER_CONNECTION_TIME_MS
-        <br>Index  52 : queryEUM_IFRAME_PAGE_RENDER_TIME_MS
-        <br>Index  53 : queryEUM_IFRAME_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE
-        <br>Index  54 : queryEUM_IFRAME_DOCUMENT_DOWNLOAD_TIME_MS
-        <br>Index  55 : queryEUM_IFRAME_DOCUMENT_PROCESSING_TIME_MS
-        <br>Index  56 : queryEUM_IFRAME_SSL_HANDSHAKE_TIME_MS
-        <br>Index  57 : queryEUM_IFRAME_REQUESTS_PER_MINUTE
-        <br>Index  58 : queryEUM_IFRAME_FIRST_BYTE_TIME_MS
-        <br>Index  59 : queryEUM_IFRAME_FIRST_BYTE_TIME_50TH_PERCENTILE_MS
-        <br>Index  60 : queryEUM_IFRAME_FIRST_BYTE_TIME_90TH_PERCENTILE_MS
-        <br>Index  61 : queryEUM_IFRAME_FIRST_BYTE_TIME_95TH_PERCENTILE_MS
-        <br>Index  62 : queryEUM_IFRAME_FIRST_BYTE_TIME_99TH_PERCENTILE_MS
-        <br>Index  63 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_MS
-        <br>Index  64 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS
-        <br>Index  65 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS
-        <br>Index  66 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS
-        <br>Index  67 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS
-        <br>Index  68 : queryEUM_IFRAME_DOM_READY_TIME_MS
-        <br>Index  69 : queryEUM_IFRAME_DOM_READY_TIME_50TH_PERCENTILE_MS
-        <br>Index  70 : queryEUM_IFRAME_DOM_READY_TIME_90TH_PERCENTILE_MS
-        <br>Index  71 : queryEUM_IFRAME_DOM_READY_TIME_95TH_PERCENTILE_MS
-        <br>Index  72 : queryEUM_IFRAME_DOM_READY_TIME_99TH_PERCENTILE_MS
-     * </p>
+     * 
+     * 
      */
     public MetricDatas getRESTEUMMetricQuery(int queryIndex, String application, String urlPath, long start, long end){
         return getRESTEUMMetricQuery(queryIndex, application, urlPath, start, end, false);
@@ -1933,6 +2079,92 @@ public class RESTAccess {
      * Case statement looks at the queryIndex to determine the proper Query string.
      * </p>
      * 
+     * 
+     * <ul>
+     *  <li><b>EUM Ajax</b>
+     *      <ul>
+                <li>Index  0 : EUM_AJAX_REQUESTS_PER_MIN
+                <li>Index  1 : EUM_AJAX_REQUESTS_ERRORS_PER_MIN
+                <li>Index  2 : EUM_AJAX_DOC_DOWNLOAD_TIME
+                <li>Index  3 : EUM_AJAX_DOC_PROCESSING_TIME
+                <li>Index  4 : EUM_AJAX_APPLICATION_SERVER_CALLS_PER_MINUTE
+                <li>Index  5 : EUM_AJAX_APPLICATION_SERVER_TIME_MS
+                <li>Index  6 : EUM_AJAX_END_USER_RESPONSE_TIME
+                <li>Index  7 : EUM_AJAX_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS
+                <li>Index  8 : EUM_AJAX_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS
+                <li>Index  9 : EUM_AJAX_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS
+                <li>Index  10 : EUM_AJAX_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS
+                <li>Index  11 : EUM_AJAX_FIRST_BYTE_TIME_MS
+                <li>Index  12 : EUM_AJAX_FIRST_BYTE_TIME_50TH_PERCENTILE_MS
+                <li>Index  13 : EUM_AJAX_FIRST_BYTE_TIME_90TH_PERCENTILE_MS
+                <li>Index  14 : EUM_AJAX_FIRST_BYTE_TIME_95TH_PERCENTILE_MS
+                <li>Index  15 : EUM_AJAX_FIRST_BYTE_TIME_99TH_PERCENTILE_MS
+        *   </ul>
+        <li><b>Base Pages</b>
+        *   <ul>
+                <li>Index  16 : queryEUM_BASE_PAGES_FRONT_END_TIME_MS
+                <li>Index  17 : queryEUM_BASE_PAGES_PAGE_RENDER_TIME_MS
+                <li>Index  18 : queryEUM_BASE_PAGES_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE
+                <li>Index  19 : queryEUM_BASE_PAGES_RESPONSE_AVAILABLE_TIME_MS
+                <li>Index  20 : queryEUM_BASE_PAGES_SERVER_CONNECTION_TIME_MS
+                <li>Index  21 : queryEUM_BASE_PAGES_SYNTHETIC_REQUESTS_PER_MINUTE
+                <li>Index  22 : queryEUM_BASE_PAGES_REQUESTS_PER_MIN
+                <li>Index  23 : queryEUM_BASE_PAGES_DOC_READY_TIME_MS
+                <li>Index  24 : queryEUM_BASE_PAGES_DOC_DOWNLOAD_TIME
+                <li>Index  25 : queryEUM_BASE_PAGES_DOC_PROCESSING_TIME
+                <li>Index  26 : queryEUM_BASE_PAGES_TCP_CONNECT_TIME_MS
+                <li>Index  27 : queryEUM_BASE_PAGES_APPLICATION_SERVER_CALLS_PER_MINUTE
+                <li>Index  28 : queryEUM_BASE_PAGES_SSL_HANDSHAKE_TIME_MS
+                <li>Index  29 : queryEUM_BASE_PAGES_APPLICATION_SERVER_TIME_MS
+                <li>Index  30 : queryEUM_BASE_PAGES_DOMAIN_LOOKUP_TIME_MS
+                <li>Index  31 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME
+                <li>Index  32 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS
+                <li>Index  33 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS
+                <li>Index  34 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS
+                <li>Index  35 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS
+                <li>Index  36 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_MS
+                <li>Index  37 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_50TH_PERCENTILE_MS
+                <li>Index  38 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_90TH_PERCENTILE_MS
+                <li>Index  39 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_95TH_PERCENTILE_MS
+                <li>Index  40 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_99TH_PERCENTILE_MS
+                <li>Index  41 : queryEUM_BASE_PAGES_DOM_READY_TIME_MS
+                <li>Index  42 : queryEUM_BASE_PAGES_DOM_READY_TIME_50TH_PERCENTILE_MS
+                <li>Index  43 : queryEUM_BASE_PAGES_DOM_READY_TIME_90TH_PERCENTILE_MS
+                <li>Index  44 : queryEUM_BASE_PAGES_DOM_READY_TIME_95TH_PERCENTILE_MS
+                <li>Index  45 : queryEUM_BASE_PAGES_DOM_READY_TIME_99TH_PERCENTILE_MS
+        *   </ul>
+        * <li><b>IFrame</b>
+        *   <ul>
+                <li>Index  46 : queryEUM_IFRAME_FRONT_END_TIME_MS
+                <li>Index  47 : queryEUM_IFRAME_DOCUMENT_READY_TIME_MS
+                <li>Index  48 : queryEUM_IFRAME_TCP_CONNECT_TIME_MS
+                <li>Index  49 : queryEUM_IFRAME_DOMAIN_LOOKUP_TIME_MS
+                <li>Index  50 : queryEUM_IFRAME_RESPONSE_AVAILABLE_TIME_MS
+                <li>Index  51 : queryEUM_IFRAME_SERVER_CONNECTION_TIME_MS
+                <li>Index  52 : queryEUM_IFRAME_PAGE_RENDER_TIME_MS
+                <li>Index  53 : queryEUM_IFRAME_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE
+                <li>Index  54 : queryEUM_IFRAME_DOCUMENT_DOWNLOAD_TIME_MS
+                <li>Index  55 : queryEUM_IFRAME_DOCUMENT_PROCESSING_TIME_MS
+                <li>Index  56 : queryEUM_IFRAME_SSL_HANDSHAKE_TIME_MS
+                <li>Index  57 : queryEUM_IFRAME_REQUESTS_PER_MINUTE
+                <li>Index  58 : queryEUM_IFRAME_FIRST_BYTE_TIME_MS
+                <li>Index  59 : queryEUM_IFRAME_FIRST_BYTE_TIME_50TH_PERCENTILE_MS
+                <li>Index  60 : queryEUM_IFRAME_FIRST_BYTE_TIME_90TH_PERCENTILE_MS
+                <li>Index  61 : queryEUM_IFRAME_FIRST_BYTE_TIME_95TH_PERCENTILE_MS
+                <li>Index  62 : queryEUM_IFRAME_FIRST_BYTE_TIME_99TH_PERCENTILE_MS
+                <li>Index  63 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_MS
+                <li>Index  64 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS
+                <li>Index  65 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS
+                <li>Index  66 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS
+                <li>Index  67 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS
+                <li>Index  68 : queryEUM_IFRAME_DOM_READY_TIME_MS
+                <li>Index  69 : queryEUM_IFRAME_DOM_READY_TIME_50TH_PERCENTILE_MS
+                <li>Index  70 : queryEUM_IFRAME_DOM_READY_TIME_90TH_PERCENTILE_MS
+                <li>Index  71 : queryEUM_IFRAME_DOM_READY_TIME_95TH_PERCENTILE_MS
+                <li>Index  72 : queryEUM_IFRAME_DOM_READY_TIME_99TH_PERCENTILE_MS
+        *   </ul>
+     * </ul>
+     * 
      * @param queryIndex Index of the type of query to run
      * @param application Name of the application which holds the metric
      * @param urlPath URL path that was captured
@@ -1941,84 +2173,6 @@ public class RESTAccess {
      * @param rollup Boolean determines whether to roll up the metrics 
      * @return {@link MetricDatas}
      * 
-     * <p>
-        <br>Index  0 : queryEUM_AJAX_REQUESTS_PER_MIN
-        <br>Index  1 : queryEUM_AJAX_REQUESTS_ERRORS_PER_MIN
-        <br>Index  2 : queryEUM_AJAX_DOC_DOWNLOAD_TIME
-        <br>Index  3 : queryEUM_AJAX_DOC_PROCESSING_TIME
-        <br>Index  4 : queryEUM_AJAX_APPLICATION_SERVER_CALLS_PER_MINUTE
-        <br>Index  5 : queryEUM_AJAX_APPLICATION_SERVER_TIME_MS
-        <br>Index  6 : queryEUM_AJAX_END_USER_RESPONSE_TIME
-        <br>Index  7 : queryEUM_AJAX_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS
-        <br>Index  8 : queryEUM_AJAX_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS
-        <br>Index  9 : queryEUM_AJAX_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS
-        <br>Index  10 : queryEUM_AJAX_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS
-        <br>Index  11 : queryEUM_AJAX_FIRST_BYTE_TIME_MS
-        <br>Index  12 : queryEUM_AJAX_FIRST_BYTE_TIME_50TH_PERCENTILE_MS
-        <br>Index  13 : queryEUM_AJAX_FIRST_BYTE_TIME_90TH_PERCENTILE_MS
-        <br>Index  14 : queryEUM_AJAX_FIRST_BYTE_TIME_95TH_PERCENTILE_MS
-        <br>Index  15 : queryEUM_AJAX_FIRST_BYTE_TIME_99TH_PERCENTILE_MS
-        <br>Index  16 : queryEUM_BASE_PAGES_FRONT_END_TIME_MS
-        <br>Index  17 : queryEUM_BASE_PAGES_PAGE_RENDER_TIME_MS
-        <br>Index  18 : queryEUM_BASE_PAGES_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE
-        <br>Index  19 : queryEUM_BASE_PAGES_RESPONSE_AVAILABLE_TIME_MS
-        <br>Index  20 : queryEUM_BASE_PAGES_SERVER_CONNECTION_TIME_MS
-        <br>Index  21 : queryEUM_BASE_PAGES_SYNTHETIC_REQUESTS_PER_MINUTE
-        <br>Index  22 : queryEUM_BASE_PAGES_REQUESTS_PER_MIN
-        <br>Index  23 : queryEUM_BASE_PAGES_DOC_READY_TIME_MS
-        <br>Index  24 : queryEUM_BASE_PAGES_DOC_DOWNLOAD_TIME
-        <br>Index  25 : queryEUM_BASE_PAGES_DOC_PROCESSING_TIME
-        <br>Index  26 : queryEUM_BASE_PAGES_TCP_CONNECT_TIME_MS
-        <br>Index  27 : queryEUM_BASE_PAGES_APPLICATION_SERVER_CALLS_PER_MINUTE
-        <br>Index  28 : queryEUM_BASE_PAGES_SSL_HANDSHAKE_TIME_MS
-        <br>Index  29 : queryEUM_BASE_PAGES_APPLICATION_SERVER_TIME_MS
-        <br>Index  30 : queryEUM_BASE_PAGES_DOMAIN_LOOKUP_TIME_MS
-        <br>Index  31 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME
-        <br>Index  32 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS
-        <br>Index  33 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS
-        <br>Index  34 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS
-        <br>Index  35 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS
-        <br>Index  36 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_MS
-        <br>Index  37 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_50TH_PERCENTILE_MS
-        <br>Index  38 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_90TH_PERCENTILE_MS
-        <br>Index  39 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_95TH_PERCENTILE_MS
-        <br>Index  40 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_99TH_PERCENTILE_MS
-        <br>Index  41 : queryEUM_BASE_PAGES_DOM_READY_TIME_MS
-        <br>Index  42 : queryEUM_BASE_PAGES_DOM_READY_TIME_50TH_PERCENTILE_MS
-        <br>Index  43 : queryEUM_BASE_PAGES_DOM_READY_TIME_90TH_PERCENTILE_MS
-        <br>Index  44 : queryEUM_BASE_PAGES_DOM_READY_TIME_95TH_PERCENTILE_MS
-        <br>Index  45 : queryEUM_BASE_PAGES_DOM_READY_TIME_99TH_PERCENTILE_MS
-        <br>Index  46 : queryEUM_IFRAME_FRONT_END_TIME_MS
-        <br>Index  47 : queryEUM_IFRAME_DOCUMENT_READY_TIME_MS
-        <br>Index  48 : queryEUM_IFRAME_TCP_CONNECT_TIME_MS
-        <br>Index  49 : queryEUM_IFRAME_DOMAIN_LOOKUP_TIME_MS
-        <br>Index  50 : queryEUM_IFRAME_RESPONSE_AVAILABLE_TIME_MS
-        <br>Index  51 : queryEUM_IFRAME_SERVER_CONNECTION_TIME_MS
-        <br>Index  52 : queryEUM_IFRAME_PAGE_RENDER_TIME_MS
-        <br>Index  53 : queryEUM_IFRAME_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE
-        <br>Index  54 : queryEUM_IFRAME_DOCUMENT_DOWNLOAD_TIME_MS
-        <br>Index  55 : queryEUM_IFRAME_DOCUMENT_PROCESSING_TIME_MS
-        <br>Index  56 : queryEUM_IFRAME_SSL_HANDSHAKE_TIME_MS
-        <br>Index  57 : queryEUM_IFRAME_REQUESTS_PER_MINUTE
-        <br>Index  58 : queryEUM_IFRAME_FIRST_BYTE_TIME_MS
-        <br>Index  59 : queryEUM_IFRAME_FIRST_BYTE_TIME_50TH_PERCENTILE_MS
-        <br>Index  60 : queryEUM_IFRAME_FIRST_BYTE_TIME_90TH_PERCENTILE_MS
-        <br>Index  61 : queryEUM_IFRAME_FIRST_BYTE_TIME_95TH_PERCENTILE_MS
-        <br>Index  62 : queryEUM_IFRAME_FIRST_BYTE_TIME_99TH_PERCENTILE_MS
-        <br>Index  63 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_MS
-        <br>Index  64 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS
-        <br>Index  65 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS
-        <br>Index  66 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS
-        <br>Index  67 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS
-        <br>Index  68 : queryEUM_IFRAME_DOM_READY_TIME_MS
-        <br>Index  69 : queryEUM_IFRAME_DOM_READY_TIME_50TH_PERCENTILE_MS
-        <br>Index  70 : queryEUM_IFRAME_DOM_READY_TIME_90TH_PERCENTILE_MS
-        <br>Index  71 : queryEUM_IFRAME_DOM_READY_TIME_95TH_PERCENTILE_MS
-        <br>Index  72 : queryEUM_IFRAME_DOM_READY_TIME_99TH_PERCENTILE_MS
-        <br>Index 100: queryEUM_AJAX_All
-        <br>Index 101: queryEUM_BASE_PAGES_All
-        <br>Index 102 : queryEUM_IFRAME_All
-     * </p>
      */
     public MetricDatas getRESTEUMMetricQuery(int queryIndex, String application, String urlPath, long start, long end, boolean rollup){
         String query=null;
@@ -2358,6 +2512,22 @@ public class RESTAccess {
      * Returns MetricData for Business Transaction's metrics that can be parsed 
      * Case statement looks at the queryIndex to determine the proper Query string.
      * </p>
+     * 
+     * 
+     * <ul>
+        * <li>Index  0 : queryBTAVERAGE_BLOCK_TIME_MS
+        * <li>Index  1 : queryBTAVERAGE_CPU_USED_MS
+        * <li>Index  2 : queryBTAVERAGE_REQUEST_SIZE
+        * <li>Index  3 : queryBTAVERAGE_RESPONSE_TIME
+        * <li>Index  4 : queryBTAVERAGE_WAIT_TIME_MS
+        * <li>Index  5 : queryBTCALL_PER_MINUTE
+        * <li>Index  6 : queryBTERRORS_PER_MINUTE
+        * <li>Index  7 : queryBTNORMAL_AVERAGE_RESPONSE_TIME_MS
+        * <li>Index  8 : queryBTNUMBER_OF_SLOW_CALLS
+        * <li>Index  9 : queryBTNUMBER_OF_VERY_SLOW_CALLS
+        * <li>Index 10 : queryBTSTALL_COUNT
+     * </ul>
+     * 
      * @param queryIndex Index of the type of query to run
      * @param application Name of the application which holds the metric
      * @param tier Name of the tier which holds the metric
@@ -2366,19 +2536,7 @@ public class RESTAccess {
      * @param end Timestamp in milliseconds for the end time for the query
      * @return {@link MetricDatas}
      * 
-     * <p>
-     * <br>Index  0 : queryBTAVERAGE_BLOCK_TIME_MS
-     * <br>Index  1 : queryBTAVERAGE_CPU_USED_MS
-     * <br>Index  2 : queryBTAVERAGE_REQUEST_SIZE
-     * <br>Index  3 : queryBTAVERAGE_RESPONSE_TIME
-     * <br>Index  4 : queryBTAVERAGE_WAIT_TIME_MS
-     * <br>Index  5 : queryBTCALL_PER_MINUTE
-     * <br>Index  6 : queryBTERRORS_PER_MINUTE
-     * <br>Index  7 : queryBTNORMAL_AVERAGE_RESPONSE_TIME_MS
-     * <br>Index  8 : queryBTNUMBER_OF_SLOW_CALLS
-     * <br>Index  9 : queryBTNUMBER_OF_VERY_SLOW_CALLS
-     * <br>Index 10 : queryBTSTALL_COUNT
-     * </p>
+     * 
      */
     public MetricDatas getRESTBTMetricQuery(int queryIndex, String application, String tier, String btName, long start, long end){
         return getRESTBTMetricQuery(queryIndex, application, tier, btName, start, end,false);
@@ -2391,6 +2549,21 @@ public class RESTAccess {
      * Case statement looks at the queryIndex to determine the proper Query string.
      * </p>
      * 
+     * 
+     * <ul>
+        * <li>Index  0 : queryBTAVERAGE_BLOCK_TIME_MS
+        * <li>Index  1 : queryBTAVERAGE_CPU_USED_MS
+        * <li>Index  2 : queryBTAVERAGE_REQUEST_SIZE
+        * <li>Index  3 : queryBTAVERAGE_RESPONSE_TIME
+        * <li>Index  4 : queryBTAVERAGE_WAIT_TIME_MS
+        * <li>Index  5 : queryBTCALL_PER_MINUTE
+        * <li>Index  6 : queryBTERRORS_PER_MINUTE
+        * <li>Index  7 : queryBTNORMAL_AVERAGE_RESPONSE_TIME_MS
+        * <li>Index  8 : queryBTNUMBER_OF_SLOW_CALLS
+        * <li>Index  9 : queryBTNUMBER_OF_VERY_SLOW_CALLS
+        * <li>Index 10 : queryBTSTALL_COUNT
+     * </ul>
+     * 
      * @param queryIndex Index of the type of query to run
      * @param application Name of the application which holds the metric
      * @param tier Name of the tier which holds the metric
@@ -2400,20 +2573,7 @@ public class RESTAccess {
      * @param rollup Boolean determines whether to roll up the metrics
      * @return {@link MetricDatas}
      * 
-     * <p>
-     * <br>Index  0 : queryBTAVERAGE_BLOCK_TIME_MS
-     * <br>Index  1 : queryBTAVERAGE_CPU_USED_MS
-     * <br>Index  2 : queryBTAVERAGE_REQUEST_SIZE
-     * <br>Index  3 : queryBTAVERAGE_RESPONSE_TIME
-     * <br>Index  4 : queryBTAVERAGE_WAIT_TIME_MS
-     * <br>Index  5 : queryBTCALL_PER_MINUTE
-     * <br>Index  6 : queryBTERRORS_PER_MINUTE
-     * <br>Index  7 : queryBTNORMAL_AVERAGE_RESPONSE_TIME_MS
-     * <br>Index  8 : queryBTNUMBER_OF_SLOW_CALLS
-     * <br>Index  9 : queryBTNUMBER_OF_VERY_SLOW_CALLS
-     * <br>Index 10 : queryBTSTALL_COUNT
-     * <br>Index 100: queryAllMetricsForBT
-     * </p>
+     * 
      */
     public MetricDatas getRESTBTMetricQuery(int queryIndex, String application, String tier, String btName, long start, long end, boolean rollup){
         String query=null;
@@ -2484,6 +2644,13 @@ public class RESTAccess {
      * Returns MetricData for Backend's metrics that can be parsed 
      * Case statement looks at the queryIndex to determine the proper Query string.
      * </p>
+     * 
+     * <ul>
+        * <li>Index  0 : queryBackendAverageResponseTimeMS
+        * <li>Index  1 : queryBackendCallsPerMinute
+        * <li>Index  2 : queryBackendErrorsPerMinute
+     * </ul>
+     * 
      * @param queryIndex Index of the type of query to run
      * @param application Name of the application which holds the metric
      * @param backend Name of the backend which holds the metric
@@ -2491,11 +2658,7 @@ public class RESTAccess {
      * @param end Timestamp in milliseconds for the end time for the query
      * @return {@link MetricDatas}
      * 
-     * <p>
-     * <br>Index  0 : queryBackendAverageResponseTimeMS
-     * <br>Index  1 : queryBackendCallsPerMinute
-     * <br>Index  2 : queryBackendErrorsPerMinute
-     * </p>
+     * 
      */
     public MetricDatas getRESTBackendMetricQuery(int queryIndex, String application, String backend, long start, long end){
         String query=null;
@@ -2539,6 +2702,14 @@ public class RESTAccess {
      * Returns MetricData for Backend's metrics that can be parsed 
      * Case statement looks at the queryIndex to determine the proper Query string.
      * </p>
+     * 
+     * 
+     * <ul>
+        * <li>Index  0 : queryBackendAverageResponseTimeMS
+        * <li>Index  1 : queryBackendCallsPerMinute
+        * <li>Index  2 : queryBackendErrorsPerMinute
+     * </ul>
+     * 
      * @param queryIndex Index of the type of query to run
      * @param application Name of the application which holds the metric
      * @param backend Name of the backend which holds the metric
@@ -2547,11 +2718,6 @@ public class RESTAccess {
      * @param rollup Boolean determines whether to roll up the metrics
      * @return {@link MetricDatas}
      * 
-     * <p>
-     * <br>Index  0 : queryBackendAverageResponseTimeMS
-     * <br>Index  1 : queryBackendCallsPerMinute
-     * <br>Index  2 : queryBackendErrorsPerMinute
-     * </p>
      * 
      */
     public MetricDatas getRESTBackendMetricQuery(int queryIndex, String application, String backend, long start, long end, boolean rollup){
@@ -2595,12 +2761,10 @@ public class RESTAccess {
      * <p>
      * Returns transaction detection auto discovery rules for the application.
      * </p>
+     * 
      * @param app Name of the application which holds the metric
      * @return {@link AutoDiscoveryConfig}
      * 
-     * <p>
-     * <br>Index  0 : queryTransactionDetectionAutoAll
-     * </p>
      */
     public AutoDiscoveryConfig getRESTExportOfAutoObj( String app){
         String query=null;
@@ -2638,9 +2802,6 @@ public class RESTAccess {
      * @param app Name of the application which holds the metric
      * @return {@link String}
      * 
-     * <p>
-     * <br>Index  0 : queryTransactionDetectionAutoAll
-     * </p>
      */
     public String getRESTExportOfAuto(String app){
         String query=null;
@@ -2671,15 +2832,18 @@ public class RESTAccess {
      * <p>
      * Returns transaction detection auto discovery rules for the application.
      * </p>
+     * 
+     * <ul>
+     * <li>Index  0 : queryTransactionDetectionAutoAll
+     * <li>Index  1 : queryTransactionDetectionAutoSingle 
+     * </ul>
+     * 
      * @param queryIndex Index of the type of query to run
      * @param app Name of the application which holds the rules
      * @param objNode Depending on the query this can be the tier name for all rules or the name of the single rule to export
      * @return {@link AutoDiscoveryConfig}
      * 
-     * <p>
-     * <br>Index  0 : queryTransactionDetectionAutoAll
-     * <br>Index  1 : queryTransactionDetectionAutoSingle 
-     * </p>
+     * 
      */
     public AutoDiscoveryConfig getRESTExportOfAutoObj(int queryIndex, String app, String objNode){
         String query=null;
@@ -2723,15 +2887,19 @@ public class RESTAccess {
      * <p>
      * Returns transaction detection auto discovery rules for the application.
      * </p>
+     * 
+     * 
+     * 
+     * <ul>
+     * <li>Index  0 : queryTransactionDetectionAutoAll
+     * <li>Index  1 : queryTransactionDetectionAutoSingle 
+     * </ul>
+     * 
      * @param queryIndex Index of the type of query to run
      * @param app Name of the application which holds the rules
      * @param objNode Depending on the query this can be the tier name for all rules or the name of the single rule to export
      * @return {@link String}
      * 
-     * <p>
-     * <br>Index  0 : queryTransactionDetectionAutoAll
-     * <br>Index  1 : queryTransactionDetectionAutoSingle 
-     * </p>
      */
     public String getRESTExportOfAuto(int queryIndex, String app, String objNode){
         String query=null;
@@ -2781,9 +2949,6 @@ public class RESTAccess {
      * @param objNode Depending on the query this can be the tier name for all rules or the name of the single rule to export
      * @return {@link AutoDiscoveryConfig}
      * 
-     * <p>
-     * <br>queryTransactionDetectionAutoSingle 
-     * </p>
      */
     public AutoDiscoveryConfig getRESTExportOfAutoObj(String app, String tier, String objNode){
         String query=null;
@@ -2826,9 +2991,6 @@ public class RESTAccess {
      * @param objNode Depending on the query this can be the tier name for all rules or the name of the single rule to export
      * @return {@link AutoDiscoveryConfig}
      * 
-     * <p>
-     * <br>queryTransactionDetectionAutoSingle 
-     * </p>
      */
     public String getRESTExportOfAuto(String app, String tier, String objNode){
         String query=null;
@@ -2872,9 +3034,6 @@ public class RESTAccess {
      * @param xml Xml string of the auto discovery rule
      * @return {@link String}
      * 
-     * <p>
-     * <br>queryTransactionDetectionAutoAll
-     * </p>
      */
     public String postRESTAutoSingle(String app, String entityName, String xml){
         String query=null;
@@ -2915,9 +3074,6 @@ public class RESTAccess {
      * @param xml Xml string of the auto discovery rule
      * @return {@link String}
      * 
-     * <p>
-     * <br>queryTransactionDetectionAutoAll
-     * </p>
      */
     public String postRESTAutoSingle(String app, String tier, String entityName, String xml){
         String query=null;
@@ -2956,9 +3112,6 @@ public class RESTAccess {
      * @param app The name of the application
      * @return {@link String}
      * 
-     * <p>
-     * <br>queryTransactionDetectionExportAllPojo
-     * </p>
      */
     public String getRESTCustomPojoExportAll(String app){
         String query=null;
@@ -2994,9 +3147,6 @@ public class RESTAccess {
      * @param tier The name of the tier
      * @return {@link String}
      * 
-     * <p>
-     * <br>queryTransactionDetectionExportAllPojo
-     * </p>
      */
     public String getRESTCustomPojoExportAll(String app, String tier){
         String query=null;
@@ -3034,9 +3184,6 @@ public class RESTAccess {
      * @param app The name of the application
      * @return  {@link CustomMatchPoints}
      * 
-     * <p>
-     * <br>queryTransactionDetectionExportAllPojo
-     * </p>
      */
     public CustomMatchPoints getRESTCustomPojoExportAllObj(String app){
         String query=null;
@@ -3074,9 +3221,6 @@ public class RESTAccess {
      * @param tier The name of the tier
      * @return {@link CustomMatchPoints}
      * 
-     * <p>
-     * <br>queryTransactionDetectionExportAllPojo
-     * </p>
      */
     public CustomMatchPoints getRESTCustomPojoExportAllObj(String app, String tier){
         String query=null;
@@ -3113,9 +3257,6 @@ public class RESTAccess {
      * @param objNode The name of the custom pojo
      * @return {@link String}
      * 
-     * <p>
-     * <br>queryTransactionDetectionExportPojo
-     * </p>
      */
     public String getRESTCustomPojoExport(String app, String objNode){
         String query=null;
@@ -3153,9 +3294,6 @@ public class RESTAccess {
      * @param objNode The name of the custom pojo
      * @return {@link String}
      * 
-     * <p>
-     * <br>Index  0 : queryTransactionDetectionExportPojo
-     * </p>
      */
     public String getRESTCustomPojoExport(String app, String tier, String objNode){
         String query=null;
@@ -3193,9 +3331,6 @@ public class RESTAccess {
      * @param xml Xml string for the custom pojo
      * @return {@link String}
      * 
-     * <p>
-     * <br> queryTransactionDetectionImportPojo
-     * </p>
      */
     public String postRESTCustomPojo(String app, String objNode, String xml){
         
@@ -3229,7 +3364,6 @@ public class RESTAccess {
      * @param xml Xml string for the custom pojo
      * @return {@link String}
      * 
-     * <p> queryTransactionDetectionImportPojo</p>
      */
     public String postRESTCustomPojo(String app, String tier, String objNode, String xml){
         
