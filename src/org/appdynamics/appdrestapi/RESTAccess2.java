@@ -115,7 +115,7 @@ public class RESTAccess2 extends RESTAccess{
      * @param queryIndex The index for this query
      * @param app The name of the application
      * @param objNode The name of the custom match rule
-     * @return {@link CustomeMatchPoints}
+     * @return {@link CustomMatchPoints}
      * 
      *  
      *  
@@ -548,7 +548,7 @@ public class RESTAccess2 extends RESTAccess{
      * @param app The name of the application
      * @param tier The name of the tier
      * @param objNode The name of the custom match rule
-     * @return {@link CustomeMatchPoints}
+     * @return {@link CustomMatchPoints}
      * 
      *  
      *  
