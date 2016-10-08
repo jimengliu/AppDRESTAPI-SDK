@@ -15,7 +15,10 @@ import javax.xml.bind.annotation.XmlSeeAlso;
  *
  * @author gilbert.solorzano
  * 
- * <name-value>
+ *
+ */
+/*
+<name-value>
         <id>0</id>
         <name>MAJOR_VERSION</name>
         <value>5.6</value>

@@ -13,6 +13,9 @@ import javax.xml.bind.annotation.XmlElement;
  * @author gilbert.solorzano
  * 
  * L3
+ * 
+ */
+/*
                     <metric-definition>
                         <type>LOGICAL_METRIC</type>
                         <logical-metric-name>JVM|Garbage Collection|GC Time Spent Per Min (ms)</logical-metric-name>

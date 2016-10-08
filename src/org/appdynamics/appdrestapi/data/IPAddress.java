@@ -10,7 +10,10 @@ import org.appdynamics.appdrestapi.resources.s;
  *
  * @author soloink
  * 
- * <ipAddresses>
+ */
+
+/*
+ <ipAddresses>
     <ipAddress>fe80:0:0:0:250:56ff:feab:55c3%2</ipAddress>
     <ipAddress>10.33.151.72</ipAddress>
   </ipAddresses>

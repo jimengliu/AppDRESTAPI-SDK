@@ -15,7 +15,9 @@ import javax.xml.bind.annotation.XmlElement;
  *
  * @author soloink
  * 
- *
+ */
+
+/*
 <metric-value>
 <startTimeInMillis>1403903580000</startTimeInMillis>
 <value>0</value>

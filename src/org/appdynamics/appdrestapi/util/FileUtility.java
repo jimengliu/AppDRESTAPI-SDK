@@ -25,7 +25,8 @@ public class FileUtility {
      * program.
      * </p>
      * @param filePath The full path to the file
-     * @return 
+     * 
+     * @return {@link String} 
      */
     public static String readFileToString(String filePath){
         StringBuilder bud = new StringBuilder();
@@ -51,9 +52,10 @@ public class FileUtility {
      * program.
      * </p>
      * @param filePath The full path to the file
-     * @return 
+     * @param separator The separator to use
+     * @return {@link ArrayList}
      */
-    public static ArrayList<ArrayList<String>> readFileToArray(String filePath, String separater){
+    public static ArrayList<ArrayList<String>> readFileToArray(String filePath, String separator){
         ArrayList<ArrayList<String>> info=new ArrayList<ArrayList<String>>();
 
         try{
@@ -61,7 +63,7 @@ public class FileUtility {
             
             String s;
             while((s= br.readLine()) != null){
-                String[] list = s.split(separater);
+                String[] list = s.split(separator);
                 ArrayList<String> _list =new ArrayList<String>();
                 _list.addAll(Arrays.asList(list));
                 info.add( _list);

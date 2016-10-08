@@ -14,6 +14,10 @@ import javax.xml.bind.annotation.XmlElement;
  * @author gilbert.solorzano
  * 
  * L2_1
+ * 
+ * 
+ */
+/*
                 <metric-expression>
                     <type>leaf</type>
                     <function-type>VALUE</function-type>

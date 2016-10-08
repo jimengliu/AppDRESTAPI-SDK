@@ -176,10 +176,18 @@ public class s {
     public static final String SNAPSHOT_BAD_REQUEST="&bad-request=";
     public static final String SNAPSHOT_DIAGNOSTIC_SESSION_GUID="&diagnostic-session-guid=";
     public static final String SNAPSHOT_DATA_COLLECTOR_NAME="&data-collector-name=";
+    public static final String SNAPSHOT_STARTING_REQUEST_ID="&starting-request-id=";
+    public static final String SNAPSHOT_ENDING_REQUEST_ID="&ending-request-id=";
     //Data Collector Name must be set
     public static final String SNAPSHOT_DATA_COLLECTOR_VALUE="&data-collector-value=";
     public static final String SNAPSHOT_DATA_COLLECTOR_TYPE="&data-collector-type=";
-
+    public static final String[] SNAPSHOT_DEEP_DIVE_POLICY_VALUES={"SLA_FAILURE","TIME_SAMPLING","ERROR_SAMPLING","OCCURRENCE_SAMPLING",
+        "ON_DEMAND","HOTSPOT","HOTSPOT_LEARN","APPLICATION_STARTUP","SLOW_DIAGNOSTIC_SESSION","ERROR_DIAGNOSTIC_SESSION",
+        "POLICY_FAILURE_DIAGNOSTIC_SESSION","DIAGNOSTIC_SESSION","INFLIGHT_SLOW_SESSION"};
+    public static final String[] SNAPSHOT_USER_EXP_VALUES={"NORMAL","SLOW","VERY_SLOW","STALL","ERROR"};
+    public static final String[] SNAPSHOT_DATA_COLLECTOR_TYPE_VALUES={"Error IDs","Stack Traces","Error Detail","Http Parameter",
+        "Business Data","Cookie","Http Header","Session Key","Response Header","Log Message","Transaction Property",
+        "Transaction Event","Dotnet Property","isProtoBuf","EUM Request GUID"};
     
     public static final String ID="id";
     public static final String NAME="name";
@@ -576,8 +584,6 @@ webService
     public static final String LOG_ANALYTICS_LICENSE_PROPERTIES="logAnalyticsLicenseProperties";
     
     /* 
-    "edition":"PRO","expirationDate":"1477810800000","licenseModel":"FIXED","numOfProvisionedLicense":"1900","maxAllowedLicenses":"1900",
-"lastHourUsage":"1682","isLicensed":"true","isExpired":"false","dataRetentionPeriod":null},
     */
     public static final String EDITION="edition";
     public static final String EXPIRATION_DATE="expirationDate";

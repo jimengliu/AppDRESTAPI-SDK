@@ -14,6 +14,9 @@ import javax.xml.bind.annotation.XmlElement;
  * @author gilbert.solorzano
  * 
  * L2
+ * 
+ */
+/*
             <policy-condition>
                 <type>leaf</type>
                 <display-name>condition 1</display-name>

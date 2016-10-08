@@ -55,17 +55,17 @@ public class MetricPathKey {
      * @param freq Metric aggregation level, One minute, 10 minute and 1 hour
      * @return String[]
      * 
-     * <p>
+     *
      * <ul>
-                <li>Metric Type:</li>
-               *   <ul>   <li>0 - BT</li></ul>
-               *   <ul>   <li>1 - BE</li></ul>
-               *   <ul>   <li>2 - Tier Metric</li></ul>
-               *   <ul>   <li>3 - Node Metric</li></ul>
-               *   <ul>   <li>4 - EUM</li></ul>
-               *   <ul>   <li>5 - Custom</li></ul>
+                <li>Metric Type:
+               *   <ul>   <li>0 - BT</ul>
+               *   <ul>   <li>1 - BE</ul>
+               *   <ul>   <li>2 - Tier Metric</ul>
+               *   <ul>   <li>3 - Node Metric</ul>
+               *   <ul>   <li>4 - EUM</ul>
+               *   <ul>   <li>5 - Custom</ul>
      * </ul>
-     * </p>
+     * 
      */
     public String[] shortMetricKey(int metricType, int metricQuery, String path, String freq){
         String[] pPath = MetricNameUtil.parse(path);

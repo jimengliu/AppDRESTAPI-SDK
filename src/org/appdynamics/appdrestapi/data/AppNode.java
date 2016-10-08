@@ -11,7 +11,9 @@ import java.util.ArrayList;
  *
  * @author soloink
  * 
- * <node>
+ */
+/* 
+ <node>
   <id>9</id>
   <name>2ndTierNode2</name>
   <type>Other</type>

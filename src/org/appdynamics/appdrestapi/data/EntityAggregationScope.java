@@ -13,6 +13,9 @@ import javax.xml.bind.annotation.XmlElement;
  * @author gilbert.solorzano
  * 
  * L2
+ * 
+ */
+/*
             <entity-aggregation-scope>
                 <type>ANY</type>
                 <value>0</value>

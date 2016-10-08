@@ -33,6 +33,9 @@ public class MetricDatas {
         <p>
             This function give quick access to a single metric value or returns null if no value exists.
         </p>
+        * 
+    
+    * @return {@link MetricValue}
     */
     public MetricValue getSingleRollUpMetricValue(){
         
@@ -45,6 +48,7 @@ public class MetricDatas {
         <p>
             This function give quick access to a array of metric values or returns null if no values exists.
         </p>
+    @return {@link ArrayList}
     */
     public ArrayList<MetricValue> getSingleMetricValues(){
         

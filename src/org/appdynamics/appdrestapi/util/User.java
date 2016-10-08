@@ -18,10 +18,10 @@ public class User {
      * <p>
      *   This is meant to update the user
      * </p>
-     * @param userName
-     * @param userDisplayName
-     * @param userEmail
-     * @param userId 
+     * @param userName User's name
+     * @param userDisplayName Name to display for user
+     * @param userEmail User's email
+     * @param userId User's Id
      */
     public User(String userName, String userDisplayName, String userEmail, String userId){
         this.userName=userName;
@@ -34,10 +34,10 @@ public class User {
      * <p>
      * This is mean to create the user
      * </p>
-     * @param userName
-     * @param userDisplayName
-     * @param userEmail
-     * @param userPasswd
+     * @param userName User's name
+     * @param userDisplayName Name to display for user
+     * @param userEmail User's email
+     * @param userPasswd User's password
      * @param type Empty
      */
     public User(String userName, String userDisplayName, String userEmail, String userPasswd, boolean type){ // create
@@ -49,11 +49,11 @@ public class User {
     
     /**
      * <p> This is mean to update the user including the roles</p>
-     * @param userName
-     * @param userDisplayName
-     * @param userEmail
-     * @param userPasswd
-     * @param userRoles 
+     * @param userName User's name
+     * @param userDisplayName Name to display for user
+     * @param userEmail User's email
+     * @param userPasswd User's password
+     * @param userRoles User's Roles
      */
     public User(String userName, String userDisplayName, String userEmail, String userPasswd, String userRoles){
         this.userName=userName;
@@ -65,12 +65,12 @@ public class User {
     
     /**
      * <p>This is meant to create a user with the roles;
-     * @param userName
-     * @param userDisplayName
-     * @param userEmail
-     * @param userPasswd
-     * @param userRoles
-     * @param type 
+     * @param userName User's name
+     * @param userDisplayName Name to display for user
+     * @param userEmail User's email
+     * @param userPasswd User's password
+     * @param userRoles User's roles
+     * @param type Empty
      */
     public User(String userName, String userDisplayName, String userEmail, String userPasswd, String userRoles,boolean type){
         this.userName=userName;

@@ -10,6 +10,9 @@ import org.appdynamics.appdrestapi.resources.s;
 /**
  *
  * @author soloink
+ * 
+ */
+/*
  * <tier>
   <id>6</id>
   <name>2ndTier</name>

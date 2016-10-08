@@ -4,21 +4,29 @@
  */
 package org.appdynamics.appdrestapi.queries;
 
-
-import org.appdynamics.appdrestapi.resources.s;
-
-import java.util.logging.Logger;
-import java.util.logging.Level;
 import org.appdynamics.appdrestapi.resources.QueryEncoder;
 import org.appdynamics.appdrestapi.resources.s;
+import org.appdynamics.appdrestapi.util.RequestSnapshots;
+
 /**
  *
  * @author gilbert.solorzano
  * 
- * 'https://familysearch.saas.appdynamics.com//controller/rest/applications/81/request-snapshots?time-range-type=BEFORE_NOW&duration-in-mins=2'
+ * 
  */
 public class SnapshotQuery {
     
+    /**
+     * <p>
+     *  This will be build the query for the Snapshots based on the application name.
+     * </p>
+     * 
+     * @param baseURL Base controller URL
+     * @param application Application name
+     * @param start Start timestamp in milliseconds 
+     * @param end End timestamp in milliseconds
+     * @return URL for the REST API query
+     */
     public static String queryRequestSnapshot(String baseURL, String application, long start, long end){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
@@ -105,6 +113,35 @@ public class SnapshotQuery {
         val.append(s.SNAPSHOT_DATA_COLLECTOR_NAME).append(dataCollectorName);
         val.append(s.SNAPSHOT_DATA_COLLECTOR_TYPE).append(QueryEncoder.encode(dataCollectorType));
         val.append(s.SNAPSHOT_DATA_COLLECTOR_VALUE).append(dataCollectorValue);
+
+        return val.toString();
+    }
+    
+    //Support to filter on other properties
+    public static String queryRequestSnapshot(String baseURL, String application, long start, long end, RequestSnapshots requestSnapshots){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_REQUEST_SNAPSHOTS);
+
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        val.append(QueryEncoder.encode(requestSnapshots.getParameters()));
+
+        return val.toString();
+    }
+
+    public static String queryRequestSnapshot(String baseURL, int application, long start, long end, RequestSnapshots requestSnapshots){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(application);
+        val.append(s.URL_REQUEST_SNAPSHOTS);
+
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        val.append(QueryEncoder.encode(requestSnapshots.getParameters()));
 
         return val.toString();
     }

@@ -15,6 +15,10 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 /**
  *
  * @author gilbert.solorzano
+ * 
+ */
+
+/*
  <event>
   <id>390707767</id>
   <type>APPLICATION_ERROR</type>
