@@ -29,17 +29,18 @@ public class s {
     public static final String HTTP_PROXYPORT="http.proxyPort";
     public static final String HTTPS="https://";
     public static final String HTTP="http://";
+    public static final String CONTROLLER_OBJ="/controller/";
     public static final String CONTROLLER_ACCOUNTS="/controller/api/accounts/";
     public static final String CONTROLLER_APPS="/controller/rest/applications/";
-    public static final String CONTROLLER_BT_URL="/controller/transactiondetection/";
     public static final String CONTROLLER_CONFIG="/controller/rest/configuration";
     public static final String CONTROLLER_USERS="/controller/rest/users";
-    public static final String CONTROLLER_OBJ="/controller/";
-    public static final String CONTROLLER_DB_COLLECTOR="/controller/restui/dbMonitoring/createConfiguration";// Will change
+    public static final String CONTROLLER_BT_URL="/controller/transactiondetection/";
     public static final String CONTROLLER_DASHBOARD="/controller/CustomDashboardImportExportServlet";
     public static final String CONTROLLER_DASHBOARD_EX=CONTROLLER_DASHBOARD+"?dashboardId=";
     public static final String CONTROLLER_MARK_HISTORICAL="/controller/rest/mark-nodes-historical?application-component-node-ids=";
     public static final String CONTROLLER_RESTUI="/controller/restui/";
+    public static final String CONTROLLER_DB_COLLECTOR="/controller/restui/dbMonitoring/createConfiguration";// Will change
+    public static final String CONTROLLER_DASHBOARD_LIST="/controller/restui/dashboards/list2/false";
     public static final String ACCOUNT_LICENSE_PROPERTIES="user/accountLicenseProperties";
     public static final String ACCOUNT_EUM="user/accountEUM";
     public static final String CONTROLLER_AUTH_ACTION="/controller/auth?action=login";
@@ -78,15 +79,109 @@ public class s {
     public static final String URL_CUSTOM_MATCH="/custom";
     public static final String URL_HEALTHRULES="healthrules/";
     public static final String URL_NAME="?name=";
-    // App Agent Path
-    // BDR Big Deal Retail/metric-data?metric-path=Application Infrastructure Performance|1stTier|Agent|App|Availability&time-range-type=BEFORE_NOW&duration-in-mins=15
-    // {Application_Name}/metric-data?metric-path=Application Infrastructure Performance|{tier}|Agent|App|Availability&time-rante-type={type}&duration-in-mins={time}
     public static final String URL_METRIC_PATH="/metric-data?metric-path=";
+    
+    
     public static final String APPLICATION_INFRA_PERF="Application Infrastructure Performance|"; //Tier comes afterwards
+    public static final String INDIVIDUAL_NODES="|Individual Nodes|";
+    
+    /*
+        This is going to handle the Agent type information
+    */
+    
+    public static final String AGENT="|Agent|";
+    public static final String AGENT_APP="APP|";
+    public static final String AGENT_MACHINE="Machine|";
+    public static final String AVAILABILITY="Availability";
+    public static final String AGENT_TOP_SUMMARY_UPLOAD="TopSummaryStats Upload|";
+    public static final String AGENT_TOP_SUMMARY_STATS_EXCEED_LIMIT="TopSummaryStats Exceeding Limit";
+    public static final String AGENT_TOP_SUMMARY_STATS_UPLOADED="TopSummaryStats uploaded";
+    public static final String AGENT_TOP_SUMMARY_STATS_TIME_SKEW_ERRORS="TopSummaryStats Time skew Errors";
+    public static final String AGENT_DISCOVERED_BACKENDS="Discovered Backends|";
+    public static final String AGENT_DISCOVERED_BACKENDS_REGISTRATION_SUCCESSFUL="Registration Successful";
+    public static final String AGENT_DISCOVERED_BACKENDS_REGISTRATION_FAILED="Registration Failed";
+    public static final String AGENT_DISCOVERED_BACKENDS_UNMONITORED_CALLS_PER_MINUTE="Unmonitored Calls per Minute";
+    public static final String AGENT_CONFIG_CHANNEL="ConfigChannel";
+    public static final String AGENT_CONFIG_CHANNEL_NUM_OF_APP_INFRA_CHANGES_SENT="Number Of Application Infrastructure Changes Sent";
+    public static final String AGENT_SNAPSHOT_UPLOAD="Snapshot Upload|";
+    public static final String AGENT_SNAPSHOT_UPLOAD_SNAPSHOTS_UPLOADED="Snapshots uploaded";
+    public static final String AGENT_SNAPSHOT_UPLOAD_INVALID_SNAPSHOTS="Invalid Snapshots";
+    public static final String AGENT_SNAPSHOT_UPLOAD_TIME_SKEW_ERRORS="Time skew Errors";
+    public static final String AGENT_METRIC_UPLOAD="Metric Upload|";
+    public static final String AGENT_METRIC_UPLOAD_REQUESTS_LICENSE_ERRORS="Requests License Errors";
+    public static final String AGENT_METRIC_UPLOAD_INVALID_METRICS="Invalid Metrics";
+    public static final String AGENT_METRIC_UPLOAD_REQUESTS_TIME_SKEW_ERRORS="Requests Time skew Errors";
+    public static final String AGENT_METRIC_UPLOAD_METRICS_UPLOADED="Metrics uploaded";
+    public static final String AGENT_METRIC_UPLOAD_REQUESTS_EXCEEDING_LIMIT="Requests Exceeding Limit";
+    public static final String AGENT_EVENT_UPLOAD="Event Upload|";
+    public static final String AGENT_EVENT_UPLOAD_EVENTS_UPLOADED="Events uploaded";
+    public static final String AGENT_EVENT_UPLOAD_EVENTS_EXCEEDING_LIMIT="Events Exceeding Limit";
+    public static final String AGENT_EVENT_UPLOAD_TIME_SKEWS_ERRORS="Time skews Errors";
+    public static final String AGENT_BUSINESS_TRANSACTIONS="Business Transactions|";
+    public static final String AGENT_BUSINESS_TRANSACTIONS_UNMONITORED_CALLS_PER_MINUTE="Unmonitored Calls per Minute";
+    public static final String AGENT_BUSINESS_TRANSACTIONS_REGISTRATION_FAILED="Registration Failed";
+    public static final String AGENT_BUSINESS_TRANSACTIONS_REGISTRATION_SUCCESSFUL="Registration Successful";
+    
+    
     public static final String APP_AGENT_AVAIL_1="|Agent|App|Availability";
     public static final String MACHINE_AGENT_AVAIL_2="|Agent|Machine|Availability";
+    
+    
+    /*
+Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Swap Total (MB)
+Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Swap Used (MB)
+Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Total (MB)
+Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Used (MB)
+Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Free %
+Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Used %
+Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Free (MB)
+Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Swap Free (MB)
+Application Infrastructure Performance|AAC-App|Hardware Resources|Machine|Availability
+Application Infrastructure Performance|AAC-App|Hardware Resources|Network|eth1|Outgoing KB
+Application Infrastructure Performance|AAC-App|Hardware Resources|Network|eth1|Outgoing KB/sec
+Application Infrastructure Performance|AAC-App|Hardware Resources|Network|eth1|Incoming KB
+Application Infrastructure Performance|AAC-App|Hardware Resources|Network|eth1|Outgoing packets
+Application Infrastructure Performance|AAC-App|Hardware Resources|Network|eth1|Incoming KB/sec
+Application Infrastructure Performance|AAC-App|Hardware Resources|Network|eth1|Outgoing packets/sec
+Application Infrastructure Performance|AAC-App|Hardware Resources|Network|eth1|Incoming packets
+Application Infrastructure Performance|AAC-App|Hardware Resources|Network|eth1|Incoming packets/sec
+Application Infrastructure Performance|AAC-App|Hardware Resources|CPU|%Stolen
+Application Infrastructure Performance|AAC-App|Hardware Resources|CPU|%Busy
+Application Infrastructure Performance|AAC-App|Hardware Resources|CPU|%Idle
+Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|Reads/sec *
+Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|Space Used *
+Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|Avg Service Time (ms) *
+Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|% CPU Time *
+Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|KB written/sec *
+Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|Space Available *
+Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|Avg Queue Time (ms) *
+Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|Writes/sec *
+Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|KB read/sec *
+Application Infrastructure Performance|AAC-App|Hardware Resources|Volumes|/usr|Used (MB)
+Application Infrastructure Performance|AAC-App|Hardware Resources|Volumes|/usr|Free (MB)
+Application Infrastructure Performance|AAC-App|Hardware Resources|Volumes|/usr|Used (%)
+Application Infrastructure Performance|AAC-App|Hardware Resources|Volumes|/usr|Total (MB)
+    */
     public static final String HARDWARE_RESOURCES="|Hardware Resources|";
-    public static final String INDIVIDUAL_NODES="|Individual Nodes|";
+    public static final String HD_JVM_MEMORY="Memory|";
+    public static final String HD_MEMORY_SWAP_TOTAL_MB="Swap Total (MB)";
+    public static final String HD_MEMORY_SWAP_USED_MB="Swap Used (MB)";
+    public static final String HD_MEMORY_TOTAL_MB="Total (MB)";
+    public static final String HD_MEMORY_USED_MB="Used (MB)";
+    public static final String HD_MEMORY_FREE_PERC="Free %";
+    public static final String HD_MEMORY_USED_PERC="Used %";
+    public static final String HD_MEMORY_FREE_MB="Free (MB)";
+    public static final String HD_MEMORY_SWAP_FREE_MB="Swap Free (MB)";
+    // Machine is here ---
+    public static final String HD_NETWORK="Network|";
+    public static final String HD_NETWORK_OUTGOING_KB="Outgoing KB";
+    public static final String HD_NETWORK_OUTGOING_KB_PER_SEC="Outgoing KB/sec";
+    public static final String HD_NETWORK_OUTGOING_PACKETS="Outgoing packets";
+    public static final String HD_NETWORK_OUTGOING_PACKETS_PER_SEC="Outgoing packets/sec";
+    public static final String HD_NETWORK_INCOMING_KB="Incoming KB";
+    public static final String HD_NETWORK_INCOMING_KB_PER_SEC="Incoming KB/sec";
+    public static final String HD_NETWORK_INCOMING_PACKETS="Incoming packets";
+    public static final String HD_NETWORK_INCOMING_PACKETS_PER_SEC="Incoming packets/sec";
     public static final String HD_CPU="CPU|";
     public static final String HD_CPU_BUSY="%Busy";
     public static final String HD_CPU_IDLE="%Idle";
@@ -96,24 +191,107 @@ public class s {
     public static final String HD_DISKS_KB_WRITE_PER_SEC="KB written/sec";
     public static final String HD_DISKS_READ_PER_SEC="Reads/sec";
     public static final String HD_DISKS_WRITES_PER_SEC="Writes/sec";
-    public static final String HD_JVM_MEMORY="Memory|";
-    public static final String HD_MEMORY_FREE_PERC="Free %";
-    public static final String HD_MEMORY_FREE_MB="Free (MB)";
-    public static final String HD_MEMORY_TOTAL_MB="Total (MB)";
-    public static final String HD_MEMORY_USED_PERC="Used %";
-    public static final String HD_MEMORY_USED_MB="Used (MB)";
-    public static final String HD_NETWORK="Network|";
-    public static final String HD_NETWORK_INCOMING_KB="Incoming KB";
-    public static final String HD_NETWORK_INCOMING_KB_PER_SEC="Incoming KB/sec";
-    public static final String HD_NETWORK_INCOMING_PACKETS="Incoming packets";
-    public static final String HD_NETWORK_INCOMING_PACKETS_PER_SEC="Incoming packets/sec";
-    public static final String HD_NETWORK_OUTGOING_KB="Outgoing KB";
-    public static final String HD_NETWORK_OUTGOING_KB_PER_SEC="Outgoing KB/sec";
-    public static final String HD_NETWORK_OUTGOING_PACKETS="Outgoing packets";
-    public static final String HD_NETWORK_OUTGOING_PACKETS_PER_SEC="Outgoing packets/sec";
+    public static final String HD_DISKS_SPACE_USED="Space Used";
+    public static final String HD_DISKS_AGE_SERVICE_TIME_MS="Avg Service Time (ms)";
+    public static final String HD_DISKS_PER_CPU_TIME="% CPU Time";
+    public static final String HD_DISKS_SPACE_AVAILABLE="Space Available";
+    public static final String HD_DISKS_AVG_QUEUE_TIME_MS="Avg Queue Time (ms)";
+    
+    
     public static final String HD_SYSTEM="System|";
     public static final String HD_RQ="RQ";
    
+    /*
+        As of 4.2, there have been a good number of additional metrics
+        Application Infrastructure Performance|AAC-App|JVM|Threads|Current No. of Threads
+Application Infrastructure Performance|AAC-App|JVM|Memory|Non-Heap|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Memory|Non-Heap|Used %
+Application Infrastructure Performance|AAC-App|JVM|Memory|Non-Heap|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Memory|Non-Heap|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Memory|Heap|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Memory|Heap|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Memory|Heap|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Memory|Heap|Used %
+Application Infrastructure Performance|AAC-App|JVM|Classes|Current Loaded Class Count
+Application Infrastructure Performance|AAC-App|JVM|Classes|Total Classes Loaded
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Par Eden Space|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Par Eden Space|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Par Eden Space|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|PS Survivor Space|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|PS Survivor Space|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|PS Survivor Space|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Eden Space|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Eden Space|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Eden Space|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|PS Old Gen|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|PS Old Gen|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|PS Old Gen|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Tenured Gen|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Tenured Gen|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Tenured Gen|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Compressed Class Space|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Compressed Class Space|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Compressed Class Space|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Nursery|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Nursery|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Nursery|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Eden Space|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Eden Space|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Eden Space|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|CMS Perm Gen|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|CMS Perm Gen|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|CMS Perm Gen|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Code Cache|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Code Cache|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Code Cache|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Perm Gen|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Perm Gen|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Perm Gen|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Par Survivor Space|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Par Survivor Space|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Par Survivor Space|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Survivor Space|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Survivor Space|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Survivor Space|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Perm Gen|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Perm Gen|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Perm Gen|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Survivor Space|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Survivor Space|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Survivor Space|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Old Space|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Old Space|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Old Space|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|CMS Old Gen|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|CMS Old Gen|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|CMS Old Gen|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Metaspace|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Metaspace|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Metaspace|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|PS Eden Space|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|PS Eden Space|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|PS Eden Space|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Old Gen|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Old Gen|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Old Gen|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|ClassBlock Memory|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|ClassBlock Memory|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|ClassBlock Memory|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Class Memory|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Class Memory|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Class Memory|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|PS Perm Gen|Committed (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|PS Perm Gen|Current Usage (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|PS Perm Gen|Max Available (MB)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Number of Major Collections Per Min
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Minor Collection Time Spent Per Min (ms)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|GC Time Spent Per Min (ms)
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Number of Minor Collections Per Min
+Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Major Collection Time Spent Per Min (ms)
+Application Infrastructure Performance|AAC-App|JVM|Process CPU Usage %
+Application Infrastructure Performance|AAC-App|JVM|Process CPU Burnt (ms/min)
+
+    */
     public static final String JVM="|JVM|";
     public static final String JVM_PROCESS_CPU_BURNT_MS_PER_MIN="Process CPU Burnt (ms/min)";
     public static final String JVM_PROCESS_CPU_USAGE_PERC="Process CPU Usage %";

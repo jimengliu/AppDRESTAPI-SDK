@@ -106,6 +106,20 @@ public class RESTAccess2 extends RESTAccess{
         
     }
     
+    public String getDashboardListing(){
+        String query = DashboardQuery.queryDashboardList(baseURL.getControllerURL());
+        try{
+            return R.executeDashboardList(auth, query);
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n")
+                    .append(e.getMessage()).append("\n").toString());
+        }
+        
+        return null;
+        
+    }
+    
+    
     /**
      * <p>
      *  This will export the custom match object of either a single java customer match of the type provide or the set of custom match rules. 

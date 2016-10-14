@@ -56,6 +56,7 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 import org.appdynamics.appdrestapi.queries.AuthActionQuery;
+import org.codehaus.jackson.map.ObjectMapper;
 
 
 
@@ -275,7 +276,7 @@ public class RESTExecuter {
         return md;
     }
     
-    public Dashboard executeDashboardExportByIdQuery(RESTAuth auth, String query) throws Exception{
+    public Dashboard executeDashboardObjExportByIdQuery(RESTAuth auth, String query) throws Exception{
         if(client == null) {
             createConnection(auth);
         }
@@ -317,6 +318,74 @@ public class RESTExecuter {
                     .append(query).append("\nError:").append(e.getMessage()).append(".\nResponse code is ").append(response.getStatus()).toString());
         }
         return dash;
+        
+    }
+    
+    public String executeDashboardList(RESTAuth auth, String query) throws Exception{
+        if(client == null) {
+            createConnection(auth);
+        }
+        
+        if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
+        
+        WebResource service1 = null;
+        ClientResponse response = null;
+        String value=null;
+  
+        try{
+         
+             service1 = client.resource(query);
+             WebResource.Builder service = setCookies(service1);
+            
+            response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
+            //logger.log(Level.INFO, new StringBuilder().append("responsecode:::").append(response.getStatus()).toString());
+            if(response.getStatus() == 200){
+                value= (String) response.getEntity(String.class);
+                ObjectMapper mapper = new ObjectMapper();
+                DashboardList dashList = mapper.readValue(value, DashboardList.class);
+                logger.log(Level.INFO,dashList.toString());
+            }
+
+            
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception getting dashboard export: \nQuery:\n\t")
+                    .append(query).append("\nError:").append(e.getMessage()).append(".\nResponse code is ").append(response.getStatus()).toString());
+        }
+        return value;
+        
+    }
+    
+    public String executeDashboardExportByIdQuery(RESTAuth auth, String query) throws Exception{
+        if(client == null) {
+            createConnection(auth);
+        }
+        
+        if(s.debugLevel > 1)logger.log(Level.INFO,new StringBuilder().append("\nExecuting query: ").append(query).toString());
+        
+        WebResource service1 = null;
+        ClientResponse response = null;
+        String value=null;
+  
+        try{
+         
+             service1 = client.resource(query);
+             WebResource.Builder service = setCookies(service1);
+            
+            response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
+            //logger.log(Level.INFO, new StringBuilder().append("responsecode:::").append(response.getStatus()).toString());
+            if(response.getStatus() == 200){
+                value= (String) response.getEntity(String.class);
+                ObjectMapper mapper = new ObjectMapper();
+                DashboardList dashList = mapper.readValue(value, DashboardList.class);
+                logger.log(Level.INFO,dashList.toString());
+            }
+
+            
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception getting dashboard export: \nQuery:\n\t")
+                    .append(query).append("\nError:").append(e.getMessage()).append(".\nResponse code is ").append(response.getStatus()).toString());
+        }
+        return value;
         
     }
     

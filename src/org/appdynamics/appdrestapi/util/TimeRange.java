@@ -63,7 +63,7 @@ public class TimeRange {
      * </p>
 
      * @param time Time in milliseconds
-     * @return {@link boolean}
+     * @return {@link Boolean}
      */
     public boolean withIn(long time){
         if(time >= start && time <= end) return true;
@@ -77,7 +77,7 @@ public class TimeRange {
      * </p>
 
      * @param time Time in milliseconds
-     * @return {@link boolean}
+     * @return {@link Boolean}
      */
     public boolean withIn(TimeRange time){
         if(time.start >= start && time.end <= end) return true;

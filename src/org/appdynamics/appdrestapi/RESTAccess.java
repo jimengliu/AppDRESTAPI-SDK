@@ -212,7 +212,25 @@ public class RESTAccess {
      * @param dashId Id of the application 
      * @return {@link Dashboard}
      */
-    public Dashboard getDashboardExportById(int dashId){
+    public Dashboard getDashboardObjExportById(int dashId){
+        try{
+            return R.executeDashboardObjExportByIdQuery(auth, DashboardQuery.queryDashboardExportById(baseURL.getControllerURL(), dashId));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+    
+    /**
+     * <p>
+     * This will return a Dashboard object which consists of a name, value (xml string) and boolean exists
+     * that checks to insure the dashboard exists.
+     * </p>
+     * 
+     * @param dashId Id of the application 
+     * @return {@link Dashboard}
+     */
+    public String getDashboardExportById(int dashId){
         try{
             return R.executeDashboardExportByIdQuery(auth, DashboardQuery.queryDashboardExportById(baseURL.getControllerURL(), dashId));
         }catch(Exception e){
@@ -3393,7 +3411,6 @@ public class RESTAccess {
      * </p>
      * 
      * @param app Name of the application
-     * @param app The name of the application
 
      * @return {@link String}
      * 
@@ -3433,7 +3450,6 @@ public class RESTAccess {
      * 
 
      * @param app Name of the application
-     * @param app The name of the application
 
      * @return {@link HealthRules}
      * 

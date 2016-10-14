@@ -24,4 +24,10 @@ public class DashboardQuery {
         return bud.toString();
     }
     
+    public static String queryDashboardList(String baseURL){
+        StringBuilder bud = new StringBuilder();
+        bud.append(baseURL).append(s.CONTROLLER_DASHBOARD_LIST);
+        return bud.toString();
+    }
+    
 }
