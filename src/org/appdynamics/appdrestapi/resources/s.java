@@ -95,6 +95,7 @@ public class s {
     public static final String AVAILABILITY="Availability";
     public static final String AGENT_TOP_SUMMARY_UPLOAD="TopSummaryStats Upload|";
     public static final String AGENT_TOP_SUMMARY_STATS_EXCEED_LIMIT="TopSummaryStats Exceeding Limit";
+    public static final String AGENT_TOP_SUMMARY_STATS_INVALID_TOPSUMMARY_STATS="Invalid TopSummaryStats";
     public static final String AGENT_TOP_SUMMARY_STATS_UPLOADED="TopSummaryStats uploaded";
     public static final String AGENT_TOP_SUMMARY_STATS_TIME_SKEW_ERRORS="TopSummaryStats Time skew Errors";
     public static final String AGENT_DISCOVERED_BACKENDS="Discovered Backends|";
@@ -167,10 +168,10 @@ Application Infrastructure Performance|AAC-App|Hardware Resources|Volumes|/usr|T
     public static final String HD_MEMORY_SWAP_TOTAL_MB="Swap Total (MB)";
     public static final String HD_MEMORY_SWAP_USED_MB="Swap Used (MB)";
     public static final String HD_MEMORY_TOTAL_MB="Total (MB)";
-    public static final String HD_MEMORY_USED_MB="Used (MB)";
-    public static final String HD_MEMORY_FREE_PERC="Free %";
+    public static final String HD_MEMORY_USED_MB="Used (MB)"; //Multi-used
+    public static final String HD_MEMORY_FREE_PERC="Free %"; 
     public static final String HD_MEMORY_USED_PERC="Used %";
-    public static final String HD_MEMORY_FREE_MB="Free (MB)";
+    public static final String HD_MEMORY_FREE_MB="Free (MB)"; //Multi-used
     public static final String HD_MEMORY_SWAP_FREE_MB="Swap Free (MB)";
     // Machine is here ---
     public static final String HD_NETWORK="Network|";
@@ -196,7 +197,9 @@ Application Infrastructure Performance|AAC-App|Hardware Resources|Volumes|/usr|T
     public static final String HD_DISKS_PER_CPU_TIME="% CPU Time";
     public static final String HD_DISKS_SPACE_AVAILABLE="Space Available";
     public static final String HD_DISKS_AVG_QUEUE_TIME_MS="Avg Queue Time (ms)";
-    
+    public static final String HD_VOLUMES="Volumes|";
+    public static final String HD_VOLUMES_USED_PER="Used (%)";
+    public static final String HD_VOLUMES_TOTAL_MB="Total (MB)";
     
     public static final String HD_SYSTEM="System|";
     public static final String HD_RQ="RQ";

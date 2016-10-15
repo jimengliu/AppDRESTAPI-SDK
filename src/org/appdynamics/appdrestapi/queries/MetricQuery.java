@@ -20,19 +20,19 @@ public class MetricQuery {
     }
     
     public String queryAgentTierAppAgentAvailability(String tier, long start, long end, boolean rollup){
-        return AgentAvailabilityMetricQuery.queryAgentTierAppAgentAvailability(baseURL, application, tier, start, end, rollup);
+        return AgentMetricQuery.queryAgentTierAppAgentAvailability(baseURL, application, tier, start, end, rollup);
     }
     
     public String queryAgentNodeAppAgentAvailability(String tier, String node, long start, long end, boolean rollup){
-        return AgentAvailabilityMetricQuery.queryAgentNodeAppAgentAvailability(baseURL, application, tier, node, start, end, rollup);
+        return AgentMetricQuery.queryAgentNodeAppAgentAvailability(baseURL, application, tier, node, start, end, rollup);
     }
     
     public String queryAgentTierMachineAgentAvailability(String tier, long start, long end, boolean rollup){
-        return AgentAvailabilityMetricQuery.queryAgentTierMachineAgentAvailability( baseURL, application,tier,start, end, rollup);
+        return AgentMetricQuery.queryAgentTierMachineAgentAvailability( baseURL, application,tier,start, end, rollup);
     }
     
     public String queryAgentNodeMachineAgentAvailability(String tier, String node, long start, long end, boolean rollup){
-        return AgentAvailabilityMetricQuery.queryAgentNodeMachineAgentAvailability( baseURL, application,tier, node,start, end, rollup);
+        return AgentMetricQuery.queryAgentNodeMachineAgentAvailability( baseURL, application,tier, node,start, end, rollup);
     }
     
     /* ************************* Hardware Resources CPU *******************************  */
