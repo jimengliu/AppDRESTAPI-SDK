@@ -20,7 +20,7 @@ public class MetricQuery {
     }
     
     public String queryAgentTierAppAgentAvailability(String tier, long start, long end, boolean rollup){
-        return AgentMetricQuery.queryAgentTierAppAgentAvailability(baseURL, application, tier, start, end, rollup);
+        return AgentMetricQuery.queryAgentNodeAppAgentAvailability(baseURL, application, tier, null, start, end, rollup);
     }
     
     public String queryAgentNodeAppAgentAvailability(String tier, String node, long start, long end, boolean rollup){
@@ -28,7 +28,7 @@ public class MetricQuery {
     }
     
     public String queryAgentTierMachineAgentAvailability(String tier, long start, long end, boolean rollup){
-        return AgentMetricQuery.queryAgentTierMachineAgentAvailability( baseURL, application,tier,start, end, rollup);
+        return AgentMetricQuery.queryAgentNodeMachineAgentAvailability( baseURL, application,tier,null,start, end, rollup);
     }
     
     public String queryAgentNodeMachineAgentAvailability(String tier, String node, long start, long end, boolean rollup){
