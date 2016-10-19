@@ -482,16 +482,16 @@ public class RESTAccess extends BaseRESTAccess{
                 query=mq.queryHDTierCPUStolen(tier, start, end, rollup);
                 break;
             case 5:
-                query=mq.queryHDTierDisksKBReadPerSec(tier, start, end, rollup);
+                query=mq.queryHDTierDisksKBReadPerSec(tier, null, start, end, rollup);
                 break;
             case 6:
-                query=mq.queryHDTierDisksKBWrittenPerSec(tier, start, end, rollup);
+                query=mq.queryHDTierDisksKBWrittenPerSec(tier, null, start, end, rollup);
                 break;
             case 7:
-                query=mq.queryHDTierDisksReadPerSec(tier, start, end, rollup);
+                query=mq.queryHDTierDisksReadPerSec(tier, null, start, end, rollup);
                 break;
             case 8:
-                query=mq.queryHDTierDisksWritesPerSec(tier, start, end, rollup);
+                query=mq.queryHDTierDisksWritesPerSec(tier, null, start, end, rollup);
                 break;
             case 9:
                 query=mq.queryHDTierMemoryFreePerc(tier, start, end, rollup);
@@ -663,7 +663,7 @@ public class RESTAccess extends BaseRESTAccess{
                 query=mq.queryHDTierCPUAll(tier, start, end, rollup);
                 break;
             case 101:
-                query=mq.queryHDTierDisksAll(tier, start, end, rollup);
+                query=mq.queryHDTierDisksAll(tier, null, start, end, rollup);
                 break;
             case 102:
                 query=mq.queryHDTierMemoryAll(tier, start, end, rollup);
@@ -1014,16 +1014,16 @@ public class RESTAccess extends BaseRESTAccess{
                 query=mq.queryHDNodeCPUStolen(tier, node, start, end, rollup);
                 break;
             case 5:
-                query=mq.queryHDNodeDisksKBReadPerSec(tier, node, start, end, rollup);
+                query=mq.queryHDNodeDisksKBReadPerSec(tier, node, null, start, end, rollup);
                 break;
             case 6:
-                query=mq.queryHDNodeDisksKBWrittenPerSec(tier, node, start, end, rollup);
+                query=mq.queryHDNodeDisksKBWrittenPerSec(tier, node, null, start, end, rollup);
                 break;
             case 7:
-                query=mq.queryHDNodeDisksReadPerSec(tier, node, start, end, rollup);
+                query=mq.queryHDNodeDisksReadPerSec(tier, node, null, start, end, rollup);
                 break;
             case 8:
-                query=mq.queryHDNodeDisksWritesPerSec(tier, node, start, end, rollup);
+                query=mq.queryHDNodeDisksWritesPerSec(tier, node, null, start, end, rollup);
                 break;
             case 9:
                 query=mq.queryHDNodeMemoryFreePerc(tier, node, start, end, rollup);
@@ -1195,7 +1195,7 @@ public class RESTAccess extends BaseRESTAccess{
                 query=mq.queryHDNodeCPUAll(tier,node, start, end, rollup);
                 break;
             case 101:
-                query=mq.queryHDNodeDisksAll(tier,node, start, end, rollup);
+                query=mq.queryHDNodeDisksAll(tier,node, null, start, end, rollup);
                 break;
             case 102:
                 query=mq.queryHDNodeMemoryAll(tier,node, start, end, rollup);

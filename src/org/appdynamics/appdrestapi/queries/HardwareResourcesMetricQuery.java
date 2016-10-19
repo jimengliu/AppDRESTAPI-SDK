@@ -978,11 +978,11 @@ public class HardwareResourcesMetricQuery {
      * 
      * <p>
      *   This query will return the metric 'Free %'  from the Tier perspective for example:
-     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Memory|*
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Memory|Free %
      * </p>
      * <p>
      *   This query will return the metric 'Free %' from a Node perspective for example:
-     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Memory|*
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Memory|Free %
      * </p>
      *  
      * 
@@ -1003,9 +1003,9 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES);
         bud.append(s.HD_JVM_MEMORY).append(s.HD_MEMORY_FREE_PERC);
         val.append(QueryEncoder.encode(bud.toString()));  
         
@@ -1018,28 +1018,27 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    public static String queryHDTierMemoryFreeMB(String baseURL, String application,String tier, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_JVM_MEMORY).append(s.HD_MEMORY_FREE_MB);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    
+    /**
+     * 
+     * <p>
+     *   This query will return the metric 'Free (MB)'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Memory|Free (MB)
+     * </p>
+     * <p>
+     *   This query will return the metric 'Free (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Memory|Free (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
     public static String queryHDNodeMemoryFreeMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
@@ -1048,9 +1047,9 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES);
         bud.append(s.HD_JVM_MEMORY).append(s.HD_MEMORY_FREE_MB);
         val.append(QueryEncoder.encode(bud.toString()));  
         
@@ -1063,28 +1062,27 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    public static String queryHDTierMemoryTotalMB(String baseURL, String application,String tier, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_JVM_MEMORY).append(s.HD_MEMORY_TOTAL_MB);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    
+    /**
+     * 
+     * <p>
+     *   This query will return the metric 'Total (MB)'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Memory|Total (MB)
+     * </p>
+     * <p>
+     *   This query will return the metric 'Total (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Memory|Total (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
     public static String queryHDNodeMemoryTotalMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
@@ -1093,9 +1091,9 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES);
         bud.append(s.HD_JVM_MEMORY).append(s.HD_MEMORY_TOTAL_MB);
         val.append(QueryEncoder.encode(bud.toString()));  
         
@@ -1108,28 +1106,27 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    public static String queryHDTierMemoryUsedPerc(String baseURL, String application,String tier, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_JVM_MEMORY).append(s.HD_MEMORY_USED_PERC);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    
+    /**
+     * 
+     * <p>
+     *   This query will return the metric 'Used %'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Memory|Used %
+     * </p>
+     * <p>
+     *   This query will return the metric 'Used %' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Memory|Used %
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
     public static String queryHDNodeMemoryUsedPerc(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
@@ -1138,9 +1135,9 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES);
         bud.append(s.HD_JVM_MEMORY).append(s.HD_MEMORY_USED_PERC);
         val.append(QueryEncoder.encode(bud.toString()));  
         
@@ -1153,28 +1150,27 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    public static String queryHDTierMemoryUsedMB(String baseURL, String application,String tier, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_JVM_MEMORY).append(s.HD_MEMORY_USED_MB);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    
+    /**
+     * 
+     * <p>
+     *   This query will return the metric 'Used (MB)'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Memory|Used (MB)
+     * </p>
+     * <p>
+     *   This query will return the metric 'Used (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Memory|Used (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
     public static String queryHDNodeMemoryUsedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
@@ -1183,9 +1179,9 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES);
         bud.append(s.HD_JVM_MEMORY).append(s.HD_MEMORY_USED_MB);
         val.append(QueryEncoder.encode(bud.toString()));  
         
@@ -1198,11 +1194,28 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    
-    
-    /* ***************** Network *********************** */
-    //All Network
-    public static String queryHDTierNetworkAll(String baseURL, String application,String tier, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return the metric 'Swap Free (MB)'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Memory|Swap Free (MB)
+     * </p>
+     * <p>
+     *   This query will return the metric 'Swap Free (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Memory|Swap Free (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeMemorySwapFreeMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1210,9 +1223,10 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_NETWORK).append(s._ALL_);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES);
+        bud.append(s.HD_JVM_MEMORY).append(s.HD_MEMORY_SWAP_FREE_MB);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -1222,9 +1236,31 @@ public class HardwareResourcesMetricQuery {
         
         
         return val.toString();
+        
     }
     
-    public static String queryHDNodeNetworkAll(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return the metric 'Swap Total (MB)'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Memory|Swap Total (MB)
+     * </p>
+     * <p>
+     *   This query will return the metric 'Swap Total (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Memory|Swap Total (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeMemorySwapTotalMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1232,10 +1268,108 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_NETWORK).append(s._ALL_);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES);
+        bud.append(s.HD_JVM_MEMORY).append(s.HD_MEMORY_SWAP_TOTAL_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return the metric 'Swap Used (MB)'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Memory|Swap Used (MB)
+     * </p>
+     * <p>
+     *   This query will return the metric 'Swap User (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Memory|Swap Used (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeMemorySwapUsedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES);
+        bud.append(s.HD_JVM_MEMORY).append(s.HD_MEMORY_SWAP_USED_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
+    
+    
+    /* ***************** Network *********************** */
+    //All Network
+    //Application Infrastructure Performance|AAC-App|Hardware Resources|Network|eth1|Outgoing KB
+    
+    /**
+     * 
+     * <p>
+     *   This query will return all of the network metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Network|[CARD]|*
+     * </p>
+     * <p>
+     *   This query will return all of the network metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Network|[CARD]|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param card Name of the network device
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeNetworkAll(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_NETWORK);
+        if(card != null){bud.append(card);}
+        else{bud.append(s._ALL_);}
+        bud.append(s.P).append(s._ALL_);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -1247,7 +1381,30 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     //NetworkIncomingKB
-    public static String queryHDTierNetworkIncomingKB(String baseURL, String application,String tier, long start, long end, boolean rollup){
+
+    /**
+     * 
+     * <p>
+     *   This query will return the 'Incoming KB' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Network|[CARD]|Incoming KB
+     * </p>
+     * <p>
+     *   This query will return the 'Incoming KB' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Network|[CARD]|Incoming KB
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param card Name of the network device
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeNetworkIncomingKB(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1255,9 +1412,15 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_NETWORK).append(s.HD_NETWORK_INCOMING_KB);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_NETWORK);
+        if(card != null){
+            bud.append(card);
+        }else{
+            bud.append(s._ALL_);
+        }
+        bud.append(s.P).append(s.HD_NETWORK_INCOMING_KB);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -1269,7 +1432,29 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    public static String queryHDNodeNetworkIncomingKB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return the 'Incoming KB/sec' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Network|[CARD]|Incoming KB/sec
+     * </p>
+     * <p>
+     *   This query will return the 'Incoming KB/sec' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Network|[CARD]|Incoming KB/sec
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param card Name of the network device
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeNetworkIncomingKBPerSec(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1277,10 +1462,15 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_NETWORK).append(s.HD_NETWORK_INCOMING_KB);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_NETWORK);
+        if(card != null){
+            bud.append(card);
+        }else{
+            bud.append(s._ALL_);
+        }
+        bud.append(s.P).append(s.HD_NETWORK_INCOMING_KB_PER_SEC);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -1292,7 +1482,29 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    public static String queryHDTierNetworkIncomingKBPerSec(String baseURL, String application,String tier, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return the 'Incoming Packets' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Network|[CARD]|Incoming Packets
+     * </p>
+     * <p>
+     *   This query will return the 'Incoming Packets' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Network|[CARD]|Incoming Packets
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param card Name of the network device
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeNetworkIncomingPackets(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1300,9 +1512,67 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_NETWORK).append(s.HD_NETWORK_INCOMING_KB_PER_SEC);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_NETWORK);
+        
+        if(card != null){
+            bud.append(card);
+        }else{
+            bud.append(s._ALL_);
+        }
+        bud.append(s.P).append(s.HD_NETWORK_INCOMING_PACKETS);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+    }
+
+    /**
+     * 
+     * <p>
+     *   This query will return the 'Incoming Packets/sec' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Network|[CARD]|Incoming Packets/sec
+     * </p>
+     * <p>
+     *   This query will return the 'Incoming Packets/sec' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Network|[CARD]|Incoming Packets/sec
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param card Name of the network device
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeNetworkIncomingPacketsPerSec(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_NETWORK);
+        
+        if(card != null){
+            bud.append(card);
+        }else{
+            bud.append(s._ALL_);
+        }
+        bud.append(s.P).append(s.HD_NETWORK_INCOMING_PACKETS_PER_SEC);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -1314,7 +1584,29 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    public static String queryHDNodeNetworkIncomingKBPerSec(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return the 'Outgoing KB' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Network|[CARD]|Outgoing KB
+     * </p>
+     * <p>
+     *   This query will return the 'Outgoing KB' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Network|[CARD]|Outgoing KB
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param card Name of the network device
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeNetworkOutgoingKB(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1322,10 +1614,15 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_NETWORK).append(s.HD_NETWORK_INCOMING_KB_PER_SEC);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_NETWORK);
+        if(card != null){
+            bud.append(card);
+        }else{
+            bud.append(s._ALL_);
+        }
+        bud.append(s.HD_NETWORK_OUTGOING_KB);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -1337,7 +1634,29 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    public static String queryHDTierNetworkIncomingPackets(String baseURL, String application,String tier, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return the 'Outgoing KB/sec' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Network|[CARD]|Outgoing KB/sec
+     * </p>
+     * <p>
+     *   This query will return the 'Outgoing KB/sec' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Network|[CARD]|Outgoing KB/sec
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param card Name of the network device
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeNetworkOutgoingKBPerSec(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1345,9 +1664,15 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_NETWORK).append(s.HD_NETWORK_INCOMING_PACKETS);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_NETWORK);
+        if(card != null){
+            bud.append(card);
+        }else{
+            bud.append(s._ALL_);
+        }
+        bud.append(s.P).append(s.HD_NETWORK_OUTGOING_KB_PER_SEC);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -1359,7 +1684,29 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    public static String queryHDNodeNetworkIncomingPackets(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return the 'Outgoing Packets' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Network|[CARD]|Outgoing Packets
+     * </p>
+     * <p>
+     *   This query will return the 'Outgoing Packets' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Network|[CARD]|Outgoing Packets
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param card Name of the network device
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeNetworkOutgoingPackets(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1367,10 +1714,15 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_NETWORK).append(s.HD_NETWORK_INCOMING_PACKETS);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_NETWORK);
+        if(card != null){
+            bud.append(card);
+        }else{
+            bud.append(s._ALL_);
+        }
+        bud.append(s.P).append(s.HD_NETWORK_OUTGOING_PACKETS);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -1382,7 +1734,29 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    public static String queryHDTierNetworkIncomingPacketsPerSec(String baseURL, String application,String tier, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return the 'Outgoing Packets/sec' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Network|[CARD]|Outgoing Packets/sec
+     * </p>
+     * <p>
+     *   This query will return the 'Outgoing Packets/sec' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Network|[CARD]|Outgoing Packets/sec
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param card Name of the network device
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeNetworkOutgoingPacketsPerSec(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1390,212 +1764,15 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_NETWORK).append(s.HD_NETWORK_INCOMING_PACKETS_PER_SEC);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    
-    public static String queryHDNodeNetworkIncomingPacketsPerSec(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_NETWORK).append(s.HD_NETWORK_INCOMING_PACKETS_PER_SEC);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    
-    public static String queryHDTierNetworkOutgoingKB(String baseURL, String application,String tier, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_NETWORK).append(s.HD_NETWORK_OUTGOING_KB);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    
-    public static String queryHDNodeNetworkOutgoingKB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_NETWORK).append(s.HD_NETWORK_OUTGOING_KB);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    
-    public static String queryHDTierNetworkOutgoingKBPerSec(String baseURL, String application,String tier, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_NETWORK).append(s.HD_NETWORK_OUTGOING_KB_PER_SEC);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    
-    public static String queryHDNodeNetworkOutgoingKBPerSec(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_NETWORK).append(s.HD_NETWORK_OUTGOING_KB_PER_SEC);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    
-    public static String queryHDTierNetworkOutgoingPackets(String baseURL, String application,String tier, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_NETWORK).append(s.HD_NETWORK_OUTGOING_PACKETS);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    
-    public static String queryHDNodeNetworkOutgoingPackets(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_NETWORK).append(s.HD_NETWORK_OUTGOING_PACKETS);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    
-    public static String queryHDTierNetworkOutgoingPacketsPerSec(String baseURL, String application,String tier, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_NETWORK).append(s.HD_NETWORK_OUTGOING_PACKETS_PER_SEC);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    
-    public static String queryHDNodeNetworkOutgoingPacketsPerSec(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_NETWORK).append(s.HD_NETWORK_OUTGOING_PACKETS_PER_SEC);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_NETWORK);
+        if(card != null){
+            bud.append(card);
+        }else{
+            bud.append(s._ALL_);
+        }
+        bud.append(s.P).append(s.HD_NETWORK_OUTGOING_PACKETS_PER_SEC);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);

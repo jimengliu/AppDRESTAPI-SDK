@@ -51,7 +51,7 @@ public class s {
     public static final String F="/";
     public static final String Q="?";
     public static final String D_=" - ";
-    public static final String _ALL_="|*";
+    public static final String _ALL_="*";
     public static final String _E="=";
     public static final String _A="&";
     public static final String _QQ="\"";
@@ -130,16 +130,17 @@ public class s {
     
     
     /*
+Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Swap Free (MB)
 Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Swap Total (MB)
 Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Swap Used (MB)
-Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Total (MB)
-Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Used (MB)
+Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Total (MB) *
+Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Used (MB) *
 Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Free % *
-Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Used %
-Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Free (MB)
-Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Swap Free (MB)
+Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Used % *
+Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Free (MB) *
     
 Application Infrastructure Performance|AAC-App|Hardware Resources|Machine|Availability
+    
 Application Infrastructure Performance|AAC-App|Hardware Resources|Network|eth1|Outgoing KB
 Application Infrastructure Performance|AAC-App|Hardware Resources|Network|eth1|Outgoing KB/sec
 Application Infrastructure Performance|AAC-App|Hardware Resources|Network|eth1|Incoming KB
