@@ -17,28 +17,28 @@ import org.appdynamics.appdrestapi.resources.s;
  */
 public class HardwareResourcesMetricQuery {
     // All CPU Metrics
-    public static String queryHDTierCPUAll(String baseURL, String application,String tier, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_CPU).append(s._ALL_);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
     
+    /**
+     * 
+     * <p>
+     *   This query will return the all CPU metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|CPU|*
+     * </p>
+     * <p>
+     *   This query will return the all CPU metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|CPU|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
     public static String queryHDNodeCPUAll(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
@@ -47,9 +47,9 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES);
         bud.append(s.HD_CPU).append(s._ALL_);
         val.append(QueryEncoder.encode(bud.toString()));  
         
@@ -62,29 +62,27 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    // CPU Busy for the Tier
-    public static String queryHDTierCPUBusy(String baseURL, String application,String tier, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_CPU).append(s.HD_CPU_BUSY);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    
+    /**
+     * 
+     * <p>
+     *   This query will return the '%Busy'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|CPU|%Busy
+     * </p>
+     * <p>
+     *   This query will return the '%Busy' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|CPU|%Busy
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
     public static String queryHDNodeCPUBusy(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
@@ -95,7 +93,9 @@ public class HardwareResourcesMetricQuery {
         StringBuilder bud = new StringBuilder();
         bud.append(s.APPLICATION_INFRA_PERF);
         bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES);
         bud.append(s.HD_CPU).append(s.HD_CPU_BUSY);
         val.append(QueryEncoder.encode(bud.toString()));  
         
@@ -107,29 +107,28 @@ public class HardwareResourcesMetricQuery {
         
         return val.toString();
     }
-    
-    public static String queryHDTierCPUIdle(String baseURL, String application,String tier, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_CPU).append(s.HD_CPU_IDLE);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    
+
+    /**
+     * 
+     * <p>
+     *   This query will return the '%Idle'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|CPU|%Idle
+     * </p>
+     * <p>
+     *   This query will return the '%Idle' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|CPU|%Idle
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
     public static String queryHDNodeCPUIdle(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
@@ -140,8 +139,8 @@ public class HardwareResourcesMetricQuery {
         StringBuilder bud = new StringBuilder();
         bud.append(s.APPLICATION_INFRA_PERF);
         bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_CPU).append(s.HD_CPU_IDLE);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_CPU).append(s.HD_CPU_IDLE);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -153,28 +152,27 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    public static String queryHDTierCPUStolen(String baseURL, String application,String tier, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_CPU).append(s.HD_CPU_STOLEN);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    
+    /**
+     * 
+     * <p>
+     *   This query will return the '%Stolen'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|CPU|%Stolen
+     * </p>
+     * <p>
+     *   This query will return the '%Stolen' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|CPU|%Stolen
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
     public static String queryHDNodeCPUStolen(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
@@ -183,9 +181,9 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES);
         bud.append(s.HD_CPU).append(s.HD_CPU_STOLEN);
         val.append(QueryEncoder.encode(bud.toString()));  
         
@@ -199,8 +197,31 @@ public class HardwareResourcesMetricQuery {
     }
     
     /* ***************** Disk ************************** */
-    // All Disk data
-    public static String queryHDTierDisksAll(String baseURL, String application,String tier, long start, long end, boolean rollup){
+    
+    
+    /**
+     * 
+     * <p>
+     *   This query will return all of the disk metrics  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Disks|[DISK]|*
+     * </p>
+     * <p>
+     *   This query will return all of the disk metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Disks|[DISK]|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param disk Name of the disk
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeDisksAll(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -208,9 +229,13 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_DISKS).append(s._ALL_);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES);
+        bud.append(s.HD_DISKS);
+        if(disk != null){ bud.append(disk);}
+        else{bud.append(s._ALL_);}
+        bud.append(s._ALL_);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -222,7 +247,29 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    public static String queryHDNodeDisksAll(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return the 'KB read/sec'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Disks|[DISK]|KB read/sec
+     * </p>
+     * <p>
+     *   This query will return the 'KB read/sec' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Disks|[DISK]|KB read/sec
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param disk Name of the disk
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeDisksKBReadPerSec(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -230,10 +277,12 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_DISKS).append(s._ALL_);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_DISKS);
+        if(disk != null){ bud.append(disk);}
+        else{bud.append(s._ALL_);}
+        bud.append(s.HD_DISKS_KB_READ_PER_SEC);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -245,8 +294,29 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    //DisksKBReadPerSec
-    public static String queryHDTierDisksKBReadPerSec(String baseURL, String application,String tier, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return the 'KB written/sec'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Disks|[DISK]|KB written/sec
+     * </p>
+     * <p>
+     *   This query will return the 'KB written/sec' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Disks|[DISK]|KB written/sec
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param disk Name of the disk
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeDisksKBWrittenPerSec(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -254,9 +324,12 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_DISKS).append(s.HD_DISKS_KB_READ_PER_SEC);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_DISKS);
+        if(disk != null){ bud.append(disk);}
+        else{bud.append(s._ALL_);}
+        bud.append(s.HD_DISKS_KB_WRITE_PER_SEC);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -268,7 +341,29 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    public static String queryHDNodeDisksKBReadPerSec(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return the 'Reads/sec'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Disks|[DISK]|Reads/sec
+     * </p>
+     * <p>
+     *   This query will return the 'Reads/sec' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Disks|[DISK]|Reads/sec
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param disk Name of the disk
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeDisksReadPerSec(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -276,10 +371,12 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_DISKS).append(s.HD_DISKS_KB_READ_PER_SEC);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_DISKS);
+        if(disk != null){ bud.append(disk);}
+        else{bud.append(s._ALL_);}
+        bud.append(s.HD_DISKS_READ_PER_SEC);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -291,7 +388,29 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    public static String queryHDTierDisksKBWrittenPerSec(String baseURL, String application,String tier, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return the 'Writes/sec'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Disks|[DISK]|Writes/sec
+     * </p>
+     * <p>
+     *   This query will return the 'Writes/sec' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Disks|[DISK]|Writes/sec
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param disk Name of the disk
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeDisksWritesPerSec(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -299,9 +418,13 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_DISKS).append(s.HD_DISKS_KB_WRITE_PER_SEC);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_DISKS);
+        
+        if(disk != null){ bud.append(disk);}
+        else{bud.append(s._ALL_);}
+        bud.append(s.HD_DISKS_WRITES_PER_SEC);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -313,7 +436,29 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    public static String queryHDNodeDisksKBWrittenPerSec(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return the 'Space Used'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Disks|[DISK]|Space Used
+     * </p>
+     * <p>
+     *   This query will return the 'Space Used' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Disks|[DISK]|Space Used
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param disk Name of the disk
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeDisksSpaceUsed(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -321,10 +466,62 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_DISKS).append(s.HD_DISKS_KB_WRITE_PER_SEC);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_DISKS);
+        
+        if(disk != null){ bud.append(disk);}
+        else{bud.append(s._ALL_);}
+        bud.append(s.HD_DISKS_SPACE_USED);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return the 'Avg Service Time (ms)'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Disks|[DISK]|Avg Service Time (ms)
+     * </p>
+     * <p>
+     *   This query will return the 'Avg Service Time (ms)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Disks|[DISK]|Avg Service Time (ms)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param disk Name of the disk
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeDisksAvgServiceTimeMS(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_DISKS);
+        
+        if(disk != null){ bud.append(disk);}
+        else{bud.append(s._ALL_);}
+        bud.append(s.HD_DISKS_AVG_SERVICE_TIME_MS);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -336,7 +533,29 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    public static String queryHDTierDisksReadPerSec(String baseURL, String application,String tier, long start, long end, boolean rollup){
+     /**
+     * 
+     * <p>
+     *   This query will return the '% CPU Time'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Disks|[DISK]|% CPU Time
+     * </p>
+     * <p>
+     *   This query will return the '% CPU Time' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Disks|[DISK]|% CPU Time
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param disk Name of the disk
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeDisksPerCPUTime(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -344,9 +563,13 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_DISKS).append(s.HD_DISKS_READ_PER_SEC);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_DISKS);
+        
+        if(disk != null){ bud.append(disk);}
+        else{bud.append(s._ALL_);}
+        bud.append(s.HD_DISKS_PER_CPU_TIME);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -356,9 +579,32 @@ public class HardwareResourcesMetricQuery {
         
         
         return val.toString();
+        
     }
     
-    public static String queryHDNodeDisksReadPerSec(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return the 'Space Available'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Disks|[DISK]|Space Available
+     * </p>
+     * <p>
+     *   This query will return the 'Space Available' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Disks|[DISK]|Space Available
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param disk Name of the disk
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeDisksSpaceAvailable(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -366,10 +612,13 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_DISKS).append(s.HD_DISKS_READ_PER_SEC);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_DISKS);
+        
+        if(disk != null){ bud.append(disk);}
+        else{bud.append(s._ALL_);}
+        bud.append(s.HD_DISKS_SPACE_AVAILABLE);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -379,9 +628,32 @@ public class HardwareResourcesMetricQuery {
         
         
         return val.toString();
+        
     }
     
-    public static String queryHDTierDisksWritesPerSec(String baseURL, String application,String tier, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return the 'Avg Queue Time (ms)'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Disks|[DISK]|Avg Queue Time (ms)
+     * </p>
+     * <p>
+     *   This query will return the 'Avg Queue Time (ms)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Disks|[DISK]|Avg Queue Time (ms)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param disk Name of the disk
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeDisksAvgQueueTimeMS(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -389,9 +661,13 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_DISKS).append(s.HD_DISKS_WRITES_PER_SEC);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_DISKS);
+        
+        if(disk != null){ bud.append(disk);}
+        else{bud.append(s._ALL_);}
+        bud.append(s.HD_DISKS_AVG_QUEUE_TIME_MS);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -401,9 +677,34 @@ public class HardwareResourcesMetricQuery {
         
         
         return val.toString();
+        
     }
     
-    public static String queryHDNodeDisksWritesPerSec(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /* ***************** Volumes ************************ */
+    
+    /**
+     * 
+     * <p>
+     *   This query will return all of the volume metrics  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Volumes|[VOLUME]|*
+     * </p>
+     * <p>
+     *   This query will return all of the volume metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Volumes|[VOLUME]|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param volume Name of the volume
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeVolumesAll(String baseURL, String application,String tier, String node, String volume, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -411,10 +712,13 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_DISKS).append(s.HD_DISKS_WRITES_PER_SEC);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_VOLUMES);
+        
+        if(volume != null){ bud.append(volume);}
+        else{bud.append(s._ALL_);}
+        bud.append(s._ALL_);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -424,32 +728,227 @@ public class HardwareResourcesMetricQuery {
         
         
         return val.toString();
+        
     }
     
+    /**
+     * 
+     * <p>
+     *   This query will return the 'Used (MB)'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Volumes|[VOLUME]|Used (MB)
+     * </p>
+     * <p>
+     *   This query will return the 'Used (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Volumes|[VOLUME]|Used (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param volume Name of the volume
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeVolumesUsedMB(String baseURL, String application,String tier, String node, String volume, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_VOLUMES);
+        
+        if(volume != null){ bud.append(volume);}
+        else{bud.append(s._ALL_);}
+        bud.append(s.HD_MEMORY_USED_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return the 'Free (MB)'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Volumes|[VOLUME]|Free (MB)
+     * </p>
+     * <p>
+     *   This query will return the 'Free (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Volumes|[VOLUME]|Free (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param volume Name of the volume
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeVolumesFreeMB(String baseURL, String application,String tier, String node, String volume, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_VOLUMES);
+        
+        if(volume != null){ bud.append(volume);}
+        else{bud.append(s._ALL_);}
+        bud.append(s.HD_MEMORY_FREE_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return the 'Used (%)'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Volumes|[VOLUME]|Used (%)
+     * </p>
+     * <p>
+     *   This query will return the 'Used (%)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Volumes|[VOLUME]|Used (%)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param volume Name of the volume
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeVolumesUsedPer(String baseURL, String application,String tier, String node, String volume, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_VOLUMES);
+        
+        if(volume != null){ bud.append(volume);}
+        else{bud.append(s._ALL_);}
+        bud.append(s.HD_MEMORY_USED_PERC);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return the 'Total (MB)'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Volumes|[VOLUME]|Total (MB)
+     * </p>
+     * <p>
+     *   This query will return the 'Total (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Volumes|[VOLUME]|Total (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param volume Name of the volume
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryHDNodeVolumesTotalMB(String baseURL, String application,String tier, String node, String volume, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES).append(s.HD_VOLUMES);
+        
+        if(volume != null){ bud.append(volume);}
+        else{bud.append(s._ALL_);}
+        bud.append(s.HD_VOLUMES_TOTAL_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
+
     /* ***************** Memory ************************ */
-    //All Memory Metrics
-    public static String queryHDTierMemoryAll(String baseURL, String application,String tier, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_JVM_MEMORY).append(s._ALL_);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    
+    /**
+     * 
+     * <p>
+     *   This query will return all of the memory metrics  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Memory|*
+     * </p>
+     * <p>
+     *   This query will return all of the memory metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Memory|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
     public static String queryHDNodeMemoryAll(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
@@ -458,9 +957,9 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.HARDWARE_RESOURCES);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.HARDWARE_RESOURCES);
         bud.append(s.HD_JVM_MEMORY).append(s._ALL_);
         val.append(QueryEncoder.encode(bud.toString()));  
         
@@ -474,28 +973,28 @@ public class HardwareResourcesMetricQuery {
     }
     
     // Memory Free Perc
-    public static String queryHDTierMemoryFreePerc(String baseURL, String application,String tier, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier).append(s.HARDWARE_RESOURCES);
-        bud.append(s.HD_JVM_MEMORY).append(s.HD_MEMORY_FREE_PERC);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    
+
+    /**
+     * 
+     * <p>
+     *   This query will return the metric 'Free %'  from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Memory|*
+     * </p>
+     * <p>
+     *   This query will return the metric 'Free %' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Memory|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
     public static String queryHDNodeMemoryFreePerc(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);

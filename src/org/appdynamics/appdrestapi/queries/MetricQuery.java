@@ -35,10 +35,244 @@ public class MetricQuery {
         return AgentMetricQuery.queryAgentNodeMachineAgentAvailability( baseURL, application,tier, node,start, end, rollup);
     }
     
+    public String queryTierAgentTopSummaryStatsUploadTopSummaryStatsExceedingLimit(String baseURL, String application,String tier, 
+             long start, long end, boolean rollup){
+        return AgentMetricQuery.queryNodeAgentTopSummaryStatsUploadTopSummaryStatsExceedingLimit(baseURL, application, tier, null, start, end, rollup);
+        
+    }
+    
+    public String queryNodeAgentTopSummaryStatsUploadTopSummaryStatsExceedingLimit(String baseURL, String application,String tier, 
+            String node, long start, long end, boolean rollup){
+        return AgentMetricQuery.queryNodeAgentTopSummaryStatsUploadTopSummaryStatsExceedingLimit(baseURL, application, tier, node, start, end, rollup);
+    }
+    
+    public String queryTierAgentTopSummaryStatsUploadInvalidTopSummaryStats(String baseURL, String application,String tier ,
+            long start, long end, boolean rollup){
+        return AgentMetricQuery.queryNodeAgentTopSummaryStatsUploadInvalidTopSummaryStats(baseURL, application, tier, null, start, end, rollup);
+    }
+    
+    public String queryNodeAgentTopSummaryStatsUploadInvalidTopSummaryStats(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+        return AgentMetricQuery.queryNodeAgentTopSummaryStatsUploadInvalidTopSummaryStats(baseURL, application, tier, node, start, end, rollup);
+    }
+    
+    public String queryTierAgentTopSummaryStatsUploadTomSummaryStatsUploadTopSummaryStatsUploaded(String baseURL, String application,String tier ,
+            long start, long end, boolean rollup){
+        return AgentMetricQuery.queryNodeAgentTopSummaryStatsUploadTomSummaryStatsUploadTopSummaryStatsUploaded(baseURL, application, tier, null, start, end, rollup);
+    }
+    
+    public String queryNodeAgentTopSummaryStatsUploadTomSummaryStatsUploadTopSummaryStatsUploaded(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+        return AgentMetricQuery.queryNodeAgentTopSummaryStatsUploadTomSummaryStatsUploadTopSummaryStatsUploaded(baseURL, application, tier, node, start, end, rollup);
+    }
+    
+    public String queryTierAgentTopSummaryStatsUploadTopSummaryStatsTimeSkewErrors(String baseURL, String application,String tier,
+            long start, long end, boolean rollup){
+        return queryNodeAgentTopSummaryStatsUploadTopSummaryStatsTimeSkewErrors(baseURL, application, tier, null, start, end, rollup);
+    }
+    
+    public String queryNodeAgentTopSummaryStatsUploadTopSummaryStatsTimeSkewErrors(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+        return queryNodeAgentTopSummaryStatsUploadTopSummaryStatsTimeSkewErrors(baseURL, application, tier, node, start, end, rollup);
+    }
+    
+    public String queryTierAgentDiscoveredBackendsRegistrationSuccessful(String baseURL, String application,String tier, 
+            long start, long end, boolean rollup){
+        return queryNodeAgentDiscoveredBackendsRegistrationSuccessful(baseURL, application, tier, null, start, end, rollup);
+    }
+    
+    public String queryNodeAgentDiscoveredBackendsRegistrationSuccessful(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+        return queryNodeAgentDiscoveredBackendsRegistrationSuccessful(baseURL, application, tier, node, start, end, rollup);
+    }
+    
+    public String queryTierAgentDiscoveredBackendsRegistrationFailed(String baseURL, String application,String tier,
+            long start, long end, boolean rollup){
+        return queryNodeAgentDiscoveredBackendsRegistrationFailed(baseURL, application, tier, null, start, end, rollup);
+    }
+    
+    public String queryNodeAgentDiscoveredBackendsRegistrationFailed(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+        return queryNodeAgentDiscoveredBackendsRegistrationFailed(baseURL, application, tier, node, start, end, rollup);
+    }
+    
+    public String queryTierAgentDiscoveredBackendsUnmonitoredCallsPerMinute(String baseURL, String application,String tier,
+            long start, long end, boolean rollup){
+        return queryNodeAgentDiscoveredBackendsUnmonitoredCallsPerMinute(baseURL, application, tier, null, start, end, rollup);
+    }
+    
+    public String queryNodeAgentDiscoveredBackendsUnmonitoredCallsPerMinute(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+        return queryNodeAgentDiscoveredBackendsUnmonitoredCallsPerMinute(baseURL, application, tier, node, start, end, rollup);
+    }
+    
+    public String queryTierAgentConfigChannelNumberOfApplicationInfrastructureChangeSet(String baseURL, String application,String tier,
+            long start, long end, boolean rollup){
+        return queryNodeAgentConfigChannelNumberOfApplicationInfrastructureChangeSet(baseURL, application, tier, null, start, end, rollup);
+    }
+    
+    public String queryNodeAgentConfigChannelNumberOfApplicationInfrastructureChangeSet(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+        return queryNodeAgentConfigChannelNumberOfApplicationInfrastructureChangeSet(baseURL, application, tier, node, start, end, rollup);
+    }
+    
+    public String queryTierAgentSnapshotUploadSnapshotsUploaded(String baseURL, String application,String tier, 
+            long start, long end, boolean rollup){
+        return queryNodeAgentSnapshotUploadSnapshotsUploaded(baseURL, application, tier, null, start, end, rollup);
+    }
+    
+    public String queryNodeAgentSnapshotUploadSnapshotsUploaded(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+        return queryNodeAgentSnapshotUploadSnapshotsUploaded(baseURL, application, tier, node, start, end, rollup);
+    }
+    
+   public String queryTierAgentSnapshotUploadInvalidSnapshots(String baseURL, String application,String tier, 
+            long start, long end, boolean rollup){
+       return queryNodeAgentSnapshotUploadInvalidSnapshots(baseURL, application, tier, null, start, end, rollup);
+   }
+    
+   public String queryNodeAgentSnapshotUploadInvalidSnapshots(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+       return queryNodeAgentSnapshotUploadInvalidSnapshots(baseURL, application, tier, node, start, end, rollup);
+   }
+    
+   public String queryTierAgentSnapshotUploadTimeSkewErrors(String baseURL, String application,String tier, 
+            long start, long end, boolean rollup){
+       return queryNodeAgentSnapshotUploadTimeSkewErrors(baseURL, application, tier, null, start, end, rollup);
+   }
+   
+   public String queryNodeAgentSnapshotUploadTimeSkewErrors(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+       return queryNodeAgentSnapshotUploadTimeSkewErrors(baseURL, application, tier, node, start, end, rollup);
+   }
+   
+   public String queryTierAgentSnapshotUploadSnapshotsExceedingLimit(String baseURL, String application,String tier, 
+            long start, long end, boolean rollup){
+       return queryNodeAgentSnapshotUploadSnapshotsExceedingLimit(baseURL, application, tier, null, start, end, rollup);
+   }
+   
+   public String queryNodeAgentSnapshotUploadSnapshotsExceedingLimit(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+       return queryNodeAgentSnapshotUploadSnapshotsExceedingLimit(baseURL, application, tier, node, start, end, rollup);
+   }
+   
+   public String queryTierAgentMetricUploadRequestsLicenseErrors(String baseURL, String application,String tier, 
+            long start, long end, boolean rollup){
+       return queryNodeAgentMetricUploadRequestsLicenseErrors(baseURL, application, tier, null, start, end, rollup);
+   }
+   
+   public String queryNodeAgentMetricUploadRequestsLicenseErrors(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+       return queryNodeAgentMetricUploadRequestsLicenseErrors(baseURL, application, tier, node, start, end, rollup);
+   }
+   
+   public String queryTierAgentMetricUploadInvalidMetrics(String baseURL, String application,String tier, 
+            long start, long end, boolean rollup){
+       return queryNodeAgentMetricUploadInvalidMetrics(baseURL, application, tier, null, start, end, rollup);
+   }
+   
+   public String queryNodeAgentMetricUploadInvalidMetrics(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+       return queryNodeAgentMetricUploadInvalidMetrics(baseURL, application, tier, node, start, end, rollup);
+   }
+   
+   public String queryTierAgentMetricUploadRequestsTimeSkewErrors(String baseURL, String application,String tier, 
+            long start, long end, boolean rollup){
+       return queryNodeAgentMetricUploadRequestsTimeSkewErrors(baseURL, application, tier, null, start, end, rollup);
+   }
+   
+   public String queryNodeAgentMetricUploadRequestsTimeSkewErrors(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+       return queryNodeAgentMetricUploadRequestsTimeSkewErrors(baseURL, application, tier, node, start, end, rollup);
+   }
+   
+   public String queryTierAgentMetricUploadMetricsUpload(String baseURL, String application,String tier, 
+            long start, long end, boolean rollup){
+       return queryNodeAgentMetricUploadMetricsUpload(baseURL, application, tier, null, start, end, rollup);
+   }
+   
+   public String queryNodeAgentMetricUploadMetricsUpload(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+       return queryNodeAgentMetricUploadMetricsUpload(baseURL, application, tier, node, start, end, rollup);
+   }
+   
+   
+   public String queryTierAgentMetricUploadRequestsExceedingLimit(String baseURL, String application,String tier, 
+            long start, long end, boolean rollup){
+       return queryNodeAgentMetricUploadRequestsExceedingLimit(baseURL, application, tier, null, start, end, rollup);
+   }
+   
+   public String queryNodeAgentMetricUploadRequestsExceedingLimit(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+       return queryNodeAgentMetricUploadRequestsExceedingLimit(baseURL, application, tier, node, start, end, rollup);
+   }
+   
+   public String queryTierAgentEventUploadEventsUploaded(String baseURL, String application,String tier, 
+            long start, long end, boolean rollup){
+       return queryNodeAgentEventUploadEventsUploaded(baseURL, application, tier, null, start, end, rollup);
+   }
+   
+   public String queryNodeAgentEventUploadEventsUploaded(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+       return queryNodeAgentEventUploadEventsUploaded(baseURL, application, tier, node, start, end, rollup);
+   }
+   
+   public String queryTierAgentEventUploadEventsExceedingLimit(String baseURL, String application,String tier, 
+            long start, long end, boolean rollup){
+       return queryNodeAgentEventUploadEventsExceedingLimit(baseURL, application, tier, null, start, end, rollup);
+   }
+   
+   public String queryNodeAgentEventUploadEventsExceedingLimit(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+       return queryNodeAgentEventUploadEventsExceedingLimit(baseURL, application, tier, node, start, end, rollup);
+   }
+   
+   public String queryTierAgentEventUploadTimeSkewsErrors(String baseURL, String application,String tier, 
+            long start, long end, boolean rollup){
+       return queryNodeAgentEventUploadTimeSkewsErrors(baseURL, application, tier, null, start, end, rollup);
+   }
+   
+   public String queryNodeAgentEventUploadTimeSkewsErrors(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+       return queryNodeAgentEventUploadTimeSkewsErrors(baseURL, application, tier, node, start, end, rollup);
+   }
+   
+   public String queryTierAgentBusinessTransactionsUnmonitoredCallsPerMinute(String baseURL, String application,String tier,
+            long start, long end, boolean rollup){
+       return queryNodeAgentBusinessTransactionsUnmonitoredCallsPerMinute(baseURL, application, tier, null, start, end, rollup);
+   }
+   
+   public String queryNodeAgentBusinessTransactionsUnmonitoredCallsPerMinute(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+       return queryNodeAgentBusinessTransactionsUnmonitoredCallsPerMinute(baseURL, application, tier, node, start, end, rollup);
+   }
+   
+   public String queryTierAgentBusinessTransactionsRegistrationFailed(String baseURL, String application,String tier,
+            long start, long end, boolean rollup){
+       return queryNodeAgentBusinessTransactionsRegistrationFailed(baseURL, application, tier, null, start, end, rollup);
+   }
+   
+   public String queryNodeAgentBusinessTransactionsRegistrationFailed(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+       return queryNodeAgentBusinessTransactionsRegistrationFailed(baseURL, application, tier, node, start, end, rollup);
+   }
+   
+   public String queryTierAgentBusinessTransactionsRegistrationSuccessful(String baseURL, String application,String tier, 
+            long start, long end, boolean rollup){
+       return queryNodeAgentBusinessTransactionsRegistrationSuccessful(baseURL, application, tier, null, start, end, rollup);
+   }
+   
+   public String queryNodeAgentBusinessTransactionsRegistrationSuccessful(String baseURL, String application,String tier, String node ,
+            long start, long end, boolean rollup){
+       return queryNodeAgentBusinessTransactionsRegistrationSuccessful(baseURL, application, tier, node, start, end, rollup);
+   }
+   
+   
+    
     /* ************************* Hardware Resources CPU *******************************  */
     
     public String queryHDTierCPUAll(String tier, long start, long end, boolean rollup){
-        return HardwareResourcesMetricQuery.queryHDTierCPUAll(baseURL, application, tier, start, end, rollup);
+        return HardwareResourcesMetricQuery.queryHDNodeCPUAll(baseURL, application, tier, null, start, end, rollup);
     }
     
     public String queryHDNodeCPUAll(String tier, String node, long start, long end, boolean rollup){
@@ -46,7 +280,7 @@ public class MetricQuery {
     }
     
     public String queryHDTierCPUBusy(String tier, long start, long end, boolean rollup){
-        return HardwareResourcesMetricQuery.queryHDTierCPUBusy(baseURL, application, tier, start, end, rollup);
+        return HardwareResourcesMetricQuery.queryHDNodeCPUBusy(baseURL, application, tier, null, start, end, rollup);
     }
     
     public String queryHDNodeCPUBusy(String tier, String node, long start, long end, boolean rollup){
@@ -54,7 +288,7 @@ public class MetricQuery {
     }
     
     public String queryHDTierCPUIdle(String tier, long start, long end, boolean rollup){
-        return HardwareResourcesMetricQuery.queryHDTierCPUIdle(baseURL, application, tier, start, end, rollup);
+        return HardwareResourcesMetricQuery.queryHDNodeCPUIdle(baseURL, application, tier, null, start, end, rollup);
     }
     
     public String queryHDNodeCPUIdle(String tier, String node, long start, long end, boolean rollup){
@@ -62,7 +296,7 @@ public class MetricQuery {
     }
     
     public String queryHDTierCPUStolen(String tier, long start, long end, boolean rollup){
-        return HardwareResourcesMetricQuery.queryHDTierCPUStolen(baseURL, application, tier, start, end, rollup);
+        return HardwareResourcesMetricQuery.queryHDNodeCPUStolen(baseURL, application, tier, null, start, end, rollup);
     }
     
     public String queryHDNodeCPUStolen(String tier, String node, long start, long end, boolean rollup){
@@ -70,43 +304,105 @@ public class MetricQuery {
     }
     
     /* ************************* Hardware Resources Disk *******************************   */
-    public String queryHDTierDisksAll(String tier, long start, long end, boolean rollup){
-        return HardwareResourcesMetricQuery.queryHDTierDisksAll(baseURL, application, tier, start, end, rollup);
+    public String queryHDTierDisksAll(String tier, String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHDNodeDisksAll(baseURL, application, tier, null, disk, start, end, rollup);
+        return HardwareResourcesMetricQuery.queryHDNodeDisksAll(baseURL, application, tier, null, null, start, end, rollup);
     }
-    public String queryHDNodeDisksAll(String tier, String node, long start, long end, boolean rollup){
-        return HardwareResourcesMetricQuery.queryHDNodeDisksAll(baseURL, application, tier, node, start, end, rollup);
-    }
-    
-    public String queryHDTierDisksKBReadPerSec(String tier, long start, long end, boolean rollup){
-        return HardwareResourcesMetricQuery.queryHDTierDisksKBReadPerSec(baseURL, application, tier, start, end, rollup);
-    }
-    public String queryHDNodeDisksKBReadPerSec(String tier, String node, long start, long end, boolean rollup){
-        return HardwareResourcesMetricQuery.queryHDNodeDisksKBReadPerSec(baseURL, application, tier, node, start, end, rollup);
+    public String queryHDNodeDisksAll(String tier, String node, String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHDNodeDisksAll(baseURL, application, tier, node, disk, start, end, rollup);
+        return HardwareResourcesMetricQuery.queryHDNodeDisksAll(baseURL, application, tier, node, null, start, end, rollup);
     }
     
-    public String queryHDTierDisksKBWrittenPerSec(String tier, long start, long end, boolean rollup){
-        return HardwareResourcesMetricQuery.queryHDTierDisksKBWrittenPerSec(baseURL, application, tier, start, end, rollup);
+    public String queryHDTierDisksKBReadPerSec(String tier, String disk, long start, long end, boolean rollup){
+        return HardwareResourcesMetricQuery.queryHDNodeDisksKBReadPerSec(baseURL, application, tier, null, null, start, end, rollup);
+    }
+    public String queryHDNodeDisksKBReadPerSec(String tier, String node, String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHDNodeDisksKBReadPerSec(baseURL, application, tier, node, disk, start, end, rollup);
+        return HardwareResourcesMetricQuery.queryHDNodeDisksKBReadPerSec(baseURL, application, tier, node, null, start, end, rollup);
     }
     
-    public String queryHDNodeDisksKBWrittenPerSec(String tier, String node, long start, long end, boolean rollup){
-        return HardwareResourcesMetricQuery.queryHDNodeDisksKBWrittenPerSec(baseURL, application, tier, node,start, end, rollup);
+    public String queryHDTierDisksKBWrittenPerSec(String tier, String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHDNodeDisksKBWrittenPerSec(baseURL, application, tier, null, disk, start, end, rollup);
+            return HardwareResourcesMetricQuery.queryHDNodeDisksKBWrittenPerSec(baseURL, application, tier, null, null, start, end, rollup);
     }
     
-    public String queryHDTierDisksReadPerSec(String tier, long start, long end, boolean rollup){
-        return HardwareResourcesMetricQuery.queryHDTierDisksReadPerSec(baseURL, application, tier, start, end, rollup);
+    public String queryHDNodeDisksKBWrittenPerSec(String tier, String node, String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHDNodeDisksKBWrittenPerSec(baseURL, application, tier, node,disk,start, end, rollup);
+        return HardwareResourcesMetricQuery.queryHDNodeDisksKBWrittenPerSec(baseURL, application, tier, node, null,start, end, rollup);
     }
     
-    public String queryHDNodeDisksReadPerSec(String tier, String node, long start, long end, boolean rollup){
-        return HardwareResourcesMetricQuery.queryHDNodeDisksReadPerSec(baseURL, application, tier, node,start, end, rollup);
+    public String queryHDTierDisksReadPerSec(String tier, String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHDNodeDisksReadPerSec(baseURL, application, tier, null, disk, start, end, rollup);
+        return HardwareResourcesMetricQuery.queryHDNodeDisksReadPerSec(baseURL, application, tier, null, null, start, end, rollup);
     }
     
-    public String queryHDTierDisksWritesPerSec(String tier, long start, long end, boolean rollup){
-        return HardwareResourcesMetricQuery.queryHDTierDisksWritesPerSec(baseURL, application, tier, start, end, rollup);
+    public String queryHDNodeDisksReadPerSec(String tier, String node, String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHDNodeDisksReadPerSec(baseURL, application, tier, node,disk,start, end, rollup);
+        return HardwareResourcesMetricQuery.queryHDNodeDisksReadPerSec(baseURL, application, tier, node,null,start, end, rollup);
     }
     
-    public String queryHDNodeDisksWritesPerSec(String tier, String node, long start, long end, boolean rollup){
-        return HardwareResourcesMetricQuery.queryHDNodeDisksWritesPerSec(baseURL, application, tier, node,start, end, rollup);
+    public String queryHDTierDisksWritesPerSec(String tier, String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHDNodeDisksWritesPerSec(baseURL, application, tier, null, disk, start, end, rollup);
+        return HardwareResourcesMetricQuery.queryHDNodeDisksWritesPerSec(baseURL, application, tier, null, null, start, end, rollup);
     }
+    
+    public String queryHDNodeDisksWritesPerSec(String tier, String node, String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHDNodeDisksWritesPerSec(baseURL, application, tier, node, disk, start, end, rollup);
+        return HardwareResourcesMetricQuery.queryHDNodeDisksWritesPerSec(baseURL, application, tier, node, null, start, end, rollup);
+    }
+    
+    public String queryHDTierDisksSpaceUsed(String tier, String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHDNodeDisksSpaceUsed(baseURL, application, tier, null, disk, start, end, rollup);
+            return HardwareResourcesMetricQuery.queryHDNodeDisksSpaceUsed(baseURL, application, tier, null, null, start, end, rollup);
+    }
+    
+    public String queryHDNodeDisksSpaceUsed(String tier, String node, String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHDNodeDisksSpaceUsed(baseURL, application, tier, node, disk, start, end, rollup);
+            return HardwareResourcesMetricQuery.queryHDNodeDisksSpaceUsed(baseURL, application, tier, node, null, start, end, rollup);
+    }
+    
+    
+    public String queryHDTierDisksAvgServiceTimeMS(String tier, String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHDNodeDisksAvgServiceTimeMS(baseURL, application, tier, null, disk, start, end, rollup);
+        return HardwareResourcesMetricQuery.queryHDNodeDisksAvgServiceTimeMS(baseURL, application, tier, null, null, start, end, rollup);
+    }
+    
+    public String queryHDNodeDisksAvgServiceTimeMS(String tier, String node, String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHDNodeDisksAvgServiceTimeMS(baseURL, application, tier, node, disk, start, end, rollup);
+        return HardwareResourcesMetricQuery.queryHDNodeDisksAvgServiceTimeMS(baseURL, application, tier, node, null, start, end, rollup);
+    }
+    
+    public String queryHDTierDisksPerCPUTime(String tier, String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHDNodeDisksPerCPUTime(baseURL, application, tier, null, disk, start, end, rollup);
+            return HardwareResourcesMetricQuery.queryHDNodeDisksPerCPUTime(baseURL, application, tier, null, null, start, end, rollup);
+    }
+    
+    public String queryHDNodeDisksPerCPUTime(String tier, String node, String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHDNodeDisksPerCPUTime(baseURL, application, tier, node, disk, start, end, rollup);
+            return HardwareResourcesMetricQuery.queryHDNodeDisksPerCPUTime(baseURL, application, tier, node, null, start, end, rollup);
+    }
+    
+    public String queryHDTierDisksSpaceAvailable(String tier, String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHDNodeDisksSpaceAvailable(baseURL, application, tier, null, disk, start, end, rollup);
+        return HardwareResourcesMetricQuery.queryHDNodeDisksSpaceAvailable(baseURL, application, tier, null, null, start, end, rollup);
+    }
+    
+    public String queryHDNodeDisksSpaceAvailable(String tier, String node, String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHDNodeDisksSpaceAvailable(baseURL, application, tier, node, disk, start, end, rollup);
+        return HardwareResourcesMetricQuery.queryHDNodeDisksSpaceAvailable(baseURL, application, tier, node, null, start, end, rollup);
+    }
+    
+    public String queryHDTierDisksAvgQueueTimeMS(String tier,String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHDNodeDisksAvgQueueTimeMS(baseURL, application, tier, null, disk, start, end, rollup);
+            return HardwareResourcesMetricQuery.queryHDNodeDisksAvgQueueTimeMS(baseURL, application, tier, null, null, start, end, rollup);
+    }
+    
+    public String queryHDNodeDisksAvgQueueTimeMS(String tier, String node, String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHDNodeDisksAvgQueueTimeMS(baseURL, application, tier, node, disk, start, end, rollup);
+            return HardwareResourcesMetricQuery.queryHDNodeDisksAvgQueueTimeMS(baseURL, application, tier, node, null, start, end, rollup);
+    }
+    
+    /* ************************* Hardware Resources Memory ******************************* */
     
     /* ************************* Hardware Resources Memory *******************************   */
     

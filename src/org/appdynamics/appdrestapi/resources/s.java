@@ -51,7 +51,7 @@ public class s {
     public static final String F="/";
     public static final String Q="?";
     public static final String D_=" - ";
-    public static final String _ALL_="*";
+    public static final String _ALL_="|*";
     public static final String _E="=";
     public static final String _A="&";
     public static final String _QQ="\"";
@@ -108,6 +108,7 @@ public class s {
     public static final String AGENT_SNAPSHOT_UPLOAD_SNAPSHOTS_UPLOADED="Snapshots uploaded";
     public static final String AGENT_SNAPSHOT_UPLOAD_INVALID_SNAPSHOTS="Invalid Snapshots";
     public static final String AGENT_SNAPSHOT_UPLOAD_TIME_SKEW_ERRORS="Time skew Errors";
+    public static final String AGENT_SNAPSHOT_UPLOAD_SNAPSHOTS_EXCEEDING_LIMIT="Snapshots Exceeding Limit";
     public static final String AGENT_METRIC_UPLOAD="Metric Upload|";
     public static final String AGENT_METRIC_UPLOAD_REQUESTS_LICENSE_ERRORS="Requests License Errors";
     public static final String AGENT_METRIC_UPLOAD_INVALID_METRICS="Invalid Metrics";
@@ -133,10 +134,11 @@ Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Swap To
 Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Swap Used (MB)
 Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Total (MB)
 Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Used (MB)
-Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Free %
+Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Free % *
 Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Used %
 Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Free (MB)
 Application Infrastructure Performance|AAC-App|Hardware Resources|Memory|Swap Free (MB)
+    
 Application Infrastructure Performance|AAC-App|Hardware Resources|Machine|Availability
 Application Infrastructure Performance|AAC-App|Hardware Resources|Network|eth1|Outgoing KB
 Application Infrastructure Performance|AAC-App|Hardware Resources|Network|eth1|Outgoing KB/sec
@@ -146,16 +148,17 @@ Application Infrastructure Performance|AAC-App|Hardware Resources|Network|eth1|I
 Application Infrastructure Performance|AAC-App|Hardware Resources|Network|eth1|Outgoing packets/sec
 Application Infrastructure Performance|AAC-App|Hardware Resources|Network|eth1|Incoming packets
 Application Infrastructure Performance|AAC-App|Hardware Resources|Network|eth1|Incoming packets/sec
+    
 Application Infrastructure Performance|AAC-App|Hardware Resources|CPU|%Stolen
 Application Infrastructure Performance|AAC-App|Hardware Resources|CPU|%Busy
 Application Infrastructure Performance|AAC-App|Hardware Resources|CPU|%Idle
+Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|Space Used 
+Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|Avg Service Time (ms) 
+Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|% CPU Time 
+Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|Space Available 
+Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|Avg Queue Time (ms) 
 Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|Reads/sec *
-Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|Space Used *
-Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|Avg Service Time (ms) *
-Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|% CPU Time *
 Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|KB written/sec *
-Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|Space Available *
-Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|Avg Queue Time (ms) *
 Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|Writes/sec *
 Application Infrastructure Performance|AAC-App|Hardware Resources|Disks|dev-mapper-vglocal00-usr00|KB read/sec *
 Application Infrastructure Performance|AAC-App|Hardware Resources|Volumes|/usr|Used (MB)
@@ -193,7 +196,7 @@ Application Infrastructure Performance|AAC-App|Hardware Resources|Volumes|/usr|T
     public static final String HD_DISKS_READ_PER_SEC="Reads/sec";
     public static final String HD_DISKS_WRITES_PER_SEC="Writes/sec";
     public static final String HD_DISKS_SPACE_USED="Space Used";
-    public static final String HD_DISKS_AGE_SERVICE_TIME_MS="Avg Service Time (ms)";
+    public static final String HD_DISKS_AVG_SERVICE_TIME_MS="Avg Service Time (ms)";
     public static final String HD_DISKS_PER_CPU_TIME="% CPU Time";
     public static final String HD_DISKS_SPACE_AVAILABLE="Space Available";
     public static final String HD_DISKS_AVG_QUEUE_TIME_MS="Avg Queue Time (ms)";
