@@ -90,7 +90,7 @@ public class s {
     */
     
     public static final String AGENT="|Agent|";
-    public static final String AGENT_APP="APP|";
+    public static final String AGENT_APP="App|";
     public static final String AGENT_MACHINE="Machine|";
     public static final String AVAILABILITY="Availability";
     public static final String AGENT_TOP_SUMMARY_UPLOAD="TopSummaryStats Upload|";

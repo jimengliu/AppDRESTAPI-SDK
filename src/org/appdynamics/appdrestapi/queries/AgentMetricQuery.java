@@ -784,7 +784,7 @@ public class AgentMetricQuery{
      * @return String 
      * 
      */
-    public String queryNodeAgentMetricUploadRequestsTimeSkewErrors(String baseURL, String application,String tier, String node ,
+    public static String queryNodeAgentMetricUploadRequestsTimeSkewErrors(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
         
         
@@ -832,7 +832,7 @@ public class AgentMetricQuery{
      * @return String 
      * 
      */
-    public String queryNodeAgentMetricUploadMetricsUpload(String baseURL, String application,String tier, String node ,
+    public static String queryNodeAgentMetricUploadMetricsUpload(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
         
         
@@ -880,7 +880,7 @@ public class AgentMetricQuery{
      * @return String 
      * 
      */
-    public String queryNodeAgentMetricUploadRequestsExceedingLimit(String baseURL, String application,String tier, String node ,
+    public static String queryNodeAgentMetricUploadRequestsExceedingLimit(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
         
         
@@ -928,7 +928,7 @@ public class AgentMetricQuery{
      * @return String 
      * 
      */
-    public String queryNodeAgentEventUploadEventsUploaded(String baseURL, String application,String tier, String node ,
+    public static String queryNodeAgentEventUploadEventsUploaded(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
         
         
@@ -977,7 +977,7 @@ public class AgentMetricQuery{
      * @return String 
      * 
      */
-    public String queryNodeAgentEventUploadEventsExceedingLimit(String baseURL, String application,String tier, String node ,
+    public static String queryNodeAgentEventUploadEventsExceedingLimit(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
         
         
@@ -1026,7 +1026,7 @@ public class AgentMetricQuery{
      * @return String 
      * 
      */
-    public String queryNodeAgentEventUploadTimeSkewsErrors(String baseURL, String application,String tier, String node ,
+    public static String queryNodeAgentEventUploadTimeSkewsErrors(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
         
         
@@ -1075,7 +1075,7 @@ public class AgentMetricQuery{
      * @return String 
      * 
      */
-    public String queryNodeAgentBusinessTransactionsUnmonitoredCallsPerMinute(String baseURL, String application,String tier, String node ,
+    public static String queryNodeAgentBusinessTransactionsUnmonitoredCallsPerMinute(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
         
         
@@ -1124,7 +1124,7 @@ public class AgentMetricQuery{
      * @return String 
      * 
      */
-    public String queryNodeAgentBusinessTransactionsRegistrationFailed(String baseURL, String application,String tier, String node ,
+    public static String queryNodeAgentBusinessTransactionsRegistrationFailed(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
         
         
@@ -1173,7 +1173,7 @@ public class AgentMetricQuery{
      * @return String 
      * 
      */
-    public String queryNodeAgentBusinessTransactionsRegistrationSuccessful(String baseURL, String application,String tier, String node ,
+    public static String queryNodeAgentBusinessTransactionsRegistrationSuccessful(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
         
         

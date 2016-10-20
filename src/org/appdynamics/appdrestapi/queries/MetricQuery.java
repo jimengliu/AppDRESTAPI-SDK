@@ -35,75 +35,73 @@ public class MetricQuery {
         return AgentMetricQuery.queryAgentNodeMachineAgentAvailability( baseURL, application,tier, node,start, end, rollup);
     }
     
-    public String queryTierAgentTopSummaryStatsUploadTopSummaryStatsExceedingLimit(String baseURL, String application,String tier, 
+    public String queryTierAgentTopSummaryStatsUploadTopSummaryStatsExceedingLimit(String tier, 
              long start, long end, boolean rollup){
         return AgentMetricQuery.queryNodeAgentTopSummaryStatsUploadTopSummaryStatsExceedingLimit(baseURL, application, tier, null, start, end, rollup);
         
     }
     
-    public String queryNodeAgentTopSummaryStatsUploadTopSummaryStatsExceedingLimit(String baseURL, String application,String tier, 
+    public String queryNodeAgentTopSummaryStatsUploadTopSummaryStatsExceedingLimit(String tier, 
             String node, long start, long end, boolean rollup){
         return AgentMetricQuery.queryNodeAgentTopSummaryStatsUploadTopSummaryStatsExceedingLimit(baseURL, application, tier, node, start, end, rollup);
     }
     
-    public String queryTierAgentTopSummaryStatsUploadInvalidTopSummaryStats(String baseURL, String application,String tier ,
+    public String queryTierAgentTopSummaryStatsUploadInvalidTopSummaryStats(String tier ,
             long start, long end, boolean rollup){
         return AgentMetricQuery.queryNodeAgentTopSummaryStatsUploadInvalidTopSummaryStats(baseURL, application, tier, null, start, end, rollup);
     }
     
-    public String queryNodeAgentTopSummaryStatsUploadInvalidTopSummaryStats(String baseURL, String application,String tier, String node ,
+    public String queryNodeAgentTopSummaryStatsUploadInvalidTopSummaryStats(String tier, String node ,
             long start, long end, boolean rollup){
         return AgentMetricQuery.queryNodeAgentTopSummaryStatsUploadInvalidTopSummaryStats(baseURL, application, tier, node, start, end, rollup);
     }
     
-    public String queryTierAgentTopSummaryStatsUploadTomSummaryStatsUploadTopSummaryStatsUploaded(String baseURL, String application,String tier ,
+    public String queryTierAgentTopSummaryStatsUploadTomSummaryStatsUploadTopSummaryStatsUploaded(String tier ,
             long start, long end, boolean rollup){
         return AgentMetricQuery.queryNodeAgentTopSummaryStatsUploadTomSummaryStatsUploadTopSummaryStatsUploaded(baseURL, application, tier, null, start, end, rollup);
     }
     
-    public String queryNodeAgentTopSummaryStatsUploadTomSummaryStatsUploadTopSummaryStatsUploaded(String baseURL, String application,String tier, String node ,
+    public String queryNodeAgentTopSummaryStatsUploadTomSummaryStatsUploadTopSummaryStatsUploaded(String tier, String node ,
             long start, long end, boolean rollup){
         return AgentMetricQuery.queryNodeAgentTopSummaryStatsUploadTomSummaryStatsUploadTopSummaryStatsUploaded(baseURL, application, tier, node, start, end, rollup);
     }
     
-    public String queryTierAgentTopSummaryStatsUploadTopSummaryStatsTimeSkewErrors(String baseURL, String application,String tier,
-            long start, long end, boolean rollup){
-        return queryNodeAgentTopSummaryStatsUploadTopSummaryStatsTimeSkewErrors(baseURL, application, tier, null, start, end, rollup);
+    public String queryTierAgentTopSummaryStatsUploadTopSummaryStatsTimeSkewErrors(String tier, long start, long end, boolean rollup){
+        return AgentMetricQuery.queryNodeAgentTopSummaryStatsUploadTopSummaryStatsTimeSkewErrors(baseURL, application, tier, null, start, end, rollup);
     }
     
-    public String queryNodeAgentTopSummaryStatsUploadTopSummaryStatsTimeSkewErrors(String baseURL, String application,String tier, String node ,
-            long start, long end, boolean rollup){
-        return queryNodeAgentTopSummaryStatsUploadTopSummaryStatsTimeSkewErrors(baseURL, application, tier, node, start, end, rollup);
+    public String queryNodeAgentTopSummaryStatsUploadTopSummaryStatsTimeSkewErrors(String tier, String node , long start, long end, boolean rollup){
+        return AgentMetricQuery.queryNodeAgentTopSummaryStatsUploadTopSummaryStatsTimeSkewErrors(baseURL, application, tier, node, start, end, rollup);
     }
     
     public String queryTierAgentDiscoveredBackendsRegistrationSuccessful(String baseURL, String application,String tier, 
             long start, long end, boolean rollup){
-        return queryNodeAgentDiscoveredBackendsRegistrationSuccessful(baseURL, application, tier, null, start, end, rollup);
+        return AgentMetricQuery.queryNodeAgentDiscoveredBackendsRegistrationSuccessful(baseURL, application, tier, null, start, end, rollup);
     }
     
     public String queryNodeAgentDiscoveredBackendsRegistrationSuccessful(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
-        return queryNodeAgentDiscoveredBackendsRegistrationSuccessful(baseURL, application, tier, node, start, end, rollup);
+        return AgentMetricQuery.queryNodeAgentDiscoveredBackendsRegistrationSuccessful(baseURL, application, tier, node, start, end, rollup);
     }
     
     public String queryTierAgentDiscoveredBackendsRegistrationFailed(String baseURL, String application,String tier,
             long start, long end, boolean rollup){
-        return queryNodeAgentDiscoveredBackendsRegistrationFailed(baseURL, application, tier, null, start, end, rollup);
+        return AgentMetricQuery.queryNodeAgentDiscoveredBackendsRegistrationFailed(baseURL, application, tier, null, start, end, rollup);
     }
     
     public String queryNodeAgentDiscoveredBackendsRegistrationFailed(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
-        return queryNodeAgentDiscoveredBackendsRegistrationFailed(baseURL, application, tier, node, start, end, rollup);
+        return AgentMetricQuery.queryNodeAgentDiscoveredBackendsRegistrationFailed(baseURL, application, tier, node, start, end, rollup);
     }
     
     public String queryTierAgentDiscoveredBackendsUnmonitoredCallsPerMinute(String baseURL, String application,String tier,
             long start, long end, boolean rollup){
-        return queryNodeAgentDiscoveredBackendsUnmonitoredCallsPerMinute(baseURL, application, tier, null, start, end, rollup);
+        return AgentMetricQuery.queryNodeAgentDiscoveredBackendsUnmonitoredCallsPerMinute(baseURL, application, tier, null, start, end, rollup);
     }
     
     public String queryNodeAgentDiscoveredBackendsUnmonitoredCallsPerMinute(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
-        return queryNodeAgentDiscoveredBackendsUnmonitoredCallsPerMinute(baseURL, application, tier, node, start, end, rollup);
+        return AgentMetricQuery.queryNodeAgentDiscoveredBackendsUnmonitoredCallsPerMinute(baseURL, application, tier, node, start, end, rollup);
     }
     
     public String queryTierAgentConfigChannelNumberOfApplicationInfrastructureChangeSet(String baseURL, String application,String tier,
@@ -113,158 +111,158 @@ public class MetricQuery {
     
     public String queryNodeAgentConfigChannelNumberOfApplicationInfrastructureChangeSet(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
-        return queryNodeAgentConfigChannelNumberOfApplicationInfrastructureChangeSet(baseURL, application, tier, node, start, end, rollup);
+        return AgentMetricQuery.queryNodeAgentConfigChannelNumberOfApplicationInfrastructureChangeSet(baseURL, application, tier, node, start, end, rollup);
     }
     
     public String queryTierAgentSnapshotUploadSnapshotsUploaded(String baseURL, String application,String tier, 
             long start, long end, boolean rollup){
-        return queryNodeAgentSnapshotUploadSnapshotsUploaded(baseURL, application, tier, null, start, end, rollup);
+        return AgentMetricQuery.queryNodeAgentSnapshotUploadSnapshotsUploaded(baseURL, application, tier, null, start, end, rollup);
     }
     
     public String queryNodeAgentSnapshotUploadSnapshotsUploaded(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
-        return queryNodeAgentSnapshotUploadSnapshotsUploaded(baseURL, application, tier, node, start, end, rollup);
+        return AgentMetricQuery.queryNodeAgentSnapshotUploadSnapshotsUploaded(baseURL, application, tier, node, start, end, rollup);
     }
     
    public String queryTierAgentSnapshotUploadInvalidSnapshots(String baseURL, String application,String tier, 
             long start, long end, boolean rollup){
-       return queryNodeAgentSnapshotUploadInvalidSnapshots(baseURL, application, tier, null, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentSnapshotUploadInvalidSnapshots(baseURL, application, tier, null, start, end, rollup);
    }
     
    public String queryNodeAgentSnapshotUploadInvalidSnapshots(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
-       return queryNodeAgentSnapshotUploadInvalidSnapshots(baseURL, application, tier, node, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentSnapshotUploadInvalidSnapshots(baseURL, application, tier, node, start, end, rollup);
    }
     
    public String queryTierAgentSnapshotUploadTimeSkewErrors(String baseURL, String application,String tier, 
             long start, long end, boolean rollup){
-       return queryNodeAgentSnapshotUploadTimeSkewErrors(baseURL, application, tier, null, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentSnapshotUploadTimeSkewErrors(baseURL, application, tier, null, start, end, rollup);
    }
    
    public String queryNodeAgentSnapshotUploadTimeSkewErrors(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
-       return queryNodeAgentSnapshotUploadTimeSkewErrors(baseURL, application, tier, node, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentSnapshotUploadTimeSkewErrors(baseURL, application, tier, node, start, end, rollup);
    }
    
    public String queryTierAgentSnapshotUploadSnapshotsExceedingLimit(String baseURL, String application,String tier, 
             long start, long end, boolean rollup){
-       return queryNodeAgentSnapshotUploadSnapshotsExceedingLimit(baseURL, application, tier, null, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentSnapshotUploadSnapshotsExceedingLimit(baseURL, application, tier, null, start, end, rollup);
    }
    
    public String queryNodeAgentSnapshotUploadSnapshotsExceedingLimit(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
-       return queryNodeAgentSnapshotUploadSnapshotsExceedingLimit(baseURL, application, tier, node, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentSnapshotUploadSnapshotsExceedingLimit(baseURL, application, tier, node, start, end, rollup);
    }
    
    public String queryTierAgentMetricUploadRequestsLicenseErrors(String baseURL, String application,String tier, 
             long start, long end, boolean rollup){
-       return queryNodeAgentMetricUploadRequestsLicenseErrors(baseURL, application, tier, null, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentMetricUploadRequestsLicenseErrors(baseURL, application, tier, null, start, end, rollup);
    }
    
    public String queryNodeAgentMetricUploadRequestsLicenseErrors(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
-       return queryNodeAgentMetricUploadRequestsLicenseErrors(baseURL, application, tier, node, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentMetricUploadRequestsLicenseErrors(baseURL, application, tier, node, start, end, rollup);
    }
    
    public String queryTierAgentMetricUploadInvalidMetrics(String baseURL, String application,String tier, 
             long start, long end, boolean rollup){
-       return queryNodeAgentMetricUploadInvalidMetrics(baseURL, application, tier, null, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentMetricUploadInvalidMetrics(baseURL, application, tier, null, start, end, rollup);
    }
    
    public String queryNodeAgentMetricUploadInvalidMetrics(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
-       return queryNodeAgentMetricUploadInvalidMetrics(baseURL, application, tier, node, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentMetricUploadInvalidMetrics(baseURL, application, tier, node, start, end, rollup);
    }
    
    public String queryTierAgentMetricUploadRequestsTimeSkewErrors(String baseURL, String application,String tier, 
             long start, long end, boolean rollup){
-       return queryNodeAgentMetricUploadRequestsTimeSkewErrors(baseURL, application, tier, null, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentMetricUploadRequestsTimeSkewErrors(baseURL, application, tier, null, start, end, rollup);
    }
    
    public String queryNodeAgentMetricUploadRequestsTimeSkewErrors(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
-       return queryNodeAgentMetricUploadRequestsTimeSkewErrors(baseURL, application, tier, node, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentMetricUploadRequestsTimeSkewErrors(baseURL, application, tier, node, start, end, rollup);
    }
    
    public String queryTierAgentMetricUploadMetricsUpload(String baseURL, String application,String tier, 
             long start, long end, boolean rollup){
-       return queryNodeAgentMetricUploadMetricsUpload(baseURL, application, tier, null, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentMetricUploadMetricsUpload(baseURL, application, tier, null, start, end, rollup);
    }
    
    public String queryNodeAgentMetricUploadMetricsUpload(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
-       return queryNodeAgentMetricUploadMetricsUpload(baseURL, application, tier, node, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentMetricUploadMetricsUpload(baseURL, application, tier, node, start, end, rollup);
    }
    
    
    public String queryTierAgentMetricUploadRequestsExceedingLimit(String baseURL, String application,String tier, 
             long start, long end, boolean rollup){
-       return queryNodeAgentMetricUploadRequestsExceedingLimit(baseURL, application, tier, null, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentMetricUploadRequestsExceedingLimit(baseURL, application, tier, null, start, end, rollup);
    }
    
    public String queryNodeAgentMetricUploadRequestsExceedingLimit(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
-       return queryNodeAgentMetricUploadRequestsExceedingLimit(baseURL, application, tier, node, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentMetricUploadRequestsExceedingLimit(baseURL, application, tier, node, start, end, rollup);
    }
    
    public String queryTierAgentEventUploadEventsUploaded(String baseURL, String application,String tier, 
             long start, long end, boolean rollup){
-       return queryNodeAgentEventUploadEventsUploaded(baseURL, application, tier, null, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentEventUploadEventsUploaded(baseURL, application, tier, null, start, end, rollup);
    }
    
    public String queryNodeAgentEventUploadEventsUploaded(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
-       return queryNodeAgentEventUploadEventsUploaded(baseURL, application, tier, node, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentEventUploadEventsUploaded(baseURL, application, tier, node, start, end, rollup);
    }
    
    public String queryTierAgentEventUploadEventsExceedingLimit(String baseURL, String application,String tier, 
             long start, long end, boolean rollup){
-       return queryNodeAgentEventUploadEventsExceedingLimit(baseURL, application, tier, null, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentEventUploadEventsExceedingLimit(baseURL, application, tier, null, start, end, rollup);
    }
    
    public String queryNodeAgentEventUploadEventsExceedingLimit(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
-       return queryNodeAgentEventUploadEventsExceedingLimit(baseURL, application, tier, node, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentEventUploadEventsExceedingLimit(baseURL, application, tier, node, start, end, rollup);
    }
    
    public String queryTierAgentEventUploadTimeSkewsErrors(String baseURL, String application,String tier, 
             long start, long end, boolean rollup){
-       return queryNodeAgentEventUploadTimeSkewsErrors(baseURL, application, tier, null, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentEventUploadTimeSkewsErrors(baseURL, application, tier, null, start, end, rollup);
    }
    
    public String queryNodeAgentEventUploadTimeSkewsErrors(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
-       return queryNodeAgentEventUploadTimeSkewsErrors(baseURL, application, tier, node, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentEventUploadTimeSkewsErrors(baseURL, application, tier, node, start, end, rollup);
    }
    
    public String queryTierAgentBusinessTransactionsUnmonitoredCallsPerMinute(String baseURL, String application,String tier,
             long start, long end, boolean rollup){
-       return queryNodeAgentBusinessTransactionsUnmonitoredCallsPerMinute(baseURL, application, tier, null, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentBusinessTransactionsUnmonitoredCallsPerMinute(baseURL, application, tier, null, start, end, rollup);
    }
    
    public String queryNodeAgentBusinessTransactionsUnmonitoredCallsPerMinute(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
-       return queryNodeAgentBusinessTransactionsUnmonitoredCallsPerMinute(baseURL, application, tier, node, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentBusinessTransactionsUnmonitoredCallsPerMinute(baseURL, application, tier, node, start, end, rollup);
    }
    
    public String queryTierAgentBusinessTransactionsRegistrationFailed(String baseURL, String application,String tier,
             long start, long end, boolean rollup){
-       return queryNodeAgentBusinessTransactionsRegistrationFailed(baseURL, application, tier, null, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentBusinessTransactionsRegistrationFailed(baseURL, application, tier, null, start, end, rollup);
    }
    
    public String queryNodeAgentBusinessTransactionsRegistrationFailed(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
-       return queryNodeAgentBusinessTransactionsRegistrationFailed(baseURL, application, tier, node, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentBusinessTransactionsRegistrationFailed(baseURL, application, tier, node, start, end, rollup);
    }
    
    public String queryTierAgentBusinessTransactionsRegistrationSuccessful(String baseURL, String application,String tier, 
             long start, long end, boolean rollup){
-       return queryNodeAgentBusinessTransactionsRegistrationSuccessful(baseURL, application, tier, null, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentBusinessTransactionsRegistrationSuccessful(baseURL, application, tier, null, start, end, rollup);
    }
    
    public String queryNodeAgentBusinessTransactionsRegistrationSuccessful(String baseURL, String application,String tier, String node ,
             long start, long end, boolean rollup){
-       return queryNodeAgentBusinessTransactionsRegistrationSuccessful(baseURL, application, tier, node, start, end, rollup);
+       return AgentMetricQuery.queryNodeAgentBusinessTransactionsRegistrationSuccessful(baseURL, application, tier, node, start, end, rollup);
    }
    
    
