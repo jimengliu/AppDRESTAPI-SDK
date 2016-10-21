@@ -34,8 +34,8 @@ public class MeticQueryStringTester {
         long end = cal1.getTimeInMillis();
         
         System.out.println("Hardware Cpu Queries ");
-        System.out.println(mq.queryTierAgentTopSummaryStatsUploadTopSummaryStatsExceedingLimit(tier, start, end, rollup));
-        System.out.println(mq.queryNodeAgentTopSummaryStatsUploadTopSummaryStatsExceedingLimit(tier, node, start, end, rollup));
+        System.out.println(mq.queryAgentTierTopSummaryStatsUploadTopSummaryStatsExceedingLimit(tier, start, end, rollup));
+        System.out.println(mq.queryAgentNodeTopSummaryStatsUploadTopSummaryStatsExceedingLimit(tier, node, start, end, rollup));
         
     }
     

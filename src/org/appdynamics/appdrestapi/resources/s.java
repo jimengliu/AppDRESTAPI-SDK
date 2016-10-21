@@ -299,16 +299,16 @@ Application Infrastructure Performance|AAC-App|JVM|Process CPU Usage %
 Application Infrastructure Performance|AAC-App|JVM|Process CPU Burnt (ms/min)
 
     */
-    public static final String JVM="|JVM|";
+    public static final String JVM="|JVM|"; // *
     public static final String JVM_PROCESS_CPU_BURNT_MS_PER_MIN="Process CPU Burnt (ms/min)";
     public static final String JVM_PROCESS_CPU_USAGE_PERC="Process CPU Usage %";
-    public static final String JVM_GARBAGE_COLLECTION="Garbage Collection|";
+    public static final String JVM_GARBAGE_COLLECTION="Garbage Collection|"; // *
     public static final String JVM_GARBAGE_COLLECTION_GC_TIME_SPENT_PER_MIN_MS="GC Time Spent Per Min (ms)";
     public static final String JVM_GARBAGE_COLLECTION_MAJOR_COLLECTION_TIME_SPENT_PER_MIN_MS="Major Collection Time Spent Per Min (ms)";
     public static final String JVM_GARBAGE_COLLECTION_MINOR_COLLECTION_TIME_SPENT_PER_MIN_MS="Minor Collection Time Spent Per Min (ms)";
     public static final String JVM_GARBAGE_COLLECTION_NUMBER_OF_MAJOR_COLLECTION_PER_MIN="Number of Major Collections Per Min";
     public static final String JVM_GARBAGE_COLLECTION_NUMBER_OF_MINOR_COLLECTIONS_PER_MIN="Number of Minor Collections Per Min"; // Memory Pools|
-    public static final String JVM_MEMORY_POOLS="Memory Pools|";
+    public static final String JVM_MEMORY_POOLS="Memory Pools|"; // *
     public static final String JVM_CODE_CACHE="Code Cache|";
     public static final String JVM_PS_EDEN_SPACE="Eden Space|";
     public static final String JVM_PS_OLD_GEN="Old Gen|";

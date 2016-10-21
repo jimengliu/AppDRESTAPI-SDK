@@ -154,43 +154,551 @@ public class RESTAccess extends BaseRESTAccess{
     
     /**
      * <p>Return the metric data for the metric path of Agent</p>
-     * @param queryIndex
-     * @param application
-     * @param tier
-     * @param start
-     * @param end
-     * @param rollup
-     * @return 
+     * 
+     * @param queryIndex Index of the type of query to run
+     * @param application Name of the application which holds the metric
+     * @param tier Name of the tier which holds the metrics
+     * @param node Name of the node which holds the metrics
+     * @param start Timestamp in milliseconds for the start time for the query
+     * @param end Timestamp in milliseconds for the end time for the query
+     * @param rollup Defines whether metrics should be rolled up
+     * @return {@link MetricDatas}
      */
-    public MetricDatas getAgentAppMetricQuery(int queryIndex, String application, String tier, long start, long end, boolean rollup){
+    public MetricDatas getAgentTierAppMetricQuery(int queryIndex, String application, String tier, long start, long end, boolean rollup){
+        String query=null;
+        if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).toString());}
+        MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
+        switch(queryIndex){
+            case 0:
+                query = mq.queryAgentTierAppAgentAvailability(tier,start,end,rollup);
+                break;
+            case 1:
+                query = mq.queryAgentTierMachineAgentAvailability(tier,start,end,rollup);
+                break;
+            case 2:
+                query = mq.queryAgentTierTopSummaryStatsUploadTopSummaryStatsExceedingLimit(tier,start,end,rollup);
+                break;
+            case 3:
+                query = mq.queryAgentTierTopSummaryStatsUploadInvalidTopSummaryStats(tier,start,end,rollup);
+                break;
+            case 4:
+                query = mq.queryAgentTierTopSummaryStatsUploadTomSummaryStatsUploadTopSummaryStatsUploaded(tier,start,end,rollup);
+                break;
+            case 5:
+                query = mq.queryAgentTierTopSummaryStatsUploadTopSummaryStatsTimeSkewErrors(tier,start,end,rollup);
+                break;
+            case 6:
+                query = mq.queryAgentTierDiscoveredBackendsRegistrationSuccessful(tier,start,end,rollup);
+                break;
+            case 7:
+                query = mq.queryAgentTierDiscoveredBackendsRegistrationFailed(tier,start,end,rollup);
+                break;
+            case 8:
+                query = mq.queryAgentTierDiscoveredBackendsUnmonitoredCallsPerMinute(tier,start,end,rollup);
+                break;
+            case 9:
+                query = mq.queryAgentTierConfigChannelNumberOfApplicationInfrastructureChangeSet(tier,start,end,rollup);
+                break;
+            case 10:
+                query = mq.queryAgentTierSnapshotUploadSnapshotsUploaded(tier,start,end,rollup);
+                break;
+            case 11:
+                query = mq.queryAgentTierSnapshotUploadInvalidSnapshots(tier,start,end,rollup);
+                break;
+            case 12:
+                query = mq.queryAgentTierSnapshotUploadTimeSkewErrors(tier,start,end,rollup);
+                break;
+            case 13:
+                query = mq.queryAgentTierSnapshotUploadSnapshotsExceedingLimit(tier,start,end,rollup);
+                break;
+            case 14:
+                query = mq.queryAgentTierMetricUploadRequestsLicenseErrors(tier,start,end,rollup);
+                break;
+            case 15:
+                query = mq.queryAgentTierMetricUploadInvalidMetrics(tier,start,end,rollup);
+                break;
+            case 16:
+                query = mq.queryAgentTierMetricUploadRequestsTimeSkewErrors(tier,start,end,rollup);
+                break;
+            case 17:
+                query = mq.queryAgentTierMetricUploadMetricsUpload(tier,start,end,rollup);
+                break;
+            case 19:
+                query = mq.queryAgentTierMetricUploadRequestsExceedingLimit(tier,start,end,rollup);
+                break;
+            case 20:
+                query = mq.queryAgentTierEventUploadEventsUploaded(tier,start,end,rollup);
+                break;
+            case 21:
+                query = mq.queryAgentTierEventUploadEventsExceedingLimit(tier,start,end,rollup);
+                break;
+            case 22:
+                query = mq.queryAgentTierEventUploadTimeSkewsErrors(tier,start,end,rollup);
+                break;
+            case 23:
+                query = mq.queryAgentTierBusinessTransactionsUnmonitoredCallsPerMinute(tier,start,end,rollup);
+                break;
+            case 24:
+                query = mq.queryAgentTierBusinessTransactionsRegistrationFailed(tier,start,end,rollup);
+                break;
+            case 25:
+                query = mq.queryAgentTierBusinessTransactionsRegistrationSuccessful(tier,start,end,rollup);
+                break;
+                
+            default:
+                query=null;
+                break;
+            
+        }
+        //This will be the final check, to insure that we don't send a bad query.
+        if(query==null){ 
+            logger.log(Level.WARNING,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).append(" and tier ").append(tier).toString());
+            return null;
+        }
         
+        try{
+            return R.executeMetricQuery(auth, query);
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+    
+    /**
+     * <p>Return the metric data for the metric path of Agent</p>
+     * 
+     * @param queryIndex Index of the type of query to run
+     * @param application Name of the application which holds the metric
+     * @param tier Name of the tier which holds the metrics
+     * @param node Name of the node which holds the metrics
+     * @param start Timestamp in milliseconds for the start time for the query
+     * @param end Timestamp in milliseconds for the end time for the query
+     * @param rollup Defines whether metrics should be rolled up
+     * @return {@link MetricDatas}
+     */
+    public MetricDatas getAgentNodeAppMetricQuery(int queryIndex, String application, String tier, String node, long start, long end, boolean rollup){
+        String query=null;
+        if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).toString());}
+        MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
+        switch(queryIndex){
+            case 0:
+                query = mq.queryAgentNodeAppAgentAvailability(tier, node, start, end, rollup);
+                break;
+            case 1:
+                query = mq.queryAgentNodeMachineAgentAvailability(tier,node,start,end,rollup);
+                break;
+            case 2:
+                query = mq.queryAgentNodeTopSummaryStatsUploadTopSummaryStatsExceedingLimit(tier,node,start,end,rollup);
+                break;
+            case 3:
+                query = mq.queryAgentNodeTopSummaryStatsUploadInvalidTopSummaryStats(tier,node,start,end,rollup);
+                break;
+            case 4:
+                query = mq.queryAgentNodeTopSummaryStatsUploadTomSummaryStatsUploadTopSummaryStatsUploaded(tier,node,start,end,rollup);
+                break;
+            case 5:
+                query = mq.queryAgentNodeTopSummaryStatsUploadTopSummaryStatsTimeSkewErrors(tier,node,start,end,rollup);
+                break;
+            case 6:
+                query = mq.queryAgentNodeDiscoveredBackendsRegistrationSuccessful(tier,node,start,end,rollup);
+                break;
+            case 7:
+                query = mq.queryAgentNodeDiscoveredBackendsRegistrationFailed(tier,node,start,end,rollup);
+                break;
+            case 8:
+                query = mq.queryAgentNodeDiscoveredBackendsUnmonitoredCallsPerMinute(tier,node,start,end,rollup);
+                break;
+            case 9:
+                query = mq.queryAgentNodeConfigChannelNumberOfApplicationInfrastructureChangeSet(tier,node,start,end,rollup);
+                break;
+            case 10:
+                query = mq.queryAgentNodeSnapshotUploadSnapshotsUploaded(tier,node,start,end,rollup);
+                break;
+            case 11:
+                query = mq.queryAgentNodeSnapshotUploadInvalidSnapshots(tier,node,start,end,rollup);
+                break;
+            case 12:
+                query = mq.queryAgentNodeSnapshotUploadTimeSkewErrors(tier,node,start,end,rollup);
+                break;
+            case 13:
+                query = mq.queryAgentNodeSnapshotUploadSnapshotsExceedingLimit(tier,node,start,end,rollup);
+                break;
+            case 14:
+                query = mq.queryAgentNodeMetricUploadRequestsLicenseErrors(tier,node,start,end,rollup);
+                break;
+            case 15:
+                query = mq.queryAgentNodeMetricUploadInvalidMetrics(tier,node,start,end,rollup);
+                break;
+            case 16:
+                query = mq.queryAgentNodeMetricUploadRequestsTimeSkewErrors(tier,node,start,end,rollup);
+                break;
+            case 17:
+                query = mq.queryAgentNodeMetricUploadMetricsUpload(tier,node,start,end,rollup);
+                break;
+            case 19:
+                query = mq.queryAgentNodeMetricUploadRequestsExceedingLimit(tier,node,start,end,rollup);
+                break;
+            case 20:
+                query = mq.queryAgentNodeEventUploadEventsUploaded(tier,node,start,end,rollup);
+                break;
+            case 21:
+                query = mq.queryAgentNodeEventUploadEventsExceedingLimit(tier,node,start,end,rollup);
+                break;
+            case 22:
+                query = mq.queryAgentNodeEventUploadTimeSkewsErrors(tier,node,start,end,rollup);
+                break;
+            case 23:
+                query = mq.queryAgentNodeBusinessTransactionsUnmonitoredCallsPerMinute(tier,node,start,end,rollup);
+                break;
+            case 24:
+                query = mq.queryAgentNodeBusinessTransactionsRegistrationFailed(tier,node,start,end,rollup);
+                break;
+            case 25:
+                query = mq.queryAgentNodeBusinessTransactionsRegistrationSuccessful(tier,node,start,end,rollup);
+                break;
+                
+            default:
+                query=null;
+                break;
+            
+        }
+        //This will be the final check, to insure that we don't send a bad query.
+        if(query==null){ 
+            logger.log(Level.WARNING,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).append(" and node").append(node).toString());
+            return null;
+        }
+        
+        try{
+            return R.executeMetricQuery(auth, query);
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+    
+    public MetricDatas getHWTierMetricQuery(int queryIndex, String application, String tier, String obj, long start, long end, boolean rollup){
+        String query=null;
+        if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application, ")
+                .append(application).append(" tier, ").append(tier).append(" and obj ").append(obj).toString());}
+        MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
+        
+        switch(queryIndex){
+            case 0:
+                query = mq.queryHWTierDisksAll(tier,obj,start,end,rollup);
+                break;
+            case 1:
+                query = mq.queryHWTierDisksKBReadPerSec(tier,obj,start,end,rollup);
+                break;
+            case 2:
+                query = mq.queryHWTierDisksKBWrittenPerSec(tier,obj,start,end,rollup);
+                break;
+            case 3:
+                query = mq.queryHWTierDisksReadPerSec(tier,obj,start,end,rollup);
+                break;
+            case 4:
+                query = mq.queryHWTierDisksWritesPerSec(tier,obj,start,end,rollup);
+                break;
+            case 5:
+                query = mq.queryHWTierDisksSpaceUsed(tier,obj,start,end,rollup);
+                break;
+            case 6:
+                query = mq.queryHWTierDisksAvgServiceTimeMS(tier,obj,start,end,rollup);
+                break;
+            case 7:
+                query = mq.queryHWTierDisksPerCPUTime(tier,obj,start,end,rollup);
+                break;
+            case 8:
+                query = mq.queryHWTierDisksSpaceAvailable(tier,obj,start,end,rollup);
+                break;
+            case 9:
+                query = mq.queryHWTierDisksAvgQueueTimeMS(tier,obj,start,end,rollup);
+                break;
+            case 10:
+                query = mq.queryHWTierVolumesAll(tier,obj,start,end,rollup);
+                break;
+            case 11:
+                query = mq.queryHWTierVolumesUsedMB(tier,obj,start,end,rollup);
+                break;
+            case 12:
+                query = mq.queryHWTierVolumesFreeMB(tier,obj,start,end,rollup);
+                break;
+            case 13:
+                query = mq.queryHWTierVolumesUsedPer(tier,obj,start,end,rollup);
+                break;
+            case 14:
+                query = mq.queryHWTierVolumesTotalMB(tier,obj,start,end,rollup);
+                break;
+            case 15:
+                query = mq.queryHWTierNetworkAll(tier,obj,start,end,rollup);
+                break;
+            case 16:
+                query = mq.queryHWTierNetworkIncomingKB(tier,obj,start,end,rollup);
+                break;
+            case 17:
+                query = mq.queryHWTierNetworkIncomingKBPerSec(tier,obj,start,end,rollup);
+                break;
+            case 18:
+                query = mq.queryHWTierNetworkIncomingPackets(tier,obj,start,end,rollup);
+                break;
+            case 19:
+                query = mq.queryHWTierNetworkIncomingPacketsPerSec(tier,obj,start,end,rollup);
+                break;
+            case 20:
+                query = mq.queryHWTierNetworkOutgoingKB(tier,obj,start,end,rollup);
+                break;
+            case 21:
+                query = mq.queryHWTierNetworkOutgoingKBPerSec(tier,obj,start,end,rollup);
+                break;
+            case 22:
+                query = mq.queryHWTierNetworkOutgoingPackets(tier,obj,start,end,rollup);
+                break;
+            case 23:
+                query = mq.queryHWTierNetworkOutgoingPacketsPerSec(tier,obj,start,end,rollup);
+                break;
+            case 24:
+                query = mq.queryHWTierCPUAll(tier,start,end,rollup);
+                break;
+            case 25:
+                query = mq.queryHWTierCPUBusy(tier,start,end,rollup);
+                break;
+            case 26:
+                query = mq.queryHWTierCPUIdle(tier,start,end,rollup);
+                break;
+            case 27:
+                query = mq.queryHWTierCPUStolen(tier,start,end,rollup);
+                break;
+            case 28:
+                query = mq.queryHWTierMemoryAll(tier,start,end,rollup);    
+                break;
+            case 29:           
+                query = mq.queryHWTierMemoryFreePerc(tier,start,end,rollup);
+                break;
+            case 30:
+                query = mq.queryHWTierMemoryFreeMB(tier,start,end,rollup);
+                break;
+            case 31:
+                query = mq.queryHWTierMemoryTotalMB(tier,start,end,rollup);
+                break;
+            case 32:
+                query = mq.queryHWTierMemoryUsedPerc(tier,start,end,rollup);
+                break;
+            case 33:
+                query = mq.queryHWTierMemoryUsedMB(tier,start,end,rollup);
+                break;
+            case 34:
+                query = mq.queryHWTierSystemAll(tier,start,end,rollup);
+                break;
+            case 35:
+                query = mq.queryHWTierSystemRQ(tier,start,end,rollup);  
+                break;
+            default:
+                break;
+        }
+        //This will be the final check, to insure that we don't send a bad query.
+        if(query==null){ 
+            logger.log(Level.WARNING,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).append(" and tier ").append(tier).toString());
+            return null;
+        }
+        
+        try{
+            return R.executeMetricQuery(auth, query);
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
         return null;
     }
     
     /**
      * <p>Returns the metric data for the metric path for hardware metrics</p>
      * 
-     * @param queryIndex
-     * @param application
-     * @param tier
-     * @param start
-     * @param end
-     * @param rollup
-     * @return 
+     * @param queryIndex Index of the type of query to run
+     * @param application Name of the application which holds the metric
+     * @param tier Name of the tier which holds the metric
+     * @param start Timestamp in milliseconds for the start time for the query
+     * @param end Timestamp in milliseconds for the end time for the query
+     * @param rollup Defines whether metrics should be rolled up
+     * @return {@link MetricDatas}
      */
-    public MetricDatas getHWMetricQuery(int queryIndex, String application, String tier, long start, long end, boolean rollup){
+    public MetricDatas getHWNodeMetricQuery(int queryIndex, String application, String tier, String node, String obj, long start, long end, boolean rollup){
+        String query=null;
+        if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application, ")
+                .append(application).append(" tier, ").append(tier).append(" and obj ").append(obj).toString());}
+        MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
+        switch(queryIndex){
+            case 0:
+                query = mq.queryHWNodeDisksAll(tier,node,obj,start,end,rollup);
+                break;
+            case 1:
+                query = mq.queryHWNodeDisksKBReadPerSec(tier,node,obj,start,end,rollup);
+                break;
+            case 2:
+                query = mq.queryHWNodeDisksKBWrittenPerSec(tier,node,obj,start,end,rollup);
+                break;
+            case 3:
+                query = mq.queryHWNodeDisksReadPerSec(tier,node,obj,start,end,rollup);
+                break;
+            case 4:
+                query = mq.queryHWNodeDisksWritesPerSec(tier,node,obj,start,end,rollup);
+                break;
+            case 5:
+                query = mq.queryHWNodeDisksSpaceUsed(tier,node,obj,start,end,rollup);
+                break;
+            case 6:
+                query = mq.queryHWNodeDisksAvgServiceTimeMS(tier,node,obj,start,end,rollup);
+                break;
+            case 7:
+                query = mq.queryHWNodeDisksPerCPUTime(tier,node,obj,start,end,rollup);
+                break;
+            case 8:
+                query = mq.queryHWNodeDisksSpaceAvailable(tier,node,obj,start,end,rollup);
+                break;
+            case 9:
+                query = mq.queryHWNodeDisksAvgQueueTimeMS(tier,node,obj,start,end,rollup);
+                break;
+            case 10:
+                query = mq.queryHWNodeVolumesAll(tier,node,obj,start,end,rollup);
+                break;
+            case 11:
+                query = mq.queryHWNodeVolumesUsedMB(tier,node,obj,start,end,rollup);
+                break;
+            case 12:
+                query = mq.queryHWNodeVolumesFreeMB(tier,node,obj,start,end,rollup);
+                break;
+            case 13:
+                query = mq.queryHWNodeVolumesUsedPer(tier,node,obj,start,end,rollup);
+                break;
+            case 14:
+                query = mq.queryHWNodeVolumesTotalMB(tier,node,obj,start,end,rollup);
+                break;
+            case 15:
+                query = mq.queryHWNodeNetworkAll(tier,node,obj,start,end,rollup);
+                break;
+            case 16:
+                query = mq.queryHWNodeNetworkIncomingKB(tier,node,obj,start,end,rollup);
+                break;
+            case 17:
+                query = mq.queryHWNodeNetworkIncomingKBPerSec(tier,node,obj,start,end,rollup);
+                break;
+            case 18:
+                query = mq.queryHWNodeNetworkIncomingPackets(tier,node,obj,start,end,rollup);
+                break;
+            case 19:
+                query = mq.queryHWNodeNetworkIncomingPacketsPerSec(tier,node,obj,start,end,rollup);
+                break;
+            case 20:
+                query = mq.queryHWNodeNetworkOutgoingKB(tier,node,obj,start,end,rollup);
+                break;
+            case 21:
+                query = mq.queryHWNodeNetworkOutgoingKBPerSec(tier,node,obj,start,end,rollup);
+                break;
+            case 22:
+                query = mq.queryHWNodeNetworkOutgoingPackets(tier,node,obj,start,end,rollup);
+                break;
+            case 23:
+                query = mq.queryHWNodeNetworkOutgoingPacketsPerSec(tier,node,obj,start,end,rollup);
+                break;
+            case 24:
+                query = mq.queryHWNodeMemoryAll(tier,node,start,end,rollup);
+                break;
+            case 25:
+                query = mq.queryHWNodeMemoryFreePerc(tier,node,start,end,rollup);
+                break;
+            case 26:
+                query = mq.queryHWNodeMemoryFreeMB(tier,node,start,end,rollup);
+                break;
+            case 27:
+                query = mq.queryHWNodeMemoryTotalMB(tier,node,start,end,rollup);
+                break;
+            case 28:
+                query = mq.queryHWNodeMemoryUsedPerc(tier,node,start,end,rollup);
+                break;
+            case 29:
+                query = mq.queryHWNodeMemoryUsedMB(tier,node,start,end,rollup);
+                break;
+            case 30:
+                query = mq.queryHWNodeCPUAll(tier,node,start,end,rollup);
+                break;
+            case 31:
+                query = mq.queryHWNodeCPUBusy(tier,node,start,end,rollup);
+                break;
+            case 32:
+                query = mq.queryHWNodeCPUIdle(tier,node,start,end,rollup);
+                break;
+            case 33:
+                query = mq.queryHWNodeCPUStolen(tier,node,start,end,rollup);                
+                break;
+            default:
+                break;
+
+                
+        }
+        //This will be the final check, to insure that we don't send a bad query.
+        if(query==null){ 
+            logger.log(Level.WARNING,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application, ")
+                    .append(application).append(" tier, ").append(tier).append(" node").append(node).append(" and obj").append(obj).toString());
+            return null;
+        }
         
-        
+        try{
+            return R.executeMetricQuery(auth, query);
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
         return null;
     }
     
-    
+    /**
+     * 
+     * @param queryIndex Index of the type of query to run
+     * @param application Name of the application which holds the metric
+     * @param tier Name of the tier which holds the metric
+     * @param start Timestamp in milliseconds for the start time for the query
+     * @param end Timestamp in milliseconds for the end time for the query
+     * @param rollup Defines whether metrics should be rolled up
+     * @return {@link MetricDatas}
+     */
     public MetricDatas getJVMMetricQuery(int queryIndex, String application, String tier, long start, long end, boolean rollup){
+        String query=null;
+        if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).toString());}
+        MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
+        switch(queryIndex){
+            
+        }
         
+        if(query==null){ 
+            logger.log(Level.WARNING,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).append(" and tier ").append(tier).toString());
+            return null;
+        }
+        
+        try{
+            return R.executeMetricQuery(auth, query);
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
         return null;
     }
     
     
+    public MetricDatas getJVMMetricQuery(int queryIndex, String application, String tier, String node, long start, long end, boolean rollup){
+        String query=null;
+        if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).toString());}
+        MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
+        switch(queryIndex){
+            
+        }
+        
+        if(query==null){ 
+            logger.log(Level.WARNING,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).append(" and node").append(node).toString());
+            return null;
+        }
+        
+        try{
+            return R.executeMetricQuery(auth, query);
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
     
         
      /**
@@ -473,67 +981,67 @@ public class RESTAccess extends BaseRESTAccess{
                 query=mq.queryAgentTierMachineAgentAvailability(tier, start, end, rollup);
                 break;
             case 2:
-                query=mq.queryHDTierCPUBusy(tier, start, end, rollup);
+                query=mq.queryHWTierCPUBusy(tier, start, end, rollup);
                 break;
             case 3:
-                query=mq.queryHDTierCPUIdle(tier, start, end, rollup);
+                query=mq.queryHWTierCPUIdle(tier, start, end, rollup);
                 break;
             case 4:
-                query=mq.queryHDTierCPUStolen(tier, start, end, rollup);
+                query=mq.queryHWTierCPUStolen(tier, start, end, rollup);
                 break;
             case 5:
-                query=mq.queryHDTierDisksKBReadPerSec(tier, null, start, end, rollup);
+                query=mq.queryHWTierDisksKBReadPerSec(tier, null, start, end, rollup);
                 break;
             case 6:
-                query=mq.queryHDTierDisksKBWrittenPerSec(tier, null, start, end, rollup);
+                query=mq.queryHWTierDisksKBWrittenPerSec(tier, null, start, end, rollup);
                 break;
             case 7:
-                query=mq.queryHDTierDisksReadPerSec(tier, null, start, end, rollup);
+                query=mq.queryHWTierDisksReadPerSec(tier, null, start, end, rollup);
                 break;
             case 8:
-                query=mq.queryHDTierDisksWritesPerSec(tier, null, start, end, rollup);
+                query=mq.queryHWTierDisksWritesPerSec(tier, null, start, end, rollup);
                 break;
             case 9:
-                query=mq.queryHDTierMemoryFreePerc(tier, start, end, rollup);
+                query=mq.queryHWTierMemoryFreePerc(tier, start, end, rollup);
                 break;
             case 10:
-                query=mq.queryHDTierMemoryFreeMB(tier, start, end, rollup);
+                query=mq.queryHWTierMemoryFreeMB(tier, start, end, rollup);
                 break;
             case 11:
-                query=mq.queryHDTierMemoryTotalMB(tier, start, end, rollup);
+                query=mq.queryHWTierMemoryTotalMB(tier, start, end, rollup);
                 break;
             case 12:
-                query=mq.queryHDTierMemoryUsedPerc(tier, start, end, rollup);
+                query=mq.queryHWTierMemoryUsedPerc(tier, start, end, rollup);
                 break;
             case 13:
-                query=mq.queryHDTierMemoryUsedMB(tier, start, end, rollup);
+                query=mq.queryHWTierMemoryUsedMB(tier, start, end, rollup);
                 break;
             case 14:
-                query=mq.queryHDTierNetworkIncomingKB(tier, start, end, rollup);
+                query=mq.queryHWTierNetworkIncomingKB(tier, null, start, end, rollup);
                 break;
             case 15:
-                query=mq.queryHDTierNetworkIncomingKBPerSec(tier, start, end, rollup);
+                query=mq.queryHWTierNetworkIncomingKBPerSec(tier, null, start, end, rollup);
                 break;
             case 16:
-                query=mq.queryHDTierNetworkIncomingPackets(tier, start, end, rollup);
+                query=mq.queryHWTierNetworkIncomingPackets(tier, null, start, end, rollup);
                 break;
             case 17:
-                query=mq.queryHDTierNetworkIncomingPacketsPerSec(tier, start, end, rollup);
+                query=mq.queryHWTierNetworkIncomingPacketsPerSec(tier, null, start, end, rollup);
                 break;
             case 18:
-                query=mq.queryHDTierNetworkOutgoingKB(tier, start, end, rollup);
+                query=mq.queryHWTierNetworkOutgoingKB(tier, null, start, end, rollup);
                 break;
             case 19:
-                query=mq.queryHDTierNetworkOutgoingKBPerSec(tier, start, end, rollup);
+                query=mq.queryHWTierNetworkOutgoingKBPerSec(tier, null, start, end, rollup);
                 break;
             case 20:
-                query=mq.queryHDTierNetworkOutgoingPackets(tier, start, end, rollup);
+                query=mq.queryHWTierNetworkOutgoingPackets(tier, null, start, end, rollup);
                 break;
             case 21:
-                query=mq.queryHDTierNetworkOutgoingPacketsPerSec(tier, start, end, rollup);
+                query=mq.queryHWTierNetworkOutgoingPacketsPerSec(tier, null, start, end, rollup);
                 break;
             case 22:
-                query=mq.queryHDTierSystemRQ(tier, start, end, rollup);
+                query=mq.queryHWTierSystemRQ(tier, start, end, rollup);
                 break;
             case 23:
                 query=mq.queryJVMTierProcessCPUBurntMSPerMin(tier, start, end, rollup);
@@ -660,19 +1168,19 @@ public class RESTAccess extends BaseRESTAccess{
                 break;
 
             case 100: // All
-                query=mq.queryHDTierCPUAll(tier, start, end, rollup);
+                query=mq.queryHWTierCPUAll(tier, start, end, rollup);
                 break;
             case 101:
-                query=mq.queryHDTierDisksAll(tier, null, start, end, rollup);
+                query=mq.queryHWTierDisksAll(tier, null, start, end, rollup);
                 break;
             case 102:
-                query=mq.queryHDTierMemoryAll(tier, start, end, rollup);
+                query=mq.queryHWTierMemoryAll(tier, start, end, rollup);
                 break;
             case 103:
-                query=mq.queryHDTierNetworkAll(tier, start, end, rollup);
+                query=mq.queryHWTierNetworkAll(tier, null, start, end, rollup);
                 break;
             case 104:
-                query=mq.queryHDTierSystemAll(tier, start, end, rollup);
+                query=mq.queryHWTierSystemAll(tier, start, end, rollup);
                 break;
             case 105:
                 query=mq.queryJVMTierProcessCPUAll(tier, start, end, rollup);
@@ -1005,67 +1513,67 @@ public class RESTAccess extends BaseRESTAccess{
                 query=mq.queryAgentNodeMachineAgentAvailability(tier, node, start, end, rollup);
                 break;
             case 2:
-                query=mq.queryHDNodeCPUBusy(tier, node, start, end, rollup);
+                query=mq.queryHWNodeCPUBusy(tier, node, start, end, rollup);
                 break;
             case 3:
-                query=mq.queryHDNodeCPUIdle(tier, node, start, end, rollup);
+                query=mq.queryHWNodeCPUIdle(tier, node, start, end, rollup);
                 break;
             case 4:
-                query=mq.queryHDNodeCPUStolen(tier, node, start, end, rollup);
+                query=mq.queryHWNodeCPUStolen(tier, node, start, end, rollup);
                 break;
             case 5:
-                query=mq.queryHDNodeDisksKBReadPerSec(tier, node, null, start, end, rollup);
+                query=mq.queryHWNodeDisksKBReadPerSec(tier, node, null, start, end, rollup);
                 break;
             case 6:
-                query=mq.queryHDNodeDisksKBWrittenPerSec(tier, node, null, start, end, rollup);
+                query=mq.queryHWNodeDisksKBWrittenPerSec(tier, node, null, start, end, rollup);
                 break;
             case 7:
-                query=mq.queryHDNodeDisksReadPerSec(tier, node, null, start, end, rollup);
+                query=mq.queryHWNodeDisksReadPerSec(tier, node, null, start, end, rollup);
                 break;
             case 8:
-                query=mq.queryHDNodeDisksWritesPerSec(tier, node, null, start, end, rollup);
+                query=mq.queryHWNodeDisksWritesPerSec(tier, node, null, start, end, rollup);
                 break;
             case 9:
-                query=mq.queryHDNodeMemoryFreePerc(tier, node, start, end, rollup);
+                query=mq.queryHWNodeMemoryFreePerc(tier, node, start, end, rollup);
                 break;
             case 10:
-                query=mq.queryHDNodeMemoryFreeMB(tier, node, start, end, rollup);
+                query=mq.queryHWNodeMemoryFreeMB(tier, node, start, end, rollup);
                 break;
             case 11:
-                query=mq.queryHDNodeMemoryTotalMB(tier, node, start, end, rollup);
+                query=mq.queryHWNodeMemoryTotalMB(tier, node, start, end, rollup);
                 break;
             case 12:
-                query=mq.queryHDNodeMemoryUsedPerc(tier, node, start, end, rollup);
+                query=mq.queryHWNodeMemoryUsedPerc(tier, node, start, end, rollup);
                 break;
             case 13:
-                query=mq.queryHDNodeMemoryUsedMB(tier, node, start, end, rollup);
+                query=mq.queryHWNodeMemoryUsedMB(tier, node, start, end, rollup);
                 break;
             case 14:
-                query=mq.queryHDNodeNetworkIncomingKB(tier, node, start, end, rollup);
+                query=mq.queryHWNodeNetworkIncomingKB(tier, node, null, start, end, rollup);
                 break;
             case 15:
-                query=mq.queryHDNodeNetworkIncomingKBPerSec(tier, node, start, end, rollup);
+                query=mq.queryHWNodeNetworkIncomingKBPerSec(tier, node, null, start, end, rollup);
                 break;
             case 16:
-                query=mq.queryHDNodeNetworkIncomingPackets(tier, node, start, end, rollup);
+                query=mq.queryHWNodeNetworkIncomingPackets(tier, node, null, start, end, rollup);
                 break;
             case 17:
-                query=mq.queryHDNodeNetworkIncomingPacketsPerSec(tier, node, start, end, rollup);
+                query=mq.queryHWNodeNetworkIncomingPacketsPerSec(tier, node, null, start, end, rollup);
                 break;
             case 18:
-                query=mq.queryHDNodeNetworkOutgoingKB(tier, node, start, end, rollup);
+                query=mq.queryHWNodeNetworkOutgoingKB(tier, node, null, start, end, rollup);
                 break;
             case 19:
-                query=mq.queryHDNodeNetworkOutgoingKBPerSec(tier, node, start, end, rollup);
+                query=mq.queryHWNodeNetworkOutgoingKBPerSec(tier, node, null, start, end, rollup);
                 break;
             case 20:
-                query=mq.queryHDNodeNetworkOutgoingPackets(tier, node, start, end, rollup);
+                query=mq.queryHWNodeNetworkOutgoingPackets(tier, node, null, start, end, rollup);
                 break;
             case 21:
-                query=mq.queryHDNodeNetworkOutgoingPacketsPerSec(tier, node, start, end, rollup);
+                query=mq.queryHWNodeNetworkOutgoingPacketsPerSec(tier, node, null, start, end, rollup);
                 break;
             case 22:
-                query=mq.queryHDNodeSystemRQ(tier, node, start, end, rollup);
+                query=mq.queryHWNodeSystemRQ(tier, node, start, end, rollup);
                 break;
             case 23:
                 query=mq.queryJVMNodeProcessCPUBurntMSPerMin(tier, node, start, end, rollup);
@@ -1192,19 +1700,19 @@ public class RESTAccess extends BaseRESTAccess{
                 break;
 
             case 100: // All
-                query=mq.queryHDNodeCPUAll(tier,node, start, end, rollup);
+                query=mq.queryHWNodeCPUAll(tier,node, start, end, rollup);
                 break;
             case 101:
-                query=mq.queryHDNodeDisksAll(tier,node, null, start, end, rollup);
+                query=mq.queryHWNodeDisksAll(tier,node, null, start, end, rollup);
                 break;
             case 102:
-                query=mq.queryHDNodeMemoryAll(tier,node, start, end, rollup);
+                query=mq.queryHWNodeMemoryAll(tier,node, start, end, rollup);
                 break;
             case 103:
-                query=mq.queryHDNodeNetworkAll(tier,node, start, end, rollup);
+                query=mq.queryHWNodeNetworkAll(tier,node, null, start, end, rollup);
                 break;
             case 104:
-                query=mq.queryHDNodeSystemAll(tier,node, start, end, rollup);
+                query=mq.queryHWNodeSystemAll(tier,node, start, end, rollup);
                 break;
             case 105:
                 query=mq.queryJVMNodeProcessCPUAll(tier,node, start, end, rollup);

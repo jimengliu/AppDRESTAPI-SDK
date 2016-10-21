@@ -39,7 +39,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeCPUAll(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryHWNodeCPUAll(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -83,7 +83,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeCPUBusy(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryHWNodeCPUBusy(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -129,7 +129,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeCPUIdle(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryHWNodeCPUIdle(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -173,7 +173,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeCPUStolen(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryHWNodeCPUStolen(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -221,7 +221,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeDisksAll(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
+    public static String queryHWNodeDisksAll(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -269,7 +269,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeDisksKBReadPerSec(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
+    public static String queryHWNodeDisksKBReadPerSec(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -316,7 +316,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeDisksKBWrittenPerSec(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
+    public static String queryHWNodeDisksKBWrittenPerSec(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -363,7 +363,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeDisksReadPerSec(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
+    public static String queryHWNodeDisksReadPerSec(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -410,7 +410,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeDisksWritesPerSec(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
+    public static String queryHWNodeDisksWritesPerSec(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -458,7 +458,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeDisksSpaceUsed(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
+    public static String queryHWNodeDisksSpaceUsed(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -507,7 +507,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeDisksAvgServiceTimeMS(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
+    public static String queryHWNodeDisksAvgServiceTimeMS(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -555,7 +555,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeDisksPerCPUTime(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
+    public static String queryHWNodeDisksPerCPUTime(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -604,7 +604,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeDisksSpaceAvailable(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
+    public static String queryHWNodeDisksSpaceAvailable(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -653,7 +653,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeDisksAvgQueueTimeMS(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
+    public static String queryHWNodeDisksAvgQueueTimeMS(String baseURL, String application,String tier, String node, String disk, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -704,7 +704,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeVolumesAll(String baseURL, String application,String tier, String node, String volume, long start, long end, boolean rollup){
+    public static String queryHWNodeVolumesAll(String baseURL, String application,String tier, String node, String volume, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -753,7 +753,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeVolumesUsedMB(String baseURL, String application,String tier, String node, String volume, long start, long end, boolean rollup){
+    public static String queryHWNodeVolumesUsedMB(String baseURL, String application,String tier, String node, String volume, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -802,7 +802,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeVolumesFreeMB(String baseURL, String application,String tier, String node, String volume, long start, long end, boolean rollup){
+    public static String queryHWNodeVolumesFreeMB(String baseURL, String application,String tier, String node, String volume, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -851,7 +851,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeVolumesUsedPer(String baseURL, String application,String tier, String node, String volume, long start, long end, boolean rollup){
+    public static String queryHWNodeVolumesUsedPer(String baseURL, String application,String tier, String node, String volume, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -900,7 +900,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeVolumesTotalMB(String baseURL, String application,String tier, String node, String volume, long start, long end, boolean rollup){
+    public static String queryHWNodeVolumesTotalMB(String baseURL, String application,String tier, String node, String volume, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -949,7 +949,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeMemoryAll(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryHWNodeMemoryAll(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -995,7 +995,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeMemoryFreePerc(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryHWNodeMemoryFreePerc(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1039,7 +1039,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeMemoryFreeMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryHWNodeMemoryFreeMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1083,7 +1083,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeMemoryTotalMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryHWNodeMemoryTotalMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1127,7 +1127,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeMemoryUsedPerc(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryHWNodeMemoryUsedPerc(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1171,7 +1171,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeMemoryUsedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryHWNodeMemoryUsedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1215,7 +1215,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeMemorySwapFreeMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryHWNodeMemorySwapFreeMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1260,7 +1260,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeMemorySwapTotalMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryHWNodeMemorySwapTotalMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1305,7 +1305,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeMemorySwapUsedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryHWNodeMemorySwapUsedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1356,7 +1356,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeNetworkAll(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
+    public static String queryHWNodeNetworkAll(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1404,7 +1404,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeNetworkIncomingKB(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
+    public static String queryHWNodeNetworkIncomingKB(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1454,7 +1454,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeNetworkIncomingKBPerSec(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
+    public static String queryHWNodeNetworkIncomingKBPerSec(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1504,7 +1504,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeNetworkIncomingPackets(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
+    public static String queryHWNodeNetworkIncomingPackets(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1555,7 +1555,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeNetworkIncomingPacketsPerSec(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
+    public static String queryHWNodeNetworkIncomingPacketsPerSec(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1606,7 +1606,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeNetworkOutgoingKB(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
+    public static String queryHWNodeNetworkOutgoingKB(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1656,7 +1656,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeNetworkOutgoingKBPerSec(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
+    public static String queryHWNodeNetworkOutgoingKBPerSec(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1706,7 +1706,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeNetworkOutgoingPackets(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
+    public static String queryHWNodeNetworkOutgoingPackets(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1756,7 +1756,7 @@ public class HardwareResourcesMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryHDNodeNetworkOutgoingPacketsPerSec(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
+    public static String queryHWNodeNetworkOutgoingPacketsPerSec(String baseURL, String application,String tier, String node, String card, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1786,7 +1786,7 @@ public class HardwareResourcesMetricQuery {
     
     /* ******************************** System *********************************** */
     //System All
-    public static String queryHDTierSystemAll(String baseURL, String application,String tier, long start, long end, boolean rollup){
+    public static String queryHWTierSystemAll(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1808,7 +1808,7 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    public static String queryHDNodeSystemAll(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryHWNodeSystemAll(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1831,7 +1831,7 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     //System
-    public static String queryHDTierSystemRQ(String baseURL, String application,String tier, long start, long end, boolean rollup){
+    public static String queryHWTierSystemRQ(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1853,7 +1853,7 @@ public class HardwareResourcesMetricQuery {
         return val.toString();
     }
     
-    public static String queryHDNodeSystemRQ(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryHWNodeSystemRQ(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
