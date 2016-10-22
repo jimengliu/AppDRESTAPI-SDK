@@ -310,9 +310,20 @@ Application Infrastructure Performance|AAC-App|JVM|Process CPU Burnt (ms/min)
     public static final String JVM_GARBAGE_COLLECTION_NUMBER_OF_MINOR_COLLECTIONS_PER_MIN="Number of Minor Collections Per Min"; // Memory Pools|
     public static final String JVM_MEMORY_POOLS="Memory Pools|"; // *
     public static final String JVM_CODE_CACHE="Code Cache|";
-    public static final String JVM_PS_EDEN_SPACE="Eden Space|";
+    public static final String JVM_PS_EDEN_SPACE="PS Eden Space|";
+    public static final String JVM_EDEN_SPACE="Eden Space|";
+    public static final String JVM_PAR_EDEN_SPACE="Par Eden Space|";
     public static final String JVM_PS_OLD_GEN="Old Gen|";
-    public static final String JVM_PS_PERM_GEN="Perm Gen|";
+    public static final String JVM_PERM_GEN="Perm Gen|";
+    public static final String JVM_PS_PERM_GEN="PS Perm Gen|";
+    public static final String JVM_G1_EDEN_SPACE="G1 Eden Space|";
+    public static final String JVM_G1_PERM_GEN="G1 Perm Gen|";
+    public static final String JVM_G1_SURVIVOR_SPACE="G1 Survivor Space|";
+    public static final String JVM_TENURED_GEN="Tenured Gen|";
+    public static final String JVM_NURSERY="Nursery|";
+    public static final String JVM_PAR_SURVIVOR_SPACE="Par Survivor Space";
+    public static final String JVM_COMPRESSED_CLASS_SPACE="Compressed Class Space|";
+    public static final String JVM_CMS_PERM_GEN="CMS Perm Gen|";
     public static final String JVM_PS_SURVIVOR_SPACE="Survivor Space|";
     public static final String JVM_MEMORY_HEAP="Heap|";
     public static final String JVM_MEMORY_NON_HEAP="Non-Heap|";
@@ -321,6 +332,9 @@ Application Infrastructure Performance|AAC-App|JVM|Process CPU Burnt (ms/min)
     public static final String JVM_MEMORY_HEAP_MAX_AVAILABLE_MB="Max Available (MB)";
     public static final String JVM_MEMORY_HEAP_USED_PERC="Used %";
     public static final String JVM_THREADS_CURRENT_NO_OF_THREADS="Threads|Current No. of Threads";
+    public static final String JVM_CLASSES="Classes|";
+    public static final String JVM_CLASSES_CURRENT_LOADED_CLASS_COUNT="Current Loaded Class Count";
+    public static final String JVM_CLASSES_TOTAL_CLASSES_LOADED="Total Classes Loaded";
     
     public static final String LAST_15_MINUTES="&time-range-type=BEFORE_NOW&duration-in-mins=15";
     public static final String TIME_BETWEEN="&time-range-type=BETWEEN_TIMES";

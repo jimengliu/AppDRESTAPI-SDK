@@ -235,7 +235,7 @@ public class HardwareResourcesMetricQuery {
         bud.append(s.HD_DISKS);
         if(disk != null){ bud.append(disk);}
         else{bud.append(s._ALL_);}
-        bud.append(s._ALL_);
+        bud.append(s.P).append(s._ALL_);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);

@@ -34,9 +34,15 @@ public class MeticQueryStringTester {
         long end = cal1.getTimeInMillis();
         
         System.out.println("Hardware Cpu Queries ");
-        System.out.println(mq.queryAgentTierTopSummaryStatsUploadTopSummaryStatsExceedingLimit(tier, start, end, rollup));
-        System.out.println(mq.queryAgentNodeTopSummaryStatsUploadTopSummaryStatsExceedingLimit(tier, node, start, end, rollup));
+        System.out.println("curl -k -u gilbert.solorzano@dtv \""+ mq.queryHWTierDisksAll(tier, null, start, end, rollup)+"\"");
+        System.out.println("curl -k -u gilbert.solorzano@dtv \""+ mq.queryHWNodeDisksAll(tier, node, null, start, end, rollup)+"\"");
         
+
+        /*
+        curl -k -u gilbert.solorzano@dtv "https://dtv.saas.appdynamics.com:443/controller/rest/applications/DTVUS-IT-Prod/metric-data?metric-path=Application%20Infrastructure%20Performance|DSM-ADM|Hardware%20Resources|Disks|*|*&time-range-type=BETWEEN_TIMES&start-time=1477064286281&end-time=1477064886272&rollup=false"
+curl -k -u gilbert.solorzano@dtv "https://dtv.saas.appdynamics.com:443/controller/rest/applications/DTVUS-IT-Prod/metric-data?metric-path=Application%20Infrastructure%20Performance|DSM-ADM|Individual%20Nodes|p0xvaepw0019_MS01|Hardware%20Resources|Disks|*|*&time-range-type=BETWEEN_TIMES&start-time=1477064286281&end-time=1477064886272&rollup=false"
+
+        */
     }
     
 }
