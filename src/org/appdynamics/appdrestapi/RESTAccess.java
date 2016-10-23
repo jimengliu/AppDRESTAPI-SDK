@@ -384,113 +384,116 @@ public class RESTAccess extends BaseRESTAccess{
         
         switch(queryIndex){
             case 0:
-                query = mq.queryHWTierDisksAll(tier,obj,start,end,rollup);
-                break;
-            case 1:
                 query = mq.queryHWTierDisksKBReadPerSec(tier,obj,start,end,rollup);
                 break;
-            case 2:
+            case 1:
                 query = mq.queryHWTierDisksKBWrittenPerSec(tier,obj,start,end,rollup);
                 break;
-            case 3:
+            case 2:
                 query = mq.queryHWTierDisksReadPerSec(tier,obj,start,end,rollup);
                 break;
-            case 4:
+            case 3:
                 query = mq.queryHWTierDisksWritesPerSec(tier,obj,start,end,rollup);
                 break;
-            case 5:
+            case 4:
                 query = mq.queryHWTierDisksSpaceUsed(tier,obj,start,end,rollup);
                 break;
-            case 6:
+            case 5:
                 query = mq.queryHWTierDisksAvgServiceTimeMS(tier,obj,start,end,rollup);
                 break;
-            case 7:
+            case 6:
                 query = mq.queryHWTierDisksPerCPUTime(tier,obj,start,end,rollup);
                 break;
-            case 8:
+            case 7:
                 query = mq.queryHWTierDisksSpaceAvailable(tier,obj,start,end,rollup);
                 break;
-            case 9:
+            case 8:
                 query = mq.queryHWTierDisksAvgQueueTimeMS(tier,obj,start,end,rollup);
                 break;
-            case 10:
-                query = mq.queryHWTierVolumesAll(tier,obj,start,end,rollup);
-                break;
-            case 11:
+            case 9:
                 query = mq.queryHWTierVolumesUsedMB(tier,obj,start,end,rollup);
                 break;
-            case 12:
+            case 10:
                 query = mq.queryHWTierVolumesFreeMB(tier,obj,start,end,rollup);
                 break;
-            case 13:
+            case 11:
                 query = mq.queryHWTierVolumesUsedPer(tier,obj,start,end,rollup);
                 break;
-            case 14:
+            case 12:
                 query = mq.queryHWTierVolumesTotalMB(tier,obj,start,end,rollup);
                 break;
-            case 15:
-                query = mq.queryHWTierNetworkAll(tier,obj,start,end,rollup);
-                break;
-            case 16:
+            case 13:
                 query = mq.queryHWTierNetworkIncomingKB(tier,obj,start,end,rollup);
                 break;
-            case 17:
+            case 14:
                 query = mq.queryHWTierNetworkIncomingKBPerSec(tier,obj,start,end,rollup);
                 break;
-            case 18:
+            case 15:
                 query = mq.queryHWTierNetworkIncomingPackets(tier,obj,start,end,rollup);
                 break;
-            case 19:
+            case 16:
                 query = mq.queryHWTierNetworkIncomingPacketsPerSec(tier,obj,start,end,rollup);
                 break;
-            case 20:
+            case 17:
                 query = mq.queryHWTierNetworkOutgoingKB(tier,obj,start,end,rollup);
                 break;
-            case 21:
+            case 18:
                 query = mq.queryHWTierNetworkOutgoingKBPerSec(tier,obj,start,end,rollup);
                 break;
-            case 22:
+            case 19:
                 query = mq.queryHWTierNetworkOutgoingPackets(tier,obj,start,end,rollup);
                 break;
-            case 23:
+            case 20:
                 query = mq.queryHWTierNetworkOutgoingPacketsPerSec(tier,obj,start,end,rollup);
                 break;
-            case 24:
-                query = mq.queryHWTierCPUAll(tier,start,end,rollup);
-                break;
-            case 25:
+            case 21:
                 query = mq.queryHWTierCPUBusy(tier,start,end,rollup);
                 break;
-            case 26:
+            case 22:
                 query = mq.queryHWTierCPUIdle(tier,start,end,rollup);
                 break;
-            case 27:
+            case 23:
                 query = mq.queryHWTierCPUStolen(tier,start,end,rollup);
                 break;
-            case 28:
-                query = mq.queryHWTierMemoryAll(tier,start,end,rollup);    
-                break;
-            case 29:           
+            case 24:           
                 query = mq.queryHWTierMemoryFreePerc(tier,start,end,rollup);
                 break;
-            case 30:
+            case 25:
                 query = mq.queryHWTierMemoryFreeMB(tier,start,end,rollup);
                 break;
-            case 31:
+            case 26:
                 query = mq.queryHWTierMemoryTotalMB(tier,start,end,rollup);
                 break;
-            case 32:
+            case 27:
                 query = mq.queryHWTierMemoryUsedPerc(tier,start,end,rollup);
                 break;
-            case 33:
+            case 28:
                 query = mq.queryHWTierMemoryUsedMB(tier,start,end,rollup);
                 break;
-            case 34:
-                query = mq.queryHWTierSystemAll(tier,start,end,rollup);
-                break;
-            case 35:
+            case 29:
                 query = mq.queryHWTierSystemRQ(tier,start,end,rollup);  
                 break;
+
+
+            case 100:
+                query = mq.queryHWTierDisksAll(tier,obj,start,end,rollup);
+                break;
+            case 101:
+                query = mq.queryHWTierVolumesAll(tier,obj,start,end,rollup);
+                break;
+            case 102:
+                query = mq.queryHWTierNetworkAll(tier,obj,start,end,rollup);
+                break;
+            case 103:
+                query = mq.queryHWTierCPUAll(tier,start,end,rollup);
+                break;
+            case 104:
+                query = mq.queryHWTierMemoryAll(tier,start,end,rollup);    
+                break;
+            case 105:
+                query = mq.queryHWTierSystemAll(tier,start,end,rollup);
+                break;
+
             default:
                 break;
         }
@@ -526,107 +529,117 @@ public class RESTAccess extends BaseRESTAccess{
         MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
         switch(queryIndex){
             case 0:
-                query = mq.queryHWNodeDisksAll(tier,node,obj,start,end,rollup);
-                break;
-            case 1:
                 query = mq.queryHWNodeDisksKBReadPerSec(tier,node,obj,start,end,rollup);
                 break;
-            case 2:
+            case 1:
                 query = mq.queryHWNodeDisksKBWrittenPerSec(tier,node,obj,start,end,rollup);
                 break;
-            case 3:
+            case 2:
                 query = mq.queryHWNodeDisksReadPerSec(tier,node,obj,start,end,rollup);
                 break;
-            case 4:
+            case 3:
                 query = mq.queryHWNodeDisksWritesPerSec(tier,node,obj,start,end,rollup);
                 break;
-            case 5:
+            case 4:
                 query = mq.queryHWNodeDisksSpaceUsed(tier,node,obj,start,end,rollup);
                 break;
-            case 6:
+            case 5:
                 query = mq.queryHWNodeDisksAvgServiceTimeMS(tier,node,obj,start,end,rollup);
                 break;
-            case 7:
+            case 6:
                 query = mq.queryHWNodeDisksPerCPUTime(tier,node,obj,start,end,rollup);
                 break;
-            case 8:
+            case 7:
                 query = mq.queryHWNodeDisksSpaceAvailable(tier,node,obj,start,end,rollup);
                 break;
-            case 9:
+            case 8:
                 query = mq.queryHWNodeDisksAvgQueueTimeMS(tier,node,obj,start,end,rollup);
                 break;
-            case 10:
-                query = mq.queryHWNodeVolumesAll(tier,node,obj,start,end,rollup);
-                break;
-            case 11:
+            case 9:
                 query = mq.queryHWNodeVolumesUsedMB(tier,node,obj,start,end,rollup);
                 break;
-            case 12:
+            case 10:
                 query = mq.queryHWNodeVolumesFreeMB(tier,node,obj,start,end,rollup);
                 break;
-            case 13:
+            case 11:
                 query = mq.queryHWNodeVolumesUsedPer(tier,node,obj,start,end,rollup);
                 break;
-            case 14:
+            case 12:
                 query = mq.queryHWNodeVolumesTotalMB(tier,node,obj,start,end,rollup);
                 break;
-            case 15:
-                query = mq.queryHWNodeNetworkAll(tier,node,obj,start,end,rollup);
-                break;
-            case 16:
+            case 13:
                 query = mq.queryHWNodeNetworkIncomingKB(tier,node,obj,start,end,rollup);
                 break;
-            case 17:
+            case 14:
                 query = mq.queryHWNodeNetworkIncomingKBPerSec(tier,node,obj,start,end,rollup);
                 break;
-            case 18:
+            case 15:
                 query = mq.queryHWNodeNetworkIncomingPackets(tier,node,obj,start,end,rollup);
                 break;
-            case 19:
+            case 16:
                 query = mq.queryHWNodeNetworkIncomingPacketsPerSec(tier,node,obj,start,end,rollup);
                 break;
-            case 20:
+            case 17:
                 query = mq.queryHWNodeNetworkOutgoingKB(tier,node,obj,start,end,rollup);
                 break;
-            case 21:
+            case 18:
                 query = mq.queryHWNodeNetworkOutgoingKBPerSec(tier,node,obj,start,end,rollup);
                 break;
-            case 22:
+            case 19:
                 query = mq.queryHWNodeNetworkOutgoingPackets(tier,node,obj,start,end,rollup);
                 break;
-            case 23:
+            case 20:
                 query = mq.queryHWNodeNetworkOutgoingPacketsPerSec(tier,node,obj,start,end,rollup);
                 break;
-            case 24:
-                query = mq.queryHWNodeMemoryAll(tier,node,start,end,rollup);
-                break;
-            case 25:
+            case 21:
                 query = mq.queryHWNodeMemoryFreePerc(tier,node,start,end,rollup);
                 break;
-            case 26:
+            case 22:
                 query = mq.queryHWNodeMemoryFreeMB(tier,node,start,end,rollup);
                 break;
-            case 27:
+            case 23:
                 query = mq.queryHWNodeMemoryTotalMB(tier,node,start,end,rollup);
                 break;
-            case 28:
+            case 24:
                 query = mq.queryHWNodeMemoryUsedPerc(tier,node,start,end,rollup);
                 break;
-            case 29:
+            case 25:
                 query = mq.queryHWNodeMemoryUsedMB(tier,node,start,end,rollup);
                 break;
-            case 30:
-                query = mq.queryHWNodeCPUAll(tier,node,start,end,rollup);
-                break;
-            case 31:
+            case 26:
                 query = mq.queryHWNodeCPUBusy(tier,node,start,end,rollup);
                 break;
-            case 32:
+            case 27:
                 query = mq.queryHWNodeCPUIdle(tier,node,start,end,rollup);
                 break;
-            case 33:
+            case 28:
                 query = mq.queryHWNodeCPUStolen(tier,node,start,end,rollup);                
                 break;
+            case 29:
+                query = mq.queryHWNodeSystemRQ(tier,node,start,end,rollup);  
+                break;
+
+
+            case 100:
+                query = mq.queryHWNodeDisksAll(tier,node,obj,start,end,rollup);
+                break;
+            case 101:
+                query = mq.queryHWNodeVolumesAll(tier,node,obj,start,end,rollup);
+                break;
+            case 102:
+                query = mq.queryHWNodeNetworkAll(tier,node,obj,start,end,rollup);
+                break;
+            case 103:
+                query = mq.queryHWNodeMemoryAll(tier,node,start,end,rollup);
+                break;
+            case 104:
+                query = mq.queryHWNodeCPUAll(tier,node,start,end,rollup);
+                break;
+            case 105:
+                query = mq.queryHWNodeSystemAll(tier,start,end,rollup);
+                break;
+
+
             default:
                 break;
 
@@ -662,7 +675,349 @@ public class RESTAccess extends BaseRESTAccess{
         if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).toString());}
         MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
         switch(queryIndex){
+            case 0:
+                query = mq.queryJVMTierClassesCurrentLoadedClassCount(tier,start,end,rollup);
+                break;
+            case 1:
+                query = mq.queryJVMTierClassesTotalClassesLoaded(tier,start,end,rollup);
+                break;
+            case 2:
+                query = mq.queryJVMTierProcessCPUBurntMSPerMin(tier,start,end,rollup);
+                break;
+            case 3:
+                query = mq.queryJVMTierProcessCPUUsagePerc(tier,start,end,rollup);
+                break;
+            case 4:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsCodeCacheCommittedMB(tier,start,end,rollup);
+                break;
+            case 5:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsCodeCacheCurrentUsage(tier,start,end,rollup);
+                break;
+            case 6:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsCodeCacheMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 7:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPsEdenSpaceCommittedMB(tier,start,end,rollup);
+                break;
+            case 8:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPsEdenSpaceCurrentUsage(tier,start,end,rollup);
+                break;
+            case 9:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPsEdenSpaceMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 10:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPsOldGenCommittedMB(tier,start,end,rollup);
+                break;
+            case 11:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPsOldGenCurrentUsage(tier,start,end,rollup);
+                break;
+            case 12:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPsOldGenMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 13:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPsPermGenCommittedMB(tier,start,end,rollup);
+                break;
+            case 14:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPsPermGenCurrentUsage(tier,start,end,rollup);
+                break;
+            case 15:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPsPermGenMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 16:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPsSurvivorSpaceCommittedMB(tier,start,end,rollup);
+                break;
+            case 17:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPsSurvivorSpaceCurrentUsage(tier,start,end,rollup);
+                break;
+            case 18:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPsSurvivorSpaceMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 19:
+                query = mq.queryJVMTierGarbageCollectionGCTimeSpentPerMin(tier,start,end,rollup);
+                break;
+            case 20:
+                query = mq.queryJVMTierGarbageCollectionMajorCollectionTimeSpentPerMin(tier,start,end,rollup);
+                break;
+            case 21:
+                query = mq.queryJVMTierGarbageCollectionMinorCollectionTimeSpentPerMin(tier,start,end,rollup);
+                break;
+            case 22:
+                query = mq.queryJVMTierGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin(tier,start,end,rollup);
+                break;
+            case 23:
+                query = mq.queryJVMTierGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin(tier,start,end,rollup);
+                break;
+            case 24:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsParEdenSpaceCommittedMB(tier,start,end,rollup);
+                break;
+            case 25:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsParEdenSpaceCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 26:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsParEdenSpaceMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 27:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsG1EdenSpaceCommittedMB(tier,start,end,rollup);
+                break;
+            case 28:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsG1EdenSpaceCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 29:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsG1EdenSpaceMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 30:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsTenuredGenCommittedMB(tier,start,end,rollup);
+                break;
+            case 31:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsTenuredGenCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 32:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsTenuredGenMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 33:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsCompressedClassSpaceCommittedMB(tier,start,end,rollup);
+                break;
+            case 34:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsCompressedClassSpaceCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 35:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsCompressedClassSpaceMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 36:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsNurseryCommittedMB(tier,start,end,rollup);
+                break;
+            case 37:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsNurseryCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 38:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsNurseryMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 39:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsEdenSpaceCommittedMB(tier,start,end,rollup);
+                break;
+            case 40:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsEdenSpaceCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 41:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsEdenSpaceMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 42:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsCMSPermGenCommittedMB(tier,start,end,rollup);
+                break;
+            case 43:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsCMSPermGenCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 44:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsCMSPermGenMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 45:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsG1PermGenCommittedMB(tier,start,end,rollup);
+                break;
+            case 46:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsG1PermGenCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 47:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsG1PermGenMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 48:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsParSurvivorSpaceCommittedMB(tier,start,end,rollup);
+                break;
+            case 49:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsParSurvivorSpaceCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 50:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsParSurvivorSpaceMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 51:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsG1SurvivorSpaceCommittedMB(tier,start,end,rollup);
+                break;
+            case 52:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsG1SurvivorSpaceCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 53:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsG1SurvivorSpaceMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 54:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPermGenCommittedMB(tier,start,end,rollup);
+                break;
+            case 55:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPermGenCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 56:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPermGenMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 57:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsSurvivorSpaceCommittedMB(tier,start,end,rollup);
+                break;
+            case 58:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsSurvivorSpaceCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 59:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsSurvivorSpaceMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 60:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsOldSpaceCommittedMB(tier,start,end,rollup);
+                break;
+            case 61:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsOldSpaceCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 62:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsOldSpaceMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 63:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsCMSOldGenCommittedMB(tier,start,end,rollup);
+                break;
+            case 64:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsCMSOldGenCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 65:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsCMSOldGenGenMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 66:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsMetaspaceCommittedMB(tier,start,end,rollup);
+                break;
+            case 67:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsMetaspaceCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 68:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsMetaspaceMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 69:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsG1OldGenCommittedMB(tier,start,end,rollup);
+                break;
+            case 70:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsG1OldGenCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 71:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsG1OldGenMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 72:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsClassBlockMemoryCommittedMB(tier,start,end,rollup);
+                break;
+            case 73:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsClassBlockMemoryCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 74:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsClassBlockMemoryMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 75:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsClassMemoryCommittedMB(tier,start,end,rollup);
+                break;
+            case 76:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsClassMemoryCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 77:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsClassMemoryMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 78:
+                query = mq.queryJVMTierMemoryHeapCommittedMB(tier,start,end,rollup);
+                break;
+            case 79:
+                query = mq.queryJVMTierMemoryHeapCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 80:
+                query = mq.queryJVMTierMemoryHeapMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 81:
+                query = mq.queryJVMTierMemoryHeapUsedPerc(tier,start,end,rollup);
+                break;
+            case 82:
+                query = mq.queryJVMTierMemoryNonHeapCommittedMB(tier,start,end,rollup);
+                break;
+            case 83:
+                query = mq.queryJVMTierMemoryNonHeapCurrentUsageMB(tier,start,end,rollup);
+                break;
+            case 84:
+                query = mq.queryJVMTierMemoryNonHeapMaxAvailableMB(tier,start,end,rollup);
+                break;
+            case 85:
+                query = mq.queryJVMTierMemoryNonHeapUsedPerc(tier,start,end,rollup);
+                break;
+            case 86:
+                query = mq.queryJVMTierThreadsCurrentNoOfThreads(tier,start,end,rollup);
+                break;
             
+            case 100:
+                query = mq.queryJVMTierProcessCPUALL(tier,start,end,rollup);
+                break;
+            case 101:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsCodeCacheALL(tier,start,end,rollup);
+                break;
+            case 102:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPsEdenSpaceALL(tier,start,end,rollup);
+                break;
+            case 103:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPsOldGenALL(tier,start,end,rollup);
+                break;
+            case 104:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPsPermGenALL(tier,start,end,rollup);
+                break;
+            case 105:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPsSurvivorSpaceALL(tier,start,end,rollup);
+                break;
+            case 106:
+                query = mq.queryJVMTierGarbageCollectionALL(tier,start,end,rollup);
+                break;
+            case 107:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsParEdenSpaceALL(tier,start,end,rollup);
+                break;
+            case 108:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsTenuredGenALL(tier,start,end,rollup);
+                break;
+            case 109:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsCompressedClassSpaceALL(tier,start,end,rollup);
+                break;
+            case 110:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsNurseryALL(tier,start,end,rollup);
+                break;
+            case 111:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsEdenSpaceALL(tier,start,end,rollup);
+                break;
+            case 112:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsCMSPermGenALL(tier,start,end,rollup);
+                break;
+            case 113:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsG1PermGenALL(tier,start,end,rollup);
+                break;
+            case 114:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsParSurvivorSpaceALL(tier,start,end,rollup);
+                break;
+            case 115:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsG1SurvivorSpaceALL(tier,start,end,rollup);
+                break;
+            case 116:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsPermGenALL(tier,start,end,rollup);
+                break;
+            case 117:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsSurvivorSpaceALL(tier,start,end,rollup);
+                break;
+            case 118:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsOldSpaceALL(tier,start,end,rollup);
+                break;
+            case 119:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsCMSOldGenALL(tier,start,end,rollup);
+                break;
+            case 120:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsMetaspaceALL(tier,start,end,rollup);
+                break;
+            case 121:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsG1OldGenALL(tier,start,end,rollup);
+                break;
+            case 122:
+                query = mq.queryJVMTierGarbageCollectionMemoryPoolsClassBlockMemoryALL(tier,start,end,rollup);
+                break;
+            case 123:
+                query = mq.queryJVMTierMemoryHeapALL(tier,start,end,rollup);
+                break;
+            case 124:
+                query = mq.queryJVMTierMemoryNonHeapALL(tier,start,end,rollup);
+
+
+            default:
+                query = null;
+
+
+
         }
         
         if(query==null){ 
@@ -684,7 +1039,360 @@ public class RESTAccess extends BaseRESTAccess{
         if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).toString());}
         MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
         switch(queryIndex){
+            case 0:
+                query = mq.queryJVMNodeClassesCurrentLoadedClassCount(tier,node,start,end,rollup);
+                break;
+            case 1:
+                query = mq.queryJVMNodeClassesTotalClassesLoaded(tier,node,start,end,rollup);
+                break;
+            case 2:
+                query = mq.queryJVMNodeProcessCPUBurntMSPerMin(tier,node,start,end,rollup);
+                break;
+            case 3:
+                query = mq.queryJVMNodeProcessCPUUsagePerc(tier,node,start,end,rollup);
+                break;
+            case 4:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 5:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCurrentUsage(tier,node,start,end,rollup);
+                break;
+            case 6:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 7:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 8:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCurrentUsage(tier,node,start,end,rollup);
+                break;
+            case 9:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 10:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 11:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCurrentUsage(tier,node,start,end,rollup);
+                break;
+            case 12:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 13:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 14:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCurrentUsage(tier,node,start,end,rollup);
+                break;
+            case 15:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 16:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 17:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCurrentUsage(tier,node,start,end,rollup);
+                break;
+            case 18:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 19:
+                query = mq.queryJVMNodeGarbageCollectionGCTimeSpentPerMin(tier,node,start,end,rollup);
+                break;
+            case 20:
+                query = mq.queryJVMNodeGarbageCollectionMajorCollectionTimeSpentPerMin(tier,node,start,end,rollup);
+                break;
+            case 21:
+                query = mq.queryJVMNodeGarbageCollectionMinorCollectionTimeSpentPerMin(tier,node,start,end,rollup);
+                break;
+            case 22:
+                query = mq.queryJVMNodeGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin(tier,node,start,end,rollup);
+                break;
+            case 23:
+                query = mq.queryJVMNodeGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin(tier,node,start,end,rollup);
+                break;
+            case 24:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 25:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 26:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 27:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 28:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 29:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 30:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 31:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 32:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 33:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 34:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 35:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 36:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsNurseryCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 37:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsNurseryCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 38:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsNurseryMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 39:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 40:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 41:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 42:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 43:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 44:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 45:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 46:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 47:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 48:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 51:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 52:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 53:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 54:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 55:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 56:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPermGenCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 57:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPermGenCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 58:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPermGenMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 59:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 60:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 61:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 62:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 63:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 64:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 65:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 66:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 67:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenGenMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 68:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 69:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 70:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 71:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 72:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 73:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 74:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 75:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 76:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 77:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 78:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 79:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 80:
+                query = mq.queryJVMNodeMemoryHeapCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 81:
+                query = mq.queryJVMNodeMemoryHeapCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 82:
+                query = mq.queryJVMNodeMemoryHeapMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 83:
+                query = mq.queryJVMNodeMemoryHeapUsedPerc(tier,node,start,end,rollup);
+                break;
+            case 84:
+                query = mq.queryJVMNodeMemoryNonHeapCommittedMB(tier,node,start,end,rollup);
+                break;
+            case 85:
+                query = mq.queryJVMNodeMemoryNonHeapCurrentUsageMB(tier,node,start,end,rollup);
+                break;
+            case 86:
+                query = mq.queryJVMNodeMemoryNonHeapMaxAvailableMB(tier,node,start,end,rollup);
+                break;
+            case 87:
+                query = mq.queryJVMNodeMemoryNonHeapUsedPerc(tier,node,start,end,rollup);
+                break;
+            case 88:
+                query = mq.queryJVMNodeThreadsCurrentNoOfThreads(tier,node,start,end,rollup);
+                break;
             
+
+
+            case 100:
+                query = mq.queryJVMNodeProcessCPUALL(tier,node,start,end,rollup);
+                break;
+            case 101:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheALL(tier,node,start,end,rollup);
+                break;
+            case 102:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceALL(tier,node,start,end,rollup);
+                break;
+            case 103:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenALL(tier,node,start,end,rollup);
+                break;
+            case 104:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenALL(tier,node,start,end,rollup);
+                break;
+            case 105:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceALL(tier,node,start,end,rollup);
+                break;
+            case 106:
+                query = mq.queryJVMNodeGarbageCollectionALL(tier,node,start,end,rollup);
+                break;
+            case 107:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceALL(tier,node,start,end,rollup);
+                break;
+            case 108:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceALL(tier,node,start,end,rollup);
+                break;
+            case 109:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenALL(tier,node,start,end,rollup);
+                break;
+            case 110:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceALL(tier,node,start,end,rollup);
+                break;
+            case 111:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsNurseryALL(tier,node,start,end,rollup);
+                break;
+            case 112:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceALL(tier,node,start,end,rollup);
+                break;
+            case 113:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenALL(tier,node,start,end,rollup);
+                break;
+            case 114:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenALL(tier,node,start,end,rollup);
+                break;
+            case 115:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceALL(tier,node,start,end,rollup);
+                break;
+            case 116:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceALL(tier,node,start,end,rollup);
+                break;
+            case 117:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPermGenALL(tier,node,start,end,rollup);
+                break;
+            case 118:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceALL(tier,node,start,end,rollup);
+                break;
+            case 119:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceALL(tier,node,start,end,rollup);
+                break;
+            case 120:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenALL(tier,node,start,end,rollup);
+                break;
+            case 121:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceALL(tier,node,start,end,rollup);
+                break;
+            case 122:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenALL(tier,node,start,end,rollup);
+                break;
+            case 123:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryALL(tier,node,start,end,rollup);
+                break;
+            case 124:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryALL(tier,node,start,end,rollup);
+                break;
+            case 125:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryALL(tier,node,start,end,rollup);
+                break;
+            case 126:
+                query = mq.queryJVMNodeMemoryHeapALL(tier,node,start,end,rollup);
+                break;
+            case 127:
+                query = mq.queryJVMNodeMemoryNonHeapALL(tier,node,start,end,rollup);
+                break;
+            
+
+            default:
+                query=null;
+
+
         }
         
         if(query==null){ 

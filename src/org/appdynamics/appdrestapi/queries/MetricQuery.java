@@ -547,13 +547,32 @@ public class MetricQuery {
         return HardwareResourcesMetricQuery.queryHWNodeSystemRQ(baseURL, application, tier, node,start, end, rollup);
     }
     
-    /*  JVM metrics */
+    /* ******************************  JVM metrics *************************************************************** */
+
+      /* ************************************* Classes|CurrentLoaded ********************************************* */
+
+    public String queryJVMTierClassesCurrentLoadedClassCount(String tier, long start, long end, boolean rollup){
+        return queryJVMNodeClassesTotalClassesLoaded( baseURL, application, tier, null, start, end, rollup);
+    }
+
+    public String queryJVMNodeClassesCurrentLoadedClassCount(String tier, String node, long start, long end, boolean rollup){
+        return queryJVMNodeClassesTotalClassesLoaded( baseURL, application, tier, node, start, end, rollup);
+    }
+
+    public String queryJVMTierClassesTotalClassesLoaded(String tier, long start, long end, boolean rollup){
+        return queryJVMNodeClassesTotalClassesLoaded( baseURL, application, tier, null, start, end, rollup);
+    }
+
+    public String queryJVMNodeClassesTotalClassesLoaded(String tier, String node, long start, long end, boolean rollup){
+        queryJVMNodeClassesTotalClassesLoaded( baseURL, application, tier, node, start, end, rollup);
+    }
     
-    public String queryJVMTierProcessCPUAll(String tier, long start, long end, boolean rollup){
+      /* ********************************* CPU ***************************************************************** */
+    public String queryJVMTierProcessCPUALL(String tier, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeProcessCPUAll(baseURL, application, tier, null, start, end, rollup);
     }
     
-    public String queryJVMNodeProcessCPUAll(String tier, String node, long start, long end, boolean rollup){
+    public String queryJVMNodeProcessCPUALL(String tier, String node, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeProcessCPUAll(baseURL, application, tier, node,start, end, rollup);
     }
     
@@ -572,12 +591,13 @@ public class MetricQuery {
     public String queryJVMNodeProcessCPUUsagePerc(String tier, String node, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeProcessCPUUsagePerc(baseURL, application, tier, node,start, end, rollup);
     }
+
     /* JVM Garbage Collections Memory Pools Code Cache*/
-    public String queryJVMTierGarbageCollectionMemoryPoolsCodeCacheAll(String tier, long start, long end, boolean rollup){
+    public String queryJVMTierGarbageCollectionMemoryPoolsCodeCacheALL(String tier, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheAll(baseURL, application, tier, null, start, end, rollup);
     }
     
-    public String queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheAll(String tier, String node, long start, long end, boolean rollup){
+    public String queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheALL(String tier, String node, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheAll(baseURL, application, tier, node,start, end, rollup);
     }
     
@@ -605,11 +625,11 @@ public class MetricQuery {
         return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
     }
     /* JVM Garbage Collections Memory Pools PS Eden Space */
-    public String queryJVMTierGarbageCollectionMemoryPoolsPsEdenSpaceAll(String tier, long start, long end, boolean rollup){
+    public String queryJVMTierGarbageCollectionMemoryPoolsPsEdenSpaceALL(String tier, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceAll(baseURL, application, tier, null, start, end, rollup);
     }
     
-    public String queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceAll(String tier, String node, long start, long end, boolean rollup){
+    public String queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceALL(String tier, String node, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceAll(baseURL, application, tier, node,start, end, rollup);
     }
     
@@ -638,11 +658,11 @@ public class MetricQuery {
     }
     
     /* JVM Garbage Collections Memory Pools PS Old Gen */
-    public String queryJVMTierGarbageCollectionMemoryPoolsPsOldGenAll(String tier, long start, long end, boolean rollup){
+    public String queryJVMTierGarbageCollectionMemoryPoolsPsOldGenALL(String tier, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenAll(baseURL, application, tier, null, start, end, rollup);
     }
     
-    public String queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenAll(String tier, String node, long start, long end, boolean rollup){
+    public String queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenALL(String tier, String node, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenAll(baseURL, application, tier, node,start, end, rollup);
     }
     
@@ -670,11 +690,11 @@ public class MetricQuery {
         return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
     }
     /* JVM Garbage Collection Memory Pools PS Perm Gen */
-    public String queryJVMTierGarbageCollectionMemoryPoolsPsPermGenAll(String tier, long start, long end, boolean rollup){
+    public String queryJVMTierGarbageCollectionMemoryPoolsPsPermGenALL(String tier, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenAll(baseURL, application, tier, null, start, end, rollup);
     }
     
-    public String queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenAll(String tier, String node, long start, long end, boolean rollup){
+    public String queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenALL(String tier, String node, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenAll(baseURL, application, tier, node,start, end, rollup);
     }
     
@@ -701,12 +721,12 @@ public class MetricQuery {
     public String queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenMaxAvailableMB(String tier, String node, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
     }
-    /* JVM Garbage Collections Memory Pools PS Survivor Space */
-    public String queryJVMTierGarbageCollectionMemoryPoolsPsSurvivorSpaceAll(String tier, long start, long end, boolean rollup){
+          /* JVM Garbage Collections Memory Pools PS Survivor Space */
+    public String queryJVMTierGarbageCollectionMemoryPoolsPsSurvivorSpaceALL(String tier, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceAll(baseURL, application, tier, null, start, end, rollup);
     }
     
-    public String queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceAll(String tier, String node, long start, long end, boolean rollup){
+    public String queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceALL(String tier, String node, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceAll(baseURL, application, tier, node,start, end, rollup);
     }
     
@@ -734,11 +754,11 @@ public class MetricQuery {
         return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
     }
     /* JVM Garbage Collections */
-    public String queryJVMTierGarbageCollectionAll(String tier, long start, long end, boolean rollup){
+    public String queryJVMTierGarbageCollectionALL(String tier, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeGarbageCollectionAll(baseURL, application, tier, null, start, end, rollup);
     }
     
-    public String queryJVMNodeGarbageCollectionAll(String tier, String node, long start, long end, boolean rollup){
+    public String queryJVMNodeGarbageCollectionALL(String tier, String node, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeGarbageCollectionAll(baseURL, application, tier, node,start, end, rollup);
     }
     
@@ -781,13 +801,732 @@ public class MetricQuery {
     public String queryJVMNodeGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin(String tier, String node, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin(baseURL, application, tier, node,start, end, rollup);
     }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsParEdenSpaceALL(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceAll(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceALL(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceAll(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsParEdenSpaceCommittedMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceCommittedMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceCommittedMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceCommittedMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsParEdenSpaceCurrentUsageMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceCurrentUsageMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceCurrentUsageMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceCurrentUsageMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsParEdenSpaceMaxAvailableMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceMaxAvailableMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceMaxAvailableMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    // G1EdenSpace
+
+    public String queryJVMNTierGarbageCollectionMemoryPoolsG1EdenSpaceALL(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceAll(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceALL(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceAll(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsG1EdenSpaceCommittedMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceCommittedMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceCommittedMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceCommittedMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsG1EdenSpaceCurrentUsageMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceCurrentUsageMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceCurrentUsageMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceCurrentUsageMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsG1EdenSpaceMaxAvailableMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceMaxAvailableMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceMaxAvailableMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+    // Tenured
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsTenuredGenALL(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenAll(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenALL(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenAll(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsTenuredGenCommittedMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenCommittedMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenCommittedMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenCommittedMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsTenuredGenCurrentUsageMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenCurrentUsageMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenCurrentUsageMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenCurrentUsageMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsTenuredGenMaxAvailableMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenMaxAvailableMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenMaxAvailableMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    // Compressed Class Space
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsCompressedClassSpaceALL(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceAll(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceALL(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceAll(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsCompressedClassSpaceCommittedMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceCommittedMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceCommittedMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceCommittedMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsCompressedClassSpaceCurrentUsageMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceCurrentUsageMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceCurrentUsageMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceCurrentUsageMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsCompressedClassSpaceMaxAvailableMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceMaxAvailableMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceMaxAvailableMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    // Nursery
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsNurseryALL(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsNurseryAll(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsNurseryALL(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsNurseryAll(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsNurseryCommittedMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsNurseryCommittedMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsNurseryCommittedMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsNurseryCommittedMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsNurseryCurrentUsageMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsNurseryCurrentUsageMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsNurseryCurrentUsageMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsNurseryCurrentUsageMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsNurseryMaxAvailableMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsNurseryMaxAvailableMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsNurseryMaxAvailableMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsNurseryMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    // EdenSpace
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsEdenSpaceALL(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceAll(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceALL(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceAll(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsEdenSpaceCommittedMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceCommittedMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceCommittedMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceCommittedMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsEdenSpaceCurrentUsageMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceCurrentUsageMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceCurrentUsageMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceCurrentUsageMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsEdenSpaceMaxAvailableMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceMaxAvailableMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceMaxAvailableMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    //CMSPermGen
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsCMSPermGenALL(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenALL(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenALL(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenALL(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsCMSPermGenCommittedMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenCommittedMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenCommittedMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenCommittedMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsCMSPermGenCurrentUsageMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenCurrentUsageMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenCurrentUsageMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenCurrentUsageMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsCMSPermGenMaxAvailableMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenMaxAvailableMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenMaxAvailableMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    // G1PermGen
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsG1PermGenALL(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenALL(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenALL(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenALL(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsG1PermGenCommittedMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenCommittedMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenCommittedMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenCommittedMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsG1PermGenCurrentUsageMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenCurrentUsageMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenCurrentUsageMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenCurrentUsageMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsG1PermGenMaxAvailableMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenMaxAvailableMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenMaxAvailableMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    // ParSurvivorSpace
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsParSurvivorSpaceALL(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceALL(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceALL(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceALL(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsParSurvivorSpaceCommittedMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceCommittedMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceCommittedMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceCommittedMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsParSurvivorSpaceCurrentUsageMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceCurrentUsageMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceCurrentUsageMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceCurrentUsageMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsParSurvivorSpaceMaxAvailableMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceMaxAvailableMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceMaxAvailableMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    //G1SurviroSpace
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsG1SurvivorSpaceALL(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceALL(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceALL(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceALL(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsG1SurvivorSpaceCommittedMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceCommittedMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceCommittedMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceCommittedMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsG1SurvivorSpaceCurrentUsageMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceCurrentUsageMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceCurrentUsageMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceCurrentUsageMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsG1SurvivorSpaceMaxAvailableMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceMaxAvailableMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceMaxAvailableMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    // PermGen
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsPermGenALL(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPermGenALL(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsPermGenALL(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPermGenALL(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsPermGenCommittedMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPermGenCommittedMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsPermGenCommittedMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPermGenCommittedMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsPermGenCurrentUsageMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPermGenCurrentUsageMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsPermGenCurrentUsageMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPermGenCurrentUsageMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsPermGenMaxAvailableMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPermGenMaxAvailableMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsPermGenMaxAvailableMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPermGenMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    //SurvivorSpace
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsSurvivorSpaceALL(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceALL(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceALL(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceALL(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsSurvivorSpaceCommittedMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceCommittedMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceCommittedMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceCommittedMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsSurvivorSpaceCurrentUsageMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceCurrentUsageMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceCurrentUsageMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceCurrentUsageMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsSurvivorSpaceMaxAvailableMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceMaxAvailableMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceMaxAvailableMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    // OldSpace
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsOldSpaceALL(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceALL(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceALL(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceALL(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsOldSpaceCommittedMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceCommittedMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceCommittedMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceCommittedMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsOldSpaceCurrentUsageMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceCurrentUsageMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceCurrentUsageMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceCurrentUsageMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsOldSpaceMaxAvailableMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceMaxAvailableMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceMaxAvailableMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    // CMSOldGen
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsCMSOldGenALL(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenALL(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenALL(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenALL(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsCMSOldGenCommittedMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenCommittedMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenCommittedMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenCommittedMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsCMSOldGenCurrentUsageMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenCurrentUsageMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenCurrentUsageMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenCurrentUsageMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsCMSOldGenGenMaxAvailableMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenGenMaxAvailableMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenGenMaxAvailableMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenGenMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    // Metaspace
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsMetaspaceALL(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceALL(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceALL(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceALL(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsMetaspaceCommittedMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceCommittedMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceCommittedMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceCommittedMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsMetaspaceCurrentUsageMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceCurrentUsageMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceCurrentUsageMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceCurrentUsageMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsMetaspaceMaxAvailableMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceMaxAvailableMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceMaxAvailableMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    // G1OldGen
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsG1OldGenALL(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenALL(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenALL(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenALL(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsG1OldGenCommittedMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenCommittedMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenCommittedMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenCommittedMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsG1OldGenCurrentUsageMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenCurrentUsageMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenCurrentUsageMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenCurrentUsageMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsG1OldGenMaxAvailableMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenMaxAvailableMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenMaxAvailableMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    // ClassBlockMemory
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsClassBlockMemoryALL(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryALL(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryALL(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryALL(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsClassBlockMemoryCommittedMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryCommittedMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryCommittedMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryCommittedMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsClassBlockMemoryCurrentUsageMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryCurrentUsageMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryCurrentUsageMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryCurrentUsageMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsClassBlockMemoryMaxAvailableMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryMaxAvailableMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryMaxAvailableMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+    // ClassMemory
+
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryALL(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryALL(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryALL(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryALL(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsClassMemoryCommittedMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryCommittedMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryCommittedMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryCommittedMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsClassMemoryCurrentUsageMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryCurrentUsageMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryCurrentUsageMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryCurrentUsageMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
+
+
+    public String queryJVMTierGarbageCollectionMemoryPoolsClassMemoryMaxAvailableMB(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryMaxAvailableMB(baseURL, application, tier, null,start, end, rollup);
+    }
+
+    public String queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryMaxAvailableMB(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryMaxAvailableMB(baseURL, application, tier, node,start, end, rollup);
+
+    }
     
     /* JVM Memory Heap */
-    public String queryJVMTierMemoryHeapAll(String tier, long start, long end, boolean rollup){
+    public String queryJVMTierMemoryHeapALL(String tier, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeMemoryHeapAll(baseURL, application, tier, null, start, end, rollup);
     }
     
-    public String queryJVMNodeMemoryHeapAll(String tier, String node, long start, long end, boolean rollup){
+    public String queryJVMNodeMemoryHeapALL(String tier, String node, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeMemoryHeapAll(baseURL, application, tier, node,start, end, rollup);
     }
     
@@ -824,11 +1563,11 @@ public class MetricQuery {
     }
     
     /* JVM Memory Non-Heap */
-    public String queryJVMTierMemoryNonHeapAll(String tier, long start, long end, boolean rollup){
+    public String queryJVMTierMemoryNonHeapALL(String tier, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeMemoryNonHeapAll(baseURL, application, tier, null, start, end, rollup);
     }
     
-    public String queryJVMNodeMemoryNonHeapAll(String tier, String node, long start, long end, boolean rollup){
+    public String queryJVMNodeMemoryNonHeapALL(String tier, String node, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeMemoryNonHeapAll(baseURL, application, tier, node,start, end, rollup);
     }
     

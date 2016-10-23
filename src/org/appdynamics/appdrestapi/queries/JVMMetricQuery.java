@@ -16,12 +16,12 @@ public class JVMMetricQuery {
     /**
      * 
      * <p>
-     *   This query will return the 'Outgoing Packets/sec' from the Tier perspective for example:
-     *     Application Infrastructure Performance|[TIER]|Hardware Resources|Network|[CARD]|Outgoing Packets/sec
+     *   This query will return all of the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|*
      * </p>
      * <p>
-     *   This query will return the 'Outgoing Packets/sec' from a Node perspective for example:
-     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|Hardware Resources|Network|[CARD]|Outgoing Packets/sec
+     *   This query will return all of the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|*
      * </p>
      *  
      * 
@@ -34,7 +34,7 @@ public class JVMMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryJVMNodeProcessCPUAll(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryJVMNodeProcessCPUALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -42,10 +42,9 @@ public class JVMMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node).append(s.JVM);
-        bud.append(s._ALL_);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s._ALL_);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -144,10 +143,12 @@ public class JVMMetricQuery {
         return val.toString();
     }
     
-    /*  *************************** GarbageCollection *******************************  */
-    // High All
+    /*  *************************** GarbageCollection| Moemory Pools| Code Cache *******************************  */
     
-    // All Memory Pools Code Cache
+    
+    
+    
+    /* *************** GarbageCollection Memory Pools Code Cache *********************** */   
     /**
      * 
      * <p>
@@ -169,7 +170,7 @@ public class JVMMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheAll(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -191,124 +192,7 @@ public class JVMMetricQuery {
         
         return val.toString();
     }
-    // All Memory Pools PS Eden Space
-    /**
-     * 
-     * <p>
-     *   This query will return all the metrics from the Tier perspective for example:
-     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|PS Eden Space|*
-     * </p>
-     * <p>
-     *   This query will return all the metrics from a Node perspective for example:
-     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|PS Eden Space|*
-     * </p>
-     *  
-     * 
-     * @param baseURL Base URL for the controller
-     * @param application Name of the application
-     * @param tier Name of the tier
-     * @param node Name of the node
-     * @param start Start time for the metric query
-     * @param end End time for the metric query
-     * @param rollup Whether to rollup the values
-     * @return String
-     */
-    public static String queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceAll(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
-        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
-        bud.append(s.JVM_PS_EDEN_SPACE).append(s._ALL_);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    // All Memory Pools PS Old Gen
-    
-    public static String queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenAll(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
-        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
-        bud.append(s.JVM_PS_OLD_GEN).append(s._ALL_);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    // All Memory Pools PS Perm Gen
-    
-    public static String queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenAll(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
-        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
-        bud.append(s.JVM_PS_PERM_GEN).append(s._ALL_);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    // All Memory Pools PS Survivor Space
-    
-    public static String queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceAll(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
-        StringBuilder val=new StringBuilder();
-        val.append(baseURL).append(s.CONTROLLER_APPS);
-        val.append(QueryEncoder.encode(application));
-        val.append(s.URL_METRIC_PATH);
-        
-        // This has to be encoded otherwise the query will fail.
-        StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
-        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
-        bud.append(s.JVM_PS_SURVIVOR_SPACE).append(s._ALL_);
-        val.append(QueryEncoder.encode(bud.toString()));  
-        
-        //val.append(s.LAST_15_MINUTES);
-        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
-        val.append(s.TIME_END_TIME).append(end);
-        if(!rollup) val.append(s.NO_ROLL_UP);;
-        
-        
-        return val.toString();
-    }
-    
-    /* *************** GarbageCollection Memory Pools Code Cache *********************** */   
+
     /**
      * 
      * <p>
@@ -441,6 +325,52 @@ public class JVMMetricQuery {
     }
     
     /* *************** GarbageCollection Memory Pools PS Eden *********************** */
+
+    // All Memory Pools PS Eden Space
+    /**
+     * 
+     * <p>
+     *   This query will return all the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|PS Eden Space|*
+     * </p>
+     * <p>
+     *   This query will return all the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|PS Eden Space|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_PS_EDEN_SPACE).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+    }
+
     /**
      * 
      * <p>
@@ -574,6 +504,51 @@ public class JVMMetricQuery {
     }
     
     /* *************** GarbageCollection Memory Pools PS Old Gen ************* */
+    // All Memory Pools PS Old Gen
+    /**
+     * 
+     * <p>
+     *   This query will return all the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|PS Old Gen|*
+     * </p>
+     * <p>
+     *   This query will return all the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|PS Old Gen|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_PS_OLD_GEN).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+    }
+
     /**
      * 
      * <p>
@@ -707,6 +682,51 @@ public class JVMMetricQuery {
     
     
     /* *************** GarbageCollection Memory Pools PS Survivor Space ******* */
+    // All Memory Pools PS Survivor Space
+    /**
+     * 
+     * <p>
+     *   This query will return all the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|PS Survivor Space|*
+     * </p>
+     * <p>
+     *   This query will return all the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|PS Survivor Space|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_PS_SURVIVOR_SPACE).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+    }
+
     /**
      * 
      * <p>
@@ -839,6 +859,50 @@ public class JVMMetricQuery {
         return val.toString();
     }
     /* *************** GarbageCollection Memory Pools PS Perm Gen *********** */
+    // All Memory Pools PS Perm Gen
+    /**
+     * 
+     * <p>
+     *   This query will return all the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|PS Perm Gen|*
+     * </p>
+     * <p>
+     *   This query will return all the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|PS Perm Gen|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_PS_PERM_GEN).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+    }
     /**
      * 
      * <p>
@@ -994,7 +1058,7 @@ public class JVMMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryJVMNodeGarbageCollectionAll(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryJVMNodeGarbageCollectionALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1254,7 +1318,7 @@ public class JVMMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryJVMNodeMemoryHeapAll(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryJVMNodeMemoryHeapALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1470,7 +1534,7 @@ public class JVMMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryJVMNodeMemoryNonHeapAll(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryJVMNodeMemoryNonHeapALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1712,6 +1776,49 @@ public class JVMMetricQuery {
     /**
      * 
      * <p>
+     *   This query will return all of the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Classes|*
+     * </p>
+     * <p>
+     *   This query will return all of the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Classes|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeClassesALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_CLASSES).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
+    /**
+     * 
+     * <p>
      *   This query will return 'Current Loaded Class Count' from the Tier perspective for example:
      *     Application Infrastructure Performance|[TIER]|JVM|Classes|Current Loaded Class Count
      * </p>
@@ -1752,6 +1859,7 @@ public class JVMMetricQuery {
         return val.toString();
         
     }
+
     /**
      * 
      * <p>
@@ -1800,6 +1908,51 @@ public class JVMMetricQuery {
     /**
      * 
      * <p>
+     *   This query will return all of the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Par Eden Space|*
+     * </p>
+     * <p>
+     *   This query will return all of the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Par Eden Space|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_PAR_EDEN_SPACE).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
+
+    /**
+     * 
+     * <p>
      *   This query will return 'Committed (MB)' from the Tier perspective for example:
      *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Par Eden Space|Committed (MB)
      * </p>
@@ -1818,7 +1971,7 @@ public class JVMMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryJVMGarbageCollectionMemoryPoolsParEdenSpaceCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1862,7 +2015,7 @@ public class JVMMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryJVMGarbageCollectionMemoryPoolsParEdenSpaceCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1885,6 +2038,7 @@ public class JVMMetricQuery {
         return val.toString();
         
     }
+    
     /**
      * 
      * <p>
@@ -1906,7 +2060,7 @@ public class JVMMetricQuery {
      * @param rollup Whether to rollup the values
      * @return String
      */
-    public static String queryJVMGarbageCollectionMemoryPoolsParEdenSpaceMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1930,14 +2084,73 @@ public class JVMMetricQuery {
         
     }
     
-    /* 
+    /**
+     * 
+     * <p>
+     *   This query will return all of the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|G1 Eden Space|*
+     * </p>
+     * <p>
+     *   This query will return all of the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|G1 Eden Space|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_G1_EDEN_SPACE).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
 
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Par Eden Space|Committed (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Par Eden Space|Current Usage (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Par Eden Space|Max Available (MB)
-    */
-    
-    public static String queryJVMGarbageCollectionMemoryPoolsG1EdenSpaceCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Committed (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|G1 Eden Space|Committed (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Committed (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|G1 Eden Space|Committed (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1961,7 +2174,28 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsG1EdenSpaceCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Current Usage (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|G1 Eden Space|Current Usage (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Current Usage (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|G1 Eden Space|Current Usage (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -1985,7 +2219,28 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsG1EdenSpaceMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Max Available (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|G1 Eden Space|Max Available (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Max Available (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|G1 Eden Space|Max Available (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2008,13 +2263,75 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         return val.toString();
         
     }
-    /*
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Eden Space|Committed (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Eden Space|Current Usage (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Eden Space|Max Available (MB)
-    */
-    
-    public static String queryJVMGarbageCollectionMemoryPoolsTenuredGenCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+
+    // Tenured 
+    /**
+     * 
+     * <p>
+     *   This query will return all of the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Tenured Gen|*
+     * </p>
+     * <p>
+     *   This query will return all of the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Tenured Gen|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_TENURED_GEN).append(s._ALL_;
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
+
+    /**
+     * 
+     * <p>
+     *   This query will return 'Committed (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Tenured Gen|Committed (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Committed (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Tenured Gen|Committed (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2038,7 +2355,28 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsTenuredGenCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Current Usage (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Tenured Gen|Current Usage (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Current Usage (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Tenured Gen|Current Usage (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2062,7 +2400,28 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsTenuredGenMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Max Available (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Tenured Gen|Max Available (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Max Available (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Tenured Gen|Max Available (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2085,12 +2444,74 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         return val.toString();
         
     }
-    /*
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Tenured Gen|Current Usage (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Tenured Gen|Committed (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Tenured Gen|Max Available (MB)
-    */
-    public static String queryJVMGarbageCollectionMemoryPoolsCompressedClassSpaceCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+
+    /**
+     * 
+     * <p>
+     *   This query will return all of the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Compressed Class Space|*
+     * </p>
+     * <p>
+     *   This query will return all of the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Compressed Class Space|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_COMPRESSED_CLASS_SPACE).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return 'Committed (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Compressed Class Space|Committed (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Committed (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Compressed Class Space|Committed (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2114,7 +2535,28 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsCompressedClassSpaceCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Current Usage (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Compressed Class Space|Current Usage (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Current Usage (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Compressed Class Space|Current Usage (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2138,7 +2580,28 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsCompressedClassSpaceMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Max Available (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Compressed Class Space|Max Available (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Max Available (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Compressed Class Space|Max Available (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2161,13 +2624,74 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         return val.toString();
         
     }
-    /*
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Compressed Class Space|Max Available (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Compressed Class Space|Committed (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Compressed Class Space|Current Usage (MB)
-    */
+
+    /**
+     * 
+     * <p>
+     *   This query will return all of the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Nursery|*
+     * </p>
+     * <p>
+     *   This query will return all of the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Nursery|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsNurseryALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_NURSERY).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsNurseryCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Committed (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Nursery|Committed (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Committed (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Nursery|Committed (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsNurseryCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2191,7 +2715,28 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsNurseryCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Current Usage (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Nursery|Current Usage (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Current Usage (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Nursery|Current Usage (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsNurseryCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2215,7 +2760,28 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsNurseryMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Max Available (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Nursery|Max Available (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Max Available (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Nursery|Max Available (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsNurseryMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2238,13 +2804,74 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         return val.toString();
         
     }
-    /*
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Nursery|Current Usage (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Nursery|Committed (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Nursery|Max Available (MB)
-    */
+
+    /**
+     * 
+     * <p>
+     *   This query will return all of the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Eden Space|*
+     * </p>
+     * <p>
+     *   This query will return all of the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Eden Space|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_EDEN_SPACE).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsEdenSpaceCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Committed (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Eden Space|Committed (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Committed (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Eden Space|Committed (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2268,7 +2895,28 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsEdenSpaceCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Current Usage (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Eden Space|Current Usage (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Current Usage (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Eden Space|Current Usage (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2292,7 +2940,28 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsEdenSpaceMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Max Available (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Eden Space|Max Available (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Max Available (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Eden Space|Max Available (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2315,13 +2984,75 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         return val.toString();
         
     }
-    /*
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Eden Space|Committed (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Eden Space|Current Usage (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Eden Space|Max Available (MB)
-    */
     
-    public static String queryJVMGarbageCollectionMemoryPoolsCMSPermGenCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+
+    /**
+     * 
+     * <p>
+     *   This query will return all metrics a from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|CMS Perm Gen|*
+     * </p>
+     * <p>
+     *   This query will return all metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|CMS Perm Gen|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_CMS_PERM_GEN).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
+
+    /**
+     * 
+     * <p>
+     *   This query will return 'Committed (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|CMS Perm Gen|Committed (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Committed (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|CMS Perm Gen|Committed (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2345,7 +3076,29 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsCMSPermGenCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    
+    /**
+     * 
+     * <p>
+     *   This query will return 'Current Usage (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|CMS Perm Gen|Current Usage (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Current Usage (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|CMS Perm Gen|Current Usage (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2369,7 +3122,29 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsCMSPermGenMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    
+    /**
+     * 
+     * <p>
+     *   This query will return 'Max Available (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|CMS Perm Gen|Max Available (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Max Available (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|CMS Perm Gen|Max Available (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2392,13 +3167,74 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         return val.toString();
         
     }
-    /*
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|CMS Perm Gen|Committed (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|CMS Perm Gen|Max Available (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|CMS Perm Gen|Current Usage (MB)
-    */
+
+    /**
+     * 
+     * <p>
+     *   This query will return all the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|G1 Perm Gen|*
+     * </p>
+     * <p>
+     *   This query will return all of the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|G1 Perm Gen|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_G1_PERM_GEN).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsG1PermGenCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Committed (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|G1 Perm Gen|Committed (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Committed (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|G1 Perm Gen|Committed (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2422,7 +3258,28 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsG1PermGenCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Current Usage (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|G1 Perm Gen|Current Usage (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Current Usage (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|G1 Perm Gen|Current Usage (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2446,7 +3303,28 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsG1PermGenMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Max Available (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|G1 Perm Gen|Max Available (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Max Available (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|G1 Perm Gen|Max Available (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2469,13 +3347,74 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         return val.toString();
         
     }
-    /*
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Perm Gen|Max Available (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Perm Gen|Committed (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Perm Gen|Current Usage (MB)
-    */
+
+    /**
+     * 
+     * <p>
+     *   This query will return all the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Par Survivor Space|*
+     * </p>
+     * <p>
+     *   This query will return all the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Par Survivor Space|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_PAR_SURVIVOR_SPACE).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsParSurvivorSpaceCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Committed (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Par Survivor Space|Committed (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Committed (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Par Survivor Space|Committed (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2499,7 +3438,28 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsParSurvivorSpaceCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Current Usage (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Par Survivor Space|Current Usage (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Current Usage (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Par Survivor Space|Current Usage (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2523,7 +3483,28 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsParSurvivorSpaceMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Max Available (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Par Survivor Space|Max Available (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Max Available (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Par Survivor Space|Max Available (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2546,13 +3527,74 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         return val.toString();
         
     }
-    /*
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Par Survivor Space|Max Available (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Par Survivor Space|Committed (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Par Survivor Space|Current Usage (MB)
-    */
+
+    /**
+     * 
+     * <p>
+     *   This query will return all the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|G1 Survivor Space|*
+     * </p>
+     * <p>
+     *   This query will return all the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|G1 Survivor Space|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_G1_SURVIVOR_SPACE).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsG1SurvivorSpaceCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Committed (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|G1 Survivor Space|Committed (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Committed (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|G1 Survivor Space|Committed (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2576,7 +3618,28 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsG1SurvivorSpaceCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Current Usage (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|G1 Survivor Space|Current Usage (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Current Usage (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|G1 Survivor Space|Current Usage (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2600,7 +3663,28 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsG1SurvivorSpaceMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Max Available (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|G1 Survivor Space|Max Available (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Max Available (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|G1 Survivor Space|Max Available (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -2623,147 +3707,1446 @@ Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Poo
         return val.toString();
         
     }
-    /*
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Survivor Space|Current Usage (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Survivor Space|Max Available (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Survivor Space|Committed (MB)
-    */
-    
-    public static String queryJVMGarbageCollectionMemoryPoolsPermGenCommittedMB(){
+
+    /**
+     * 
+     * <p>
+     *   This query will return all the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Perm Gen|*
+     * </p>
+     * <p>
+     *   This query will return all the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Perm Gen|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsPermGenALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_PERM_GEN).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsPermGenCurrentUsageMB(){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Committed (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Perm Gen|Committed (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Committed (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Perm Gen|Committed (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsPermGenCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_PERM_GEN).append(s.JVM_MEMORY_HEAP_COMMITED_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsPermGenMaxAvailableMB(){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Current Usage (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Perm Gen|Current Usage (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Current Usage (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Perm Gen|Current Usage (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsPermGenCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
         
-    }
-    /*
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Perm Gen|Max Available (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Perm Gen|Current Usage (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Perm Gen|Committed (MB)
-    */
-    
-    public static String queryJVMGarbageCollectionMemoryPoolsSurvivorSpaceCommittedMB(){
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_PERM_GEN).append(s.JVM_MEMORY_HEAP_CURRENT_USAGE_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
         
-    }
-    
-    public static String queryJVMGarbageCollectionMemoryPoolsSurvivorSpaceCurrentUsageMB(){
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
-    }
-    
-    public static String queryJVMGarbageCollectionMemoryPoolsSurvivorSpaceMaxAvailableMB(){
         
-    }
-    /*
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Survivor Space|Current Usage (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Survivor Space|Max Available (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Survivor Space|Committed (MB)
-    */
-    
-    public static String queryJVMGarbageCollectionMemoryPoolsOldSpaceCommittedMB(){
-        
-    }
-    
-    public static String queryJVMGarbageCollectionMemoryPoolsOldSpaceCurrentUsageMB(){
-        
-    }
-    
-    public static String queryJVMGarbageCollectionMemoryPoolsOldSpaceMaxAvailableMB(){
-        
-    }
-    /*
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Old Space|Committed (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Old Space|Current Usage (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Old Space|Max Available (MB)
-    */
-    
-    public static String queryJVMGarbageCollectionMemoryPoolsCMSOldGenCommittedMB(){
-        
-    }
-    
-    public static String queryJVMGarbageCollectionMemoryPoolsCMSOldGenCurrentUsageMB(){
+        return val.toString();
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsCMSOldGenGenMaxAvailableMB(){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Max Available (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Perm Gen|Max Available (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Max Available (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Perm Gen|Max Available (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsPermGenMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_PERM_GEN).append(s.JVM_MEMORY_HEAP_MAX_AVAILABLE_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
         
     }
-    /*
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|CMS Old Gen|Current Usage (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|CMS Old Gen|Committed (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|CMS Old Gen|Max Available (MB)
-    */
-    
-    public static String queryJVMGarbageCollectionMemoryPoolsMetaspaceCommittedMB(){
+
+    /**
+     * 
+     * <p>
+     *   This query will return all the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Survivor Space|*
+     * </p>
+     * <p>
+     *   This query will return all the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Survivor Space|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_SURVIVOR_SPACE).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsMetaspaceCurrentUsageMB(){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Committed (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Survivor Space|Committed (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Committed (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Survivor Space|Committed (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_SURVIVOR_SPACE).append(s.JVM_MEMORY_HEAP_COMMITED_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsMetaspaceMaxAvailableMB(){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Current Usage (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Survivor Space|Current Usage (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Current Usage (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Survivor Space|Current Usage (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
         
-    }
-    /*
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Metaspace|Committed (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Metaspace|Current Usage (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Metaspace|Max Available (MB)
-    */
-    
-    
-    public static String queryJVMGarbageCollectionMemoryPoolsG1OldGenCommittedMB(){
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_SURVIVOR_SPACE).append(s.JVM_MEMORY_HEAP_CURRENT_USAGE_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
         
-    }
-    
-    public static String queryJVMGarbageCollectionMemoryPoolsG1OldGenCurrentUsageMB(){
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
-    }
-    
-    public static String queryJVMGarbageCollectionMemoryPoolsG1OldGenMaxAvailableMB(){
         
-    }
-    /*
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Old Gen|Max Available (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Old Gen|Committed (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|G1 Old Gen|Current Usage (MB)
-    */
-    
-    public static String queryJVMGarbageCollectionMemoryPoolsClassBlockMemoryCommittedMB(){
-        
-    }
-    
-    public static String queryJVMGarbageCollectionMemoryPoolsClassBlockMemoryCurrentUsageMB(){
-        
-    }
-    
-    public static String queryJVMGarbageCollectionMemoryPoolsClassBlockMemoryMaxAvailableMB(){
-        
-    }
-    /*
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|ClassBlock Memory|Max Available (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|ClassBlock Memory|Committed (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|ClassBlock Memory|Current Usage (MB)
-    */
-    
-    public static String queryJVMGarbageCollectionMemoryPoolsClassMemoryCommittedMB(){
+        return val.toString();
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsClassMemoryCurrentUsageMB(){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Max Available (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Survivor Space|Max Available (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Max Available (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Survivor Space|Max Available (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_SURVIVOR_SPACE).append(s.JVM_MEMORY_HEAP_MAX_AVAILABLE_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
+
+    /**
+     * 
+     * <p>
+     *   This query will return all the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Old Space|*
+     * </p>
+     * <p>
+     *   This query will return all the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Old Space|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_OLD_SPACE).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
         
     }
     
-    public static String queryJVMGarbageCollectionMemoryPoolsClassMemoryMaxAvailableMB(){
+    /**
+     * 
+     * <p>
+     *   This query will return 'Committed (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Old Space|Committed (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Committed (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Old Space|Committed (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_OLD_SPACE).append(s.JVM_MEMORY_HEAP_COMMITED_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
         
     }
-    /*
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Class Memory|Committed (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Class Memory|Max Available (MB)
-Application Infrastructure Performance|AAC-App|JVM|Garbage Collection|Memory Pools|Class Memory|Current Usage (MB)
     
-    */
+    /**
+     * 
+     * <p>
+     *   This query will return 'Current Usage (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Old Space|Current Usage (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Current Usage (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Old Space|Current Usage (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_OLD_SPACE).append(s.JVM_MEMORY_HEAP_CURRENT_USAGE_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return 'Max Available (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Old Space|Max Available (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Max Available (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Old Space|Max Available (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_OLD_SPACE).append(s.JVM_MEMORY_HEAP_MAX_AVAILABLE_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;
+        
+        
+        return val.toString();
+        
+    }
+
+    /**
+     * 
+     * <p>
+     *   This query will return all of the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|CMS Old Gen|*
+     * </p>
+     * <p>
+     *   This query will return all of the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|CMS Old Gen|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_CMS_OLD_GEN).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return 'Committed (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|CMS Old Gen|Committed (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Committed (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|CMS Old Gen|Committed (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_CMS_OLD_GEN).append(s.JVM_MEMORY_HEAP_COMMITED_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return 'Current Usage (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|CMS Old Gen|Current Usage (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Current Usage (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|CMS Old Gen|Current Usage (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_CMS_OLD_GEN).append(s.JVM_MEMORY_HEAP_CURRENT_USAGE_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return 'Max Available (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|CMS Old Gen|Max Available (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Max Available (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|CMS Old Gen|Max Available (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenGenMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_CMS_OLD_GEN).append(s.JVM_MEMORY_HEAP_MAX_AVAILABLE_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+
+    /**
+     * 
+     * <p>
+     *   This query will return all of the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Metaspace|*
+     * </p>
+     * <p>
+     *   This query will return all of the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Metaspace|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_METASPACE).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return 'Committed (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Metaspace|Committed (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Committed (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Metaspace|Committed (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_METASPACE).append(s.JVM_MEMORY_HEAP_COMMITED_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return 'Current Usage (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Metaspace|Current Usage (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Current Usage (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Metaspace|Current Usage (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_METASPACE).append(s.JVM_MEMORY_HEAP_CURRENT_USAGE_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return 'Max Available (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Metaspace|Max Available (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Max Available (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Metaspace|Max Available (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_METASPACE).append(s.JVM_MEMORY_HEAP_MAX_AVAILABLE_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+
+    /**
+     * 
+     * <p>
+     *   This query will return all of the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|G1 Old Gen|*
+     * </p>
+     * <p>
+     *   This query will return all of the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|G1 Old Gen|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_G1_OLD_GEN).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return 'Committed (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|G1 Old Gen|Committed (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Committed (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|G1 Old Gen|Committed (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_G1_OLD_GEN).append(s.JVM_MEMORY_HEAP_COMMITED_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return 'Current Usage (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|G1 Old Gen|Current Usage (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Current Usage (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|G1 Old Gen|Current Usage (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_G1_OLD_GEN).append(s.JVM_MEMORY_HEAP_CURRENT_USAGE_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return 'Max Available (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|G1 Old Gen|Max Available (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Max Available (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|G1 Old Gen|Max Available (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_G1_OLD_GEN).append(s.JVM_MEMORY_HEAP_MAX_AVAILABLE_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+
+    /**
+     * 
+     * <p>
+     *   This query will return all of the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|ClassBlock Memory|*
+     * </p>
+     * <p>
+     *   This query will return all of the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|ClassBlock Memory|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_CLASSBLOCK_MEMORY).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return 'Committed (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|ClassBlock Memory|Committed (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Committed (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|ClassBlock Memory|Committed (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_CLASSBLOCK_MEMORY).append(s.JVM_MEMORY_HEAP_COMMITED_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return 'Current Usage (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|ClassBlock Memory|Current Usage (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Current Usage (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|ClassBlock Memory|Current Usage (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_CLASSBLOCK_MEMORY).append(s.JVM_MEMORY_HEAP_CURRENT_USAGE_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return 'Max Available (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|ClassBlock Memory|Max Available (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Max Available (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|ClassBlock Memory|Max Available (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_CLASSBLOCK_MEMORY).append(s.JVM_MEMORY_HEAP_MAX_AVAILABLE_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+
+    /**
+     * 
+     * <p>
+     *   This query will return all of the metrics from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Class Memory|*
+     * </p>
+     * <p>
+     *   This query will return all of the metrics from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Class Memory|*
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryALL(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_CLASS_MEMORY).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+    
+    
+    /**
+     * 
+     * <p>
+     *   This query will return 'Committed (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Class Memory|Committed (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Committed (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Class Memory|Committed (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_CLASS_MEMORY).append(s.JVM_MEMORY_HEAP_COMMITED_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return 'Current Usage (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Class Memory|Current Usage (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Current Usage (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Class Memory|Current Usage (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_CLASS_MEMORY).append(s.JVM_MEMORY_HEAP_CURRENT_USAGE_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+    
+    /**
+     * 
+     * <p>
+     *   This query will return 'Max Available (MB)' from the Tier perspective for example:
+     *     Application Infrastructure Performance|[TIER]|JVM|Garbage Collection|Memory Pools|Class Memory|Max Available (MB)
+     * </p>
+     * <p>
+     *   This query will return 'Max Available (MB)' from a Node perspective for example:
+     *     Application Infrastructure Performance|[TIER]|Individual Nodes|[NODE]|JVM|Garbage Collection|Memory Pools|Class Memory|Max Available (MB)
+     * </p>
+     *  
+     * 
+     * @param baseURL Base URL for the controller
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @param node Name of the node
+     * @param start Start time for the metric query
+     * @param end End time for the metric query
+     * @param rollup Whether to rollup the values
+     * @return String
+     */
+    public static String queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
+        bud.append(s.JVM_CLASS_MEMORY).append(s.JVM_MEMORY_HEAP_MAX_AVAILABLE_MB);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);
+        
+        
+        return val.toString();
+        
+    }
+
 }
