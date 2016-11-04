@@ -2297,7 +2297,7 @@ public class JVMMetricQuery {
         bud.append(s.APPLICATION_INFRA_PERF).append(tier);
         if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
         bud.append(s.JVM).append(s.JVM_GARBAGE_COLLECTION).append(s.JVM_MEMORY_POOLS);
-        bud.append(s.JVM_TENURED_GEN).append(s._ALL_;
+        bud.append(s.JVM_TENURED_GEN).append(s._ALL_);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);

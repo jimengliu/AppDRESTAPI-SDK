@@ -552,28 +552,28 @@ public class MetricQuery {
       /* ************************************* Classes|CurrentLoaded ********************************************* */
 
     public String queryJVMTierClassesCurrentLoadedClassCount(String tier, long start, long end, boolean rollup){
-        return queryJVMNodeClassesTotalClassesLoaded( baseURL, application, tier, null, start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeClassesTotalClassesLoaded( baseURL, application, tier, null, start, end, rollup);
     }
 
     public String queryJVMNodeClassesCurrentLoadedClassCount(String tier, String node, long start, long end, boolean rollup){
-        return queryJVMNodeClassesTotalClassesLoaded( baseURL, application, tier, node, start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeClassesTotalClassesLoaded( baseURL, application, tier, node, start, end, rollup);
     }
 
     public String queryJVMTierClassesTotalClassesLoaded(String tier, long start, long end, boolean rollup){
-        return queryJVMNodeClassesTotalClassesLoaded( baseURL, application, tier, null, start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeClassesTotalClassesLoaded( baseURL, application, tier, null, start, end, rollup);
     }
 
     public String queryJVMNodeClassesTotalClassesLoaded(String tier, String node, long start, long end, boolean rollup){
-        queryJVMNodeClassesTotalClassesLoaded( baseURL, application, tier, node, start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeClassesTotalClassesLoaded( baseURL, application, tier, node, start, end, rollup);
     }
     
       /* ********************************* CPU ***************************************************************** */
     public String queryJVMTierProcessCPUALL(String tier, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeProcessCPUAll(baseURL, application, tier, null, start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeProcessCPUALL(baseURL, application, tier, null, start, end, rollup);
     }
     
     public String queryJVMNodeProcessCPUALL(String tier, String node, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeProcessCPUAll(baseURL, application, tier, node,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeProcessCPUALL(baseURL, application, tier, node,start, end, rollup);
     }
     
     public String queryJVMTierProcessCPUBurntMSPerMin(String tier, long start, long end, boolean rollup){
@@ -594,11 +594,11 @@ public class MetricQuery {
 
     /* JVM Garbage Collections Memory Pools Code Cache*/
     public String queryJVMTierGarbageCollectionMemoryPoolsCodeCacheALL(String tier, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheAll(baseURL, application, tier, null, start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheALL(baseURL, application, tier, null, start, end, rollup);
     }
     
     public String queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheALL(String tier, String node, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheAll(baseURL, application, tier, node,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheALL(baseURL, application, tier, node,start, end, rollup);
     }
     
     public String queryJVMTierGarbageCollectionMemoryPoolsCodeCacheCommittedMB(String tier, long start, long end, boolean rollup){
@@ -626,11 +626,11 @@ public class MetricQuery {
     }
     /* JVM Garbage Collections Memory Pools PS Eden Space */
     public String queryJVMTierGarbageCollectionMemoryPoolsPsEdenSpaceALL(String tier, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceAll(baseURL, application, tier, null, start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceALL(baseURL, application, tier, null, start, end, rollup);
     }
     
     public String queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceALL(String tier, String node, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceAll(baseURL, application, tier, node,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceALL(baseURL, application, tier, node,start, end, rollup);
     }
     
     public String queryJVMTierGarbageCollectionMemoryPoolsPsEdenSpaceCommittedMB(String tier, long start, long end, boolean rollup){
@@ -659,11 +659,11 @@ public class MetricQuery {
     
     /* JVM Garbage Collections Memory Pools PS Old Gen */
     public String queryJVMTierGarbageCollectionMemoryPoolsPsOldGenALL(String tier, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenAll(baseURL, application, tier, null, start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenALL(baseURL, application, tier, null, start, end, rollup);
     }
     
     public String queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenALL(String tier, String node, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenAll(baseURL, application, tier, node,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenALL(baseURL, application, tier, node,start, end, rollup);
     }
     
     public String queryJVMTierGarbageCollectionMemoryPoolsPsOldGenCommittedMB(String tier, long start, long end, boolean rollup){
@@ -691,11 +691,11 @@ public class MetricQuery {
     }
     /* JVM Garbage Collection Memory Pools PS Perm Gen */
     public String queryJVMTierGarbageCollectionMemoryPoolsPsPermGenALL(String tier, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenAll(baseURL, application, tier, null, start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenALL(baseURL, application, tier, null, start, end, rollup);
     }
     
     public String queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenALL(String tier, String node, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenAll(baseURL, application, tier, node,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenALL(baseURL, application, tier, node,start, end, rollup);
     }
     
     public String queryJVMTierGarbageCollectionMemoryPoolsPsPermGenCommittedMB(String tier, long start, long end, boolean rollup){
@@ -723,11 +723,11 @@ public class MetricQuery {
     }
           /* JVM Garbage Collections Memory Pools PS Survivor Space */
     public String queryJVMTierGarbageCollectionMemoryPoolsPsSurvivorSpaceALL(String tier, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceAll(baseURL, application, tier, null, start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceALL(baseURL, application, tier, null, start, end, rollup);
     }
     
     public String queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceALL(String tier, String node, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceAll(baseURL, application, tier, node,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceALL(baseURL, application, tier, node,start, end, rollup);
     }
     
     public String queryJVMTierGarbageCollectionMemoryPoolsPsSurvivorSpaceCommittedMB(String tier, long start, long end, boolean rollup){
@@ -755,11 +755,11 @@ public class MetricQuery {
     }
     /* JVM Garbage Collections */
     public String queryJVMTierGarbageCollectionALL(String tier, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionAll(baseURL, application, tier, null, start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionALL(baseURL, application, tier, null, start, end, rollup);
     }
     
     public String queryJVMNodeGarbageCollectionALL(String tier, String node, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionAll(baseURL, application, tier, node,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionALL(baseURL, application, tier, node,start, end, rollup);
     }
     
     public String queryJVMTierGarbageCollectionGCTimeSpentPerMin(String tier, long start, long end, boolean rollup){
@@ -804,11 +804,11 @@ public class MetricQuery {
 
 
     public String queryJVMTierGarbageCollectionMemoryPoolsParEdenSpaceALL(String tier, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceAll(baseURL, application, tier, null,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceALL(baseURL, application, tier, null,start, end, rollup);
     }
 
     public String queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceALL(String tier, String node, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceAll(baseURL, application, tier, node,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceALL(baseURL, application, tier, node,start, end, rollup);
 
     }
 
@@ -842,11 +842,11 @@ public class MetricQuery {
     // G1EdenSpace
 
     public String queryJVMNTierGarbageCollectionMemoryPoolsG1EdenSpaceALL(String tier, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceAll(baseURL, application, tier, null,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceALL(baseURL, application, tier, null,start, end, rollup);
     }
 
     public String queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceALL(String tier, String node, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceAll(baseURL, application, tier, node,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceALL(baseURL, application, tier, node,start, end, rollup);
 
     }
 
@@ -880,11 +880,11 @@ public class MetricQuery {
 
 
     public String queryJVMTierGarbageCollectionMemoryPoolsTenuredGenALL(String tier, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenAll(baseURL, application, tier, null,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenALL(baseURL, application, tier, null,start, end, rollup);
     }
 
     public String queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenALL(String tier, String node, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenAll(baseURL, application, tier, node,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenALL(baseURL, application, tier, node,start, end, rollup);
 
     }
 
@@ -918,11 +918,11 @@ public class MetricQuery {
     // Compressed Class Space
 
     public String queryJVMTierGarbageCollectionMemoryPoolsCompressedClassSpaceALL(String tier, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceAll(baseURL, application, tier, null,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceALL(baseURL, application, tier, null,start, end, rollup);
     }
 
     public String queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceALL(String tier, String node, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceAll(baseURL, application, tier, node,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceALL(baseURL, application, tier, node,start, end, rollup);
 
     }
 
@@ -956,11 +956,11 @@ public class MetricQuery {
     // Nursery
 
     public String queryJVMTierGarbageCollectionMemoryPoolsNurseryALL(String tier, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsNurseryAll(baseURL, application, tier, null,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsNurseryALL(baseURL, application, tier, null,start, end, rollup);
     }
 
     public String queryJVMNodeGarbageCollectionMemoryPoolsNurseryALL(String tier, String node, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsNurseryAll(baseURL, application, tier, node,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsNurseryALL(baseURL, application, tier, node,start, end, rollup);
 
     }
 
@@ -994,11 +994,11 @@ public class MetricQuery {
     // EdenSpace
 
     public String queryJVMTierGarbageCollectionMemoryPoolsEdenSpaceALL(String tier, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceAll(baseURL, application, tier, null,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceALL(baseURL, application, tier, null,start, end, rollup);
     }
 
     public String queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceALL(String tier, String node, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceAll(baseURL, application, tier, node,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceALL(baseURL, application, tier, node,start, end, rollup);
 
     }
 
@@ -1523,11 +1523,11 @@ public class MetricQuery {
     
     /* JVM Memory Heap */
     public String queryJVMTierMemoryHeapALL(String tier, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeMemoryHeapAll(baseURL, application, tier, null, start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeMemoryHeapALL(baseURL, application, tier, null, start, end, rollup);
     }
     
     public String queryJVMNodeMemoryHeapALL(String tier, String node, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeMemoryHeapAll(baseURL, application, tier, node,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeMemoryHeapALL(baseURL, application, tier, node,start, end, rollup);
     }
     
     public String queryJVMTierMemoryHeapCommittedMB(String tier, long start, long end, boolean rollup){
@@ -1564,11 +1564,11 @@ public class MetricQuery {
     
     /* JVM Memory Non-Heap */
     public String queryJVMTierMemoryNonHeapALL(String tier, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeMemoryNonHeapAll(baseURL, application, tier, null, start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeMemoryNonHeapALL(baseURL, application, tier, null, start, end, rollup);
     }
     
     public String queryJVMNodeMemoryNonHeapALL(String tier, String node, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeMemoryNonHeapAll(baseURL, application, tier, node,start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeMemoryNonHeapALL(baseURL, application, tier, node,start, end, rollup);
     }
     
     public String queryJVMTierMemoryNonHeapCommittedMB(String tier, long start, long end, boolean rollup){
@@ -1613,141 +1613,59 @@ public class MetricQuery {
     }
     
     /*  Overall Application Performance */
-    public String queryOAPAppAll(long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPAppAll(baseURL, application, start, end, rollup);
-    }
-    
-    public String queryOAPTierAll(String tier, long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPTierAll(baseURL, application, tier, start, end, rollup);
-    }
     
     public String queryOAPNodeAll(String tier, String node, long start, long end, boolean rollup){
         return OverAllPerformanceMetricQuery.queryOAPNodeAll(baseURL, application, tier, node, start, end, rollup);
     }
     
     //Stall Count
-    public String queryOAPAppStallCount(long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPAppStallCount(baseURL, application, start, end, rollup);
-    }
-    
-    public String queryOAPTierStallCount(String tier, long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPTierStallCount(baseURL, application, tier, start, end, rollup);
-    }
-    
     public String queryOAPNodeStallCount(String tier, String node, long start, long end, boolean rollup){
         return OverAllPerformanceMetricQuery.queryOAPNodeStallCount(baseURL, application, tier, node, start, end, rollup);
     }
     
     //Number of Very Slow Call
-    public String queryOAPAppNumberOfVerySlowCalls(long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPAppNumberOfVerySlowCalls(baseURL, application, start, end, rollup);
-    }
-    
-    public String queryOAPTierNumberOfVerySlowCalls(String tier, long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPTierNumberOfVerySlowCalls(baseURL, application, tier, start, end, rollup);
-    }
-    
     public String queryOAPNodeNumberOfVerySlowCalls(String tier, String node, long start, long end, boolean rollup){
         return OverAllPerformanceMetricQuery.queryOAPNodeStallCount(baseURL, application, tier, node, start, end, rollup);
     }
     //Number of Slow Calls
-    public String queryOAPAppNumberOfSlowCalls(long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPAppNumberOfSlowCalls(baseURL, application, start, end, rollup);
-    }
-    
-    public String queryOAPTierNumberOfSlowCalls(String tier, long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPTierNumberOfSlowCalls(baseURL, application, tier, start, end, rollup);
-    }
-    
     public String queryOAPNodeNumberOfSlowCalls(String tier, String node, long start, long end, boolean rollup){
         return OverAllPerformanceMetricQuery.queryOAPNodeNumberOfSlowCalls(baseURL, application, tier, node, start, end, rollup);
     }
     //Infrastructure Errors per Minute
-    public String queryOAPAppInfrastructureErrorsPerMinute(String tier, long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPAppInfrastructureErrorsPerMinute(baseURL, application,start, end, rollup);
-    }
-    
-    public  String queryOAPTierInfrastructureErrorsPerMinute(String tier, long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPTierInfrastructureErrorsPerMinute(baseURL, application,tier,start, end, rollup);
-    }
-    
     public String queryOAPNodeInfrastructureErrorsPerMinute(String tier, String node, long start, long end, boolean rollup){
         return OverAllPerformanceMetricQuery.queryOAPNodeInfrastructureErrorsPerMinute(baseURL, application,tier,node,start, end, rollup);
     }
     //HTTP Error Codes per Minute
-    public String queryOAPAppHttpErrorCodesPerMinute( long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPAppHttpErrorCodesPerMinute(baseURL, application,start, end, rollup);
-    }
-    
-    public String queryOAPTierHttpErrorCodesPerMinute(String tier, long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPTierHttpErrorCodesPerMinute(baseURL, application,tier,start, end, rollup);
-    }
-    
     public String queryOAPNodeHttpErrorCodesPerMinute(String tier, String node, long start, long end, boolean rollup){
         return OverAllPerformanceMetricQuery.queryOAPNodeHttpErrorCodesPerMinute(baseURL, application,tier,node,start, end, rollup);
     }
     //Exceptions per Minute
-    public String queryOAPAppExceptionsPerMinute(long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPAppExceptionsPerMinute(baseURL, application,start, end, rollup);
-    }
-    
-    public String queryOAPTierExceptionsPerMinute(String tier, long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPTierExceptionsPerMinute(baseURL, application,tier,start, end, rollup);
-    }
-    
     public String queryOAPNodeExceptionsPerMinute(String tier, String node, long start, long end, boolean rollup){
         return OverAllPerformanceMetricQuery.queryOAPNodeExceptionsPerMinute(baseURL, application,tier,node,start, end, rollup);
     }
     
     //Errors per Minute
-    public String queryOAPAppErrorsPerMinute(String tier, long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPAppErrorsPerMinute(baseURL, application,start, end, rollup);
-    }
-    
-    public String queryOAPTierErrorsPerMinute(String tier, long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPTierErrorsPerMinute(baseURL, application,tier,start, end, rollup);
-    }
-    
     public String queryOAPNodeErrorsPerMinute(String tier, String node, long start, long end, boolean rollup){
         return OverAllPerformanceMetricQuery.queryOAPNodeErrorsPerMinute(baseURL, application,tier,node,start, end, rollup);
     }
     
     //Error Page Redirects per Minute
-    public String queryOAPAppErrorPageRedirectsPerMinute(String tier, long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPAppErrorPageRedirectsPerMinute(baseURL, application,start, end, rollup);
-    }
-    
-    public String queryOAPTierErrorPageRedirectsPerMinute(String tier, long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPTierErrorPageRedirectsPerMinute(baseURL, application,tier,start, end, rollup);
-    }
-    
     public String queryOAPNodeErrorPageRedirectsPerMinute(String tier, String node, long start, long end, boolean rollup){
         return OverAllPerformanceMetricQuery.queryOAPNodeErrorPageRedirectsPerMinute(baseURL, application,tier,node,start, end, rollup);
     }
     //CallsPerMinute
-    public  String queryOAPAppCallsPerMinute(long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPAppCallsPerMinute(baseURL, application,start, end, rollup);
-    }
-    
-    public String queryOAPTierCallsPerMinute(String tier, long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPTierCallsPerMinute(baseURL, application,tier,start, end, rollup);
-    }
-    
     public String queryOAPNodeCallsPerMinute(String tier, String node, long start, long end, boolean rollup){
         return OverAllPerformanceMetricQuery.queryOAPNodeCallsPerMinute(baseURL, application,tier,node,start, end, rollup);
     }
-     // Avg Response Time
-    public String queryOAPAppAvgResponseTimeMS(long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPAppAvgResponseTimeMS(baseURL, application,start, end, rollup);
-    }
-    
-    public  String queryOAPTierAvgResponseTimeMS(String tier, long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPTierAvgResponseTimeMS(baseURL, application,tier,start, end, rollup);
-    }
-    
+     // Avg Response Time  
     public String queryOAPNodeAvgResponseTimeMS(String tier, String node, long start, long end, boolean rollup){
         return OverAllPerformanceMetricQuery.queryOAPNodeAvgResponseTimeMS(baseURL, application,tier,node,start, end, rollup);
     }
+    
+    public String queryOAPNodeExternalCallsCallsPerMinute(String tier, String node, String obj, long start, long end, boolean rollup){
+        return OverAllPerformanceMetricQuery.queryOAPNodeExternalCallsCallsPerMinute(baseURL,application,tier,node,obj,start,end,rollup);
+    }
+    
     
     /* EUM AJAX */
     public String queryEUM_AJAX_All(String urlPath, long start, long end, boolean rollup){

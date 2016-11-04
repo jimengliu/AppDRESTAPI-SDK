@@ -481,6 +481,9 @@ Application Infrastructure Performance|AAC-App|JVM|Process CPU Burnt (ms/min)
     public static final String NUMBER_OF_SLOW_CALLS="|Number of Slow Calls";
     public static final String NUMBER_OF_VERY_SLOW_CALLS="|Number of Very Slow Calls";
     public static final String STALL_COUNT="|Stall Count";
+    public static final String EXTERNAL_CALLS="|External Calls|";
+    public static final String THREAD_TASKS="|Thread Tasks";
+    public static final String LICENSE_FILE_TRACKER="|LicenseFileTracker";
     
     /*
      *  BT Performance
