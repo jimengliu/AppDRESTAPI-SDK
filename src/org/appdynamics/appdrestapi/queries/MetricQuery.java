@@ -1662,10 +1662,25 @@ public class MetricQuery {
         return OverAllPerformanceMetricQuery.queryOAPNodeAvgResponseTimeMS(baseURL, application,tier,node,start, end, rollup);
     }
     
+    public String queryOAPNodeExternalCallsAll(String tier, String node, String obj, long start, long end, boolean rollup){
+        return OverAllPerformanceMetricQuery.queryOAPNodeExternalCallsAll(baseURL,application,tier,node,obj,start,end,rollup);
+    }
+    
     public String queryOAPNodeExternalCallsCallsPerMinute(String tier, String node, String obj, long start, long end, boolean rollup){
         return OverAllPerformanceMetricQuery.queryOAPNodeExternalCallsCallsPerMinute(baseURL,application,tier,node,obj,start,end,rollup);
     }
     
+    public String queryOAPNodeExternalCallsErrorsPerMinute(String tier, String node, String obj, long start, long end, boolean rollup){
+        return OverAllPerformanceMetricQuery.queryOAPNodeExternalCallsErrorsPerMinute(baseURL,application,tier,node,obj,start,end,rollup);
+    }
+    
+    public String queryOAPNodeExternalCallsAverageResponseTimeMS(String tier, String node, String obj, long start, long end, boolean rollup){
+        return OverAllPerformanceMetricQuery.queryOAPNodeExternalCallsAverageResponseTimeMS(baseURL,application,tier,node,obj,start,end,rollup);
+    }
+    
+    public String queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute(String tier, String node, long start, long end, boolean rollup){
+        return OverAllPerformanceMetricQuery.queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute(baseURL,application,tier,node,start,end,rollup);
+    }
     
     /* EUM AJAX */
     public String queryEUM_AJAX_All(String urlPath, long start, long end, boolean rollup){

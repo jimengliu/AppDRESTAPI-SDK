@@ -153,7 +153,7 @@ public class RESTAccess extends BaseRESTAccess{
     }
     
     /**
-     * <p>Return the metric data for the metric path of Agent</p>
+     * <p>Return the metric data for the metric path of Agent from the Tier perspective.</p>
      * <ul>
      *      <li><b>Agent Availability</b>
      *          <ul>
@@ -217,7 +217,8 @@ public class RESTAccess extends BaseRESTAccess{
      */
     public MetricDatas getAgentTierAppMetricQuery(int queryIndex, String application, String tier, long start, long end, boolean rollup){
         String query=null;
-        if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).toString());}
+        if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ")
+                .append(application).append(" tier ").append(tier).toString());}
         MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
         switch(queryIndex){
             case 0:
@@ -1886,14 +1887,110 @@ public class RESTAccess extends BaseRESTAccess{
     }
     
     
-    
+    /**
+     * 
+     * <p>
+     *  Returns the Overall Application Performance metrics from the Application perspective. 
+     * There are queries for <b>'External Calls'</b> that expects an additional parameter <b>'obj'</b>, 
+     * for all other queries just pass a <b>'null'</b> as a parameter.
+     * </p>
+     * 
+     * 
+     * 
+     * <ul>
+     *      <li>Overall Application Performance
+     *          <ul>
+			<li>Index    :queryOAPNodeStallCount
+			<li>Index    :queryOAPNodeNumberOfVerySlowCalls
+			<li>Index    :queryOAPNodeNumberOfSlowCalls
+			<li>Index    :queryOAPNodeInfrastructureErrorsPerMinute
+			<li>Index    :queryOAPNodeHttpErrorCodesPerMinute
+			<li>Index    :queryOAPNodeExceptionsPerMinute
+			<li>Index    :queryOAPNodeErrorsPerMinute
+			<li>Index    :queryOAPNodeErrorPageRedirectsPerMinute
+			<li>Index    :queryOAPNodeCallsPerMinute
+			<li>Index    :queryOAPNodeAvgResponseTimeMS
+                </ul>
+            <li>External Calls
+            *   <ul>
+			<li>Index    :queryOAPNodeExternalCallsCallsPerMinute
+			<li>Index    :queryOAPNodeExternalCallsErrorsPerMinute
+			<li>Index    :queryOAPNodeExternalCallsAverageResponseTimeMS
+                </ul>
+            <li>Thread Tasks
+            *   <ul>
+			<li>Index    :queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute
+                </ul>
+            
+            <li>All The Metrics In A Branch
+            *   <ul>
+			<li>Index    :queryOAPNodeAll
+                        <li>Index    :queryOAPNodeExternalCallsAll
+                </ul>
+        </ul>
+
+     * @param queryIndex Index of the type of query to run
+     * @param application Name of the application which holds the metric
+     * @param obj Name of the Backend that holds the metrics
+     * @param start Timestamp in milliseconds for the start time for the query
+     * @param end Timestamp in milliseconds for the end time for the query
+     * @param rollup Defines whether metrics should be rolled up
+     * @return {@link MetricDatas}
+     */
     public MetricDatas getOAPAppMetricQuery(int queryIndex, String application,  String obj, long start, long end, boolean rollup){
         String query=null;
         if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).toString());}
         MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
         switch(queryIndex){
             case 0:
-                break;
+                    mq.queryOAPNodeStallCount(null,null,start,end,rollup);
+                    break;
+            case 1:
+                    mq.queryOAPNodeNumberOfVerySlowCalls(null,null,start,end,rollup);
+                    break;
+            case 2:
+                    mq.queryOAPNodeNumberOfSlowCalls(null,null,start,end,rollup);
+                    break;
+            case 3:
+                    mq.queryOAPNodeInfrastructureErrorsPerMinute(null,null,start,end,rollup);
+                    break;
+            case 4:
+                    mq.queryOAPNodeHttpErrorCodesPerMinute(null,null,start,end,rollup);
+                    break;
+            case 5:
+                    mq.queryOAPNodeExceptionsPerMinute(null,null,start,end,rollup);
+                    break;
+            case 6:
+                    mq.queryOAPNodeErrorsPerMinute(null,null,start,end,rollup);
+                    break;
+            case 7:
+                    mq.queryOAPNodeErrorPageRedirectsPerMinute(null,null,start,end,rollup);
+                    break;
+            case 8:
+                    mq.queryOAPNodeCallsPerMinute(null,null,start,end,rollup);
+                    break;
+            case 9:
+                    mq.queryOAPNodeAvgResponseTimeMS(null,null,start,end,rollup);
+                    break;
+            case 10:
+                    mq.queryOAPNodeExternalCallsCallsPerMinute(null,null,obj,start,end,rollup);
+                    break;
+            case 11:
+                    mq.queryOAPNodeExternalCallsErrorsPerMinute(null,null,obj,start,end,rollup);
+                    break;
+            case 12:
+                    mq.queryOAPNodeExternalCallsAverageResponseTimeMS(null,null,obj,start,end,rollup);
+                    break;
+            case 13:
+                    mq.queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute(null,null,start,end,rollup);
+                    break;
+                    
+            case 100:
+                    mq.queryOAPNodeAll(null,null,start,end,rollup);
+                    break;
+            case 101:
+                    mq.queryOAPNodeExternalCallsAll(null,null,obj,start,end,rollup);
+                    break;
                 
             default:
                 query=null;
@@ -1912,20 +2009,119 @@ public class RESTAccess extends BaseRESTAccess{
         return null;
     } 
     
+    
+    /**
+     * 
+     * <p>
+     *  Returns the Overall Application Performance metrics from the Tier perspective. 
+     * There are queries for <b>'External Calls'</b> that expects an additional parameter <b>'obj'</b>, 
+     * for all other queries just pass a <b>'null'</b> as a parameter.
+     * </p>
+     * 
+     * 
+     * 
+     * <ul>
+     *      <li>Overall Application Performance
+     *          <ul>
+			<li>Index    :queryOAPNodeStallCount
+			<li>Index    :queryOAPNodeNumberOfVerySlowCalls
+			<li>Index    :queryOAPNodeNumberOfSlowCalls
+			<li>Index    :queryOAPNodeInfrastructureErrorsPerMinute
+			<li>Index    :queryOAPNodeHttpErrorCodesPerMinute
+			<li>Index    :queryOAPNodeExceptionsPerMinute
+			<li>Index    :queryOAPNodeErrorsPerMinute
+			<li>Index    :queryOAPNodeErrorPageRedirectsPerMinute
+			<li>Index    :queryOAPNodeCallsPerMinute
+			<li>Index    :queryOAPNodeAvgResponseTimeMS
+                </ul>
+            <li>External Calls
+            *   <ul>
+			<li>Index    :queryOAPNodeExternalCallsCallsPerMinute
+			<li>Index    :queryOAPNodeExternalCallsErrorsPerMinute
+			<li>Index    :queryOAPNodeExternalCallsAverageResponseTimeMS
+                </ul>
+            <li>Thread Tasks
+            *   <ul>
+			<li>Index    :queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute
+                </ul>
+            
+            <li>All The Metrics In A Branch
+            *   <ul>
+			<li>Index    :queryOAPNodeAll
+                        <li>Index    :queryOAPNodeExternalCallsAll
+                </ul>
+        </ul>
+
+     * @param queryIndex Index of the type of query to run
+     * @param application Name of the application which holds the metric
+     * @param tier Name of the tier which holds the metrics
+     * @param obj Name of the Backend that holds the metrics
+     * @param start Timestamp in milliseconds for the start time for the query
+     * @param end Timestamp in milliseconds for the end time for the query
+     * @param rollup Defines whether metrics should be rolled up
+     * @return {@link MetricDatas}
+     */
     public MetricDatas getOAPTierMetricQuery(int queryIndex, String application, String tier, String obj, long start, long end, boolean rollup){
         String query=null;
-        if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).toString());}
+        if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).toString());}
         MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
         switch(queryIndex){
             case 0:
-                break;
+                    mq.queryOAPNodeStallCount(tier,null,start,end,rollup);
+                    break;
+            case 1:
+                    mq.queryOAPNodeNumberOfVerySlowCalls(tier,null,start,end,rollup);
+                    break;
+            case 2:
+                    mq.queryOAPNodeNumberOfSlowCalls(tier,null,start,end,rollup);
+                    break;
+            case 3:
+                    mq.queryOAPNodeInfrastructureErrorsPerMinute(tier,null,start,end,rollup);
+                    break;
+            case 4:
+                    mq.queryOAPNodeHttpErrorCodesPerMinute(tier,null,start,end,rollup);
+                    break;
+            case 5:
+                    mq.queryOAPNodeExceptionsPerMinute(tier,null,start,end,rollup);
+                    break;
+            case 6:
+                    mq.queryOAPNodeErrorsPerMinute(tier,null,start,end,rollup);
+                    break;
+            case 7:
+                    mq.queryOAPNodeErrorPageRedirectsPerMinute(tier,null,start,end,rollup);
+                    break;
+            case 8:
+                    mq.queryOAPNodeCallsPerMinute(tier,null,start,end,rollup);
+                    break;
+            case 9:
+                    mq.queryOAPNodeAvgResponseTimeMS(tier,null,start,end,rollup);
+                    break;
+            case 10:
+                    mq.queryOAPNodeExternalCallsCallsPerMinute(tier,null,obj,start,end,rollup);
+                    break;
+            case 11:
+                    mq.queryOAPNodeExternalCallsErrorsPerMinute(tier,null,obj,start,end,rollup);
+                    break;
+            case 12:
+                    mq.queryOAPNodeExternalCallsAverageResponseTimeMS(tier,null,obj,start,end,rollup);
+                    break;
+            case 13:
+                    mq.queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute(tier,null,start,end,rollup);
+                    break;
+                    
+            case 100:
+                    mq.queryOAPNodeAll(tier,null,start,end,rollup);
+                    break;
+            case 101:
+                    mq.queryOAPNodeExternalCallsAll(tier,null,obj,start,end,rollup);
+                    break;
                 
             default:
                 query=null;
         }
         
         if(query==null){ 
-            logger.log(Level.WARNING,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).toString());
+            logger.log(Level.WARNING,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).toString());
             return null;
         }
         
@@ -1937,20 +2133,116 @@ public class RESTAccess extends BaseRESTAccess{
         return null;
     } 
     
+    /**
+     * <p>
+     *  Returns the Overall Application Performance metrics from the Node perspective. 
+     * There are queries for <b>'External Calls'</b> that expects an additional parameter <b>'obj'</b>, 
+     * for all other queries just pass a <b>'null'</b> as a parameter.
+     * </p>
+     * 
+     * <ul>
+     *      <li>Overall Application Performance
+     *          <ul>
+			<li>Index    :queryOAPNodeStallCount
+			<li>Index    :queryOAPNodeNumberOfVerySlowCalls
+			<li>Index    :queryOAPNodeNumberOfSlowCalls
+			<li>Index    :queryOAPNodeInfrastructureErrorsPerMinute
+			<li>Index    :queryOAPNodeHttpErrorCodesPerMinute
+			<li>Index    :queryOAPNodeExceptionsPerMinute
+			<li>Index    :queryOAPNodeErrorsPerMinute
+			<li>Index    :queryOAPNodeErrorPageRedirectsPerMinute
+			<li>Index    :queryOAPNodeCallsPerMinute
+			<li>Index    :queryOAPNodeAvgResponseTimeMS
+                </ul>
+            <li>External Calls
+            *   <ul>
+			<li>Index    :queryOAPNodeExternalCallsCallsPerMinute
+			<li>Index    :queryOAPNodeExternalCallsErrorsPerMinute
+			<li>Index    :queryOAPNodeExternalCallsAverageResponseTimeMS
+                </ul>
+            <li>Thread Tasks
+            *   <ul>
+			<li>Index    :queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute
+                </ul>
+            
+            <li>All The Metrics In A Branch
+            *   <ul>
+			<li>Index    :queryOAPNodeAll
+                        <li>Index    :queryOAPNodeExternalCallsAll
+                </ul>
+        </ul>
+
+     * @param queryIndex Index of the type of query to run
+     * @param application Name of the application which holds the metric
+     * @param tier Name of the tier which holds the metrics
+     * @param node Name of the node which holds the metrics
+     * @param obj Name of the Backend that holds the metrics
+     * @param start Timestamp in milliseconds for the start time for the query
+     * @param end Timestamp in milliseconds for the end time for the query
+     * @param rollup Defines whether metrics should be rolled up
+     * @return {@link MetricDatas}
+     */
     public MetricDatas getOAPNodeMetricQuery(int queryIndex, String application, String tier, String node, String obj, long start, long end, boolean rollup){
         String query=null;
-        if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).toString());}
+        if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).toString());}
         MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
         switch(queryIndex){
             case 0:
-                break;
+                    mq.queryOAPNodeStallCount(tier,node,start,end,rollup);
+                    break;
+            case 1:
+                    mq.queryOAPNodeNumberOfVerySlowCalls(tier,node,start,end,rollup);
+                    break;
+            case 2:
+                    mq.queryOAPNodeNumberOfSlowCalls(tier,node,start,end,rollup);
+                    break;
+            case 3:
+                    mq.queryOAPNodeInfrastructureErrorsPerMinute(tier,node,start,end,rollup);
+                    break;
+            case 4:
+                    mq.queryOAPNodeHttpErrorCodesPerMinute(tier,node,start,end,rollup);
+                    break;
+            case 5:
+                    mq.queryOAPNodeExceptionsPerMinute(tier,node,start,end,rollup);
+                    break;
+            case 6:
+                    mq.queryOAPNodeErrorsPerMinute(tier,node,start,end,rollup);
+                    break;
+            case 7:
+                    mq.queryOAPNodeErrorPageRedirectsPerMinute(tier,node,start,end,rollup);
+                    break;
+            case 8:
+                    mq.queryOAPNodeCallsPerMinute(tier,node,start,end,rollup);
+                    break;
+            case 9:
+                    mq.queryOAPNodeAvgResponseTimeMS(tier,node,start,end,rollup);
+                    break;
+            case 10:
+                    mq.queryOAPNodeExternalCallsCallsPerMinute(tier,node,obj,start,end,rollup);
+                    break;
+            case 11:
+                    mq.queryOAPNodeExternalCallsErrorsPerMinute(tier,node,obj,start,end,rollup);
+                    break;
+            case 12:
+                    mq.queryOAPNodeExternalCallsAverageResponseTimeMS(tier,node,obj,start,end,rollup);
+                    break;
+            case 13:
+                    mq.queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute(tier,node,start,end,rollup);
+                    break;
+                    
+            case 100:
+                    mq.queryOAPNodeAll(tier,node,start,end,rollup);
+                    break;
+            case 101:
+                    mq.queryOAPNodeExternalCallsAll(tier,node,obj,start,end,rollup);
+                    break;
                 
             default:
                 query=null;
         }
         
         if(query==null){ 
-            logger.log(Level.WARNING,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).append(" and node").append(node).toString());
+            logger.log(Level.WARNING,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).toString());
             return null;
         }
         
@@ -2093,9 +2385,11 @@ public class RESTAccess extends BaseRESTAccess{
      * @return {@link MetricDatas}
      * 
      */
+    /*
     public MetricDatas getRESTMetricQuery(int queryIndex, String application, String tier, long start, long end){
         return getRESTMetricQuery(queryIndex, application, tier, start, end, false);
     }
+    */
     
     /**
      * 
@@ -2229,6 +2523,7 @@ public class RESTAccess extends BaseRESTAccess{
         * </ul>
      * </ul>
      */
+    /*
     public MetricDatas getRESTMetricQuery(int queryIndex, String application, String tier, long start, long end, boolean rollup){
         String query=null;
         if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).toString());}
@@ -2424,7 +2719,7 @@ public class RESTAccess extends BaseRESTAccess{
                 query=mq.queryOAPTierCallsPerMinute(tier, start, end, rollup);
                 break;
             case 63:
-                query=mq.queryOAPTierAvgResponseTimeMS(tier, start, end, rollup);
+                query=mq.queryOAPTierAvgResponseTimeMS(tier, null,start, end, rollup);
                 break;
 
             case 100: // All
@@ -2492,7 +2787,7 @@ public class RESTAccess extends BaseRESTAccess{
         return null;
         
     }
-    
+    */
     
     /**
      * 

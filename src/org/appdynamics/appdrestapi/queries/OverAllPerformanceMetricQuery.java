@@ -337,6 +337,32 @@ public class OverAllPerformanceMetricQuery {
     }
     
     
+    // Overall Application Performance|AAC-App|External Calls|[BACKEND]|*
+    public static String queryOAPNodeExternalCallsAll(String baseURL, String application,String tier, String node, String obj, long start, long end, boolean rollup){
+        StringBuilder val=new StringBuilder();
+        val.append(baseURL).append(s.CONTROLLER_APPS);
+        val.append(QueryEncoder.encode(application));
+        val.append(s.URL_METRIC_PATH);
+        
+        // This has to be encoded otherwise the query will fail.
+        StringBuilder bud = new StringBuilder();
+        bud.append(s.OVERALL_APPLICATION_PERF);
+        if(tier != null) bud.append(tier);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        bud.append(s.EXTERNAL_CALLS);
+        if(obj != null){ bud.append(obj);}
+        else{ bud.append(s._ALL_);}
+        bud.append(s.P).append(s._ALL_);
+        val.append(QueryEncoder.encode(bud.toString()));  
+        
+        //val.append(s.LAST_15_MINUTES);
+        val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
+        val.append(s.TIME_END_TIME).append(end);
+        if(!rollup) val.append(s.NO_ROLL_UP);;        
+        
+        return val.toString();
+    }
+    
     // Overall Application Performance|AAC-App|External Calls|[BACKEND]|Calls per Minute
     public static String queryOAPNodeExternalCallsCallsPerMinute(String baseURL, String application,String tier, String node, String obj, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
@@ -417,7 +443,7 @@ public class OverAllPerformanceMetricQuery {
     
     
     // Overall Application Performance|AAC-App|Thread Tasks|LicenseFileTracker|Calls per Minute
-    public static String queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute(String baseURL, String application,String tier, String node, String obj, long start, long end, boolean rollup){
+    public static String queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
