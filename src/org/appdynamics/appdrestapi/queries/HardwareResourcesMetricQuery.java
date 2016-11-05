@@ -91,8 +91,6 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
         bud.append(s.APPLICATION_INFRA_PERF).append(tier);
         if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
         bud.append(s.HARDWARE_RESOURCES);
@@ -137,8 +135,7 @@ public class HardwareResourcesMetricQuery {
         
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
-        bud.append(s.APPLICATION_INFRA_PERF);
-        bud.append(tier);
+        bud.append(s.APPLICATION_INFRA_PERF).append(tier);
         if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
         bud.append(s.HARDWARE_RESOURCES).append(s.HD_CPU).append(s.HD_CPU_IDLE);
         val.append(QueryEncoder.encode(bud.toString()));  
@@ -282,7 +279,7 @@ public class HardwareResourcesMetricQuery {
         bud.append(s.HARDWARE_RESOURCES).append(s.HD_DISKS);
         if(disk != null){ bud.append(disk);}
         else{bud.append(s._ALL_);}
-        bud.append(s.HD_DISKS_KB_READ_PER_SEC);
+        bud.append(s.P).append(s.HD_DISKS_KB_READ_PER_SEC);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -329,7 +326,7 @@ public class HardwareResourcesMetricQuery {
         bud.append(s.HARDWARE_RESOURCES).append(s.HD_DISKS);
         if(disk != null){ bud.append(disk);}
         else{bud.append(s._ALL_);}
-        bud.append(s.HD_DISKS_KB_WRITE_PER_SEC);
+        bud.append(s.P).append(s.HD_DISKS_KB_WRITE_PER_SEC);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -376,7 +373,7 @@ public class HardwareResourcesMetricQuery {
         bud.append(s.HARDWARE_RESOURCES).append(s.HD_DISKS);
         if(disk != null){ bud.append(disk);}
         else{bud.append(s._ALL_);}
-        bud.append(s.HD_DISKS_READ_PER_SEC);
+        bud.append(s.P).append(s.HD_DISKS_READ_PER_SEC);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -424,7 +421,7 @@ public class HardwareResourcesMetricQuery {
         
         if(disk != null){ bud.append(disk);}
         else{bud.append(s._ALL_);}
-        bud.append(s.HD_DISKS_WRITES_PER_SEC);
+        bud.append(s.P).append(s.HD_DISKS_WRITES_PER_SEC);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -472,7 +469,7 @@ public class HardwareResourcesMetricQuery {
         
         if(disk != null){ bud.append(disk);}
         else{bud.append(s._ALL_);}
-        bud.append(s.HD_DISKS_SPACE_USED);
+        bud.append(s.P).append(s.HD_DISKS_SPACE_USED);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -521,7 +518,7 @@ public class HardwareResourcesMetricQuery {
         
         if(disk != null){ bud.append(disk);}
         else{bud.append(s._ALL_);}
-        bud.append(s.HD_DISKS_AVG_SERVICE_TIME_MS);
+        bud.append(s.P).append(s.HD_DISKS_AVG_SERVICE_TIME_MS);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -569,7 +566,7 @@ public class HardwareResourcesMetricQuery {
         
         if(disk != null){ bud.append(disk);}
         else{bud.append(s._ALL_);}
-        bud.append(s.HD_DISKS_PER_CPU_TIME);
+        bud.append(s.P).append(s.HD_DISKS_PER_CPU_TIME);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -618,7 +615,7 @@ public class HardwareResourcesMetricQuery {
         
         if(disk != null){ bud.append(disk);}
         else{bud.append(s._ALL_);}
-        bud.append(s.HD_DISKS_SPACE_AVAILABLE);
+        bud.append(s.P).append(s.HD_DISKS_SPACE_AVAILABLE);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -667,7 +664,7 @@ public class HardwareResourcesMetricQuery {
         
         if(disk != null){ bud.append(disk);}
         else{bud.append(s._ALL_);}
-        bud.append(s.HD_DISKS_AVG_QUEUE_TIME_MS);
+        bud.append(s.P).append(s.HD_DISKS_AVG_QUEUE_TIME_MS);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -718,7 +715,7 @@ public class HardwareResourcesMetricQuery {
         
         if(volume != null){ bud.append(volume);}
         else{bud.append(s._ALL_);}
-        bud.append(s._ALL_);
+        bud.append(s.P).append(s._ALL_);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -767,7 +764,7 @@ public class HardwareResourcesMetricQuery {
         
         if(volume != null){ bud.append(volume);}
         else{bud.append(s._ALL_);}
-        bud.append(s.HD_MEMORY_USED_MB);
+        bud.append(s.P).append(s.HD_MEMORY_USED_MB);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -816,7 +813,7 @@ public class HardwareResourcesMetricQuery {
         
         if(volume != null){ bud.append(volume);}
         else{bud.append(s._ALL_);}
-        bud.append(s.HD_MEMORY_FREE_MB);
+        bud.append(s.P).append(s.HD_MEMORY_FREE_MB);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -865,7 +862,7 @@ public class HardwareResourcesMetricQuery {
         
         if(volume != null){ bud.append(volume);}
         else{bud.append(s._ALL_);}
-        bud.append(s.HD_MEMORY_USED_PERC);
+        bud.append(s.P).append(s.HD_MEMORY_USED_PERC);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -914,7 +911,7 @@ public class HardwareResourcesMetricQuery {
         
         if(volume != null){ bud.append(volume);}
         else{bud.append(s._ALL_);}
-        bud.append(s.HD_VOLUMES_TOTAL_MB);
+        bud.append(s.P).append(s.HD_VOLUMES_TOTAL_MB);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);

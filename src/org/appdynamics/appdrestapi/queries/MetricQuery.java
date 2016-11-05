@@ -267,6 +267,7 @@ public class MetricQuery {
     }
     
     public String queryHWTierDisksKBReadPerSec(String tier, String disk, long start, long end, boolean rollup){
+        if(disk != null) return HardwareResourcesMetricQuery.queryHWNodeDisksKBReadPerSec(baseURL, application, tier, null, disk, start, end, rollup);
         return HardwareResourcesMetricQuery.queryHWNodeDisksKBReadPerSec(baseURL, application, tier, null, null, start, end, rollup);
     }
     public String queryHWNodeDisksKBReadPerSec(String tier, String node, String disk, long start, long end, boolean rollup){
