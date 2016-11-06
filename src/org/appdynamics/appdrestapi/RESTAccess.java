@@ -529,11 +529,11 @@ public class RESTAccess extends BaseRESTAccess{
 			<li>Index    27: queryHWTierVolumesUsedPer
 			<li>Index    28: queryHWTierVolumesTotalMB
                          </ul>
-                 <li><b>System (Legacy)<b>
+                 <li><b>System (Legacy)</b>
                  *      <ul>
 			<li>Index    29: queryHWTierSystemRQ
                          </ul>
-                 <li><b>Multiple Queries<b>
+                 <li><b>Multiple Queries</b>
                  * <ul>
 			<li>Index    100: queryHWTierCPUAll
 			<li>Index    101: queryHWTierDisksAll
@@ -741,7 +741,7 @@ public class RESTAccess extends BaseRESTAccess{
                  *      <ul>
 			<li>Index    29: queryHWNodeSystemRQ
                          </ul>
-                 <li><b>Multiple Queries<b>
+                 <li><b>Multiple Queries</b>
                  * <ul>
 			<li>Index    100: queryHWNodeCPUAll
 			<li>Index    101: queryHWNodeDisksAll
@@ -1380,13 +1380,13 @@ public class RESTAccess extends BaseRESTAccess{
                 <li>Index     : queryJVMNodeProcessCPUBurntMSPerMin
                 <li>Index     : queryJVMNodeProcessCPUUsagePerc
               </ul>
-           <li><b>Memory Pools Code Cache<b>
+           <li><b>Memory Pools Code Cache</b>
            * <ul>
                 <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCommittedMB
                 <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCurrentUsage
                 <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheMaxAvailableMB
               </ul>
-           <li><b>Memory Pools PS Eden Space<b>
+           <li><b>Memory Pools PS Eden Space</b>
            * <ul>
                 <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCommittedMB
                 <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCurrentUsage
