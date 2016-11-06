@@ -562,11 +562,11 @@ public class MetricQuery {
     }
 
     public String queryJVMTierClassesCurrentLoadedClassCount(String tier, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeClassesTotalClassesLoaded( baseURL, application, tier, null, start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeClassesCurrentLoadedClassCount( baseURL, application, tier, null, start, end, rollup);
     }
 
     public String queryJVMNodeClassesCurrentLoadedClassCount(String tier, String node, long start, long end, boolean rollup){
-        return JVMMetricQuery.queryJVMNodeClassesTotalClassesLoaded( baseURL, application, tier, node, start, end, rollup);
+        return JVMMetricQuery.queryJVMNodeClassesCurrentLoadedClassCount( baseURL, application, tier, node, start, end, rollup);
     }
 
     public String queryJVMTierClassesTotalClassesLoaded(String tier, long start, long end, boolean rollup){

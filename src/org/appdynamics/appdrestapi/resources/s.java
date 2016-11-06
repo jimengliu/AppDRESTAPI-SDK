@@ -332,7 +332,7 @@ Application Infrastructure Performance|AAC-App|JVM|Process CPU Burnt (ms/min)
     public static final String JVM_COMPRESSED_CLASS_SPACE="Compressed Class Space|";
     public static final String JVM_CMS_PERM_GEN="CMS Perm Gen|";
     public static final String JVM_CMS_OLD_GEN="CMS Old Gen|";
-    public static final String JVM_PS_SURVIVOR_SPACE="Survivor Space|";
+    public static final String JVM_PS_SURVIVOR_SPACE="PS Survivor Space|";
     public static final String JVM_MEMORY_HEAP="Heap|";
     public static final String JVM_MEMORY_NON_HEAP="Non-Heap|";
     public static final String JVM_MEMORY_HEAP_COMMITED_MB="Committed (MB)";
