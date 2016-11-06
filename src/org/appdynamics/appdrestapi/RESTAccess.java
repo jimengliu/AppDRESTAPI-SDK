@@ -1278,157 +1278,158 @@ public class RESTAccess extends BaseRESTAccess{
     }
     
     /**
-        
+        <p> </p>
         <ul>
-        *      <li>Classes
-                *   <ul>
+               <li>Classes
+                    <ul>
                         <li>Index     : queryJVMNodeClassesCurrentLoadedClassCount
                         <li>Index     : queryJVMNodeClassesTotalClassesLoaded
                      </ul>
                 <li>Garbage Collection
-             *      <ul>
+                    <ul>
                                 <li>Memory Pools
-                                *       <ul>
-                                *               <li>Code Cache
+                                        <ul>
+                                                <li>Code Cache
                                                    <ul>
                                                              <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCommittedMB
                                                              <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCurrentUsage
                                                              <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheMaxAvailableMB
                                                    </ul>
-                                               *<li>Compressed Class Space
-                                               *    <ul>
+                                                <li>Compressed Class Space
+                                                    <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceCurrentUsageMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceMaxAvailableMB
                                                       </ul>
-                                               *<li>Metaspace
-                                               *    <ul>
+                                                <li>Metaspace
+                                                    <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceCurrentUsageMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceMaxAvailableMB
                                                       </ul>
                                                 <li>PS Eden Space
-                                                * <ul>
+                                                  <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCurrentUsage
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceMaxAvailableMB
                                                    </ul>
                                                 <li> PS Old Gen
-                                                *    <ul>
+                                                     <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCurrentUsage
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenMaxAvailableMB
-                                                     *</ul>
+                                                      </ul>
                                                 <li>PS Perm Gen
-                                                *   <ul>
+                                                    <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCurrentUsage
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenMaxAvailableMB
                                                     </ul>
                                                 <li>PS Survivor Space
-                                                * <ul>
+                                                  <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCurrentUsage
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceMaxAvailableMB
                                                     </ul>
-                                               *<li>Nursery
-                                               *    <ul>
+                                                <li>Nursery
+                                                    <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsNurseryCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsNurseryCurrentUsageMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsNurseryMaxAvailableMB
                                                       </ul>
-                                               *<li>Old Space
-                                               *    <ul>
+                                                <li>Old Space
+                                                    <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceCurrentUsageMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceMaxAvailableMB
                                                       </ul>
-                                               *<li>Eden Space
-                                               *    <ul>
+                                                <li>Eden Space
+                                                    <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceCurrentUsageMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceMaxAvailableMB
                                                       </ul>
-                                               *<li>Tenured Gen
-                                               *    <ul>
+                                                <li>Tenured Gen
+                                                    <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenCurrentUsageMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenMaxAvailableMB
                                                       </ul>
-                                               *<li>Perm Gen
-                                               *    <ul>
+                                                <li>Perm Gen
+                                                    <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPermGenCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPermGenCurrentUsageMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPermGenMaxAvailableMB
                                                      </ul>
-                                               *<li>Survivor Space
-                                               *    <ul>
+                                                <li>Survivor Space
+                                                    <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceCurrentUsageMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceMaxAvailableMB
                                                       </ul>
-                                               *<li>Par Eden Space
-                                               *    <ul>
+                                                <li>Par Eden Space
+                                                    <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceCurrentUsageMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceMaxAvailableMB
-                                               *    </ul>
-                                               *<li>Par Survivor Space
-                                               *    <ul>
+                                                    </ul>
+                                                <li>Par Survivor Space
+                                                    <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceCurrentUsageMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceMaxAvailableMB
                                                       </ul>
-                                               *<li>CMS Old Gen
-                                               *    <ul>
+                                                <li>CMS Old Gen
+                                                    <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenCurrentUsageMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenGenMaxAvailableMB
                                                       </ul>
-                                               *<li>CMS Perm Gen
-                                               *    <ul>
+                                                <li>CMS Perm Gen
+                                                    <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenCurrentUsageMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenMaxAvailableMB
                                                       </ul>
-                                               *<li>G1 Eden Space
-                                               *    <ul>
+                                                <li>G1 Eden Space
+                                                    <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceCurrentUsageMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceMaxAvailableMB
                                                       </ul>
-                                               *<li>G1 Old Gen
-                                               *    <ul>
+                                                <li>G1 Old Gen
+                                                    <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenCurrentUsageMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenMaxAvailableMB
                                                       </ul>
-                                               *<li>G1 Survivor Space
-                                               *    <ul>
+                                                <li>G1 Survivor Space
+                                                    <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceCurrentUsageMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceMaxAvailableMB
                                                       </ul>
-                                               *<li>G1 Perm Gen
-                                               *    <ul>
+                                                <li>G1 Perm Gen
+                                                    <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenCurrentUsageMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenMaxAvailableMB
                                                      </ul>
-                                               *<li>Class Block Memory
-                                               *    <ul>
+                                                <li>Class Block Memory
+                                                    <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryCurrentUsageMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryMaxAvailableMB
                                                       </ul>
-                                               *<li>Class Memory
-                                               *    <ul>
+                                                <li>Class Memory
+                                                    <ul>
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryCommittedMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryCurrentUsageMB
                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryMaxAvailableMB
                                                       </ul>
                                         </ul>
-                        *
+                                 
+                         
                             <li>Index     : queryJVMNodeGarbageCollectionGCTimeSpentPerMin
                             <li>Index     : queryJVMNodeGarbageCollectionMajorCollectionTimeSpentPerMin
                             <li>Index     : queryJVMNodeGarbageCollectionMinorCollectionTimeSpentPerMin
@@ -1436,35 +1437,35 @@ public class RESTAccess extends BaseRESTAccess{
                             <li>Index     : queryJVMNodeGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin
                        </ul>
                 <li>Memory 
-                *   <ul>
-                        *<li>Memory Heap
-                        *    <ul>
+                    <ul>
+                         <li>Memory Heap
+                             <ul>
                                      <li>Index     : queryJVMNodeMemoryHeapCommittedMB
                                      <li>Index     : queryJVMNodeMemoryHeapCurrentUsageMB
                                      <li>Index     : queryJVMNodeMemoryHeapMaxAvailableMB
                                      <li>Index     : queryJVMNodeMemoryHeapUsedPerc
                                </ul>
-                        *<li>Memory NonHeap
-                        *    <ul>
+                         <li>Memory NonHeap
+                             <ul>
                                      <li>Index     : queryJVMNodeMemoryNonHeapCommittedMB
                                      <li>Index     : queryJVMNodeMemoryNonHeapCurrentUsageMB
                                      <li>Index     : queryJVMNodeMemoryNonHeapMaxAvailableMB
                                      <li>Index     : queryJVMNodeMemoryNonHeapUsedPerc
                                </ul>
-                *   </ul>
-            *  <li>Threads
-                *    <ul>
+                    </ul>
+               <li>Threads
+                     <ul>
                              <li>Index     : queryJVMNodeThreadsCurrentNoOfThreads
                        </ul>
                 <li>Process
-                    * <ul>
+                      <ul>
                          <li>Index     : queryJVMNodeProcessCPUBurntMSPerMin
                          <li>Index     : queryJVMNodeProcessCPUUsagePerc
                        </ul>
 
-* 
-*       <li>Multiple Metrics 
-*               <ul>
+  
+        <li>Multiple Metrics 
+                <ul>
                                 <li>Index     : queryJVMNodeProcessCPUALL
                                 <li>Index     : queryJVMNodeMemoryHeapALL
                                 <li>Index     : queryJVMNodeMemoryNonHeapALL
@@ -1495,6 +1496,9 @@ public class RESTAccess extends BaseRESTAccess{
                                 <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryALL
                  </ul>
         </ul>
+          
+        * 
+        * 
      * @param queryIndex Index of the type of query to run
      * @param application Name of the application which holds the metric
      * @param tier Name of the tier which holds the metric
