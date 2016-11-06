@@ -103,7 +103,7 @@ public class s {
     public static final String AGENT_DISCOVERED_BACKENDS_REGISTRATION_FAILED="Registration Failed";
     public static final String AGENT_DISCOVERED_BACKENDS_UNMONITORED_CALLS_PER_MINUTE="Unmonitored Calls per Minute";
     public static final String AGENT_CONFIG_CHANNEL="ConfigChannel";
-    public static final String AGENT_CONFIG_CHANNEL_NUM_OF_APP_INFRA_CHANGES_SENT="Number Of Application Infrastructure Changes Sent";
+    public static final String AGENT_CONFIG_CHANNEL_NUM_OF_APP_INFRA_CHANGES_SENT="|Number Of Application Infrastructure Changes Sent";
     public static final String AGENT_SNAPSHOT_UPLOAD="Snapshot Upload|";
     public static final String AGENT_SNAPSHOT_UPLOAD_SNAPSHOTS_UPLOADED="Snapshots uploaded";
     public static final String AGENT_SNAPSHOT_UPLOAD_INVALID_SNAPSHOTS="Invalid Snapshots";

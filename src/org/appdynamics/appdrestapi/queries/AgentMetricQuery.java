@@ -993,7 +993,7 @@ public class AgentMetricQuery{
             bud.append(s.INDIVIDUAL_NODES).append(node);
         }
         
-        bud.append(s.AGENT).append(s.AGENT_EVENT_UPLOAD).append(s.AGENT_EVENT_UPLOAD_EVENTS_UPLOADED);
+        bud.append(s.AGENT).append(s.AGENT_EVENT_UPLOAD).append(s.AGENT_EVENT_UPLOAD_EVENTS_EXCEEDING_LIMIT);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);

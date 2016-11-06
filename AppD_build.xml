@@ -58,7 +58,8 @@
           <fileset dir="${build.dir}">
             <include name="org/appdynamics/appdrestapi/RESTAccess.class"/>
             <include name="org/appdynamics/appdrestapi/RESTAccess2.class"/>
-            <include name="org/appdynamics/appdrestapi/GetTimeStamps.class"/>
+            <include name="org/appdynamics/appdrestapi/BaseRESTAccess.class"/>
+            <include name="org/appdynamics/appdrestapi/GetTimeStamps.*"/>
             <include name="org/appdynamics/appdrestapi/agent/*.class"/>
             <include name="org/appdynamics/appdrestapi/conf/*.class"/>
             <include name="org/appdynamics/appdrestapi/data/*.class"/>
