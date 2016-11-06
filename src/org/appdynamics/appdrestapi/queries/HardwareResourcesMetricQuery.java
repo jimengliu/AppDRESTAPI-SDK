@@ -1510,7 +1510,7 @@ public class HardwareResourcesMetricQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.APPLICATION_INFRA_PERF).append(tier);
-        bud.append(s.INDIVIDUAL_NODES).append(node);
+        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
         bud.append(s.HARDWARE_RESOURCES).append(s.HD_NETWORK);
         
         if(card != null){
@@ -1619,7 +1619,7 @@ public class HardwareResourcesMetricQuery {
         }else{
             bud.append(s._ALL_);
         }
-        bud.append(s.HD_NETWORK_OUTGOING_KB);
+        bud.append(s.P).append(s.HD_NETWORK_OUTGOING_KB);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);

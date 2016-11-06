@@ -660,13 +660,13 @@ public class RESTAccess extends BaseRESTAccess{
                 query = mq.queryHWTierDisksAll(tier,obj,start,end,rollup);
                 break;
             case 102:
-                query = mq.queryHWTierVolumesAll(tier,obj,start,end,rollup);
+                query = mq.queryHWTierMemoryAll(tier,start,end,rollup);    
                 break;
             case 103:
                 query = mq.queryHWTierNetworkAll(tier,obj,start,end,rollup);
                 break;
             case 104:
-                query = mq.queryHWTierMemoryAll(tier,start,end,rollup);    
+                query = mq.queryHWTierVolumesAll(tier,obj,start,end,rollup);
                 break;
             case 105:
                 query = mq.queryHWTierSystemAll(tier,start,end,rollup);
