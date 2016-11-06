@@ -693,13 +693,13 @@ public class RESTAccess extends BaseRESTAccess{
      * <p>Returns the metric data for the metric path for hardware metrics</p>
      * 
      * <ul>
-     *      <li><b>CPU</b>
+     *      <li>CPU
      *              <ul>
 			<li>Index    0: queryHWNodeCPUBusy
 			<li>Index    1: queryHWNodeCPUIdle
 			<li>Index    2: queryHWNodeCPUStolen
                      </ul>
-              <li><b>Disks</b>
+              <li>Disks
               *     <ul>
 			<li>Index    3: queryHWNodeDisksKBReadPerSec
 			<li>Index    4: queryHWNodeDisksKBWrittenPerSec
@@ -711,7 +711,7 @@ public class RESTAccess extends BaseRESTAccess{
 			<li>Index    10: queryHWNodeDisksSpaceAvailable
 			<li>Index    11: queryHWNodeDisksAvgQueueTimeMS
                        </ul>
-                <li><b>Memory</b>
+                <li>Memory
                 *       <ul>
 			<li>Index    12: queryHWNodeMemoryFreePerc
 			<li>Index    13: queryHWNodeMemoryFreeMB
@@ -719,7 +719,7 @@ public class RESTAccess extends BaseRESTAccess{
 			<li>Index    15: queryHWNodeMemoryUsedPerc
 			<li>Index    16: queryHWNodeMemoryUsedMB
                         *</ul> 
-                <li><b>Network</b>
+                <li>Network
                 *       <ul>
 			<li>Index    17: queryHWNodeNetworkIncomingKB
 			<li>Index    18: queryHWNodeNetworkIncomingKBPerSec
@@ -730,18 +730,18 @@ public class RESTAccess extends BaseRESTAccess{
 			<li>Index    23: queryHWNodeNetworkOutgoingPackets
 			<li>Index    24: queryHWNodeNetworkOutgoingPacketsPerSec
                         </ul>
-                <li><b>Volumes (Legacy)</b>
+                <li>Volumes (Legacy)
                 *       <ul>
 			<li>Index    25: queryHWNodeVolumesUsedMB
 			<li>Index    26: queryHWNodeVolumesFreeMB
 			<li>Index    27: queryHWNodeVolumesUsedPer
 			<li>Index    28: queryHWNodeVolumesTotalMB
                          </ul>
-                 <li><b>System (Legacy)<b>
+                 <li>System (Legacy)
                  *      <ul>
 			<li>Index    29: queryHWNodeSystemRQ
                          </ul>
-                 <li><b>Multiple Queries</b>
+                 <li>Multiple Queries
                  * <ul>
 			<li>Index    100: queryHWNodeCPUAll
 			<li>Index    101: queryHWNodeDisksAll
