@@ -553,6 +553,14 @@ public class MetricQuery {
 
       /* ************************************* Classes|CurrentLoaded ********************************************* */
 
+    public String queryJVMTierClassesALL(String tier, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeClassesALL( baseURL, application, tier, null, start, end, rollup);
+    }
+
+    public String queryJVMNodeClassesALL(String tier, String node, long start, long end, boolean rollup){
+        return JVMMetricQuery.queryJVMNodeClassesALL( baseURL, application, tier, node, start, end, rollup);
+    }
+
     public String queryJVMTierClassesCurrentLoadedClassCount(String tier, long start, long end, boolean rollup){
         return JVMMetricQuery.queryJVMNodeClassesTotalClassesLoaded( baseURL, application, tier, null, start, end, rollup);
     }

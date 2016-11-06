@@ -1282,8 +1282,8 @@ public class RESTAccess extends BaseRESTAccess{
         <ul>
                <li>Classes
                     <ul>
-                        <li>Index     : queryJVMNodeClassesCurrentLoadedClassCount
-                        <li>Index     : queryJVMNodeClassesTotalClassesLoaded
+                        <li>Index     0: queryJVMNodeClassesCurrentLoadedClassCount
+                        <li>Index     1: queryJVMNodeClassesTotalClassesLoaded
                      </ul>
                 <li>Garbage Collection
                     <ul>
@@ -1291,209 +1291,209 @@ public class RESTAccess extends BaseRESTAccess{
                                         <ul>
                                                 <li>Code Cache
                                                    <ul>
-                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCommittedMB
-                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCurrentUsage
-                                                             <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheMaxAvailableMB
+                                                             <li>Index     2: queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCommittedMB
+                                                             <li>Index     3: queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCurrentUsage
+                                                             <li>Index     4: queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheMaxAvailableMB
                                                    </ul>
                                                 <li>Compressed Class Space
                                                     <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceCurrentUsageMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceMaxAvailableMB
+                                                            <li>Index     5: queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceCommittedMB
+                                                            <li>Index     6: queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceCurrentUsageMB
+                                                            <li>Index     7: queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceMaxAvailableMB
                                                       </ul>
                                                 <li>Metaspace
                                                     <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceCurrentUsageMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceMaxAvailableMB
+                                                            <li>Index     8: queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceCommittedMB
+                                                            <li>Index     9: queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceCurrentUsageMB
+                                                            <li>Index     10: queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceMaxAvailableMB
                                                       </ul>
                                                 <li>PS Eden Space
                                                   <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCurrentUsage
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceMaxAvailableMB
+                                                            <li>Index     11: queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCommittedMB
+                                                            <li>Index     12: queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCurrentUsage
+                                                            <li>Index     13: queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceMaxAvailableMB
                                                    </ul>
                                                 <li> PS Old Gen
                                                      <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCurrentUsage
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenMaxAvailableMB
+                                                            <li>Index     14: queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCommittedMB
+                                                            <li>Index     15: queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCurrentUsage
+                                                            <li>Index     16: queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenMaxAvailableMB
                                                       </ul>
                                                 <li>PS Perm Gen
                                                     <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCurrentUsage
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenMaxAvailableMB
+                                                            <li>Index     17: queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCommittedMB
+                                                            <li>Index     18: queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCurrentUsage
+                                                            <li>Index     19: queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenMaxAvailableMB
                                                     </ul>
                                                 <li>PS Survivor Space
                                                   <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCurrentUsage
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceMaxAvailableMB
+                                                            <li>Index     20: queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCommittedMB
+                                                            <li>Index     21: queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCurrentUsage
+                                                            <li>Index     22: queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceMaxAvailableMB
                                                     </ul>
                                                 <li>Nursery
                                                     <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsNurseryCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsNurseryCurrentUsageMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsNurseryMaxAvailableMB
+                                                            <li>Index     23: queryJVMNodeGarbageCollectionMemoryPoolsNurseryCommittedMB
+                                                            <li>Index     24: queryJVMNodeGarbageCollectionMemoryPoolsNurseryCurrentUsageMB
+                                                            <li>Index     25: queryJVMNodeGarbageCollectionMemoryPoolsNurseryMaxAvailableMB
                                                       </ul>
                                                 <li>Old Space
                                                     <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceCurrentUsageMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceMaxAvailableMB
+                                                            <li>Index     26: queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceCommittedMB
+                                                            <li>Index     27: queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceCurrentUsageMB
+                                                            <li>Index     28: queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceMaxAvailableMB
                                                       </ul>
                                                 <li>Eden Space
                                                     <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceCurrentUsageMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceMaxAvailableMB
+                                                            <li>Index     29: queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceCommittedMB
+                                                            <li>Index     30: queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceCurrentUsageMB
+                                                            <li>Index     31: queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceMaxAvailableMB
                                                       </ul>
                                                 <li>Tenured Gen
                                                     <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenCurrentUsageMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenMaxAvailableMB
+                                                            <li>Index     32: queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenCommittedMB
+                                                            <li>Index     33: queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenCurrentUsageMB
+                                                            <li>Index     34: queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenMaxAvailableMB
                                                       </ul>
                                                 <li>Perm Gen
                                                     <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPermGenCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPermGenCurrentUsageMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPermGenMaxAvailableMB
+                                                            <li>Index     35: queryJVMNodeGarbageCollectionMemoryPoolsPermGenCommittedMB
+                                                            <li>Index     36: queryJVMNodeGarbageCollectionMemoryPoolsPermGenCurrentUsageMB
+                                                            <li>Index     37: queryJVMNodeGarbageCollectionMemoryPoolsPermGenMaxAvailableMB
                                                      </ul>
                                                 <li>Survivor Space
                                                     <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceCurrentUsageMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceMaxAvailableMB
+                                                            <li>Index     38: queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceCommittedMB
+                                                            <li>Index     39: queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceCurrentUsageMB
+                                                            <li>Index     40: queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceMaxAvailableMB
                                                       </ul>
                                                 <li>Par Eden Space
                                                     <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceCurrentUsageMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceMaxAvailableMB
+                                                            <li>Index     41: queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceCommittedMB
+                                                            <li>Index     42: queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceCurrentUsageMB
+                                                            <li>Index     43: queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceMaxAvailableMB
                                                     </ul>
                                                 <li>Par Survivor Space
                                                     <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceCurrentUsageMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceMaxAvailableMB
+                                                            <li>Index     44: queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceCommittedMB
+                                                            <li>Index     45: queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceCurrentUsageMB
+                                                            <li>Index     46: queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceMaxAvailableMB
                                                       </ul>
                                                 <li>CMS Old Gen
                                                     <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenCurrentUsageMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenGenMaxAvailableMB
+                                                            <li>Index     47: queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenCommittedMB
+                                                            <li>Index     48: queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenCurrentUsageMB
+                                                            <li>Index     49: queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenGenMaxAvailableMB
                                                       </ul>
                                                 <li>CMS Perm Gen
                                                     <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenCurrentUsageMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenMaxAvailableMB
+                                                            <li>Index     50: queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenCommittedMB
+                                                            <li>Index     51: queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenCurrentUsageMB
+                                                            <li>Index     52: queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenMaxAvailableMB
                                                       </ul>
                                                 <li>G1 Eden Space
                                                     <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceCurrentUsageMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceMaxAvailableMB
+                                                            <li>Index     53: queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceCommittedMB
+                                                            <li>Index     54: queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceCurrentUsageMB
+                                                            <li>Index     55: queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceMaxAvailableMB
                                                       </ul>
                                                 <li>G1 Old Gen
                                                     <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenCurrentUsageMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenMaxAvailableMB
+                                                            <li>Index     56: queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenCommittedMB
+                                                            <li>Index     57: queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenCurrentUsageMB
+                                                            <li>Index     58: queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenMaxAvailableMB
                                                       </ul>
                                                 <li>G1 Survivor Space
                                                     <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceCurrentUsageMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceMaxAvailableMB
+                                                            <li>Index     59: queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceCommittedMB
+                                                            <li>Index     60: queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceCurrentUsageMB
+                                                            <li>Index     61: queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceMaxAvailableMB
                                                       </ul>
                                                 <li>G1 Perm Gen
                                                     <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenCurrentUsageMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenMaxAvailableMB
+                                                            <li>Index     62: queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenCommittedMB
+                                                            <li>Index     63: queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenCurrentUsageMB
+                                                            <li>Index     64: queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenMaxAvailableMB
                                                      </ul>
                                                 <li>Class Block Memory
                                                     <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryCurrentUsageMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryMaxAvailableMB
+                                                            <li>Index     65: queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryCommittedMB
+                                                            <li>Index     66: queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryCurrentUsageMB
+                                                            <li>Index     67: queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryMaxAvailableMB
                                                       </ul>
                                                 <li>Class Memory
                                                     <ul>
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryCommittedMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryCurrentUsageMB
-                                                            <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryMaxAvailableMB
+                                                            <li>Index     68: queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryCommittedMB
+                                                            <li>Index     69: queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryCurrentUsageMB
+                                                            <li>Index     70: queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryMaxAvailableMB
                                                       </ul>
                                         </ul>
                                  
                          
-                            <li>Index     : queryJVMNodeGarbageCollectionGCTimeSpentPerMin
-                            <li>Index     : queryJVMNodeGarbageCollectionMajorCollectionTimeSpentPerMin
-                            <li>Index     : queryJVMNodeGarbageCollectionMinorCollectionTimeSpentPerMin
-                            <li>Index     : queryJVMNodeGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin
-                            <li>Index     : queryJVMNodeGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin
+                            <li>Index     71: queryJVMNodeGarbageCollectionGCTimeSpentPerMin
+                            <li>Index     72: queryJVMNodeGarbageCollectionMajorCollectionTimeSpentPerMin
+                            <li>Index     73: queryJVMNodeGarbageCollectionMinorCollectionTimeSpentPerMin
+                            <li>Index     74: queryJVMNodeGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin
+                            <li>Index     75: queryJVMNodeGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin
                        </ul>
                 <li>Memory 
                     <ul>
                          <li>Memory Heap
                              <ul>
-                                     <li>Index     : queryJVMNodeMemoryHeapCommittedMB
-                                     <li>Index     : queryJVMNodeMemoryHeapCurrentUsageMB
-                                     <li>Index     : queryJVMNodeMemoryHeapMaxAvailableMB
-                                     <li>Index     : queryJVMNodeMemoryHeapUsedPerc
+                                     <li>Index     76: queryJVMNodeMemoryHeapCommittedMB
+                                     <li>Index     77: queryJVMNodeMemoryHeapCurrentUsageMB
+                                     <li>Index     78: queryJVMNodeMemoryHeapMaxAvailableMB
+                                     <li>Index     79: queryJVMNodeMemoryHeapUsedPerc
                                </ul>
                          <li>Memory NonHeap
                              <ul>
-                                     <li>Index     : queryJVMNodeMemoryNonHeapCommittedMB
-                                     <li>Index     : queryJVMNodeMemoryNonHeapCurrentUsageMB
-                                     <li>Index     : queryJVMNodeMemoryNonHeapMaxAvailableMB
-                                     <li>Index     : queryJVMNodeMemoryNonHeapUsedPerc
+                                     <li>Index     80: queryJVMNodeMemoryNonHeapCommittedMB
+                                     <li>Index     81: queryJVMNodeMemoryNonHeapCurrentUsageMB
+                                     <li>Index     82: queryJVMNodeMemoryNonHeapMaxAvailableMB
+                                     <li>Index     83: queryJVMNodeMemoryNonHeapUsedPerc
                                </ul>
                     </ul>
                <li>Threads
                      <ul>
-                             <li>Index     : queryJVMNodeThreadsCurrentNoOfThreads
+                             <li>Index     84: queryJVMNodeThreadsCurrentNoOfThreads
                        </ul>
                 <li>Process
                       <ul>
-                         <li>Index     : queryJVMNodeProcessCPUBurntMSPerMin
-                         <li>Index     : queryJVMNodeProcessCPUUsagePerc
+                         <li>Index     85: queryJVMNodeProcessCPUBurntMSPerMin
+                         <li>Index     86: queryJVMNodeProcessCPUUsagePerc
                        </ul>
 
   
         <li>Multiple Metrics 
                 <ul>
-                *              <li>Index     : queryJVMNodeClassesALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsNurseryALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsPermGenALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryALL
-                                <li>Index     : queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryALL
-                                <li>Index     : queryJVMNodeGarbageCollectionALL
-                                <li>Index     : queryJVMNodeMemoryHeapALL
-                                <li>Index     : queryJVMNodeMemoryNonHeapALL
-                                <li>Index     : queryJVMNodeProcessCPUALL
+                *              <li>Index     100: queryJVMNodeClassesALL
+                                <li>Index     101: queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheALL
+                                <li>Index     102: queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceALL
+                                <li>Index     103: queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceALL
+                                <li>Index     104: queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceALL
+                                <li>Index     105: queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenALL
+                                <li>Index     106: queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenALL
+                                <li>Index     107: queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceALL
+                                <li>Index     108: queryJVMNodeGarbageCollectionMemoryPoolsNurseryALL
+                                <li>Index     109: queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceALL
+                                <li>Index     110: queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceALL
+                                <li>Index     111: queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenALL
+                                <li>Index     112: queryJVMNodeGarbageCollectionMemoryPoolsPermGenALL
+                                <li>Index     113: queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceALL
+                                <li>Index     114: queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceALL
+                                <li>Index     115: queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceALL
+                                <li>Index     116: queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenALL
+                                <li>Index     117: queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenALL
+                                <li>Index     118: queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceALL
+                                <li>Index     119: queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenALL
+                                <li>Index     120: queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceALL
+                                <li>Index     121: queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenALL
+                                <li>Index     122: queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryALL
+                                <li>Index     123: queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryALL
+                                <li>Index     124: queryJVMNodeGarbageCollectionALL
+                                <li>Index     125: queryJVMNodeMemoryHeapALL
+                                <li>Index     126: queryJVMNodeMemoryNonHeapALL
+                                <li>Index     127: queryJVMNodeProcessCPUALL
           
                  </ul>
         </ul>
@@ -1520,346 +1520,346 @@ public class RESTAccess extends BaseRESTAccess{
             case 1:
                 query = mq.queryJVMNodeClassesTotalClassesLoaded(tier,node,start,end,rollup);
                 break;
-            case 4:
+            case 2:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 5:
+            case 3:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheCurrentUsage(tier,node,start,end,rollup);
                 break;
-            case 6:
+            case 4:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 33:
+            case 5:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 34:
+            case 6:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 35:
+            case 7:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 68:
+            case 8:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 69:
+            case 9:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 70:
+            case 10:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 7:
+            case 11:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 8:
+            case 12:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceCurrentUsage(tier,node,start,end,rollup);
                 break;
-            case 9:
+            case 13:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 10:
+            case 14:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 11:
+            case 15:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenCurrentUsage(tier,node,start,end,rollup);
                 break;
-            case 12:
+            case 16:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 13:
+            case 17:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 14:
+            case 18:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenCurrentUsage(tier,node,start,end,rollup);
                 break;
-            case 15:
+            case 19:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 16:
+            case 20:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 17:
+            case 21:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceCurrentUsage(tier,node,start,end,rollup);
                 break;
-            case 18:
+            case 22:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 36:
+            case 23:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsNurseryCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 37:
+            case 24:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsNurseryCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 38:
+            case 25:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsNurseryMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 62:
+            case 26:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 63:
+            case 27:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 64:
+            case 28:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 39:
+            case 29:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 40:
+            case 30:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 41:
+            case 31:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 30:
+            case 32:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 31:
+            case 33:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 32:
+            case 34:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 56:
+            case 35:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPermGenCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 57:
+            case 36:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPermGenCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 58:
+            case 37:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPermGenMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 59:
+            case 38:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 60:
+            case 39:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 61:
+            case 40:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 24:
+            case 41:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 25:
+            case 42:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 26:
+            case 43:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 48:
+            case 44:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 51:
+            case 45:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 52:
+            case 46:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 65:
+            case 47:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 66:
+            case 48:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 67:
+            case 49:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenGenMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 42:
+            case 50:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 43:
+            case 51:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 44:
+            case 52:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 27:
+            case 53:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 28:
+            case 54:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 29:
+            case 55:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 71:
+            case 56:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 72:
+            case 57:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 73:
+            case 58:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 53:
+            case 59:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 54:
+            case 60:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 55:
+            case 61:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 45:
+            case 62:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 46:
+            case 63:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 47:
+            case 64:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 74:
+            case 65:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 75:
+            case 66:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 76:
+            case 67:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 77:
+            case 68:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 78:
+            case 69:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 79:
+            case 70:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 19:
+            case 71:
                 query = mq.queryJVMNodeGarbageCollectionGCTimeSpentPerMin(tier,node,start,end,rollup);
                 break;
-            case 20:
+            case 72:
                 query = mq.queryJVMNodeGarbageCollectionMajorCollectionTimeSpentPerMin(tier,node,start,end,rollup);
                 break;
-            case 21:
+            case 73:
                 query = mq.queryJVMNodeGarbageCollectionMinorCollectionTimeSpentPerMin(tier,node,start,end,rollup);
                 break;
-            case 22:
+            case 74:
                 query = mq.queryJVMNodeGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin(tier,node,start,end,rollup);
                 break;
-            case 23:
+            case 75:
                 query = mq.queryJVMNodeGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin(tier,node,start,end,rollup);
                 break;
-            case 80:
+            case 76:
                 query = mq.queryJVMNodeMemoryHeapCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 81:
+            case 77:
                 query = mq.queryJVMNodeMemoryHeapCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 82:
+            case 78:
                 query = mq.queryJVMNodeMemoryHeapMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 83:
+            case 79:
                 query = mq.queryJVMNodeMemoryHeapUsedPerc(tier,node,start,end,rollup);
                 break;
-            case 84:
+            case 80:
                 query = mq.queryJVMNodeMemoryNonHeapCommittedMB(tier,node,start,end,rollup);
                 break;
-            case 85:
+            case 81:
                 query = mq.queryJVMNodeMemoryNonHeapCurrentUsageMB(tier,node,start,end,rollup);
                 break;
-            case 86:
+            case 82:
                 query = mq.queryJVMNodeMemoryNonHeapMaxAvailableMB(tier,node,start,end,rollup);
                 break;
-            case 87:
+            case 83:
                 query = mq.queryJVMNodeMemoryNonHeapUsedPerc(tier,node,start,end,rollup);
                 break;
-            case 88:
+            case 84:
                 query = mq.queryJVMNodeThreadsCurrentNoOfThreads(tier,node,start,end,rollup);
                 break;
-            case 2:
+            case 85:
                 query = mq.queryJVMNodeProcessCPUBurntMSPerMin(tier,node,start,end,rollup);
                 break;
-            case 3:
+            case 86:
                 query = mq.queryJVMNodeProcessCPUUsagePerc(tier,node,start,end,rollup);
                 break;
             
 
             case 100:
-                query = mq.queryJVMNodeProcessCPUALL(tier,node,start,end,rollup);
+                query = mq.queryJVMNodeClassesALL(tier,node,start,end,rollup);
                 break;
             case 101:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCodeCacheALL(tier,node,start,end,rollup);
                 break;
             case 102:
-                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceALL(tier,node,start,end,rollup);
-                break;
-            case 103:
-                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenALL(tier,node,start,end,rollup);
-                break;
-            case 104:
-                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenALL(tier,node,start,end,rollup);
-                break;
-            case 105:
-                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceALL(tier,node,start,end,rollup);
-                break;
-            case 106:
-                query = mq.queryJVMNodeGarbageCollectionALL(tier,node,start,end,rollup);
-                break;
-            case 107:
-                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceALL(tier,node,start,end,rollup);
-                break;
-            case 108:
-                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceALL(tier,node,start,end,rollup);
-                break;
-            case 109:
-                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenALL(tier,node,start,end,rollup);
-                break;
-            case 110:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCompressedClassSpaceALL(tier,node,start,end,rollup);
                 break;
-            case 111:
+            case 103:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceALL(tier,node,start,end,rollup);
+                break;
+            case 104:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsEdenSpaceALL(tier,node,start,end,rollup);
+                break;
+            case 105:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsOldGenALL(tier,node,start,end,rollup);
+                break;
+            case 106:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsPermGenALL(tier,node,start,end,rollup);
+                break;
+            case 107:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPsSurvivorSpaceALL(tier,node,start,end,rollup);
+                break;
+            case 108:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsNurseryALL(tier,node,start,end,rollup);
                 break;
-            case 112:
+            case 109:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceALL(tier,node,start,end,rollup);
+                break;
+            case 110:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsEdenSpaceALL(tier,node,start,end,rollup);
                 break;
+            case 111:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsTenuredGenALL(tier,node,start,end,rollup);
+                break;
+            case 112:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPermGenALL(tier,node,start,end,rollup);
+                break;
             case 113:
-                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenALL(tier,node,start,end,rollup);
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceALL(tier,node,start,end,rollup);
                 break;
             case 114:
-                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenALL(tier,node,start,end,rollup);
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsParEdenSpaceALL(tier,node,start,end,rollup);
                 break;
             case 115:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsParSurvivorSpaceALL(tier,node,start,end,rollup);
                 break;
             case 116:
-                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceALL(tier,node,start,end,rollup);
-                break;
-            case 117:
-                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsPermGenALL(tier,node,start,end,rollup);
-                break;
-            case 118:
-                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsSurvivorSpaceALL(tier,node,start,end,rollup);
-                break;
-            case 119:
-                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsOldSpaceALL(tier,node,start,end,rollup);
-                break;
-            case 120:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCMSOldGenALL(tier,node,start,end,rollup);
                 break;
-            case 121:
-                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsMetaspaceALL(tier,node,start,end,rollup);
+            case 117:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsCMSPermGenALL(tier,node,start,end,rollup);
                 break;
-            case 122:
+            case 118:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1EdenSpaceALL(tier,node,start,end,rollup);
+                break;
+            case 119:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1OldGenALL(tier,node,start,end,rollup);
                 break;
-            case 123:
+            case 120:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1SurvivorSpaceALL(tier,node,start,end,rollup);
+                break;
+            case 121:
+                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsG1PermGenALL(tier,node,start,end,rollup);
+                break;
+            case 122:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsClassBlockMemoryALL(tier,node,start,end,rollup);
                 break;
-            case 124:
+            case 123:
                 query = mq.queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryALL(tier,node,start,end,rollup);
+                break;
+            case 124:
+                query = mq.queryJVMNodeGarbageCollectionALL(tier,node,start,end,rollup);
                 break;
             case 125:
-                query = mq.queryJVMNodeGarbageCollectionMemoryPoolsClassMemoryALL(tier,node,start,end,rollup);
-                break;
-            case 126:
                 query = mq.queryJVMNodeMemoryHeapALL(tier,node,start,end,rollup);
                 break;
-            case 127:
+            case 126:
                 query = mq.queryJVMNodeMemoryNonHeapALL(tier,node,start,end,rollup);
+                break;
+            case 127:
+                query = mq.queryJVMNodeProcessCPUALL(tier,node,start,end,rollup);
                 break;
             
 
