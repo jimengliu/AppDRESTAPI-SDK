@@ -459,7 +459,7 @@ public class BaseRESTAccess {
      * @param req {@link RequestSnapshots}
      * @return {@link Snapshots}
      */
-    public Snapshots getSnapshots(int application, long start, long end, RequestSnapshots req){
+    public Snapshots getSnapshots(int application, RequestSnapshots req, long start, long end){
         try{
             return R.executeSnapshots(auth, SnapshotQuery.queryRequestSnapshot(baseURL.getControllerURL(), application, start, end, req));
         }catch(Exception e){
@@ -479,7 +479,7 @@ public class BaseRESTAccess {
      * @param req {@link RequestSnapshots}
      * @return {@link Snapshots}
      */
-    public Snapshots getSnapshots(String application, long start, long end, RequestSnapshots req){
+    public Snapshots getSnapshots(String application, RequestSnapshots req, long start, long end){
         try{
             return R.executeSnapshots(auth, SnapshotQuery.queryRequestSnapshot(baseURL.getControllerURL(), application, start, end, req));
         }catch(Exception e){

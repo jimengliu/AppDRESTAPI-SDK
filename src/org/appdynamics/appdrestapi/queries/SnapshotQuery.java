@@ -16,10 +16,7 @@ import org.appdynamics.appdrestapi.util.RequestSnapshots;
  * 
 
  */
-/*
- * 'https://familysearch.saas.appdynamics.com//controller/rest/applications/81/request-snapshots?time-range-type=BEFORE_NOW&duration-in-mins=2'
 
- */
 public class SnapshotQuery {
     
     /**
@@ -129,11 +126,12 @@ public class SnapshotQuery {
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
         val.append(s.URL_REQUEST_SNAPSHOTS);
-
+        
+        val.append(requestSnapshots.getParameters());
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(QueryEncoder.encode(requestSnapshots.getParameters()));
+        //val.append(QueryEncoder.encode(requestSnapshots.getParameters()));
 
         return val.toString();
     }
@@ -143,11 +141,11 @@ public class SnapshotQuery {
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(application);
         val.append(s.URL_REQUEST_SNAPSHOTS);
-
+        val.append(requestSnapshots.getParameters());
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(QueryEncoder.encode(requestSnapshots.getParameters()));
+        
 
         return val.toString();
     }
