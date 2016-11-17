@@ -1896,32 +1896,21 @@ public class RESTAccess extends BaseRESTAccess{
      * <ul>
      *      <li>Overall Application Performance
      *          <ul>
-			<li>Index    :queryOAPNodeStallCount
-			<li>Index    :queryOAPNodeNumberOfVerySlowCalls
-			<li>Index    :queryOAPNodeNumberOfSlowCalls
-			<li>Index    :queryOAPNodeInfrastructureErrorsPerMinute
-			<li>Index    :queryOAPNodeHttpErrorCodesPerMinute
-			<li>Index    :queryOAPNodeExceptionsPerMinute
-			<li>Index    :queryOAPNodeErrorsPerMinute
-			<li>Index    :queryOAPNodeErrorPageRedirectsPerMinute
-			<li>Index    :queryOAPNodeCallsPerMinute
-			<li>Index    :queryOAPNodeAvgResponseTimeMS
-                </ul>
-            <li>External Calls
-            *   <ul>
-			<li>Index    :queryOAPNodeExternalCallsCallsPerMinute
-			<li>Index    :queryOAPNodeExternalCallsErrorsPerMinute
-			<li>Index    :queryOAPNodeExternalCallsAverageResponseTimeMS
-                </ul>
-            <li>Thread Tasks
-            *   <ul>
-			<li>Index    :queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute
+			<li>Index    0:queryOAPNodeStallCount
+			<li>Index    1:queryOAPNodeNumberOfVerySlowCalls
+			<li>Index    2:queryOAPNodeNumberOfSlowCalls
+			<li>Index    3:queryOAPNodeInfrastructureErrorsPerMinute
+			<li>Index    4:queryOAPNodeHttpErrorCodesPerMinute
+			<li>Index    5:queryOAPNodeExceptionsPerMinute
+			<li>Index    6:queryOAPNodeErrorsPerMinute
+			<li>Index    7:queryOAPNodeErrorPageRedirectsPerMinute
+			<li>Index    8:queryOAPNodeCallsPerMinute
+			<li>Index    9:queryOAPNodeAvgResponseTimeMS
                 </ul>
             
             <li>All The Metrics In A Branch
             *   <ul>
-			<li>Index    :queryOAPNodeAll
-                        <li>Index    :queryOAPNodeExternalCallsAll
+			<li>Index    100:queryOAPNodeAll
                 </ul>
         </ul>
 
@@ -1939,54 +1928,41 @@ public class RESTAccess extends BaseRESTAccess{
         MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
         switch(queryIndex){
             case 0:
-                    mq.queryOAPNodeStallCount(null,null,start,end,rollup);
+                    query=mq.queryOAPNodeStallCount(null,null,start,end,rollup);
                     break;
             case 1:
-                    mq.queryOAPNodeNumberOfVerySlowCalls(null,null,start,end,rollup);
+                    query=mq.queryOAPNodeNumberOfVerySlowCalls(null,null,start,end,rollup);
                     break;
             case 2:
-                    mq.queryOAPNodeNumberOfSlowCalls(null,null,start,end,rollup);
+                    query=mq.queryOAPNodeNumberOfSlowCalls(null,null,start,end,rollup);
                     break;
             case 3:
-                    mq.queryOAPNodeInfrastructureErrorsPerMinute(null,null,start,end,rollup);
+                    query=mq.queryOAPNodeInfrastructureErrorsPerMinute(null,null,start,end,rollup);
                     break;
             case 4:
-                    mq.queryOAPNodeHttpErrorCodesPerMinute(null,null,start,end,rollup);
+                    query=mq.queryOAPNodeHttpErrorCodesPerMinute(null,null,start,end,rollup);
                     break;
             case 5:
-                    mq.queryOAPNodeExceptionsPerMinute(null,null,start,end,rollup);
+                    query=mq.queryOAPNodeExceptionsPerMinute(null,null,start,end,rollup);
                     break;
             case 6:
-                    mq.queryOAPNodeErrorsPerMinute(null,null,start,end,rollup);
+                    query=mq.queryOAPNodeErrorsPerMinute(null,null,start,end,rollup);
                     break;
             case 7:
-                    mq.queryOAPNodeErrorPageRedirectsPerMinute(null,null,start,end,rollup);
+                    query=mq.queryOAPNodeErrorPageRedirectsPerMinute(null,null,start,end,rollup);
                     break;
             case 8:
-                    mq.queryOAPNodeCallsPerMinute(null,null,start,end,rollup);
+                    query=mq.queryOAPNodeCallsPerMinute(null,null,start,end,rollup);
                     break;
             case 9:
-                    mq.queryOAPNodeAvgResponseTimeMS(null,null,start,end,rollup);
+                    query=mq.queryOAPNodeAvgResponseTimeMS(null,null,start,end,rollup);
                     break;
-            case 10:
-                    mq.queryOAPNodeExternalCallsCallsPerMinute(null,null,obj,start,end,rollup);
-                    break;
-            case 11:
-                    mq.queryOAPNodeExternalCallsErrorsPerMinute(null,null,obj,start,end,rollup);
-                    break;
-            case 12:
-                    mq.queryOAPNodeExternalCallsAverageResponseTimeMS(null,null,obj,start,end,rollup);
-                    break;
-            case 13:
-                    mq.queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute(null,null,start,end,rollup);
-                    break;
+
                     
             case 100:
-                    mq.queryOAPNodeAll(null,null,start,end,rollup);
+                    query=mq.queryOAPNodeAll(null,null,start,end,rollup);
                     break;
-            case 101:
-                    mq.queryOAPNodeExternalCallsAll(null,null,obj,start,end,rollup);
-                    break;
+
                 
             default:
                 query=null;
@@ -2019,32 +1995,32 @@ public class RESTAccess extends BaseRESTAccess{
      * <ul>
      *      <li>Overall Application Performance
      *          <ul>
-			<li>Index    :queryOAPNodeStallCount
-			<li>Index    :queryOAPNodeNumberOfVerySlowCalls
-			<li>Index    :queryOAPNodeNumberOfSlowCalls
-			<li>Index    :queryOAPNodeInfrastructureErrorsPerMinute
-			<li>Index    :queryOAPNodeHttpErrorCodesPerMinute
-			<li>Index    :queryOAPNodeExceptionsPerMinute
-			<li>Index    :queryOAPNodeErrorsPerMinute
-			<li>Index    :queryOAPNodeErrorPageRedirectsPerMinute
-			<li>Index    :queryOAPNodeCallsPerMinute
-			<li>Index    :queryOAPNodeAvgResponseTimeMS
+			<li>Index   0:queryOAPNodeStallCount
+			<li>Index   1:queryOAPNodeNumberOfVerySlowCalls
+			<li>Index   2:queryOAPNodeNumberOfSlowCalls
+			<li>Index   3:queryOAPNodeInfrastructureErrorsPerMinute
+			<li>Index   4:queryOAPNodeHttpErrorCodesPerMinute
+			<li>Index   5:queryOAPNodeExceptionsPerMinute
+			<li>Index   6:queryOAPNodeErrorsPerMinute
+			<li>Index   7:queryOAPNodeErrorPageRedirectsPerMinute
+			<li>Index   8:queryOAPNodeCallsPerMinute
+			<li>Index   9:queryOAPNodeAvgResponseTimeMS
                 </ul>
             <li>External Calls
             *   <ul>
-			<li>Index    :queryOAPNodeExternalCallsCallsPerMinute
-			<li>Index    :queryOAPNodeExternalCallsErrorsPerMinute
-			<li>Index    :queryOAPNodeExternalCallsAverageResponseTimeMS
+			<li>Index    10:queryOAPNodeExternalCallsCallsPerMinute
+			<li>Index    11:queryOAPNodeExternalCallsErrorsPerMinute
+			<li>Index    12:queryOAPNodeExternalCallsAverageResponseTimeMS
                 </ul>
             <li>Thread Tasks
             *   <ul>
-			<li>Index    :queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute
+			<li>Index    13:queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute
                 </ul>
             
             <li>All The Metrics In A Branch
             *   <ul>
-			<li>Index    :queryOAPNodeAll
-                        <li>Index    :queryOAPNodeExternalCallsAll
+			<li>Index    100:queryOAPNodeAll
+                                                <li>Index    101:queryOAPNodeExternalCallsAll
                 </ul>
         </ul>
 
@@ -2063,53 +2039,53 @@ public class RESTAccess extends BaseRESTAccess{
         MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
         switch(queryIndex){
             case 0:
-                    mq.queryOAPNodeStallCount(tier,null,start,end,rollup);
+                    query=mq.queryOAPNodeStallCount(tier,null,start,end,rollup);
                     break;
             case 1:
-                    mq.queryOAPNodeNumberOfVerySlowCalls(tier,null,start,end,rollup);
+                    query=mq.queryOAPNodeNumberOfVerySlowCalls(tier,null,start,end,rollup);
                     break;
             case 2:
-                    mq.queryOAPNodeNumberOfSlowCalls(tier,null,start,end,rollup);
+                    query=mq.queryOAPNodeNumberOfSlowCalls(tier,null,start,end,rollup);
                     break;
             case 3:
-                    mq.queryOAPNodeInfrastructureErrorsPerMinute(tier,null,start,end,rollup);
+                    query=mq.queryOAPNodeInfrastructureErrorsPerMinute(tier,null,start,end,rollup);
                     break;
             case 4:
-                    mq.queryOAPNodeHttpErrorCodesPerMinute(tier,null,start,end,rollup);
+                    query=mq.queryOAPNodeHttpErrorCodesPerMinute(tier,null,start,end,rollup);
                     break;
             case 5:
-                    mq.queryOAPNodeExceptionsPerMinute(tier,null,start,end,rollup);
+                    query=mq.queryOAPNodeExceptionsPerMinute(tier,null,start,end,rollup);
                     break;
             case 6:
-                    mq.queryOAPNodeErrorsPerMinute(tier,null,start,end,rollup);
+                    query=mq.queryOAPNodeErrorsPerMinute(tier,null,start,end,rollup);
                     break;
             case 7:
-                    mq.queryOAPNodeErrorPageRedirectsPerMinute(tier,null,start,end,rollup);
+                    query=mq.queryOAPNodeErrorPageRedirectsPerMinute(tier,null,start,end,rollup);
                     break;
             case 8:
-                    mq.queryOAPNodeCallsPerMinute(tier,null,start,end,rollup);
+                    query=mq.queryOAPNodeCallsPerMinute(tier,null,start,end,rollup);
                     break;
             case 9:
-                    mq.queryOAPNodeAvgResponseTimeMS(tier,null,start,end,rollup);
+                    query=mq.queryOAPNodeAvgResponseTimeMS(tier,null,start,end,rollup);
                     break;
             case 10:
-                    mq.queryOAPNodeExternalCallsCallsPerMinute(tier,null,obj,start,end,rollup);
+                    query=mq.queryOAPNodeExternalCallsCallsPerMinute(tier,null,obj,start,end,rollup);
                     break;
             case 11:
-                    mq.queryOAPNodeExternalCallsErrorsPerMinute(tier,null,obj,start,end,rollup);
+                    query=mq.queryOAPNodeExternalCallsErrorsPerMinute(tier,null,obj,start,end,rollup);
                     break;
             case 12:
-                    mq.queryOAPNodeExternalCallsAverageResponseTimeMS(tier,null,obj,start,end,rollup);
+                    query=mq.queryOAPNodeExternalCallsAverageResponseTimeMS(tier,null,obj,start,end,rollup);
                     break;
             case 13:
-                    mq.queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute(tier,null,start,end,rollup);
+                    query=mq.queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute(tier,null,start,end,rollup);
                     break;
                     
             case 100:
-                    mq.queryOAPNodeAll(tier,null,start,end,rollup);
+                    query=mq.queryOAPNodeAll(tier,null,start,end,rollup);
                     break;
             case 101:
-                    mq.queryOAPNodeExternalCallsAll(tier,null,obj,start,end,rollup);
+                    query=mq.queryOAPNodeExternalCallsAll(tier,null,obj,start,end,rollup);
                     break;
                 
             default:
@@ -2139,32 +2115,32 @@ public class RESTAccess extends BaseRESTAccess{
      * <ul>
      *      <li>Overall Application Performance
      *          <ul>
-			<li>Index    :queryOAPNodeStallCount
-			<li>Index    :queryOAPNodeNumberOfVerySlowCalls
-			<li>Index    :queryOAPNodeNumberOfSlowCalls
-			<li>Index    :queryOAPNodeInfrastructureErrorsPerMinute
-			<li>Index    :queryOAPNodeHttpErrorCodesPerMinute
-			<li>Index    :queryOAPNodeExceptionsPerMinute
-			<li>Index    :queryOAPNodeErrorsPerMinute
-			<li>Index    :queryOAPNodeErrorPageRedirectsPerMinute
-			<li>Index    :queryOAPNodeCallsPerMinute
-			<li>Index    :queryOAPNodeAvgResponseTimeMS
+			<li>Index    0:queryOAPNodeStallCount
+			<li>Index    1:queryOAPNodeNumberOfVerySlowCalls
+			<li>Index    2:queryOAPNodeNumberOfSlowCalls
+			<li>Index    3:queryOAPNodeInfrastructureErrorsPerMinute
+			<li>Index    4:queryOAPNodeHttpErrorCodesPerMinute
+			<li>Index    5:queryOAPNodeExceptionsPerMinute
+			<li>Index    6:queryOAPNodeErrorsPerMinute
+			<li>Index    7:queryOAPNodeErrorPageRedirectsPerMinute
+			<li>Index    8:queryOAPNodeCallsPerMinute
+			<li>Index    9:queryOAPNodeAvgResponseTimeMS
                 </ul>
             <li>External Calls
             *   <ul>
-			<li>Index    :queryOAPNodeExternalCallsCallsPerMinute
-			<li>Index    :queryOAPNodeExternalCallsErrorsPerMinute
-			<li>Index    :queryOAPNodeExternalCallsAverageResponseTimeMS
+			<li>Index    10:queryOAPNodeExternalCallsCallsPerMinute
+			<li>Index    11:queryOAPNodeExternalCallsErrorsPerMinute
+			<li>Index    12:queryOAPNodeExternalCallsAverageResponseTimeMS
                 </ul>
             <li>Thread Tasks
             *   <ul>
-			<li>Index    :queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute
+			<li>Index    13:queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute
                 </ul>
             
             <li>All The Metrics In A Branch
             *   <ul>
-			<li>Index    :queryOAPNodeAll
-                        <li>Index    :queryOAPNodeExternalCallsAll
+			<li>Index    100:queryOAPNodeAll
+                                                <li>Index    101:queryOAPNodeExternalCallsAll
                 </ul>
         </ul>
 
@@ -2184,53 +2160,53 @@ public class RESTAccess extends BaseRESTAccess{
         MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
         switch(queryIndex){
             case 0:
-                    mq.queryOAPNodeStallCount(tier,node,start,end,rollup);
+                    query=mq.queryOAPNodeStallCount(tier,node,start,end,rollup);
                     break;
             case 1:
-                    mq.queryOAPNodeNumberOfVerySlowCalls(tier,node,start,end,rollup);
+                    query=mq.queryOAPNodeNumberOfVerySlowCalls(tier,node,start,end,rollup);
                     break;
             case 2:
-                    mq.queryOAPNodeNumberOfSlowCalls(tier,node,start,end,rollup);
+                    query=mq.queryOAPNodeNumberOfSlowCalls(tier,node,start,end,rollup);
                     break;
             case 3:
-                    mq.queryOAPNodeInfrastructureErrorsPerMinute(tier,node,start,end,rollup);
+                    query=mq.queryOAPNodeInfrastructureErrorsPerMinute(tier,node,start,end,rollup);
                     break;
             case 4:
-                    mq.queryOAPNodeHttpErrorCodesPerMinute(tier,node,start,end,rollup);
+                    query=mq.queryOAPNodeHttpErrorCodesPerMinute(tier,node,start,end,rollup);
                     break;
             case 5:
-                    mq.queryOAPNodeExceptionsPerMinute(tier,node,start,end,rollup);
+                    query=mq.queryOAPNodeExceptionsPerMinute(tier,node,start,end,rollup);
                     break;
             case 6:
-                    mq.queryOAPNodeErrorsPerMinute(tier,node,start,end,rollup);
+                    query=mq.queryOAPNodeErrorsPerMinute(tier,node,start,end,rollup);
                     break;
             case 7:
-                    mq.queryOAPNodeErrorPageRedirectsPerMinute(tier,node,start,end,rollup);
+                    query=mq.queryOAPNodeErrorPageRedirectsPerMinute(tier,node,start,end,rollup);
                     break;
             case 8:
-                    mq.queryOAPNodeCallsPerMinute(tier,node,start,end,rollup);
+                    query=mq.queryOAPNodeCallsPerMinute(tier,node,start,end,rollup);
                     break;
             case 9:
-                    mq.queryOAPNodeAvgResponseTimeMS(tier,node,start,end,rollup);
+                    query=mq.queryOAPNodeAvgResponseTimeMS(tier,node,start,end,rollup);
                     break;
             case 10:
-                    mq.queryOAPNodeExternalCallsCallsPerMinute(tier,node,obj,start,end,rollup);
+                    query=mq.queryOAPNodeExternalCallsCallsPerMinute(tier,node,obj,start,end,rollup);
                     break;
             case 11:
-                    mq.queryOAPNodeExternalCallsErrorsPerMinute(tier,node,obj,start,end,rollup);
+                    query=mq.queryOAPNodeExternalCallsErrorsPerMinute(tier,node,obj,start,end,rollup);
                     break;
             case 12:
-                    mq.queryOAPNodeExternalCallsAverageResponseTimeMS(tier,node,obj,start,end,rollup);
+                    query=mq.queryOAPNodeExternalCallsAverageResponseTimeMS(tier,node,obj,start,end,rollup);
                     break;
             case 13:
-                    mq.queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute(tier,node,start,end,rollup);
+                    query=mq.queryOAPNodeThreadTasksLicenseFileTrackerCallsPerMinute(tier,node,start,end,rollup);
                     break;
                     
             case 100:
-                    mq.queryOAPNodeAll(tier,node,start,end,rollup);
+                    query=mq.queryOAPNodeAll(tier,node,start,end,rollup);
                     break;
             case 101:
-                    mq.queryOAPNodeExternalCallsAll(tier,node,obj,start,end,rollup);
+                    query=mq.queryOAPNodeExternalCallsAll(tier,node,obj,start,end,rollup);
                     break;
                 
             default:
@@ -2249,7 +2225,8 @@ public class RESTAccess extends BaseRESTAccess{
         }
         return null;
     }    
-     /**
+    
+    /**
      * 
      * <p>
      * Returns MetricData for general tier level metrics that can be parsed 

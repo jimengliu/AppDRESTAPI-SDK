@@ -14,6 +14,7 @@ import org.appdynamics.appdrestapi.resources.s;
  */
 public class OverAllPerformanceMetricQuery {
     
+    
     // This is going to grab all of the metrics    
     /**
      * 
@@ -45,9 +46,14 @@ public class OverAllPerformanceMetricQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.OVERALL_APPLICATION_PERF);
-        if(tier != null) bud.append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
-        bud.append(s.P).append(s._ALL_);
+        if(tier != null){ 
+            bud.append(tier);
+            if(node != null){ bud.append(s.INDIVIDUAL_NODES).append(node).append(s.P);}
+            else{bud.append(s.P);}
+        }
+        
+        bud.append(s._ALL_);
+        
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -89,9 +95,14 @@ public class OverAllPerformanceMetricQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.OVERALL_APPLICATION_PERF);
-        if(tier != null) bud.append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
-        bud.append(s.STALL_COUNT);
+        if(tier != null){ 
+            bud.append(tier);
+            if(node != null){ bud.append(s.INDIVIDUAL_NODES).append(node);}
+            bud.append(s.STALL_COUNT);
+        }else{
+            bud.append(s.STALL_COUNT.substring(1));
+        }
+        
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -134,9 +145,14 @@ public class OverAllPerformanceMetricQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.OVERALL_APPLICATION_PERF);
-        if(tier != null) bud.append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
-        bud.append(s.NUMBER_OF_VERY_SLOW_CALLS);
+        if(tier != null){ 
+            bud.append(tier);
+            if(node != null){ bud.append(s.INDIVIDUAL_NODES).append(node);}
+            bud.append(s.NUMBER_OF_VERY_SLOW_CALLS);
+        }else{
+            bud.append(s.NUMBER_OF_VERY_SLOW_CALLS.substring(1));
+        }
+        
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -158,9 +174,15 @@ public class OverAllPerformanceMetricQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.OVERALL_APPLICATION_PERF);
-        if(tier != null) bud.append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
-        bud.append(s.NUMBER_OF_SLOW_CALLS);
+        if(tier != null){ 
+            bud.append(tier);
+            if(node != null){ bud.append(s.INDIVIDUAL_NODES).append(node);}
+            bud.append(s.NUMBER_OF_SLOW_CALLS);
+        }else{
+            bud.append(s.NUMBER_OF_SLOW_CALLS.substring(1));
+        }
+        
+        
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -182,9 +204,14 @@ public class OverAllPerformanceMetricQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.OVERALL_APPLICATION_PERF);
-        if(tier != null) bud.append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
-        bud.append(s.INFRASTRUCTURE_ERRORS_PER_MINUTE);
+        if(tier != null){ 
+            bud.append(tier);
+            if(node != null){ bud.append(s.INDIVIDUAL_NODES).append(node);}
+            bud.append(s.INFRASTRUCTURE_ERRORS_PER_MINUTE);
+        }else{
+            bud.append(s.INFRASTRUCTURE_ERRORS_PER_MINUTE.substring(1));
+        }
+        
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -207,9 +234,16 @@ public class OverAllPerformanceMetricQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.OVERALL_APPLICATION_PERF);
-        if(tier != null) bud.append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
-        bud.append(s.HTTP_ERROR_CODES_PER_MINUTE);
+        if(tier != null){ 
+            bud.append(tier);
+            if(node != null){ bud.append(s.INDIVIDUAL_NODES).append(node);}
+            bud.append(s.HTTP_ERROR_CODES_PER_MINUTE);
+        }else{
+            bud.append(s.HTTP_ERROR_CODES_PER_MINUTE.substring(1));
+        }
+        
+        
+        
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -231,9 +265,17 @@ public class OverAllPerformanceMetricQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.OVERALL_APPLICATION_PERF);
-        if(tier != null) bud.append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
-        bud.append(s.EXCEPTIONS_PER_MINUTE);
+        
+        if(tier != null){ 
+            bud.append(tier);
+            if(node != null){ bud.append(s.INDIVIDUAL_NODES).append(node);}
+            bud.append(s.EXCEPTIONS_PER_MINUTE);
+        }else{
+            bud.append(s.EXCEPTIONS_PER_MINUTE.substring(1));
+        }
+        
+        
+        
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -254,9 +296,15 @@ public class OverAllPerformanceMetricQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.OVERALL_APPLICATION_PERF);
-        if(tier != null) bud.append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
-        bud.append(s.ERRORS_PER_MINUTE);
+        if(tier != null){ 
+            bud.append(tier);
+            if(node != null){ bud.append(s.INDIVIDUAL_NODES).append(node);}
+            bud.append(s.ERRORS_PER_MINUTE);
+        }else{
+            bud.append(s.ERRORS_PER_MINUTE.substring(1));
+        }
+        
+        
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -277,9 +325,15 @@ public class OverAllPerformanceMetricQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.OVERALL_APPLICATION_PERF);
-        if(tier != null) bud.append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
-        bud.append(s.ERROR_PAGE_REDIRECTS_PER_MINUTE);
+        if(tier != null){ 
+            bud.append(tier);
+            if(node != null){ bud.append(s.INDIVIDUAL_NODES).append(node);}
+            bud.append(s.ERROR_PAGE_REDIRECTS_PER_MINUTE);
+        }else{
+            bud.append(s.ERROR_PAGE_REDIRECTS_PER_MINUTE.substring(1));
+        }
+        
+        
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -300,9 +354,15 @@ public class OverAllPerformanceMetricQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.OVERALL_APPLICATION_PERF);
-        if(tier != null) bud.append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
-        bud.append(s.CALLS_PER_MINUTE);
+        if(tier != null){ 
+            bud.append(tier);
+            if(node != null){ bud.append(s.INDIVIDUAL_NODES).append(node);}
+            bud.append(s.CALLS_PER_MINUTE);
+        }else{
+            bud.append(s.CALLS_PER_MINUTE.substring(1));
+        }
+        
+        
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -323,9 +383,15 @@ public class OverAllPerformanceMetricQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.OVERALL_APPLICATION_PERF);
-        if(tier != null) bud.append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
-        bud.append(s.AVERAGE_RESPONSE_TIME_MS);
+        if(tier != null){ 
+            bud.append(tier);
+            if(node != null){ bud.append(s.INDIVIDUAL_NODES).append(node);}
+            bud.append(s.AVERAGE_RESPONSE_TIME_MS);
+        }else{
+            bud.append(s.AVERAGE_RESPONSE_TIME_MS.substring(1));
+        }
+        
+        
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -347,9 +413,15 @@ public class OverAllPerformanceMetricQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.OVERALL_APPLICATION_PERF);
-        if(tier != null) bud.append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
-        bud.append(s.EXTERNAL_CALLS);
+        if(tier != null){ 
+            bud.append(tier);
+            if(node != null){ bud.append(s.INDIVIDUAL_NODES).append(node);}
+            bud.append(s.EXTERNAL_CALLS);
+        }else{
+            bud.append(s.EXTERNAL_CALLS.substring(1));
+        }
+        
+        
         if(obj != null){ bud.append(obj);}
         else{ bud.append(s._ALL_);}
         bud.append(s.P).append(s._ALL_);
@@ -373,9 +445,15 @@ public class OverAllPerformanceMetricQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.OVERALL_APPLICATION_PERF);
-        if(tier != null) bud.append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
-        bud.append(s.EXTERNAL_CALLS);
+        if(tier != null){ 
+            bud.append(tier);
+            if(node != null){ bud.append(s.INDIVIDUAL_NODES).append(node);}
+            bud.append(s.EXTERNAL_CALLS);
+        }else{
+            bud.append(s.EXTERNAL_CALLS.substring(1));
+        }
+        
+        
         if(obj != null){ bud.append(obj);}
         else{ bud.append(s._ALL_);}
         bud.append(s.CALLS_PER_MINUTE);
@@ -399,9 +477,13 @@ public class OverAllPerformanceMetricQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.OVERALL_APPLICATION_PERF);
-        if(tier != null) bud.append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
-        bud.append(s.EXTERNAL_CALLS);
+        if(tier != null){ 
+            bud.append(tier);
+            if(node != null){ bud.append(s.INDIVIDUAL_NODES).append(node);}
+            bud.append(s.EXTERNAL_CALLS);
+        }else{
+            bud.append(s.EXTERNAL_CALLS.substring(1));
+        }
         if(obj != null){ bud.append(obj);}
         else{ bud.append(s._ALL_);}
         bud.append(s.ERRORS_PER_MINUTE);
@@ -425,9 +507,13 @@ public class OverAllPerformanceMetricQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.OVERALL_APPLICATION_PERF);
-        if(tier != null) bud.append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
-        bud.append(s.EXTERNAL_CALLS);
+        if(tier != null){ 
+            bud.append(tier);
+            if(node != null){ bud.append(s.INDIVIDUAL_NODES).append(node);}
+            bud.append(s.EXTERNAL_CALLS);
+        }else{
+            bud.append(s.EXTERNAL_CALLS.substring(1));
+        }
         if(obj != null){ bud.append(obj);}
         else{ bud.append(s._ALL_);}
         bud.append(s.AVERAGE_RESPONSE_TIME_MS);
@@ -452,8 +538,10 @@ public class OverAllPerformanceMetricQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.OVERALL_APPLICATION_PERF);
-        if(tier != null) bud.append(tier);
-        if(node != null) bud.append(s.INDIVIDUAL_NODES).append(node);
+        if(tier != null){ 
+            bud.append(tier);
+            if(node != null){ bud.append(s.INDIVIDUAL_NODES).append(node);}
+        }
         bud.append(s.THREAD_TASKS).append(s.LICENSE_FILE_TRACKER).append(s.CALLS_PER_MINUTE);
         val.append(QueryEncoder.encode(bud.toString()));  
         

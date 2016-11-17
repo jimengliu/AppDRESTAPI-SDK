@@ -1628,6 +1628,7 @@ public class MetricQuery {
         return OverAllPerformanceMetricQuery.queryOAPNodeAll(baseURL, application, tier, node, start, end, rollup);
     }
     
+    
     //Stall Count
     public String queryOAPNodeStallCount(String tier, String node, long start, long end, boolean rollup){
         return OverAllPerformanceMetricQuery.queryOAPNodeStallCount(baseURL, application, tier, node, start, end, rollup);
@@ -1635,7 +1636,7 @@ public class MetricQuery {
     
     //Number of Very Slow Call
     public String queryOAPNodeNumberOfVerySlowCalls(String tier, String node, long start, long end, boolean rollup){
-        return OverAllPerformanceMetricQuery.queryOAPNodeStallCount(baseURL, application, tier, node, start, end, rollup);
+        return OverAllPerformanceMetricQuery.queryOAPNodeNumberOfVerySlowCalls(baseURL, application, tier, node, start, end, rollup);
     }
     //Number of Slow Calls
     public String queryOAPNodeNumberOfSlowCalls(String tier, String node, long start, long end, boolean rollup){
