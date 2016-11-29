@@ -90,6 +90,25 @@ public class TimeRangeHelper {
         return new TimeRange(start,end);
     }
     
+    public static TimeRange getLastXMinutes(int minutes){
+        Calendar cal = MyCalendar.getCalendar();
+        long end=cal.getTimeInMillis();
+        cal.add(Calendar.MINUTE, (-1 * minutes));
+        
+        return new TimeRange(cal.getTimeInMillis(),end);
+        
+    }
+    
+    public static TimeRange getLastXHours(int hours){
+        Calendar cal = MyCalendar.getCalendar();
+        long end=cal.getTimeInMillis();
+        cal.add(Calendar.HOUR, (-1 *hours));
+        
+        return new TimeRange(cal.getTimeInMillis(),end);
+        
+    }
+    
+    
     public static ArrayList<TimeRange> getMinuteTimeRanges(int interval){
         ArrayList<TimeRange> value=new ArrayList<TimeRange>();
         Calendar cal1=Calendar.getInstance();

@@ -10,6 +10,7 @@ import org.appdynamics.appdrestapi.resources.s;
  *
  * @author gilbert.solorzano
  * 
+ * <p>This has been updated to work with 2.5.2</p>
  * This is going to be used to help key items
  *  - controller
  *  - application 
@@ -47,7 +48,8 @@ public class MetricPathKey {
     /**
      * <p>
      * The method call shortMetricKey will parse the metric path and get the different components
-     * out of the metric path. The array returned can be used directly of just the main object.
+     * out of the metric path. The array returned can be used directly as the main object to name
+     * an entry.
      * </p>
      * 
      * @param metricType Integer the defines the type of metric query
@@ -59,12 +61,20 @@ public class MetricPathKey {
 
      * <ul>
                 <li>Metric Type:
-               *   <ul>   <li>0 - BT</ul>
-               *   <ul>   <li>1 - BE</ul>
-               *   <ul>   <li>2 - Tier Metric</ul>
-               *   <ul>   <li>3 - Node Metric</ul>
-               *   <ul>   <li>4 - EUM</ul>
-               *   <ul>   <li>5 - Custom</ul>
+               *   <ul>  
+               *        <li>0  - BT
+               *        <li>1  - BE
+               *        <li>2  - EUM
+               *        <li>3  - Custom
+               *        <li>4  - Agent Tier Metric
+                *       <li>5  - HW Tier Metric
+                *       <li>6  - JVM Tier Metric
+                *       <li>7  - OAP Tier Metric
+                *       <li>8  - Agent Node Metric
+                *       <li>9  - HW Node Metric
+                *       <li>10 - JVM Node Metric
+                *       <li>11 - OAP Node Metric
+               * </ul>
      * </ul>
      * 
      */
@@ -85,27 +95,47 @@ public class MetricPathKey {
      *   1 - BE
      *   2 - Tier Metric
      *   3 - Node Metric
-     *   4 - EUM
-     *   5 - Custom
+     *   4 - EUM // change to 2
+     *   5 - Custom // change to 3
      * 
      * End User Experience|Base Pages|/|First Byte Time (ms)
      */
     
     public void setTierSiteNode(int metricType, String[] pPath){
-        if(metricType == 2 || metricType == 3){ metricTier=null; metricTier=pPath[1];}
-        if(metricType == 3){metricNode=null;metricNode=pPath[3];}
-        if(metricType == 4) {metricSite=null;metricSite=pPath[2];}
-       if(metricType == 5){
+       //Node and tier, numbers will change
+       if(metricType >=4 ){ metricTier=pPath[1];}
+       if(metricType >=8){metricNode=pPath[3];}
+       
+       
+       if(metricType == 2) {metricSite=pPath[2];}
+       if(metricType == 3){
            // Application Infrastructure Performance|cas|Custom Metrics|Amazon Cloud Watch|eu-west-1|EC2|Instance|i-00f571e6|CPUUtilization
            //Application Infrastructure Performance|2ndTier|Individual Nodes|2ndTierNode1|Custom Metrics|Uptime|myTier|Nodes Down
            metricTier=null;metricTier=pPath[1]; // This is the tier, now lets check if the node is present
-           if(pPath[2].equals("Individual Nodes")){metricNode=null;metricNode=pPath[3];}
+           if(pPath[2].equals("Individual Nodes")){metricNode=pPath[3];}
        }
 
     }
     
     /*
       For 'Custom Metrics' this should be custom metrics
+     * <ul>
+                <li>Metric Type:
+               *   <ul>  
+               *        <li>0  - BT
+               *        <li>1  - BE
+               *        <li>2  - EUM
+               *        <li>3  - Custom
+               *        <li>4  - Agent Tier Metric
+                *       <li>5  - HW Tier Metric
+                *       <li>6  - JVM Tier Metric
+                *       <li>7  - OAP Tier Metric
+                *       <li>8  - Agent Node Metric
+                *       <li>9  - HW Node Metric
+                *       <li>10 - JVM Node Metric
+                *       <li>11 - OAP Node Metric
+               * </ul>
+     * </ul>
     */
     public String getObjectType(int metricType, int metricQuery, String[] pPath, boolean shortVal){
         
@@ -116,14 +146,15 @@ public class MetricPathKey {
         }else{
             if(metricType == 0) return s.LONG_METRIC_TYPES[0];
             if(metricType == 1) return s.LONG_METRIC_TYPES[1];
-            if(metricType < 4){
-                if(metricQuery < 2) return s.LONG_METRIC_TYPES[2];
-                if(metricQuery < 22) return s.LONG_METRIC_TYPES[3];
-                if(metricQuery < 37) return s.LONG_METRIC_TYPES[4];
+            if(metricType == 2)  return s.LONG_METRIC_TYPES[6];
+            if(metricType == 3) return s.LONG_METRIC_TYPES[7];
+            // 
+            if(metricType > 3){
+                if(metricType == 4 || metricType==8) return s.LONG_METRIC_TYPES[2]; // query < 2
+                if(metricType == 5 || metricType == 9) return s.LONG_METRIC_TYPES[3]; // query < 22
+                if(metricType == 6 || metricType == 10) return s.LONG_METRIC_TYPES[4]; // query < 37
                 return s.LONG_METRIC_TYPES[5];
             }
-            if(metricType == 4)  return s.LONG_METRIC_TYPES[6];
-            if(metricType == 5) return s.LONG_METRIC_TYPES[7];
         }
         return "Type";
     }
@@ -131,14 +162,8 @@ public class MetricPathKey {
     public String getObjectGroup(int metricType, int metricQuery, String[] path){
         if(metricType == 0) return s.SHORT_METRIC_TYPES[0];
         if(metricType == 1) return s.SHORT_METRIC_TYPES[1];
-        if(metricType < 4){
-                if(metricQuery < 2) return s.SHORT_METRIC_TYPES[2];
-                if(metricQuery < 22) return s.SHORT_METRIC_TYPES[3];
-                if(metricQuery < 37) return s.SHORT_METRIC_TYPES[4];
-                return s.SHORT_METRIC_TYPES[5];    
-        }
-        if(metricType == 4) return path[1];
-        if(metricType == 5){
+        if(metricType == 2) return path[1];
+        if(metricType == 3){
             // We need to find everything after Custom Metric but before metric name
             // Application Infrastructure Performance|cas|Custom Metrics|Amazon Cloud Watch|eu-west-1|EC2|Instance|i-00f571e6|CPUUtilization
             int nameIndex=2;
@@ -158,10 +183,19 @@ public class MetricPathKey {
             
             return bud.toString();
         }
+        //
+        if(metricType >3){
+                if(metricType == 4 || metricType == 8) return s.SHORT_METRIC_TYPES[2]; // query < 2
+                if(metricType == 5 || metricType == 9) return s.SHORT_METRIC_TYPES[3]; // query < 22
+                if(metricType == 6 || metricType == 10) return s.SHORT_METRIC_TYPES[4]; // query < 37
+                return s.SHORT_METRIC_TYPES[5];    
+        }
         return application;
     }
     
-    // This is the metric name 
+    /*
+        This is going to get the name of the metric
+    */
     public String getObjectName(int metricType, String[] path){
         if(metricType == 0) return path[path.length-1];
         if(metricType == 1) return path[1];
