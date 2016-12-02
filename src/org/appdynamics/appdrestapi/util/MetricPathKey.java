@@ -101,6 +101,8 @@ public class MetricPathKey {
      * End User Experience|Base Pages|/|First Byte Time (ms)
      */
     
+    // Business Transaction Performance|Business Transactions|1stTier|/processorder/electronics|Average Response Time (ms)
+    // Backends|Discovered backend call - MYSQL-AppDynamics-LOCALHOST|Average Response Time (ms)
     public void setTierSiteNode(int metricType, String[] pPath){
        //Node and tier, numbers will change
        if(metricType >=4 ){ metricTier=pPath[1];}
@@ -113,6 +115,15 @@ public class MetricPathKey {
            //Application Infrastructure Performance|2ndTier|Individual Nodes|2ndTierNode1|Custom Metrics|Uptime|myTier|Nodes Down
            metricTier=null;metricTier=pPath[1]; // This is the tier, now lets check if the node is present
            if(pPath[2].equals("Individual Nodes")){metricNode=pPath[3];}
+       }
+       
+       if(metricType == 0){
+           metricTier=pPath[2];
+           metricNode=pPath[3];
+       }
+       
+       if(metricType == 1){
+           metricNode=pPath[1];
        }
 
     }

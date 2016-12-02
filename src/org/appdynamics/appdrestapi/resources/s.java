@@ -598,18 +598,6 @@ Application Infrastructure Performance|AAC-App|JVM|Process CPU Burnt (ms/min)
     public static final String[] DOTNET_CUSTOM_MATCHES={"aspDotNet","dotNetWebService","wcf","poco","dotNetJms","dotNetRemoting"};
     public static final String[] PHP_CUSTOM_MATCHES={"phpWeb","phpMvc","phpDrupal","phpWordpress","phpCli","phpWeb","phpWebService"};
     public static final String[] NODEJS_CUSTOM_MATCHES={"nodeJsWeb"};
-    /*
-    binaryRemoting (for Thrift)
-servlet
-strutsAction
-springBean
-ejb
-pojo
-jms
-webService
-
-
-    */
     
     //events?eventtype=CUSTOM&customeventtype=nagios&summary=test1&propertynames=key1&propertynames=key2&propertyvalues=value1&propertyvalues=value2
     public static final String CUSTOM_V="custom";
