@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="AppDRESTAPI" default="package" basedir=".">
-    <property name="classes.dir"		value="src"/>
-    <property name="build.dir"			value="appBuild"/>
-    <property name="lib.dir"			value="${basedir}/lib"/> 
-    <property name="execution.lib.dir"             value="${basedir}/execLib"/>
-    <property name="restapi.main"		value="org.appdynamics.appdrestapi.GetTimeStamps"/> 
-    <property name="releases"			value="${basedir}/releases"/>
-    <property name="javadoc"            value="${basedir}/dist/javadoc"/>
+<project name="AppDRESTAPI" default="package" basedir=".">
 
-    <property name="RESTAPI.basename"   value="AppDRESTAPI-SDK"/>
-    <property name="RESTAPI.version"     value="2.5.2"/>
-    <property name="RESTAPI.basename.dev"   value="RESTAPI_dev"/>
-    <property name="RESTAPI.version.dev"     value="2.0.3"/>
-    
-    
-    <path id="compile.classpath">
-	<fileset dir="${lib.dir}/">
-	    <include name="*.jar"/>
-	</fileset>
-    </path> 
-    <path id="execute.classpath">
-	<fileset dir="${lib.dir}/">
-	    <include name="*.jar"/>
-	</fileset>
-	<fileset dir="${build.dir}/">
-	    <include name="*.jar"/>
-	</fileset>
-    </path>
+	<property name="classes.dir"		value="src"/>
+	<property name="build.dir"			value="appBuild"/>
+	<property name="lib.dir"			value="${basedir}/lib"/> 
+	<property name="execution.lib.dir"  value="${basedir}/execLib"/>
+	<property name="restapi.main"		value="org.appdynamics.appdrestapi.GetTimeStamps"/> 
+	<property name="releases"			value="${basedir}/releases"/>
+	<property name="javadoc"            value="${basedir}/dist/javadoc"/>
 
-    <target name="clean">
-	<delete dir="${build.dir}"/>
-        <delete dir="${execution.lib.dir}"/>
-    </target>
+	<property name="RESTAPI.basename"   	value="AppDRESTAPI-SDK"/>
+	<property name="RESTAPI.version"     	value="2.5.2"/>
+	<property name="RESTAPI.basename.dev"   value="RESTAPI_dev"/>
+	<property name="RESTAPI.version.dev"    value="2.0.3"/>
 
-    <target name="init" depends="clean">
-	<mkdir dir="${build.dir}"/>
-    </target>
+	<path id="compile.classpath">
+		<fileset dir="${lib.dir}/">
+			<include name="*.jar"/>
+		</fileset>
+	</path> 
 
-    <target name="compile" depends="init">
-                <javac srcdir="${classes.dir}"
+	<path id="execute.classpath">
+		<fileset dir="${lib.dir}/">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="${build.dir}/">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+		<delete dir="${execution.lib.dir}"/>
+	</target>
+
+	<target name="init" depends="clean">
+		<mkdir dir="${build.dir}"/>
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${classes.dir}"
                         destdir="${build.dir}"
                         debug="on"
                         deprecation="on"
@@ -46,75 +48,75 @@
                         includes="**"
                         target="1.7"
                         includeantruntime="false">
-                        <classpath refid="compile.classpath"/>
-                </javac>
-    </target>
+			<classpath refid="compile.classpath"/>
+		</javac>
+	</target>
 
-    <target name="RESTAPI_jar" depends="compile">
-      <jar jarfile="${build.dir}/${RESTAPI.basename}_${RESTAPI.version}.jar">
-          <manifest>
-              <attribute name="Main-Class" value="${restapi.main}"/>
-          </manifest>
-          <fileset dir="${build.dir}">
-            <include name="org/appdynamics/appdrestapi/RESTAccess.class"/>
-            <include name="org/appdynamics/appdrestapi/RESTAccess2.class"/>
-            <include name="org/appdynamics/appdrestapi/BaseRESTAccess.class"/>
-            <include name="org/appdynamics/appdrestapi/GetTimeStamps.*"/>
-            <include name="org/appdynamics/appdrestapi/agent/*.class"/>
-            <include name="org/appdynamics/appdrestapi/conf/*.class"/>
-            <include name="org/appdynamics/appdrestapi/data/*.class"/>
-            <include name="org/appdynamics/appdrestapi/data/*.index"/>
-            <include name="org/appdynamics/appdrestapi/exportdata/*.class"/>
-            <include name="org/appdynamics/appdrestapi/exportdata/*.index"/>
-            <include name="org/appdynamics/appdrestapi/queries/*.class"/>
-            <include name="org/appdynamics/appdrestapi/resources/*.class"/>
-            <include name="org/appdynamics/appdrestapi/util/*.class"/>
-          </fileset>
-      </jar>
-  
-    </target>
-    
-    <target name="RESTAPI_jar_dev" depends="compile">
-      <jar jarfile="${build.dir}/${RESTAPI.basename.dev}_${RESTAPI.version.dev}.jar">
-          <manifest>
-              <attribute name="Main-Class" value="${restapi.main}"/>
-          </manifest>
-          <fileset dir="${build.dir}">
-            <include name="org/appdynamics/appdrestapi/RESTAccess.class"/>
-            <include name="org/appdynamics/appdrestapi/GetTimeStamps.class"/>
-            <include name="org/appdynamics/appdrestapi/agent/*.class"/>
-            <include name="org/appdynamics/appdrestapi/data/*.class"/>
-            <include name="org/appdynamics/appdrestapi/resources/*.class"/>
-            <include name="org/appdynamics/appdrestapi/util/*.class"/>
-            <include name="org/appdynamics/appdrestapi/exportdata/*.class"/>
-          </fileset>
-      </jar>
-  
-    </target>
+	<target name="RESTAPI_jar" depends="compile">
+		<jar jarfile="${build.dir}/${RESTAPI.basename}_${RESTAPI.version}.jar">
+			<manifest>
+				<attribute name="Main-Class" value="${restapi.main}"/>
+			</manifest>
+			<fileset dir="${build.dir}">
+				<include name="org/appdynamics/appdrestapi/RESTAccess.class"/>
+				<include name="org/appdynamics/appdrestapi/RESTAccess2.class"/>
+				<include name="org/appdynamics/appdrestapi/BaseRESTAccess.class"/>
+				<include name="org/appdynamics/appdrestapi/GetTimeStamps.*"/>
+				<include name="org/appdynamics/appdrestapi/agent/*.class"/>
+				<include name="org/appdynamics/appdrestapi/conf/*.class"/>
+				<include name="org/appdynamics/appdrestapi/data/*.class"/>
+				<include name="org/appdynamics/appdrestapi/data/*.index"/>
+				<include name="org/appdynamics/appdrestapi/exportdata/*.class"/>
+				<include name="org/appdynamics/appdrestapi/exportdata/*.index"/>
+				<include name="org/appdynamics/appdrestapi/queries/*.class"/>
+				<include name="org/appdynamics/appdrestapi/resources/*.class"/>
+				<include name="org/appdynamics/appdrestapi/util/*.class"/>
+			</fileset>
+		</jar>
 
-    <target name="pre-package" depends="RESTAPI_jar,RESTAPI_jar_dev">
-        <mkdir dir="${execution.lib.dir}"/>
-        <copy todir="${execution.lib.dir}/">
-            <fileset dir="${lib.dir}/">
-                <include name="*.jar"/>
-            </fileset>
-            <fileset dir="${build.dir}/">
-                <include name="${RESTAPI.basename}_${RESTAPI.version}.jar"/>
-            </fileset>
-        </copy>
-        <mkdir dir="${classes.dir}/javadoc"/>
-        <javadoc sourcepath="${classes.dir}" destdir="${build.dir}/javadoc" classpathref="compile.classpath"/>
-    </target>
+	</target>
 
-    <target name="package" depends="pre-package">
-	<!-->
-        <zip destfile="${releases}/${RESTAPI.basename}_${RESTAPI.version}.zip" basedir="${execution.lib.dir}" />        
-	<-->
-        <mkdir dir="${releases}"/>	
-        <zip destfile="${releases}/${RESTAPI.basename}_${RESTAPI.version}.zip">
-            <zipfileset dir="${execution.lib.dir}" prefix="execLib" />
-            <zipfileset dir="${build.dir}/javadoc" prefix="javadoc" />
-        </zip>
-    </target>
-    
+	<target name="RESTAPI_jar_dev" depends="compile">
+		<jar jarfile="${build.dir}/${RESTAPI.basename.dev}_${RESTAPI.version.dev}.jar">
+			<manifest>
+				<attribute name="Main-Class" value="${restapi.main}"/>
+			</manifest>
+			<fileset dir="${build.dir}">
+				<include name="org/appdynamics/appdrestapi/RESTAccess.class"/>
+				<include name="org/appdynamics/appdrestapi/GetTimeStamps.class"/>
+				<include name="org/appdynamics/appdrestapi/agent/*.class"/>
+				<include name="org/appdynamics/appdrestapi/data/*.class"/>
+				<include name="org/appdynamics/appdrestapi/resources/*.class"/>
+				<include name="org/appdynamics/appdrestapi/util/*.class"/>
+				<include name="org/appdynamics/appdrestapi/exportdata/*.class"/>
+			</fileset>
+		</jar>
+
+	</target>
+
+	<target name="pre-package" depends="RESTAPI_jar,RESTAPI_jar_dev">
+		<mkdir dir="${execution.lib.dir}"/>
+		<copy todir="${execution.lib.dir}/">
+			<fileset dir="${lib.dir}/">
+				<include name="*.jar"/>
+			</fileset>
+			<fileset dir="${build.dir}/">
+				<include name="${RESTAPI.basename}_${RESTAPI.version}.jar"/>
+			</fileset>
+		</copy>
+		<mkdir dir="${classes.dir}/javadoc"/>
+		<javadoc sourcepath="${classes.dir}" destdir="${build.dir}/javadoc" classpathref="compile.classpath"/>
+	</target>
+
+	<target name="package" depends="pre-package">
+		<!--
+		<zip destfile="${releases}/${RESTAPI.basename}_${RESTAPI.version}.zip" basedir="${execution.lib.dir}" />        
+		-->
+		<mkdir dir="${releases}"/>	
+		<zip destfile="${releases}/${RESTAPI.basename}_${RESTAPI.version}.zip">
+			<zipfileset dir="${execution.lib.dir}" prefix="execLib" />
+			<zipfileset dir="${build.dir}/javadoc" prefix="javadoc" />
+		</zip>
+	</target>
+
 </project>

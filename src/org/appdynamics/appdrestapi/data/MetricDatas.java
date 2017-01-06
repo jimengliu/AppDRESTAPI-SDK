@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 @XmlRootElement(name=s.METRIC_DATAS)
 @XmlSeeAlso({MetricData.class,MetricValues.class,MetricValue.class})
 public class MetricDatas {
-    private ArrayList<MetricData> metric_data=new ArrayList<>();
+    private ArrayList<MetricData> metric_data=new ArrayList<MetricData>();
 
     @XmlElement(name=s.METRIC_DATA)
     public ArrayList<MetricData> getMetric_data() {

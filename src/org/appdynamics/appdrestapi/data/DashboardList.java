@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author gilbert.solorzano
  */
 public class DashboardList {
-    private ArrayList<DashboardListObj> dashboardList = new ArrayList<>();
+    private ArrayList<DashboardListObj> dashboardList = new ArrayList<DashboardListObj>();
 
     public ArrayList<DashboardListObj> getDashboardList() {
         return dashboardList;

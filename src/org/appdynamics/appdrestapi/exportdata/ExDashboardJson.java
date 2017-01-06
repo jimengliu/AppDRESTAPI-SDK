@@ -26,7 +26,7 @@ public class ExDashboardJson {
     private long minutesBeforeAnchorTime, refreshInterval, backgroundColor, height, width;
     private boolean template, warRoom;
     private int level=1;
-    private ArrayList<ExDashboardWidget> widgetTemplates=new ArrayList<>();
+    private ArrayList<ExDashboardWidget> widgetTemplates=new ArrayList<ExDashboardWidget>();
     
     
     public ExDashboardJson(){}
