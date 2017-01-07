@@ -4,7 +4,7 @@
  */
 package org.appdynamics.appdrestapi.data;
 
-import org.appdynamics.appdrestapi.resources.s;
+
 import org.appdynamics.appdrestapi.resources.AppExportS;
 
 import java.util.ArrayList;

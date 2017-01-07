@@ -20,6 +20,9 @@ public class TransactionDetectionQuery {
     protected String baseURL;
     protected String application;
     
+    /*
+        This is going to be the queries for all the transaction detection export for both app and tier level.
+    */
     // export all auto created BTs in APP
     // http://<CONTROLLER_PORT>/controller/transactiondetection/<APPLICATION>/auto
     public static String queryTransactionDetectionAutoAll(String baseURL, String application){       
@@ -39,8 +42,7 @@ public class TransactionDetectionQuery {
     
     
     // export single BTs from app
-    // http://<CONTROLLER_PORT>/controller/transactiondetection/<APPLICATION>/auto/Servlet
-    
+    // http://<CONTROLLER_PORT>/controller/transactiondetection/<APPLICATION>/auto/Servlet   
     public static String queryTransactionDetectionAutoSingle(String baseURL, String application, String entryPoint){
         StringBuilder bud = new StringBuilder();
         bud.append(baseURL).append(s.CONTROLLER_BT_URL).append(QueryEncoder.encode(application));
@@ -56,6 +58,10 @@ public class TransactionDetectionQuery {
         return bud.toString();
     }
     
+    
+    /*
+        This is going to be the export
+    */
     public static String queryTransactionDetectionExportAllPojo(String baseURL, String application){
         
         StringBuilder bud = new StringBuilder();
