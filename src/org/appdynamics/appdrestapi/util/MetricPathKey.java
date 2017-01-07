@@ -22,11 +22,11 @@ public class MetricPathKey {
     private String controller;
     private String application;
     private String applicationId;
-    private String metricGroup; //tierName/appname
-    private String metricType; // Tier/BT/BE/
+    private String metricGroup; // agent, hw, jvm, oap, eum, bt, be
+    private String metricType; // gc-eden, metric-upload
     private String metricName; //Node/BT-name/BE/
     private String metricTier;
-    private String metricSite;
+    private String metricSite; // This will be used for the EUM and extra objects
     private String metricNode;
     private String metricFreq;
     
@@ -105,6 +105,7 @@ public class MetricPathKey {
     // Backends|Discovered backend call - MYSQL-AppDynamics-LOCALHOST|Average Response Time (ms)
     public void setTierSiteNode(int metricType, String[] pPath){
        //Node and tier, numbers will change
+       metricTier="";metricNode="";metricSite="";
        if(metricType >=4 ){ metricTier=pPath[1];}
        if(metricType >=8){metricNode=pPath[3];}
        
@@ -152,7 +153,7 @@ public class MetricPathKey {
         
         if(shortVal){
             
-            return MetricNameUtil.getObjectType(metricType, metricQuery, pPath);
+            return MetricNameUtil.getObjectType(metricType, metricQuery, pPath)[0];
  
         }else{
             if(metricType == 0) return s.LONG_METRIC_TYPES[0];
