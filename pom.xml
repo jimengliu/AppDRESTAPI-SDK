@@ -11,7 +11,8 @@
 	
 	<name>AppDRESTAPI-SDK</name>
 	<packaging>jar</packaging>
-
+	<url>www.appdynamics.com</url>
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jar.finalName>${project.name}-${project.version}</jar.finalName>
