@@ -888,8 +888,10 @@ public class RESTExecuter {
             if(response.hasEntity()) value =  (String) response.getEntity(String.class);
             
         }catch(Exception e){
+        	System.out.println(new StringBuilder().append("Exception getting application export: \nQuery:\n\t")
+                    .append(query).append("\nError:").append(e.getMessage()).append(".\nResponse code is ")/*.append(response.getStatus())*/.toString());
             logger.log(Level.SEVERE,new StringBuilder().append("Exception getting application export: \nQuery:\n\t")
-                    .append(query).append("\nError:").append(e.getMessage()).append(".\nResponse code is ").append(response.getStatus()).toString());
+                    .append(query).append("\nError:").append(e.getMessage()).append(".\nResponse code is ")/*.append(response.getStatus())*/.toString());
         }
         
         return value;
