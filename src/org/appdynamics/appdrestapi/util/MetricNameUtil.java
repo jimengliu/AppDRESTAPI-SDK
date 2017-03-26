@@ -481,15 +481,12 @@ Application Infrastructure Performance|ACME-App|JVM|Process CPU Burnt (ms/min) 8
                 *       <li>11 - OAP Node Metric
                * </ul>
      * </ul>
-     *   0 - BT
-     *   1 - BE
-     *   2 - Tier Metric
-     *   3 - Node Metric
-     *   4 - EUM
-     *   5 - Custom
      */
     public static String[] getObjectType(int metricType, int queryIndex, String[] nameParts){
-        
+        if(metricType == 0) return new String[]{"BT",DO};
+        if(metricType == 1) return new String[]{"Backend",DO};
+        if(metricType == 2) return new String[]{"EUM",DO};
+        if(metricType == 3) return new String[]{"Custom",DO};
         if(metricType == 4 || metricType == 8 ) return getAgentMetricType(nameParts,metricType,queryIndex,true);
         if(metricType == 5 || metricType == 9 ) return getHWMetricType(nameParts,metricType,queryIndex,true);
         if(metricType == 6 || metricType == 10 ) return getJVMMetricType(nameParts,metricType,queryIndex,true);

@@ -115,7 +115,7 @@ public class MetricPathKey {
            // Application Infrastructure Performance|cas|Custom Metrics|Amazon Cloud Watch|eu-west-1|EC2|Instance|i-00f571e6|CPUUtilization
            //Application Infrastructure Performance|2ndTier|Individual Nodes|2ndTierNode1|Custom Metrics|Uptime|myTier|Nodes Down
            metricTier=null;metricTier=pPath[1]; // This is the tier, now lets check if the node is present
-           if(pPath[2].equals("Individual Nodes")){metricNode=pPath[3];}
+           if(pPath.length > 2 && pPath[2].equals("Individual Nodes")){metricNode=pPath[3];}
        }
        
        if(metricType == 0){
