@@ -7,7 +7,7 @@
 	<property name="execution.lib.dir"  value="${basedir}/execLib"/>
 	<property name="restapi.main"		value="org.appdynamics.appdrestapi.GetTimeStamps"/> 
 	<property name="releases"			value="${basedir}/releases"/>
-	<property name="javadoc"            value="${basedir}/dist/javadoc"/>
+	<property name="javadoc"            value="${basedir}/javadoc"/>
 
 	<property name="RESTAPI.basename"   	value="AppDRESTAPI-SDK"/>
 	<property name="RESTAPI.version"     	value="2.5.2"/>
@@ -32,6 +32,7 @@
 	<target name="clean">
 		<delete dir="${build.dir}"/>
 		<delete dir="${execution.lib.dir}"/>
+		<delete dir="${javadoc}"/>
 	</target>
 
 	<target name="init" depends="clean">
@@ -104,7 +105,7 @@
 			</fileset>
 		</copy>
 		<mkdir dir="${classes.dir}/javadoc"/>
-		<javadoc sourcepath="${classes.dir}" destdir="${build.dir}/javadoc" classpathref="compile.classpath"/>
+		<javadoc sourcepath="${classes.dir}" destdir="${javadoc}" classpathref="compile.classpath"/>
 	</target>
 
 	<target name="package" depends="pre-package">
@@ -114,7 +115,7 @@
 		<mkdir dir="${releases}"/>	
 		<zip destfile="${releases}/${RESTAPI.basename}_${RESTAPI.version}.zip">
 			<zipfileset dir="${execution.lib.dir}" prefix="execLib" />
-			<zipfileset dir="${build.dir}/javadoc" prefix="javadoc" />
+			<zipfileset dir="${javadoc}" prefix="javadoc" />
 		</zip>
 	</target>
 
