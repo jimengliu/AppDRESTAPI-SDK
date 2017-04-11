@@ -51,13 +51,6 @@
 			<version>1.9.2</version>
 		</dependency>
 
-		<!-- JFree Common -->
-		<dependency>
-			<groupId>org.jfree</groupId>
-			<artifactId>jcommon</artifactId>
-			<version>1.0.21</version>
-		</dependency>
-
 		<!-- Jersey (ALL must be at version 1.17.1) -->
 		<dependency>
 			<groupId>com.sun.jersey</groupId>

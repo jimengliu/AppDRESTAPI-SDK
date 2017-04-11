@@ -72,6 +72,11 @@
 				<include name="org/appdynamics/appdrestapi/resources/*.class"/>
 				<include name="org/appdynamics/appdrestapi/util/*.class"/>
 			</fileset>
+			<fileset dir="${basedir}">
+				<include name="Apache License 2.0.txt"/>
+				<include name="Jersey - Legal information.html"/>
+				<include name="Jersey - Legal information_files/*"/>
+			</fileset>
 		</jar>
 
 	</target>
