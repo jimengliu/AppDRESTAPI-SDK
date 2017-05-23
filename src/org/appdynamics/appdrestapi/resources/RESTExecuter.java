@@ -4,59 +4,73 @@
  */
 package org.appdynamics.appdrestapi.resources;
 
-import org.appdynamics.appdrestapi.data.AutoDiscoveryConfig;
-import org.appdynamics.appdrestapi.data.*;
-import org.appdynamics.appdrestapi.exportdata.*;
-
-
-import com.sun.jersey.multipart.FormDataMultiPart;
-import com.sun.jersey.multipart.MultiPart;
-import com.sun.jersey.multipart.FormDataBodyPart;
-import com.sun.jersey.multipart.file.FileDataBodyPart;
-
-
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.client.urlconnection.URLConnectionClientHandler;
-
-import com.sun.jersey.client.urlconnection.HttpURLConnectionFactory;
-import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.api.json.JSONConfiguration;
-import com.sun.jersey.api.client.config.DefaultClientConfig;
-import com.sun.jersey.api.client.filter.HTTPBasicAuthFilter;
-import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.client.urlconnection.HTTPSProperties;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.NewCookie;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
-
-import java.io.InputStream;
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
-
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+import java.net.URL;
 //Accepting all certs
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import java.net.HttpURLConnection;
-import java.net.Proxy;
-import java.net.URL;
-import java.net.InetSocketAddress;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.NewCookie;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
 
-import java.io.IOException;
-
-import java.util.List;
-import java.util.logging.Logger;
-import java.util.logging.Level;
+import org.appdynamics.appdrestapi.data.AccountEUM;
+import org.appdynamics.appdrestapi.data.Applications;
+import org.appdynamics.appdrestapi.data.AutoDiscoveryConfig;
+import org.appdynamics.appdrestapi.data.Backends;
+import org.appdynamics.appdrestapi.data.BusinessTransactions;
+import org.appdynamics.appdrestapi.data.ConfigurationItems;
+import org.appdynamics.appdrestapi.data.CustomMatchPoints;
+import org.appdynamics.appdrestapi.data.Dashboard;
+import org.appdynamics.appdrestapi.data.DashboardList;
+import org.appdynamics.appdrestapi.data.Events;
+import org.appdynamics.appdrestapi.data.HealthRules;
+import org.appdynamics.appdrestapi.data.LicenseProperties;
+import org.appdynamics.appdrestapi.data.MetricDatas;
+import org.appdynamics.appdrestapi.data.MetricItems;
+import org.appdynamics.appdrestapi.data.Nodes;
+import org.appdynamics.appdrestapi.data.PolicyViolations;
+import org.appdynamics.appdrestapi.data.RESTAuth;
+import org.appdynamics.appdrestapi.data.Snapshots;
+import org.appdynamics.appdrestapi.data.Tiers;
+import org.appdynamics.appdrestapi.exportdata.ExApplication;
+import org.appdynamics.appdrestapi.exportdata.ExDashboard;
 import org.appdynamics.appdrestapi.queries.AuthActionQuery;
 import org.codehaus.jackson.map.ObjectMapper;
+
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.api.client.config.DefaultClientConfig;
+import com.sun.jersey.api.client.filter.HTTPBasicAuthFilter;
+import com.sun.jersey.api.json.JSONConfiguration;
+import com.sun.jersey.client.urlconnection.HTTPSProperties;
+import com.sun.jersey.client.urlconnection.HttpURLConnectionFactory;
+import com.sun.jersey.client.urlconnection.URLConnectionClientHandler;
+import com.sun.jersey.multipart.FormDataBodyPart;
+import com.sun.jersey.multipart.FormDataMultiPart;
+import com.sun.jersey.multipart.MultiPart;
+import com.sun.jersey.multipart.file.FileDataBodyPart;
 
 
 
@@ -247,6 +261,42 @@ public class RESTExecuter {
                     
                     currentCount++;
                     Thread.sleep(1200*currentCount);
+                }else if(response.getStatus() >= 400){
+                    StringBuilder message = new StringBuilder("Caught HTTP error number ");
+                    message.append(response.getStatus());
+                    if(response.hasEntity())
+                    {	
+                        message.append(", message: ");
+	                    StringBuilder sb = new StringBuilder();
+	                    if(response.getEntityInputStream() != null)
+	                    {
+	                    	BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntityInputStream()));
+		                    String line = in.readLine();
+		                    while(line != null)
+		                    {
+		                    	sb.append(line);
+		                    	line = in.readLine();
+		                    }
+	                    }else
+	                    {
+	                    	String ent = response.getEntity(String.class);
+	                    	if(ent != null)
+	                    		sb.append(ent);
+	                    }
+	                    //NOTE: this pattern is dependent on the current REST framework
+	                    Pattern p = Pattern.compile("^.*<h1>(.*)</h1>.*$");
+	                    Matcher m = p.matcher(sb);
+	                    if(m.find())
+	                    {
+	                    	message.append(m.group(1));
+	                    }else
+	                    {
+	                        logger.log(Level.INFO,new StringBuilder().append("Unable to parse error message from the response")
+	                        		.append(response.getStatus()).toString());
+	                        message.append(sb);
+	                    }
+                    }
+					throw new Exception(message.toString());
                 }else{
                     md = (MetricDatas) response.getEntity(MetricDatas.class);
                     if(md == null){ 
